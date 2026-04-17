@@ -6,10 +6,11 @@ export default function Avatar() {
 
   return (
     <section
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden max-md:!h-auto max-md:!pb-20"
       style={{ height: "1265px", background: "#000923" }}
     >
-      {/* Gradient overlay at top for smooth transition from Timeline - minimal to not cover content */}
+      <div className="max-md:!hidden">
+      
       <div 
         className="absolute top-0 left-0 w-full pointer-events-none"
         style={{ 
@@ -19,8 +20,6 @@ export default function Avatar() {
         }}
       />
 
-      {/* ── Polygon glow rays (X shape) ── */}
-      {/* Top-right ray */}
       <div
         className="absolute"
         style={{
@@ -31,7 +30,7 @@ export default function Avatar() {
           pointerEvents: "none",
         }}
       />
-      {/* Bottom-left ray */}
+      
       <div
         className="absolute"
         style={{
@@ -41,7 +40,7 @@ export default function Avatar() {
           pointerEvents: "none",
         }}
       />
-      {/* Bottom-right ray */}
+      
       <div
         className="absolute"
         style={{
@@ -51,7 +50,7 @@ export default function Avatar() {
           pointerEvents: "none",
         }}
       />
-      {/* Top-left ray */}
+      
       <div
         className="absolute"
         style={{
@@ -62,7 +61,6 @@ export default function Avatar() {
         }}
       />
 
-      {/* Center magenta glow */}
       <div
         className="absolute rounded-full"
         style={{
@@ -73,25 +71,27 @@ export default function Avatar() {
         }}
       />
 
-      {/* ── Judul ── */}
-      {/* Ganti dengan SVG dari Figma jika tersedia:
-        <img src="/images/meet-our-mascott.svg" alt="Meet Our Mascott" style={{ position:"absolute", top:"54px", left:"calc(50% - 356px)", width:"713px", height:"64px" }} />
-      */}
       <div
         className="absolute flex items-center justify-center"
-        style={{ top: "54px", left: "calc(50% - 356px)", width: "713px", height: "64px" }}
+        style={{ top: "30px", left: "calc(50% - 356px)", width: "713px", height: "64px" }}
       >
         <h2
           className="font-bold text-center whitespace-nowrap"
-          style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "52px", lineHeight: 1 }}
+          style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "70px", lineHeight: 1 }}
         >
           <span className="text-white">Meet Our </span>
-          <span style={{ color: "#d000cb" }}>Mascott</span>
+          <span
+            style={{
+              background: "linear-gradient(90deg, #ff00ff, #00ffff)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            } as React.CSSProperties}
+          >
+            Mascott
+          </span>
         </h2>
       </div>
 
-      {/* ── Maskot (gambar tengah) ── */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/images/mascot.png"
         alt="Mascot"
@@ -99,47 +99,89 @@ export default function Avatar() {
         style={{ top: "457px", left: "648px", width: "332px", height: "328px", objectFit: "contain" }}
       />
 
-      {/* ── 4 Cards ── */}
-
-      {/* Top-left — magenta solid */}
       <div
         className={`${cardBase} ${cardShadow}`}
         style={{
-          top: "252px", left: "311px",
+          top: "222px", left: "341px",
           width: "207px", height: "159px",
-          background: "#d000cb",
+          background: "#000923",
+          zIndex: 10,
         }}
       />
 
-      {/* Top-right — magenta solid */}
       <div
         className={`${cardBase} ${cardShadow}`}
         style={{
-          top: "252px", left: "1062px",
+          top: "222px", left: "1062px",
           width: "207px", height: "159px",
-          background: "#d000cb",
+          background: "#000923",
+          zIndex: 10,
         }}
       />
 
-      {/* Bottom-right — magenta solid */}
       <div
         className={`${cardBase} ${cardShadow}`}
         style={{
           top: "894px", left: "1062px",
           width: "207px", height: "159px",
-          background: "#d000cb",
+          background: "#000923",
+          zIndex: 10,
         }}
       />
 
-      {/* Bottom-left — magenta transparent */}
       <div
         className={`${cardBase} ${cardShadow}`}
         style={{
-          top: "894px", left: "311px",
+          top: "894px", left: "341px",
           width: "207px", height: "159px",
-          background: "rgba(208,0,203,0.2)",
+          background: "#000923",
+          zIndex: 10,
         }}
       />
+      </div>
+
+      <div className="hidden max-md:!flex flex-col w-full px-4 pt-[10vh] pb-10 gap-10 items-center z-20 relative">
+        
+        <div
+          className="absolute rounded-full"
+          style={{
+            top: "30%", left: "50%", transform: "translate(-50%, -50%)", width: "250px", height: "250px",
+            background: "rgba(208,0,203,0.3)",
+            filter: "blur(60px)",
+            pointerEvents: "none",
+          }}
+        />
+
+        <h2
+          className="text-center font-bold leading-tight"
+          style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "40px", lineHeight: 1.2 }}
+        >
+          <span className="text-white">Meet Our </span>
+          <br/>
+          <span
+            style={{
+              background: "linear-gradient(90deg, #ff00ff, #00ffff)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            } as React.CSSProperties}
+          >
+            Mascott
+          </span>
+        </h2>
+
+        <img
+          src="/images/mascot.png"
+          alt="Mascot"
+          className="w-[280px] h-[280px] object-contain relative z-10 drop-shadow-[0_0_20px_rgba(208,0,203,0.5)]"
+        />
+
+        <div className="grid grid-cols-2 gap-4 w-full max-w-[400px]">
+          <div className={`${cardBase} ${cardShadow} !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }} />
+          <div className={`${cardBase} ${cardShadow} !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }} />
+          <div className={`${cardBase} ${cardShadow} !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }} />
+          <div className={`${cardBase} ${cardShadow} !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }} />
+        </div>
+      </div>
     </section>
   );
 }

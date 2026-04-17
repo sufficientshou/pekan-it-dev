@@ -12,7 +12,7 @@ export default function TerimakasihPage() {
         {/* Background Night - Kita pakai night_bg2.png yang sudah ada, atau silakan ganti */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
-          src="/images/kota mksh.png" 
+          src="/images/kota mksh (1) 1.svg" 
           alt="Night Background" 
           className="absolute inset-0 w-full h-full object-cover z-0"
         />

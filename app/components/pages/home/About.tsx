@@ -1,8 +1,7 @@
 export default function About() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden" style={{ minHeight: "1100px" }}>
+    <section className="relative w-full min-h-screen overflow-hidden max-md:!min-h-0 max-md:!h-auto max-md:!py-16" style={{ minHeight: "1100px" }}>
 
-      {/* Gradient overlay at top for smooth transition from Hero */}
       <div 
         className="absolute top-0 left-0 w-full"
         style={{ 
@@ -12,15 +11,12 @@ export default function About() {
         }}
       />
 
-      {/* Layer 1: Night BG */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/images/night_bg2.png"
         alt="Night Background"
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Gradient overlay at bottom for smooth transition to Events */}
       <div 
         className="absolute bottom-0 left-0 w-full pointer-events-none"
         style={{ 
@@ -30,12 +26,6 @@ export default function About() {
         }}
       />
 
-      {/* Layer 2: Rectangle dekorasi bawah */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      
-
-      {/* Layer 3: Vector garis bawah teks */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/images/Vector 21.png"
         alt="Vector"
@@ -43,18 +33,15 @@ export default function About() {
         style={{ top: "700px", left: "103px" }}
       />
 
-      {/* Layer 4: Konten utama */}
       <div
-        className="absolute"
+        className="absolute max-md:!relative max-md:!flex max-md:!flex-col max-md:!items-center max-md:!w-full max-md:!h-auto max-md:!mx-auto max-md:!px-4 max-md:!mt-[5vh]"
         style={{ top: "0", left: "0", width: "1280px", height: "832px" }}
       >
-        {/* Kiri: Judul + Deskripsi - lebih lebar */}
-        <div className="absolute flex flex-col" style={{ top: "300px", left: "105px", width: "600px" }}>
 
-          {/* Judul — Step Into Digital Innovation */}
-          <div style={{ width: "900px", height: "180px", marginBottom: "15px" }}>
+        <div className="absolute flex flex-col max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-full max-md:!items-center" style={{ top: "300px", left: "105px", width: "600px" }}>
+          <div className="max-md:!w-full max-md:!h-auto max-md:!text-center max-md:!mb-6" style={{ width: "900px", height: "180px", marginBottom: "15px" }}>
             <h2
-              className="leading-[100%]"
+              className="leading-[100%] max-md:!text-4xl max-md:!leading-tight"
               style={{ 
                 fontFamily: "'Zen Dots', sans-serif", 
                 fontSize: "72px", 
@@ -65,31 +52,28 @@ export default function About() {
               <span className="text-white">Step Into </span>
               <span
                 style={{
-                  background: "linear-gradient(90deg, #60a5fa 0%, #06b6d4 100%)",
+                  background: "linear-gradient(90deg, #ff00ff, #00ffff)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
+                } as React.CSSProperties}
               >
                 Digital
               </span>
               <br />
               <span
                 style={{
-                  background: "linear-gradient(90deg, #d946ef 0%, #ec4899 100%)",
+                  background: "linear-gradient(90deg, #ff00ff, #00ffff)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
+                } as React.CSSProperties}
               >
                 Innovation
               </span>
             </h2>
           </div>
 
-          {/* Deskripsi */}
           <p
-            className="text-white text-justify leading-normal"
+            className="text-white text-justify leading-normal max-md:!w-full max-md:!text-base max-md:!text-center max-md:!px-2"
             style={{
               fontFamily: "'Exo 2', sans-serif",
               fontSize: "23px",
@@ -104,12 +88,10 @@ export default function About() {
           </p>
         </div>
 
-        {/* Kanan: Logo - besar dan berdempetan */}
         <div 
-          className="absolute w-[500px] h-[500px]"
+          className="absolute w-[500px] h-[500px] max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-[280px] max-md:!h-[280px] max-md:!mt-[10vh]"
           style={{ top: "300px", left: "1000px" }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/LOGO.png"
             alt="Logo"

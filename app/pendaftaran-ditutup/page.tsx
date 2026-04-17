@@ -12,7 +12,7 @@ export default function PendaftaranDitutupPage() {
         {/* Background Night */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
-          src="/images/kota mksh.png" 
+          src="/images/close city.svg" 
           alt="Night Background" 
           className="absolute inset-0 w-full h-full object-cover z-0"
         />

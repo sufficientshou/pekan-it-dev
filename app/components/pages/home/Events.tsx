@@ -27,10 +27,9 @@ const cards = [
 export default function Events() {
   return (
     <section
-      className="relative w-full min-h-screen overflow-hidden"
+      className="relative w-full min-h-screen overflow-hidden max-md:!min-h-0 max-md:!h-auto max-md:!pb-10"
       style={{ background: "#000923", minHeight: "1000px" }}
     >
-      {/* Gradient overlay at top for smooth transition from About */}
       <div 
         className="absolute top-0 left-0 w-full pointer-events-none"
         style={{ 
@@ -40,7 +39,6 @@ export default function Events() {
         }}
       />
 
-      {/* Magenta glow kanan atas - centered behind rocket */}
       <div
         className="absolute rounded-full"
         style={{
@@ -54,27 +52,22 @@ export default function Events() {
         }}
       />
 
-      {/* Roket kanan atas */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/images/image 7.png"
         alt="Rocket"
-        className="absolute object-cover"
+        className="absolute object-cover max-md:!hidden"
         style={{ top: "160px", left: "1200px", width: "228px", height: "225px" }}
       />
 
-      {/* Garis bawah judul */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/images/line2.svg"
         alt="Line"
-        className="absolute object-cover"
+        className="absolute object-cover max-md:!hidden"
         style={{ top: "274px", left: "64px", width: "302px", height: "3px" }}
       />
 
-      {/* Konten utama */}
       <div
-        className="absolute flex flex-col items-start"
+        className="absolute flex flex-col items-start max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-full max-md:!px-0 max-md:!gap-12 max-md:!pt-[15vh] max-md:!items-center"
         style={{
           top: "210px",
           left: "calc(50% - 680px)",
@@ -82,22 +75,27 @@ export default function Events() {
           gap: "120px",
         }}
       >
-        {/* Header */}
-        <div className="flex flex-col items-start" style={{ width: "851px", gap: "50px" }}>
-          {/* Judul — ganti dengan SVG aset jika tersedia */}
-          {/* <img src="/images/choose-your-journey.svg" alt="Choose Your Journey in Pekan IT" style={{ width: "834px", height: "154px" }} /> */}
+
+        <div className="flex flex-col items-start max-md:!w-full max-md:!px-4 max-md:!gap-6 max-md:!items-center" style={{ width: "851px", gap: "50px" }}>
           <h2
-            className="leading-tight"
+            className="leading-tight max-md:!text-4xl max-md:!text-center max-md:!w-full"
             style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "65px", fontWeight: 400, width: "834px" }}
           >
             <span className="text-white">Choose Your</span><br/>
             <span className="text-white"> Journey in </span>
-            <span style={{ color: "#d946ef" }}>Pekan </span>
-            <span style={{ color: "#06b6d4" }}>IT</span>
+            <span
+              style={{
+                background: "linear-gradient(90deg, #ff00ff, #00ffff)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              } as React.CSSProperties}
+            >
+              Pekan IT
+            </span>
           </h2>
 
           <p
-            className="text-white text-2xl font-normal leading-normal"
+            className="text-white text-2xl font-normal leading-normal max-md:!text-center max-md:!text-lg"
             style={{ fontFamily: "'Exo 2', sans-serif", alignSelf: "stretch" }}
           >
             Jelajahi berbagai rangkaian kegiatan Pekan IT yang menghadirkan
@@ -106,17 +104,15 @@ export default function Events() {
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="flex items-center w-full" style={{ gap: "300px" }}>
+        <div className="flex items-center w-full max-md:!flex-nowrap max-md:!overflow-x-auto max-md:[&::-webkit-scrollbar]:!hidden max-md:!snap-x max-md:!snap-mandatory max-md:!gap-4 max-md:!px-4 max-md:-mx-4 max-md:!w-screen" style={{ gap: "300px" }}>
           {cards.map((card) => (
-            <div key={card.id} className="relative" style={{ width: "400px", height: "280px" }}>
+            <div key={card.id} className="relative max-md:!scale-[0.75] max-md:!origin-[0_0] max-md:!-mr-[100px] max-md:!flex-shrink-0 max-md:!snap-center" style={{ width: "400px", height: "280px" }}>
 
-              {/* Arrow button */}
-              <div
-                className="absolute flex items-center justify-center z-10"
+              <button
+                className="absolute flex items-center justify-center z-10 cursor-pointer hover:scale-110 hover:brightness-110 transition-all duration-300 max-md:!hidden"
                 style={{
-                  top: "20px",
-                  right: "20px",
+                  top: "10px",
+                  right: "-243px",
                   width: "50px",
                   height: "50px",
                   borderRadius: "25px",
@@ -124,35 +120,43 @@ export default function Events() {
                 }}
               >
                 <ArrowUpRight size={28} color="white" />
-              </div>
+              </button>
 
-              {/* Card content */}
               <div
                 className="absolute top-0 left-0 flex flex-col justify-end items-start"
                 style={{ width: "400px", height: "280px", padding: "32px" }}
               >
-                {/* Background image */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={card.img}
-                  alt={card.title}
-                  className="absolute top-0 left-0 object-cover"
-                  style={{ width: "400px", height: "280px", borderRadius: "30px" }}
-                />
 
-                {/* Gradient overlay */}
                 <div
-                  className="absolute left-0 top-0"
+                  className="absolute left-0 top-0 w-full h-full"
                   style={{
-                    width: "400px",
-                    height: "280px",
-                    borderRadius: "30px",
-                    backdropFilter: "blur(25px) brightness(100%)",
-                    background: "linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.01) 60%)",
+                    WebkitMask:
+                      "conic-gradient(at calc(100% - 100px) 100px, transparent 25%, black 0), " +
+                      "radial-gradient(30px, transparent 98%, black 100%) 100% 0 / calc(100% - 70px) calc(100% - 70px) no-repeat",
+                    mask:
+                      "conic-gradient(at calc(100% - 100px) 100px, transparent 25%, black 0), " +
+                      "radial-gradient(30px, transparent 98%, black 100%) 100% 0 / calc(100% - 70px) calc(100% - 70px) no-repeat",
                   }}
-                />
+                >
 
-                {/* Text */}
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="absolute top-0 left-0 object-cover"
+                    style={{ width: "400px", height: "280px", borderRadius: "30px" }}
+                  />
+
+                  <div
+                    className="absolute left-0 top-0"
+                    style={{
+                      width: "400px",
+                      height: "280px",
+                      borderRadius: "30px",
+                      background: "linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.01) 60%)",
+                    }}
+                  />
+                </div>
+
                 <div
                   className="relative flex flex-col items-start z-10"
                   style={{ width: "300px", gap: "6px", boxShadow: "0px 4px 4px #00000040" }}
