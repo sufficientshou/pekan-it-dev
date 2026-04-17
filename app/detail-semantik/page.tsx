@@ -8,7 +8,7 @@ import Highlights from "../components/pages/detail-semantik/Highlight";
 
 export default function DetailSemantikPage() {
   return (
-    <main className="min-h-screen overflow-x-visible" style={{ background: "#000923" }}>
+    <main className="min-h-screen overflow-x-visible max-md:!overflow-x-hidden" style={{ background: "#000923" }}>
       <Navbar />
       <Hero />
       <Inside />

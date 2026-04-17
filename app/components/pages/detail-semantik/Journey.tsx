@@ -7,20 +7,20 @@ const tabs = ["Desain Grafis", "Typing Competition", "Competitive Programming"];
 // Data timeline untuk setiap lomba
 const timelineData: Record<string, Array<{title: string, date: string, top: number, left: number}>> = {
   "Desain Grafis": [
-    { title: "Pendaftaran", date: "1 - 15 Maret 2026", top: 126, left: 300 },
-    { title: "Perlombaan", date: "16 - 25 Maret 2026", top: 276, left: 1000 },
-    { title: "Technical Meeting", date: "26 Maret 2026", top: 426, left: 300 },
-    { title: "Presentasi & Pengumuman Pemenang", date: "30 Maret 2026", top: 576, left: 1000 },
+    { title: "Pendaftaran", date: "18 April - 1 Mei 2026", top: 126, left: 300 },
+    { title: "Pengumpulan Karya", date: "3 Mei 2026", top: 276, left: 1000 },
+    { title: "Technical Meeting", date: "7 Mei 2026", top: 426, left: 300 },
+    { title: "Presentasi & Pengumuman Pemenang", date: "9 Mei 2026", top: 576, left: 1000 },
   ],
   "Typing Competition": [
-    { title: "Pendaftaran", date: "5 - 20 Maret 2026", top: 126, left: 300 },
-    { title: "Technical Meeting", date: "22 Maret 2026", top: 326, left: 1000 },
-    { title: "Perlombaan & Pengumuman Pemenang", date: "25 Maret 2026", top: 485, left: 300 },
+    { title: "Pendaftaran", date: "18 April - 1 Mei 2026", top: 126, left: 300 },
+    { title: "Technical Meeting", date: "7 Mei 2026", top: 326, left: 1000 },
+    { title: "Perlombaan & Pengumuman Pemenang", date: "9 Mei 2026", top: 485, left: 300 },
   ],
   "Competitive Programming": [
-    { title: "Pendaftaran", date: "10 - 25 Maret 2026", top: 126, left: 300 },
-    { title: "Technical Meeting", date: "27 Maret 2026", top: 326, left: 1000 },
-    { title: "Perlombaan & Pengumuman Pemenang", date: "29 Maret 2026", top: 485, left: 300 },
+    { title: "Pendaftaran", date: "18 April - 1 Mei 2026", top: 126, left: 300 },
+    { title: "Technical Meeting", date: "7 Mei 2026", top: 326, left: 1000 },
+    { title: "Perlombaan & Pengumuman Pemenang", date: "9 Mei 2026", top: 485, left: 300 },
   ],
 };
 
@@ -42,15 +42,16 @@ function TimelineCard({
         top,
         left,
         width: "266px",
-        height: "137px",
-        padding: "30px 24px",
+        minHeight: "137px",
+        padding: "20px 20px",
         borderRadius: "16px",
         background:
           "linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 100%), linear-gradient(105deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0) 100%)",
         backdropFilter: "blur(6px) brightness(100%)",
-        boxShadow: "0px 0px 50px #d000cb, inset 0px 1px 2px rgba(255,255,255,0.1)",
+        boxShadow: "inset 0px 1px 2px rgba(255,255,255,0.1)",
         border: "2px solid transparent",
         backgroundClip: "padding-box",
+        gap: "10px",
       }}
     >
       {/* Gradient border overlay */}
@@ -67,16 +68,17 @@ function TimelineCard({
       />
 
       <span
-        className="leading-normal"
+        className="leading-snug"
         style={{
           fontFamily: "'Zen Dots', sans-serif",
-          fontSize: "20px",
+          fontSize: "16px",
           fontWeight: 400,
           background: "linear-gradient(340deg, rgba(208,0,203,1) 0%, rgba(16,230,241,1) 100%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           textShadow: "none",
           filter: "drop-shadow(0px 4px 4px rgba(0,0,0,0.25))",
+          wordBreak: "break-word",
         }}
       >
         {title}
@@ -86,9 +88,10 @@ function TimelineCard({
         className="text-white"
         style={{
           fontFamily: "'Zen Dots', sans-serif",
-          fontSize: "15px",
+          fontSize: "13px",
           fontWeight: 400,
           textShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+          lineHeight: 1.4,
         }}
       >
         {date}
@@ -111,9 +114,9 @@ function TimelineCardMobile({
         padding: "24px 20px",
         borderRadius: "16px",
         background:
-          "linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 100%), linear-gradient(105deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0) 100%)",
+          "linear-gradient(0deg, rgba(0,9,35,1) 0%, rgba(0,9,35,1) 100%), linear-gradient(105deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0) 100%)",
         backdropFilter: "blur(6px) brightness(100%)",
-        boxShadow: "0px 0px 50px #d000cb, inset 0px 1px 2px rgba(255,255,255,0.1)",
+        boxShadow: "inset 0px 1px 2px rgba(255,255,255,0.1)",
         border: "2px solid transparent",
         backgroundClip: "padding-box",
         position: "relative",
@@ -168,8 +171,8 @@ export default function Journey() {
 
   return (
     <section
-      className="relative w-full overflow-hidden"
-      style={{ background: "#000923", minHeight: "1400px", padding: "60px 0 80px" }}
+      className="relative w-full overflow-hidden max-md:!min-h-0 max-md:!h-auto max-md:!mt-0 max-md:!pt-12"
+      style={{ background: "#000923", minHeight: "1400px", padding: "0px 0 80px", marginTop: "-200px" }}
     >
       <div className="flex flex-col items-center mb-8 relative z-20 px-4">
         <h2
@@ -191,13 +194,12 @@ export default function Journey() {
         </h2>
       </div>
 
-      {/* Tab selector */}
-      <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-20 mb-8 md:mb-12 flex-wrap px-4 relative z-20">
+      <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-20 mb-8 md:mb-12 flex-wrap px-4 relative z-20 max-md:!flex-row max-md:!justify-start max-md:!flex-nowrap max-md:!overflow-x-auto max-md:!snap-x max-md:!snap-mandatory max-md:!gap-3 max-md:!pb-4 max-md:[scrollbar-width:none] max-md:![&::-webkit-scrollbar]:hidden max-md:!px-4">
         {tabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className="w-full md:w-[300px] h-[40px] px-4 md:px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 cursor-pointer text-center relative z-30"
+            className={`w-full md:w-[300px] h-[40px] px-4 md:px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 cursor-pointer text-center relative z-30 max-md:!w-auto max-md:!whitespace-nowrap max-md:!shrink-0 max-md:!snap-center max-md:!h-auto max-md:!min-h-[44px] max-md:!px-6 ${activeTab === tab ? "md:shadow-[0_0_60px_10px_rgba(180,0,203,0.45)]" : ""}`}
             style={{
               fontFamily: "'Exo 2', sans-serif",
               fontSize: "clamp(12px, 2vw, 14px)",
@@ -206,7 +208,6 @@ export default function Journey() {
                   ? "rgba(10, 15, 35, 1)"
                   : "rgba(255,255,255,0.05)",
               border: "1px solid rgba(255,255,255,0.15)",
-              boxShadow: activeTab === tab ? "0 0 60px 10px rgba(180, 0, 203, 0.45)" : "none",
             }}
           >
             {tab}
@@ -273,14 +274,29 @@ export default function Journey() {
       </div>
 
       {/* Timeline Content - Mobile */}
-      <div className="md:hidden relative z-10 flex flex-col items-center gap-6 px-4 pb-12">
-        {timelineData[activeTab]?.map((card, index) => (
-          <TimelineCardMobile
-            key={index}
-            title={card.title}
-            date={card.date}
-          />
-        ))}
+      <div className="md:hidden relative z-10 flex flex-col items-center gap-6 px-4 pb-12 w-full">
+        <div className="flex flex-col w-full max-w-[340px] items-center gap-8 relative">
+          
+          <div className="absolute top-2 bottom-6 left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#10e6f1] via-[#d000cb] to-[#7B2FFE] z-0 opacity-90" />
+          <div className="absolute top-2 bottom-6 left-1/2 -translate-x-1/2 w-[8px] bg-gradient-to-b from-[#10e6f1] via-[#d000cb] to-[#7B2FFE] z-0 opacity-40 blur-[4px]" />
+
+          {timelineData[activeTab]?.map((card, index) => {
+             const colors = ["#10e6f1", "#d000cb", "#7B2FFE"];
+             const ringColor = colors[index % colors.length];
+             return (
+               <div key={index} className="relative z-10 w-full flex flex-col items-center gap-4">
+                 <div 
+                   className="w-5 h-5 rounded-full border-[3px] bg-[#000923] flex-shrink-0" 
+                   style={{ borderColor: ringColor, boxShadow: `0 0 15px ${ringColor}` }}
+                 />
+                 <TimelineCardMobile
+                   title={card.title}
+                   date={card.date}
+                 />
+               </div>
+             );
+          })}
+        </div>
       </div>
     </section>
   );

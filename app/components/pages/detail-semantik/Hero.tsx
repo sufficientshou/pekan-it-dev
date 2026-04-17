@@ -1,29 +1,23 @@
-import Navbar from "../../layout/Navbar";
+"use client";
 
+import Navbar from "../../layout/Navbar";
+import Link from "next/link";
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[700px] bg-black overflow-hidden">
+    <section className="relative w-full h-screen min-h-[700px] bg-black overflow-hidden max-md:!min-h-[100vh] max-md:!h-auto max-md:!pb-16">
 
-      {/* Navbar */}
-      {/* <Navbar /> */}
-
-      {/* Layer 1: Night sky background — stretch full width & height */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/images/night_bg.jpg"
         alt="Night Sky Background"
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Layer 2: Hero City — full width edge to edge, anchored to bottom */}
-      <div className="absolute bottom-0 left-0 w-full">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
+      <div className="absolute bottom-0 left-0 w-full max-md:!top-0 max-md:!h-full">
         <img
           src="/images/semantik city.svg"
           alt="Hero City"
-          className="w-full h-auto block transform translate-y-40"
+          className="w-full h-auto block transform translate-y-40 max-md:!translate-y-0 max-md:!h-full max-md:!object-cover max-md:!object-[center_bottom]"
         />
-        {/* Bottom fade - extended gradient for smooth transition */}
         <div 
           className="absolute bottom-0 left-0 w-full"
           style={{ 
@@ -33,15 +27,13 @@ export default function Hero() {
         />
       </div>
 
-      {/* Layer 3: Content — posisi dari atas sekitar 18-22% layar */}
-      <div className="relative z-10 flex flex-col items-center w-full px-4"
+      <div className="relative z-10 flex flex-col items-center w-full px-4 max-md:!pt-[20vh]"
         style={{ paddingTop: "30vh" }}
       >
         <div className="flex flex-col items-center gap-4 md:gap-7 w-full max-w-[760px]">
 
-          {/* Title */}
           <h1
-            className="w-full text-center text-white leading-none font-normal tracking-wide"
+            className="w-full text-center text-white leading-none font-normal tracking-wide max-md:!text-5xl"
             style={{
               fontFamily: "'Zen Dots', sans-serif",
               fontSize: "clamp(32px, 8vw, 96px)",
@@ -50,7 +42,7 @@ export default function Hero() {
             SEMANTIK
           </h1>
            <h6
-            className="w-full text-center text-white leading-none font-normal tracking-wide"
+            className="w-full text-center text-white leading-none font-normal tracking-wide max-md:!text-lg"
             style={{
               fontFamily: "'Zen Dots', sans-serif",
               fontSize: "clamp(14px, 4vw, 40px)",
@@ -59,9 +51,8 @@ export default function Hero() {
             Informatics Competition
           </h6>
 
-          {/* Subtitle */}
           <p
-            className="w-full max-w-[536px] text-center text-white font-normal leading-relaxed px-2 md:px-0"
+            className="w-full max-w-[536px] text-center text-white font-normal leading-relaxed px-2 md:px-0 max-md:!text-base max-md:!px-6"
             style={{ 
               fontFamily: "'Exo 2', sans-serif",
               fontSize: "clamp(14px, 3vw, 24px)"
@@ -70,26 +61,26 @@ export default function Hero() {
             Form Skill Developmentto Digital Achievment
           </p>
 
-          {/* Buttons */}
-          <div className="flex items-center gap-3 md:gap-7 mt-1 flex-wrap justify-center">
-            {/* Primary Button */}
-            <button
-              className="px-6 md:px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer"
-              style={{
-                width: "clamp(140px, 40vw, 170px)",
-                height: "30px",
-                fontSize: "clamp(12px, 2.5vw, 18px)",
-                fontFamily: "'Exo 2', sans-serif",
-                background:
-                  "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
-              }}
-            >
-              Daftar Sekarang
-            </button>
+          <div className="flex items-center gap-3 md:gap-7 mt-1 flex-wrap justify-center max-md:!flex-col max-md:!gap-4 max-md:!w-full">
+            <Link href="/pendaftaran" className="max-md:!w-full max-md:!flex max-md:!justify-center">
+              <button
+                className="px-6 md:px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[260px]"
+                style={{
+                  width: "clamp(140px, 40vw, 170px)",
+                  height: "30px",
+                  fontSize: "clamp(12px, 2.5vw, 18px)",
+                  fontFamily: "'Exo 2', sans-serif",
+                  background:
+                    "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
+                }}
+              >
+                Daftar Sekarang
+              </button>
+            </Link>
 
-            {/* Secondary Button */}
             <button
-              className="px-6 md:px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer"
+              onClick={() => document.getElementById("inside")?.scrollIntoView({ behavior: "smooth" })}
+              className="px-6 md:px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[260px]"
               style={{ 
                 width: "clamp(140px, 40vw, 170px)",
                 height: "30px",

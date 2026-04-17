@@ -1,5 +1,7 @@
-import Navbar from "../../layout/Navbar";
+"use client";
 
+import Navbar from "../../layout/Navbar";
+import Link from "next/link";
 export default function Hero() {
   return (
     <section className="relative w-full h-screen min-h-[832px] bg-black overflow-hidden max-md:!min-h-[100vh] max-md:!h-auto max-md:!pb-16">
@@ -10,11 +12,11 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute bottom-0 left-0 w-full">
+      <div className="absolute bottom-0 left-0 w-full max-md:!top-0 max-md:!h-full">
         <img
-          src="/images/hero_city.png"
+          src="/images/hero city.svg"
           alt="Hero City"
-          className="w-full h-auto block"
+          className="w-full h-auto block max-md:!h-full max-md:!object-cover max-md:!object-[center_bottom]"
         />
         <div 
           className="absolute bottom-0 left-0 w-full"
@@ -48,20 +50,23 @@ export default function Hero() {
           </p>
 
           <div className="flex items-center gap-7 mt-1 flex-wrap justify-center max-md:!flex-col max-md:!gap-4 max-md:!w-full">
-            <button
-              className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px]"
-              style={{
-                width: "170px",
-                height: "30px",
-                fontFamily: "'Exo 2', sans-serif",
-                background:
-                  "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
-              }}
-            >
-              Daftar Sekarang
-            </button>
+            <Link href="/pendaftaran" className="max-md:!w-full max-md:!flex max-md:!justify-center">
+              <button
+                className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px]"
+                style={{
+                  width: "170px",
+                  height: "30px",
+                  fontFamily: "'Exo 2', sans-serif",
+                  background:
+                    "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
+                }}
+              >
+                Daftar Sekarang
+              </button>
+            </Link>
 
             <button
+              onClick={() => document.getElementById("event")?.scrollIntoView({ behavior: "smooth" })}
               className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px]"
               style={{ 
                 width: "170px",

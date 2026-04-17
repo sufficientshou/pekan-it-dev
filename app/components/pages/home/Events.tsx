@@ -6,14 +6,14 @@ const cards = [
     title: "SEMANTIK",
     subtitle: "Internformatics Competition",
     detail: "3 Competitions",
-    img: "/images/Subtract.png",
+    img: "/images/Subtract (1).png",
   },
   {
     id: "nic",
     title: "NIC",
     subtitle: "National IT Competition",
     detail: "2 Competitions",
-    img: "/images/Subtract.png",
+    img: "/images/Subtract (2).png",
   },
   {
     id: "techtalks",
@@ -27,6 +27,7 @@ const cards = [
 export default function Events() {
   return (
     <section
+      id="event"
       className="relative w-full min-h-screen overflow-hidden max-md:!min-h-0 max-md:!h-auto max-md:!pb-10"
       style={{ background: "#000923", minHeight: "1000px" }}
     >

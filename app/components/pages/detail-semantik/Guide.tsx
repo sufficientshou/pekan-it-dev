@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function Guide() {
   return (
-    <section className="relative py-16 md:py-32 text-center overflow-hidden" style={{ minHeight: "800px" }}>
+    <section className="relative py-16 md:py-32 text-center overflow-hidden max-md:!py-10" style={{ minHeight: "800px" }}>
       
       {/* Background kiri */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50">
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px]">
         <Image
           src="/images/1.png"
           alt="bg1"
@@ -14,7 +14,7 @@ export default function Guide() {
         />
       </div>
 
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!right-[-50px]">
         <Image
           src="/images/2.png"
           alt="bg2"
@@ -52,10 +52,74 @@ export default function Guide() {
         dan detail perlombaan yang telah disusun.
       </p>
 
-      {/* Card */}
-      <div className="relative mt-12 md:mt-16 flex justify-center z-10 px-4">
-        <div className="absolute opacity-60 blur-2xl rounded-2xl" style={{ width: "clamp(280px, 80vw, 380px)", height: "clamp(250px, 70vw, 330px)", background: "#d000cb" }}></div>
-        <div className="relative bg-white rounded-2xl shadow-lg" style={{ width: "clamp(260px, 75vw, 350px)", height: "clamp(230px, 65vw, 300px)" }}></div>
+      {/* Guidebook Card */}
+      <div className="relative mt-12 md:mt-16 flex justify-center z-10 px-4 max-md:!mt-10">
+
+        {/* Clickable Guidebook Image — ukuran mengikuti foto */}
+        <a
+          href="/files/Guidebook.pdf"
+          download="Guidebook-SEMANTIK.pdf"
+          className="relative group cursor-pointer inline-block"
+        >
+          {/* Glow di belakang — mengikuti ukuran elemen <a> */}
+          <div
+            className="absolute inset-0 opacity-60 blur-2xl rounded-2xl -z-10"
+            style={{ background: "#d000cb", transform: "scale(1.05)" }}
+          />
+
+          {/* Guidebook cover image — lebar & tinggi mengikuti foto asli */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/guidebook-cover.png"
+            alt="Guidebook SEMANTIK"
+            className="block rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
+            style={{
+              maxWidth: "clamp(180px, 60vw, 350px)",
+              width: "100%",
+              height: "auto",
+              boxShadow: "0 8px 40px rgba(208, 0, 203, 0.4)",
+            }}
+          />
+
+          {/* Hover overlay with download icon */}
+          <div
+            className="absolute inset-0 rounded-2xl flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{ background: "rgba(0, 9, 35, 0.7)", backdropFilter: "blur(4px)" }}
+          >
+            {/* Download icon */}
+            <svg
+              className="w-12 h-12 text-white drop-shadow-lg animate-bounce"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span
+              className="text-white font-semibold text-sm tracking-wide"
+              style={{ fontFamily: "'Exo 2', sans-serif" }}
+            >
+              Download Guidebook
+            </span>
+          </div>
+
+          {/* Badge PDF */}
+          <div
+            className="absolute top-3 right-3 px-2 py-1 rounded-full font-bold text-white"
+            style={{
+              background: "linear-gradient(90deg, #ff00ff, #00ffff)",
+              fontFamily: "'Exo 2', sans-serif",
+              fontSize: "10px",
+            }}
+          >
+            PDF
+          </div>
+        </a>
       </div>
 
     </section>

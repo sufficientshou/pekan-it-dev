@@ -110,18 +110,23 @@ const Tiktok = ({ className }: { className?: string }) => {
 
 export default function Footer() {
   const mediaLinks = [
-    "Berita",
-    "Artikel HIMTIKA",
-    "Beasiswa",
-    "Kegiatan Mahasiswa",
+    { label: "Berita", url: "https://www.instagram.com/himtika_unsika/" },
+    { label: "Artikel HIMTIKA", url: "https://www.instagram.com/himtika_unsika/" },
+    { label: "Info Lomba", url: "https://www.instagram.com/cnc_himtika/" },
+    { label: "Kegiatan Mahasiswa", url: "https://www.instagram.com/himtika_unsika/" },
   ];
-  const eventLinks = ["SEMANTIK 8.0", "PEKAN IT", "LKMM-PD", "Diesnatalis"];
+  const eventLinks = [
+    { label: "Semantik 9.0", url: "https://himtika.cs.unsika.ac.id/semantik_9/" },
+    { label: "PEKAN IT", url: "https://himtika.cs.unsika.ac.id/pekan-it/" },
+    { label: "LKMM-PD", url: "https://himtika.cs.unsika.ac.id/lkmmpd/" },
+    { label: "Diesnatalis", url: "https://himtika.cs.unsika.ac.id/diesnatalis/" }
+  ];
   const appLinks = [
-    "Corporation",
-    "HIMTIKA Award",
-    "Study Club",
-    "Calendar",
-    "Studio IT",
+    { label: "Corporation", url: "https://himtika.cs.unsika.ac.id/corporation/" },
+    { label: "HIMTIKA Award", url: "https://himtika.cs.unsika.ac.id/himtika-awards/" },
+    { label: "Study Club", url: "https://himtika.cs.unsika.ac.id/studyclub-2024/" },
+    { label: "Kalender", url: "https://himtika.cs.unsika.ac.id/kalender/" },
+    { label: "Studio IT", url: "https://himtika.cs.unsika.ac.id/corporation/" },
   ];
 
   const socialIcons = [
@@ -169,13 +174,16 @@ export default function Footer() {
           Media
         </div>
         {mediaLinks.map((link) => (
-          <div 
-            key={link}
-            className="self-stretch text-white text-base font-medium"
+          <a 
+            key={link.label}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="self-stretch text-white text-base font-medium hover:text-[#00ffff] transition-colors"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            {link}
-          </div>
+            {link.label}
+          </a>
         ))}
       </div>
 
@@ -188,13 +196,16 @@ export default function Footer() {
           Event
         </div>
         {eventLinks.map((link) => (
-          <div 
-            key={link}
-            className="self-stretch text-white text-base font-medium"
+          <a 
+            key={link.label}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="self-stretch text-white text-base font-medium hover:text-[#00ffff] transition-colors"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            {link}
-          </div>
+            {link.label}
+          </a>
         ))}
       </div>
 
@@ -207,13 +218,16 @@ export default function Footer() {
           Aplikasi Publik
         </div>
         {appLinks.map((link) => (
-          <div 
-            key={link}
-            className="self-stretch text-white text-base font-medium"
+          <a 
+            key={link.label}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="self-stretch text-white text-base font-medium hover:text-[#00ffff] transition-colors"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            {link}
-          </div>
+            {link.label}
+          </a>
         ))}
       </div>
 
@@ -289,13 +303,16 @@ export default function Footer() {
             Media
           </div>
           {mediaLinks.map((link) => (
-            <div 
-              key={link}
-              className="text-white text-sm font-medium opacity-90"
+            <a 
+              key={link.label}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
-              {link}
-            </div>
+              {link.label}
+            </a>
           ))}
         </div>
 
@@ -308,13 +325,16 @@ export default function Footer() {
             Event
           </div>
           {eventLinks.map((link) => (
-            <div 
-              key={link}
-              className="text-white text-sm font-medium opacity-90"
+            <a 
+              key={link.label}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
-              {link}
-            </div>
+              {link.label}
+            </a>
           ))}
         </div>
 
@@ -328,13 +348,16 @@ export default function Footer() {
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-4">
             {appLinks.map((link) => (
-              <div 
-                key={link}
-                className="text-white text-sm font-medium opacity-90"
+              <a 
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                {link}
-              </div>
+                {link.label}
+              </a>
             ))}
           </div>
         </div>

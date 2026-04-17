@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import Link from "next/link";
 
 const navItems = [
   { label: "Home", dropdown: false },
@@ -72,13 +73,13 @@ export default function Navbar() {
                 />
               </button>
             ) : (
-              <a
+              <Link
                 href="/"
                 className="text-white text-2xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-xl"
                 style={{ fontFamily: "'Exo 2', sans-serif" }}
               >
                 {item.label}
-              </a>
+              </Link>
             )}
 
             {/* Dropdown */}
@@ -86,14 +87,20 @@ export default function Navbar() {
               <div className="absolute top-full mt-3 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm border border-indigo-400/30 rounded-xl py-2 min-w-[180px] shadow-lg max-md:!static max-md:!translate-x-0 max-md:!mt-2 max-md:!bg-transparent max-md:!border-none max-md:!shadow-none max-md:!pl-4">
                 {item.items && item.items.length > 0 ? (
                   item.items.map((subItem) => (
-                    <a
+                    <Link
                       key={subItem}
-                      href={subItem === "Pendaftaran" ? "/pendaftaran" : "#"}
+                      href={
+                        subItem === "Pendaftaran"
+                          ? "/pendaftaran"
+                          : subItem === "Detail SEMANTIK"
+                          ? "/detail-semantik"
+                          : "#"
+                      }
                       className="block px-5 py-2 text-white text-2xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-lg max-md:!px-0 max-md:!py-1"
                       style={{ fontFamily: "'Exo 2', sans-serif" }}
                     >
                       {subItem}
-                    </a>
+                    </Link>
                   ))
                 ) : (
                   <p

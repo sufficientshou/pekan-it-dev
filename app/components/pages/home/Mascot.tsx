@@ -100,44 +100,52 @@ export default function Avatar() {
       />
 
       <div
-        className={`${cardBase} ${cardShadow}`}
+        className={`${cardBase} ${cardShadow} flex items-center justify-center`}
         style={{
           top: "222px", left: "341px",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
         }}
-      />
+      >
+        <img src="/images/kalung.svg" alt="Kalung" className="w-[130px] h-[130px] object-contain" />
+      </div>
 
       <div
-        className={`${cardBase} ${cardShadow}`}
+        className={`${cardBase} ${cardShadow} flex items-center justify-center`}
         style={{
           top: "222px", left: "1062px",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
         }}
-      />
+      >
+        <img src="/images/gear.svg" alt="Gear" className="w-[130px] h-[130px] object-contain" />
+      </div>
 
       <div
-        className={`${cardBase} ${cardShadow}`}
+        className={`${cardBase} ${cardShadow} flex items-center justify-center`}
         style={{
           top: "894px", left: "1062px",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
         }}
-      />
+      >
+        <img src="/images/mata.svg" alt="Mata" className="w-[130px] h-[130px] object-contain" />
+      </div>
 
       <div
-        className={`${cardBase} ${cardShadow}`}
+        className={`${cardBase} ${cardShadow} flex items-center justify-center`}
         style={{
           top: "894px", left: "341px",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
         }}
-      />
+      >
+        <img src="/images/kabel.svg" alt="Kabel" className="w-[130px] h-[130px] object-contain" />
+      </div>
       </div>
 
       <div className="hidden max-md:!flex flex-col w-full px-4 pt-[10vh] pb-10 gap-10 items-center z-20 relative">
@@ -176,10 +184,18 @@ export default function Avatar() {
         />
 
         <div className="grid grid-cols-2 gap-4 w-full max-w-[400px]">
-          <div className={`${cardBase} ${cardShadow} !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }} />
-          <div className={`${cardBase} ${cardShadow} !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }} />
-          <div className={`${cardBase} ${cardShadow} !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }} />
-          <div className={`${cardBase} ${cardShadow} !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }} />
+          <div className={`${cardBase} ${cardShadow} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }}>
+            <img src="/images/kalung.svg" alt="Kalung" className="w-[90px] h-[90px] object-contain" />
+          </div>
+          <div className={`${cardBase} ${cardShadow} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }}>
+            <img src="/images/gear.svg" alt="Gear" className="w-[90px] h-[90px] object-contain" />
+          </div>
+          <div className={`${cardBase} ${cardShadow} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }}>
+            <img src="/images/kabel.svg" alt="Kabel" className="w-[90px] h-[90px] object-contain" />
+          </div>
+          <div className={`${cardBase} ${cardShadow} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }}>
+            <img src="/images/mata.svg" alt="Mata" className="w-[90px] h-[90px] object-contain" />
+          </div>
         </div>
       </div>
     </section>
