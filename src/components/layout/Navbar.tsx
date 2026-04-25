@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
-import { BASE_PATH } from "@/src/config/constants";
+import { BASE_PATH } from "@/config/constants";
 
 const navItems = [
   { label: "Home", dropdown: false },

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import GlobalLoader from "../src/components/ui/GlobalLoader";
+import { GlobalLoader } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "PEKAN IT — Pekan Informatika",

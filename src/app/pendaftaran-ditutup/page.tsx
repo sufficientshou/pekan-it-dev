@@ -1,7 +1,7 @@
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Link from "next/link"; // Ditambahkan agar tombol kembali bisa berfungsi
-import { BASE_PATH } from "@/src/config/constants";
+import { BASE_PATH } from "@/config/constants";
 
 export default function PendaftaranDitutupPage() {
   return (

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
-import { BASE_PATH } from "@/src/config/constants";
+import { BASE_PATH } from "@/config/constants";
 
 export default function TerimakasihPage() {
   const [waLink, setWaLink] = useState("https://chat.whatsapp.com/semantikumum");

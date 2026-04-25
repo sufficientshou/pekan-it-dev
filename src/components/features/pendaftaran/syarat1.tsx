@@ -1,4 +1,4 @@
-import { BASE_PATH } from "@/src/config/constants";
+import { BASE_PATH } from "@/config/constants";
 
 type Folder = {
   id: string;

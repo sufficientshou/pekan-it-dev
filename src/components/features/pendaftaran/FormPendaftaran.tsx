@@ -61,7 +61,7 @@ export default function AboutLombaSemantik() {
   //   const setupFileUpload = (inputId: string, labelId: string, successId: string, changeBtnId: string) => {
   //     const input = document.getElementById(inputId) as HTMLInputElement;
   //     const label = document.getElementById(labelId) as HTMLElement;
-  //     const successMsg = document.getElementById(successId) as HTMLElement;
+  //     const suc  essMsg = document.getElementById(successId) as HTMLElement;
   //     const changeBtn = document.getElementById(changeBtnId) as HTMLElement;
 
   //     if (!input || !label || !successMsg || !changeBtn) return;
