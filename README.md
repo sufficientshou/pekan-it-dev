@@ -1,26 +1,26 @@
 # Pekan IT
 
 Website untuk acara Pekan IT yang diselenggarakan oleh HIMTIKA.
-## 🚀 Quick Links
+##
 
-- **[📚 Documentation Index](./DOCS_INDEX.md)** - Panduan lengkap semua dokumentasi
-- **[🎉 Restructure Summary](./RESTRUCTURE_SUMMARY.md)** - Overview perubahan (START HERE!)
-- **[⚡ Quick Start Guide](./QUICK_START.md)** - Mulai development dengan cepat
-- **[🏗️ Architecture](./ARCHITECTURE.md)** - Arsitektur dan design principles
-- **[📁 Project Structure](./STRUCTURE.md)** - Detail struktur proyek
-- **[🌳 Project Tree](./PROJECT_TREE.md)** - Visualisasi struktur folder
-- **[🤝 Contributing Guide](./CONTRIBUTING.md)** - Panduan kontribusi
-- **[🔄 Migration Guide](./MIGRATION_GUIDE.md)** - Panduan migrasi dari struktur lama
-- **[📝 Changelog](./CHANGELOG.md)** - Version history dan perubahan
+- **[Documentation Index](./DOCS_INDEX.md)** - Panduan lengkap semua dokumentasi
+- **[Restructure Summary](./RESTRUCTURE_SUMMARY.md)** - Overview perubahan (START HERE!)
+- **[Quick Start Guide](./QUICK_START.md)** - Mulai development dengan cepat
+- **[Architecture](./ARCHITECTURE.md)** - Arsitektur dan design principles
+- **[Project Structure](./STRUCTURE.md)** - Detail struktur proyek
+- **[Project Tree](./PROJECT_TREE.md)** - Visualisasi struktur folder
+- **[Contributing Guide](./CONTRIBUTING.md)** - Panduan kontribusi
+- **[Migration Guide](./MIGRATION_GUIDE.md)** - Panduan migrasi dari struktur lama
+- **[Changelog](./CHANGELOG.md)** - Version history dan perubahan
 
-## ✨ Highlights
+## Highlights
 
-✅ **Scalable Architecture** - Struktur yang mudah dikembangkan  
-✅ **Type-Safe** - Full TypeScript support  
-✅ **Modern Stack** - Next.js 16 App Router, React 19, Tailwind CSS 4  
-✅ **Clean Imports** - Path aliases untuk import yang rapi  
-✅ **Well Documented** - Dokumentasi lengkap dan terstruktur  
-✅ **Industry Standard** - Mengikuti best practices
+**Scalable Architecture** - Struktur yang mudah dikembangkan  
+**Type-Safe** - Full TypeScript support  
+**Modern Stack** - Next.js 16 App Router, React 19, Tailwind CSS 4  
+**Clean Imports** - Path aliases untuk import yang rapi  
+**Well Documented** - Dokumentasi lengkap dan terstruktur  
+**Industry Standard** - Mengikuti best practices
 
 ## Struktur Proyek
 
