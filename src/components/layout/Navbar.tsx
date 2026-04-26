@@ -29,11 +29,8 @@ export default function Navbar() {
       className="absolute top-0 left-0 w-full z-50 flex items-center justify-between h-[75px] max-md:!px-4 max-md:!bg-[#0a0f24] max-md:!fixed"
       style={{ paddingLeft: "75px", paddingRight: "75px" }}
     >
-      {/* Logo + Brand */}
       <div className="flex items-center gap-2 shrink-0">
-        {/* Logo */}
         <div className="w-12 h-12 shrink-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
             src={`${BASE_PATH}/images/LOGO.png`}
             alt="Logo" 
@@ -48,14 +45,12 @@ export default function Navbar() {
         </span>
       </div>
 
-      {/* Hamburger Toggle (Mobile Only) */}
       <div className="hidden max-md:!flex shrink-0">
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white hover:text-indigo-300">
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Nav Menu */}
       <ul className={`flex items-center shrink-0 max-md:!absolute max-md:!top-[75px] max-md:!left-0 max-md:!w-full max-md:!flex-col max-md:!items-start max-md:!bg-[#0a0f24] max-md:!px-6 max-md:!py-6 max-md:!gap-6 max-md:!border-b max-md:!border-indigo-500/20 max-md:!shadow-2xl transition-all duration-300 ${isMobileMenuOpen ? "max-md:!flex" : "max-md:!hidden"}`} style={{ gap: "30px" }}>
         {navItems.map((item) => (
           <li key={item.label} className="relative">
@@ -83,9 +78,8 @@ export default function Navbar() {
               </Link>
             )}
 
-            {/* Dropdown */}
             {item.dropdown && openMenu === item.label && (
-              <div className="absolute top-full mt-3 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm border border-indigo-400/30 rounded-xl py-2 min-w-[180px] shadow-lg max-md:!static max-md:!translate-x-0 max-md:!mt-2 max-md:!bg-transparent max-md:!border-none max-md:!shadow-none max-md:!pl-4">
+              <div className="absolute left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm border border-indigo-400/30 rounded-xl py-4 min-w-[180px] shadow-lg max-md:!static max-md:!translate-x-0 max-md:!mt-2 max-md:!bg-transparent max-md:!border-none max-md:!shadow-none max-md:!pl-4" style={{ top: "calc(100% + 11px)" }}>
                 {item.items && item.items.length > 0 ? (
                   item.items.map((subItem) => (
                     <Link
@@ -97,7 +91,7 @@ export default function Navbar() {
                           ? "/detail-semantik"
                           : "#"
                       }
-                      className="block px-5 py-2 text-white text-2xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-lg max-md:!px-0 max-md:!py-1"
+                      className="block px-8 py-2 text-white text-2xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-lg max-md:!px-0 max-md:!py-1"
                       style={{ fontFamily: "'Exo 2', sans-serif" }}
                     >
                       {subItem}
