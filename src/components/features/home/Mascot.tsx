@@ -25,7 +25,7 @@ export default function Avatar() {
       <div
         className="absolute"
         style={{
-          top: "202px", left: "747px", width: "527px", height: "444px",
+          top: "292px", left: "747px", width: "527px", height: "444px",
           background: "linear-gradient(135deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
           filter: "blur(18px)",
           transform: "rotate(0deg)",
@@ -36,7 +36,7 @@ export default function Avatar() {
       <div
         className="absolute"
         style={{
-          top: "629px", left: "338px", width: "527px", height: "444px",
+          top: "719px", left: "338px", width: "527px", height: "444px",
           background: "linear-gradient(135deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
           filter: "blur(18px)",
           pointerEvents: "none",
@@ -46,7 +46,7 @@ export default function Avatar() {
       <div
         className="absolute"
         style={{
-          top: "629px", left: "747px", width: "527px", height: "444px",
+          top: "719px", left: "747px", width: "527px", height: "444px",
           background: "linear-gradient(225deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
           filter: "blur(18px)",
           pointerEvents: "none",
@@ -56,7 +56,7 @@ export default function Avatar() {
       <div
         className="absolute"
         style={{
-          top: "202px", left: "338px", width: "527px", height: "444px",
+          top: "292px", left: "338px", width: "527px", height: "444px",
           background: "linear-gradient(225deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
           filter: "blur(18px)",
           pointerEvents: "none",
@@ -66,7 +66,7 @@ export default function Avatar() {
       <div
         className="absolute rounded-full"
         style={{
-          top: "450px", left: "590px", width: "400px", height: "400px",
+          top: "540px", left: "590px", width: "400px", height: "400px",
           background: "rgba(208,0,203,0.25)",
           filter: "blur(80px)",
           pointerEvents: "none",
@@ -183,6 +183,7 @@ export default function Avatar() {
           src={`${BASE_PATH}/images/mascot.png`}
           alt="Mascot"
           className="w-[280px] h-[280px] object-contain relative z-10 drop-shadow-[0_0_20px_rgba(208,0,203,0.5)]"
+          style={{ transform: "translateX(20px)" }}
         />
 
         <div className="grid grid-cols-2 gap-4 w-full max-w-[400px]">
