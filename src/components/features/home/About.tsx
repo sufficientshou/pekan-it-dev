@@ -2,7 +2,7 @@ import { BASE_PATH } from '@/config/constants';
 
 export default function About() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden max-md:!min-h-0 max-md:!h-auto max-md:!py-16" style={{ minHeight: "1100px" }}>
+    <section className="relative w-full min-h-screen overflow-hidden max-md:!min-h-0 max-md:!h-auto max-md:!py-16" style={{ minHeight: "900px" }}>
 
       <div 
         className="absolute top-0 left-0 w-full"
@@ -31,8 +31,8 @@ export default function About() {
       <img
         src={`${BASE_PATH}/images/Vector 21.png`}
         alt="Vector"
-        className="absolute w-[550px] h-[42px]"
-        style={{ top: "700px", left: "103px" }}
+        className="absolute w-[550px] h-[42px] max-md:!hidden"
+        style={{ top: "640px", left: "103px" }}
       />
 
       <div
@@ -40,7 +40,7 @@ export default function About() {
         style={{ top: "0", left: "0", width: "1280px", height: "832px" }}
       >
 
-        <div className="absolute flex flex-col max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-full max-md:!items-center" style={{ top: "300px", left: "105px", width: "600px" }}>
+        <div className="absolute flex flex-col max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-full max-md:!items-center" style={{ top: "240px", left: "105px", width: "600px" }}>
           <div className="max-md:!w-full max-md:!h-auto max-md:!text-center max-md:!mb-6" style={{ width: "900px", height: "180px", marginBottom: "15px" }}>
             <h2
               className="leading-[100%] max-md:!text-4xl max-md:!leading-tight"
@@ -92,7 +92,7 @@ export default function About() {
 
         <div 
           className="absolute w-[500px] h-[500px] max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-[280px] max-md:!h-[280px] max-md:!mt-[10vh]"
-          style={{ top: "300px", left: "1000px" }}
+          style={{ top: "240px", left: "1000px" }}
         >
           <img
             src={`${BASE_PATH}/images/LOGO.png`}

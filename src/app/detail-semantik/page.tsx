@@ -1,6 +1,6 @@
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
-import Hero from "../components/pages/detail-semantik/Hero";
+import Hero from "../../components/features/detail-semantik/Hero";
 import Inside from "../../components/features/detail-semantik/Inside";
 import Journey from "../../components/features/detail-semantik/Journey";
 import Guide from "../../components/features/detail-semantik/Guide";

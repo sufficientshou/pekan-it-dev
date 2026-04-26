@@ -17,7 +17,7 @@ const cards = [
     subtitle: "National IT Competition",
     detail: "2 Competitions",
     img: `${BASE_PATH}/images/Subtract (2).png`,
-    link: "#", // Ganti dengan link NIC jika ada
+    link: "#",
   },
   {
     id: "techtalks",
@@ -25,7 +25,7 @@ const cards = [
     subtitle: "Seminar & Exhibition",
     detail: null,
     img: `${BASE_PATH}/images/Subtract.png`,
-    link: "#", // Ganti dengan link Tech Talks jika ada
+    link: "#",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function Events() {
       <div
         className="absolute rounded-full"
         style={{
-          top: "160px",
+          top: "100px",
           left: "1180px",
           width: "250px",
           height: "250px",
@@ -62,20 +62,20 @@ export default function Events() {
         src={`${BASE_PATH}/images/image 7.png`}
         alt="Rocket"
         className="absolute object-cover max-md:!hidden"
-        style={{ top: "160px", left: "1200px", width: "228px", height: "225px" }}
+        style={{ top: "110px", left: "1190px", width: "228px", height: "225px" }}
       />
 
       <img
         src={`${BASE_PATH}/images/line2.svg`}
         alt="Line"
         className="absolute object-cover max-md:!hidden"
-        style={{ top: "274px", left: "64px", width: "302px", height: "3px" }}
+        style={{ top: "214px", left: "64px", width: "302px", height: "3px" }}
       />
 
       <div
         className="absolute flex flex-col items-start max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-full max-md:!px-0 max-md:!gap-12 max-md:!pt-[15vh] max-md:!items-center"
         style={{
-          top: "210px",
+          top: "150px",
           left: "calc(50% - 680px)",
           width: "1129px",
           gap: "120px",

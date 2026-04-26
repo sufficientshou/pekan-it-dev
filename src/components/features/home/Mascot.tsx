@@ -75,7 +75,7 @@ export default function Avatar() {
 
       <div
         className="absolute flex items-center justify-center"
-        style={{ top: "30px", left: "calc(50% - 356px)", width: "713px", height: "64px" }}
+        style={{ top: "120px", left: "calc(50% - 356px)", width: "713px", height: "64px" }}
       >
         <h2
           className="font-bold text-center whitespace-nowrap"
@@ -98,13 +98,13 @@ export default function Avatar() {
         src={`${BASE_PATH}/images/mascot.png`}
         alt="Mascot"
         className="absolute"
-        style={{ top: "457px", left: "648px", width: "332px", height: "328px", objectFit: "contain" }}
+        style={{ top: "547px", left: "648px", width: "332px", height: "328px", objectFit: "contain" }}
       />
 
       <div
         className={`${cardBase} ${cardShadow} flex items-center justify-center`}
         style={{
-          top: "222px", left: "341px",
+          top: "312px", left: "341px",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
@@ -116,7 +116,7 @@ export default function Avatar() {
       <div
         className={`${cardBase} ${cardShadow} flex items-center justify-center`}
         style={{
-          top: "222px", left: "1062px",
+          top: "312px", left: "1062px",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
@@ -128,7 +128,7 @@ export default function Avatar() {
       <div
         className={`${cardBase} ${cardShadow} flex items-center justify-center`}
         style={{
-          top: "894px", left: "1062px",
+          top: "984px", left: "1062px",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
@@ -140,7 +140,7 @@ export default function Avatar() {
       <div
         className={`${cardBase} ${cardShadow} flex items-center justify-center`}
         style={{
-          top: "894px", left: "341px",
+          top: "984px", left: "341px",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,

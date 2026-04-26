@@ -1,7 +1,6 @@
 "use client";
 
 import { BASE_PATH } from '@/config/constants';
-import { Navbar } from '@/components/layout';
 import Link from "next/link";
 export default function Hero() {
   return (
@@ -17,7 +16,7 @@ export default function Hero() {
         <img
           src={`${BASE_PATH}/images/hero city.svg`}
           alt="Hero City"
-          className="w-full h-auto block transform translate-y-40 max-md:!translate-y-0 max-md:!h-full max-md:!object-cover max-md:!object-[center_bottom]"
+          className="w-full h-auto block transform -translate-y-5 max-md:!translate-y-0 max-md:!h-full max-md:!object-cover max-md:!object-[center_bottom]"
         />
         <div 
           className="absolute bottom-0 left-0 w-full"
@@ -53,10 +52,10 @@ export default function Hero() {
           <div className="flex items-center gap-7 mt-1 flex-wrap justify-center max-md:!flex-col max-md:!gap-4 max-md:!w-full">
             <Link href="/pendaftaran" className="max-md:!w-full max-md:!flex max-md:!justify-center">
               <button
-                className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px]"
+                className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
                 style={{
                   width: "170px",
-                  height: "30px",
+                  height: "46px",
                   fontFamily: "'Exo 2', sans-serif",
                   background:
                     "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
@@ -68,10 +67,10 @@ export default function Hero() {
 
             <button
               onClick={() => document.getElementById("event")?.scrollIntoView({ behavior: "smooth" })}
-              className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px]"
+              className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
               style={{ 
                 width: "170px",
-                height: "30px",
+                height: "46px",
                 fontFamily: "'Exo 2', sans-serif",
                 border: "2px solid transparent",
                 background: "linear-gradient(#171b30, #171b30) padding-box, linear-gradient(90deg, #5b72ff 0%, #b620e0 100%) border-box"
