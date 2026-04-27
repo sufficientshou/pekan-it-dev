@@ -1,7 +1,8 @@
 import { BASE_PATH } from '@/config/constants';
 
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";const competitions = [
+import Link from "next/link";
+const competitions = [
   { id: "desain", title: "Design\nGrafis" },
   { id: "typing", title: "Typing\nCompetition" },
   { id: "cp", title: "Competitive\nProgramming" },
@@ -82,13 +83,13 @@ function CompetitionCard({ title }: { title: string }) {
         style={{ background: "rgba(0,0,0,0.2)" }}
       >
         <button
-          className="flex items-center gap-1 px-5 md:px-6 py-1.5 rounded-full text-white text-xs md:text-sm font-semibold shrink-0 cursor-pointer transition-opacity hover:opacity-80"
+          className="flex items-center gap-0 px-8 md:px-10 py-1.5 rounded-full text-white text-xs md:text-sm font-semibold shrink-0 cursor-pointer transition-opacity hover:opacity-80"
           style={{
             fontFamily: "'Exo 2', sans-serif",
             background: "linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%)",
           }}
         >
-          Daftar <ArrowUpRight size={14} />
+          <span style={{ paddingLeft: "4px" }}>Daftar</span> <ArrowUpRight size={14} />
         </button>
 
         <div

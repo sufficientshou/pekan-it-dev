@@ -3,10 +3,10 @@ import { BASE_PATH } from '@/config/constants';
 
 export default function Guide() {
   return (
-    <section className="relative py-16 md:py-32 text-center overflow-hidden max-md:!py-10" style={{ minHeight: "800px" }}>
+    <section className="relative pb-16 md:pb-32 pt-32 md:pt-[500px] text-center overflow-hidden max-md:!pb-0" style={{ minHeight: "900px", marginTop: "60px" }}>
       
       {/* Background kiri */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px]">
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px] max-md:!-translate-y-[97%]">
         <Image
           src={`${BASE_PATH}/images/1.png`}
           alt="bg1"
@@ -15,7 +15,7 @@ export default function Guide() {
         />
       </div>
 
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!right-[-50px]">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!right-[-50px] max-md:!-translate-y-[97%]">
         <Image
           src={`${BASE_PATH}/images/2.png`}
           alt="bg2"
@@ -62,11 +62,7 @@ export default function Guide() {
           download="Guidebook-SEMANTIK.pdf"
           className="relative group cursor-pointer inline-block"
         >
-          {/* Glow di belakang — mengikuti ukuran elemen <a> */}
-          <div
-            className="absolute inset-0 opacity-60 blur-2xl rounded-2xl -z-10"
-            style={{ background: "#d000cb", transform: "scale(1.05)" }}
-          />
+          {/* Glow di belakang - REMOVED */}
 
           {/* Guidebook cover image — lebar & tinggi mengikuti foto asli */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -75,7 +71,7 @@ export default function Guide() {
             alt="Guidebook SEMANTIK"
             className="block rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
             style={{
-              maxWidth: "clamp(180px, 60vw, 350px)",
+              maxWidth: "clamp(140px, 50vw, 350px)",
               width: "100%",
               height: "auto",
               boxShadow: "0 8px 40px rgba(208, 0, 203, 0.4)",

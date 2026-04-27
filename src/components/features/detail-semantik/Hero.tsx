@@ -65,10 +65,10 @@ export default function Hero() {
           <div className="flex items-center gap-3 md:gap-7 mt-1 flex-wrap justify-center max-md:!gap-4 max-md:!flex-col max-md:!w-full max-md:!mt-4">
             <Link href="/pendaftaran" className="max-md:!w-full max-md:!flex max-md:!justify-center">
               <button
-                className="px-6 md:px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[260px] max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center max-md:!px-0 max-md:!max-w-[300px]"
+                className="px-6 md:px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
                 style={{
                   width: "170px",
-                  height: "30px",
+                  height: "56px",
                   fontFamily: "'Exo 2', sans-serif",
                   background:
                     "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
@@ -80,10 +80,10 @@ export default function Hero() {
 
             <button
               onClick={() => document.getElementById("inside")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-6 md:px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[260px] max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center max-md:!px-0 max-md:!max-w-[300px]"
+              className="px-6 md:px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
               style={{ 
                 width: "170px",
-                height: "30px",
+                height: "56px",
                 fontFamily: "'Exo 2', sans-serif",
                 border: "2px solid transparent",
                 background: "linear-gradient(#171b30, #171b30) padding-box, linear-gradient(90deg, #5b72ff 0%, #b620e0 100%) border-box"

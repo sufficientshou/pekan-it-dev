@@ -108,7 +108,7 @@ function HighlightRow() {
 
 export default function Highlights() {
   return (
-    <section className="relative py-16 text-center text-white overflow-hidden min-h-[650px] max-md:!min-h-0 max-md:!py-12 max-md:!pt-0 max-md:!-mt-16" style={{ background: "#000923" }}>
+    <section className="relative py-16 text-center text-white overflow-hidden min-h-[650px] max-md:!min-h-0 max-md:!py-12 max-md:!pt-0 max-md:!-mt-64" style={{ background: "#000923" }}>
       
       <div className="absolute left-[-100px] top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-50 max-md:!w-[300px] max-md:!h-[300px] max-md:!left-[-80px]">
         <Image

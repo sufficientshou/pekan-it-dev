@@ -5,7 +5,6 @@ import { BASE_PATH } from '@/config/constants';
 
 const tabs = ["Desain Grafis", "Typing Competition", "Competitive Programming"];
 
-// Data timeline untuk setiap lomba
 const timelineData: Record<string, Array<{title: string, date: string, top: number, left: number}>> = {
   "Desain Grafis": [
     { title: "Pendaftaran", date: "18 April - 1 Mei 2026", top: 126, left: 300 },
@@ -173,7 +172,7 @@ export default function Journey() {
   return (
     <section
       className="relative w-full overflow-hidden max-md:!min-h-0 max-md:!h-auto max-md:!mt-0 max-md:!pt-12"
-      style={{ background: "#000923", minHeight: "1400px", padding: "0px 0 80px", marginTop: "-200px" }}
+      style={{ background: "#000923", minHeight: "1400px", padding: "100px 0 80px", marginTop: "-200px" }}
     >
       <div className="flex flex-col items-center mb-8 relative z-20 px-4">
         <h2
@@ -197,27 +196,41 @@ export default function Journey() {
 
       <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-20 mb-8 md:mb-12 flex-wrap px-4 relative z-20 max-md:!flex-row max-md:!justify-start max-md:!flex-nowrap max-md:!overflow-x-auto max-md:!snap-x max-md:!snap-mandatory max-md:!gap-3 max-md:!pb-4 max-md:[scrollbar-width:none] max-md:![&::-webkit-scrollbar]:hidden max-md:!px-4">
         {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`w-full md:w-[300px] h-[40px] px-4 md:px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 cursor-pointer text-center relative z-30 max-md:!w-auto max-md:!whitespace-nowrap max-md:!shrink-0 max-md:!snap-center max-md:!h-auto max-md:!min-h-[44px] max-md:!px-6 ${activeTab === tab ? "md:shadow-[0_0_60px_10px_rgba(180,0,203,0.45)]" : ""}`}
-            style={{
-              fontFamily: "'Exo 2', sans-serif",
-              fontSize: "clamp(12px, 2vw, 14px)",
-              background:
-                activeTab === tab
-                  ? "rgba(10, 15, 35, 1)"
-                  : "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.15)",
-            }}
-          >
-            {tab}
-          </button>
+          <div key={tab} className="relative w-full md:w-[300px] max-md:!w-auto max-md:!shrink-0 max-md:!snap-center">
+            {/* Border gradient wrapper - always visible */}
+            <div 
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                background: "linear-gradient(90deg, #00ffff 0%, #ff00ff 100%)",
+                padding: "2px",
+                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                WebkitMaskComposite: "xor",
+                maskComposite: "exclude",
+                zIndex: 10,
+                opacity: 0.4,
+              }}
+            />
+            <button
+              onClick={() => setActiveTab(tab)}
+              className={`relative w-full h-[40px] px-4 md:px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 cursor-pointer text-center max-md:!whitespace-nowrap max-md:!h-auto max-md:!min-h-[44px] max-md:!px-6 ${activeTab === tab ? "md:shadow-[0_0_60px_10px_rgba(180,0,203,0.45)]" : ""}`}
+              style={{
+                fontFamily: "'Exo 2', sans-serif",
+                fontSize: "clamp(12px, 2vw, 14px)",
+                background:
+                  activeTab === tab
+                    ? "rgba(10, 15, 35, 1)"
+                    : "rgba(255,255,255,0.05)",
+                zIndex: 2,
+              }}
+            >
+              {tab}
+            </button>
+          </div>
         ))}
       </div>
 
       {/* Perlombaan Title */}
-      <div className="flex flex-col items-center mb-16 relative z-20 px-4" style={{ marginTop: "40px" }}>
+      <div className="flex flex-col items-center mb-16 relative z-20 px-4" style={{ marginTop: "40px", padding: "30px" }}>
         <h3
           className="text-center font-bold leading-tight"
           style={{marginBottom: 30, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(20px, 3.5vw, 48px)" }}
