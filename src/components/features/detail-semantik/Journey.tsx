@@ -194,9 +194,9 @@ export default function Journey() {
         </h2>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-20 mb-8 md:mb-12 flex-wrap px-4 relative z-20 max-md:!flex-row max-md:!justify-start max-md:!flex-nowrap max-md:!overflow-x-auto max-md:!snap-x max-md:!snap-mandatory max-md:!gap-3 max-md:!pb-4 max-md:[scrollbar-width:none] max-md:![&::-webkit-scrollbar]:hidden max-md:!px-4">
+      <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-20 mb-8 md:mb-12 flex-wrap px-4 relative z-20 max-md:!flex-row max-md:!justify-center max-md:!gap-2 max-md:!pb-4 max-md:!px-3 max-md:!flex-nowrap">
         {tabs.map((tab) => (
-          <div key={tab} className="relative w-full md:w-[300px] max-md:!w-auto max-md:!shrink-0 max-md:!snap-center">
+          <div key={tab} className="relative w-full md:w-[300px] max-md:!flex-1 max-md:!min-w-0">
             {/* Border gradient wrapper - always visible */}
             <div 
               className="absolute inset-0 rounded-full pointer-events-none"
@@ -212,10 +212,10 @@ export default function Journey() {
             />
             <button
               onClick={() => setActiveTab(tab)}
-              className={`relative w-full h-[40px] px-4 md:px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 cursor-pointer text-center max-md:!whitespace-nowrap max-md:!h-auto max-md:!min-h-[44px] max-md:!px-6 ${activeTab === tab ? "md:shadow-[0_0_60px_10px_rgba(180,0,203,0.45)]" : ""}`}
+              className={`relative w-full h-[40px] px-4 md:px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 cursor-pointer text-center max-md:!h-auto max-md:!min-h-[38px] max-md:!px-2 max-md:!py-2 max-md:!text-[10px] ${activeTab === tab ? "md:shadow-[0_0_60px_10px_rgba(180,0,203,0.45)]" : ""}`}
               style={{
                 fontFamily: "'Exo 2', sans-serif",
-                fontSize: "clamp(12px, 2vw, 14px)",
+                fontSize: "clamp(10px, 2vw, 14px)",
                 background:
                   activeTab === tab
                     ? "rgba(10, 15, 35, 1)"

@@ -20,7 +20,7 @@ function TablerArrowUp({ className }: { className?: string }) {
 
 export default function Tema() {
   return (
-    <div className="w-full flex items-center justify-center bg-[#000923] py-32 max-md:!py-10" style={{ minHeight: "120vh" }}>
+    <div className="w-full flex items-center justify-center bg-[#000923] py-10 max-md:!py-10" style={{ minHeight: "100vh" }}>
       <div className="max-w-[1134px] w-full px-4 flex flex-col gap-[90px] max-md:!gap-[40px]">
         
         <div className="flex flex-col gap-[30px] max-md:!gap-[20px] max-md:!items-center">
@@ -54,8 +54,6 @@ export default function Tema() {
         <div className="flex -space-x-32 justify-center flex-wrap max-md:space-x-0 max-md:!flex-nowrap max-md:!overflow-x-auto max-md:[&::-webkit-scrollbar]:!hidden max-md:!snap-x max-md:!snap-mandatory max-md:-mx-4 max-md:!px-6 max-md:!w-screen max-md:!justify-start max-md:!gap-2">
           
           <div className="relative w-[340px] h-[400px] group max-md:!flex-shrink-0 max-md:!snap-center max-md:!w-[300px]">
-            
-            {/* Border wrapper */}
             <div 
               className="absolute inset-0 w-full h-full"
               style={{
@@ -65,7 +63,7 @@ export default function Tema() {
                 filter: "drop-shadow(0 0 20px rgba(208, 0, 203, 0.6))",
               }}
             >
-              {/* Dark shadow overlay at bottom */}
+
               <div 
                 className="absolute bottom-0 left-0 w-full h-1/2"
                 style={{
@@ -148,8 +146,6 @@ export default function Tema() {
           </div>
 
           <div className="relative w-[340px] h-[400px] group max-md:!flex-shrink-0 max-md:!snap-center max-md:!w-[300px]">
-
-            {/* Border wrapper */}
             <div 
               className="absolute inset-0 w-full h-full"
               style={{
@@ -159,7 +155,6 @@ export default function Tema() {
                 filter: "drop-shadow(0 0 20px rgba(16, 230, 241, 0.6))",
               }}
             >
-              {/* Dark shadow overlay at bottom */}
               <div 
                 className="absolute bottom-0 left-0 w-full h-1/2"
                 style={{
@@ -243,7 +238,6 @@ export default function Tema() {
 
           <div className="relative w-[340px] h-[400px] group max-md:!flex-shrink-0 max-md:!snap-center max-md:!w-[300px]">
 
-            {/* Border wrapper */}
             <div 
               className="absolute inset-0 w-full h-full"
               style={{
@@ -253,7 +247,7 @@ export default function Tema() {
                 filter: "drop-shadow(0 0 20px rgba(123, 47, 254, 0.6))",
               }}
             >
-              {/* Dark shadow overlay at bottom */}
+
               <div 
                 className="absolute bottom-0 left-0 w-full h-1/2"
                 style={{

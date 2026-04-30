@@ -82,10 +82,10 @@ export default function Hero() {
                   formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
-              className="px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center max-md:!px-0 max-md:!max-w-[300px]"
+              className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
               style={{
                 width: "170px",
-                height: "30px",
+                height: "46px",
                 fontFamily: "'Exo 2', sans-serif",
                 background:
                   "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
@@ -101,10 +101,10 @@ export default function Hero() {
                   syaratSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
-              className="px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center max-md:!px-0 max-md:!max-w-[300px]"
+              className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
               style={{ 
                 width: "170px",
-                height: "30px",
+                height: "46px",
                 fontFamily: "'Exo 2', sans-serif",
                 border: "2px solid transparent",
                 background: "linear-gradient(#171b30, #171b30) padding-box, linear-gradient(90deg, #5b72ff 0%, #b620e0 100%) border-box"

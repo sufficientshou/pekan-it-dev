@@ -8,7 +8,7 @@ export default function Avatar() {
 
   return (
     <section
-      className="relative w-full overflow-hidden max-md:!h-auto max-md:!pb-20"
+      className="relative w-full overflow-hidden max-md:!h-auto max-md:!pb-0"
       style={{ height: "1265px", background: "#000923" }}
     >
       <div className="max-md:!hidden">
@@ -150,17 +150,7 @@ export default function Avatar() {
       </div>
       </div>
 
-      <div className="hidden max-md:!flex flex-col w-full px-4 pt-[10vh] pb-10 gap-10 items-center z-20 relative">
-        
-        <div
-          className="absolute rounded-full"
-          style={{
-            top: "30%", left: "50%", transform: "translate(-50%, -50%)", width: "250px", height: "250px",
-            background: "rgba(208,0,203,0.3)",
-            filter: "blur(60px)",
-            pointerEvents: "none",
-          }}
-        />
+      <div className="hidden max-md:!flex flex-col w-full px-4 pt-[25vh] pb-4 gap-10 items-center z-20 relative">
 
         <h2
           className="text-center font-bold leading-tight"
@@ -187,16 +177,16 @@ export default function Avatar() {
         />
 
         <div className="grid grid-cols-2 gap-4 w-full max-w-[400px]">
-          <div className={`${cardBase} ${cardShadow} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }}>
+          <div className={`${cardBase} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)" }}>
             <img src={`${BASE_PATH}/images/kalung.svg`} alt="Kalung" className="w-[90px] h-[90px] object-contain" />
           </div>
-          <div className={`${cardBase} ${cardShadow} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }}>
+          <div className={`${cardBase} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)" }}>
             <img src={`${BASE_PATH}/images/gear.svg`} alt="Gear" className="w-[90px] h-[90px] object-contain" />
           </div>
-          <div className={`${cardBase} ${cardShadow} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }}>
+          <div className={`${cardBase} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)" }}>
             <img src={`${BASE_PATH}/images/kabel.svg`} alt="Kabel" className="w-[90px] h-[90px] object-contain" />
           </div>
-          <div className={`${cardBase} ${cardShadow} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923" }}>
+          <div className={`${cardBase} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)" }}>
             <img src={`${BASE_PATH}/images/mata.svg`} alt="Mata" className="w-[90px] h-[90px] object-contain" />
           </div>
         </div>

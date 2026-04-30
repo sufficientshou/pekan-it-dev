@@ -99,10 +99,8 @@ src/components/layout/index.ts
 ### 1. Gunakan Barrel Exports
 
 ```typescript
-// ✅ Good
 import { Hero, About } from '@/components/features/home';
 
-// ❌ Avoid
 import Hero from '@/components/features/home/Hero';
 import About from '@/components/features/home/About';
 ```

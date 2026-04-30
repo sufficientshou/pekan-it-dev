@@ -256,22 +256,21 @@ function SyaratCard({
       >
         
         <div
-          className="absolute left-0 top-0 w-full h-full"
+          className="absolute left-0 top-0 w-full h-full overflow-hidden"
           style={{
-            borderRadius: "100px",
-            ...folderMask,
+            borderRadius: "20px",
           }}
         >
           
           <div
             className="absolute top-0 left-0 w-full h-full"
-            style={{ background: bgColor, borderRadius: "30px" }}
+            style={{ background: bgColor, borderRadius: "20px" }}
           />
 
           <div
             className="absolute left-0 top-0 w-full h-full"
             style={{
-              borderRadius: "30px",
+              borderRadius: "20px",
               background: "linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.0) 55%)",
             }}
           />
@@ -283,13 +282,12 @@ function SyaratCard({
               left: "12px",
               right: "12px",
               height: "90%",
-              borderRadius: "0 20px 20px 20px",
-              ...folderMask,
+              borderRadius: "20px",
             }}
           >
             <div
               className="absolute top-0 left-0 w-full h-full"
-              style={{ background: lightBg, borderRadius: "0 20px 20px 20px" }}
+              style={{ background: lightBg, borderRadius: "20px" }}
             />
 
             <img

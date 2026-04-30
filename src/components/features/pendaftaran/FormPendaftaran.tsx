@@ -562,24 +562,37 @@ export default function AboutLombaSemantik() {
 
       </div>
 
-      <div className="flex justify-center gap-20 mb-12 flex-wrap px-4 max-md:!justify-start max-md:!flex-nowrap max-md:!overflow-x-auto max-md:!snap-x max-md:!snap-mandatory max-md:!gap-3 max-md:!pb-6 max-md:!mb-10 max-md:[scrollbar-width:none] max-md:![&::-webkit-scrollbar]:hidden">
+      <div className="flex justify-center gap-20 mb-12 flex-wrap px-4 max-md:!flex-row max-md:!justify-center max-md:!flex-nowrap max-md:!gap-2 max-md:!pb-6 max-md:!mb-10 max-md:!px-3">
         {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => { setActiveTab(tab); setStep(1); }}
-            className="w-[300px] h-[40px] px-6 py-3 rounded-full text-white font-semibold text-sm transition-all duration-300 cursor-pointer text-center max-md:!w-auto max-md:!whitespace-nowrap max-md:!shrink-0 max-md:!snap-center max-md:!h-auto max-md:!min-h-[48px] max-md:!px-8 max-md:!shadow-none"
-            style={{
-              fontFamily: "'Exo 2', sans-serif",
-              background:
-                activeTab === tab
-                  ? "rgba(10, 15, 35, 1)" // Warna solid gelap tanpa gradasi
-                  : "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.15)", // Border tetap sama untuk yang aktif maupun tidak
-              boxShadow: activeTab === tab ? "0 0 60px 10px rgba(180, 0, 203, 0.45)" : "none", // Blur ungu besar di belakang tombol yang aktif
-            }}
-          >
-            {tab}
-          </button>
+          <div key={tab} className="relative w-[300px] max-md:!flex-1 max-md:!min-w-0 max-md:!w-auto">
+            <div 
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                background: "linear-gradient(90deg, #00ffff 0%, #ff00ff 100%)",
+                padding: "2px",
+                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                WebkitMaskComposite: "xor",
+                maskComposite: "exclude",
+                zIndex: 10,
+                opacity: 0.4,
+              }}
+            />
+            <button
+              onClick={() => { setActiveTab(tab); setStep(1); }}
+              className={`relative w-full h-[40px] px-6 py-3 rounded-full text-white font-semibold text-sm transition-all duration-300 cursor-pointer text-center max-md:!h-auto max-md:!min-h-[38px] max-md:!px-2 max-md:!py-2 max-md:!text-[10px] ${activeTab === tab ? "md:shadow-[0_0_60px_10px_rgba(180,0,203,0.45)]" : ""}`}
+              style={{
+                fontFamily: "'Exo 2', sans-serif",
+                fontSize: "clamp(10px, 2vw, 14px)",
+                background:
+                  activeTab === tab
+                    ? "rgba(10, 15, 35, 1)"
+                    : "rgba(255,255,255,0.05)",
+                zIndex: 2,
+              }}
+            >
+              {tab}
+            </button>
+          </div>
         ))}
       </div>
 
@@ -589,7 +602,7 @@ export default function AboutLombaSemantik() {
       >
         
         <div 
-          className="flex flex-col gap-6 max-md:!transform-none max-md:!pt-0 max-md:!flex-auto max-md:!w-full max-md:!text-center max-md:!items-center max-md:!mt-8" 
+          className="flex flex-col gap-6 max-md:!transform-none max-md:!pt-0 max-md:!flex-auto max-md:!w-full max-md:!text-center max-md:!items-center max-md:!mt-4 max-md:!gap-4 max-md:!px-5" 
           style={{ 
 
             flex: "0 0 630px",
@@ -601,7 +614,7 @@ export default function AboutLombaSemantik() {
         >
           
           <h3
-            className="font-bold leading-tight max-md:!text-[36px] max-md:!mt-4"
+            className="font-bold leading-tight max-md:!text-[28px] max-md:!mt-2 max-md:!leading-snug"
             style={{ fontFamily: "'Zen Dots', cursive", fontSize: "80px" }}
           >
             <span 
@@ -617,13 +630,13 @@ export default function AboutLombaSemantik() {
           </h3>
 
           <p
-            className="text-white leading-relaxed text-justify max-md:!text-center max-md:!text-base"
+            className="text-white leading-relaxed text-justify max-md:!text-center max-md:!text-[14px] max-md:!leading-relaxed"
             style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "20px", opacity: 0.85 }}
           >
             {lomba.description}
           </p>
 
-          <div style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "14px" }} className="max-md:!text-sm max-md:!text-center">
+          <div style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "14px" }} className="max-md:!text-[13px] max-md:!text-center max-md:!mt-1">
             <span className="text-white font-semibold">Contact Person: </span>
             <span className="text-white">{lomba.cp.name}</span>
             <br />
@@ -634,11 +647,10 @@ export default function AboutLombaSemantik() {
             href={`https://wa.me/${lomba.cp.wa.startsWith('0') ? '62' + lomba.cp.wa.substring(1) : lomba.cp.wa}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full text-white font-semibold text-sm transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[300px] max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+            className="px-6 py-3 rounded-full text-white font-semibold text-sm transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] max-md:!h-11 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center max-md:!text-[13px] max-md:!mt-0"
             style={{
-
-              width: "170px", // Ganti ke "200px" atau ukuran lain jika ingin lebar spesifik
-              height: "45px",       // Ganti ke "50px" atau ukuran lain jika ingin lebih tinggi
+              width: "170px",
+              height: "45px",
               fontFamily: "'Exo 2', sans-serif",
               background:
                 "linear-gradient(90deg, #6e8efb 0%, rgba(208,0,203,0.7) 100%)",
@@ -847,7 +859,7 @@ export default function AboutLombaSemantik() {
                     onClick={() => setStep(2)}
                     className="w-full py-3 rounded-lg text-white font-semibold mt-2 transition-opacity hover:opacity-90 cursor-pointer max-md:!ml-0 max-md:!mt-8 max-md:!w-full max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
                     style={{
-                      marginTop: 70,  
+                      marginTop: 30,  
                       marginLeft: 10,
                       width: "95%", // Ganti nilainya untuk mengatur lebar secara manual
                       height: "40px",
