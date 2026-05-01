@@ -153,7 +153,7 @@ export default function Footer() {
 
       {/* HIMTIKA Logo Small */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img 
+      <img loading="lazy"
         className="w-8 h-8 absolute left-[721px] top-[384px]" 
         src={`${BASE_PATH}/images/img-himtika.png`} 
         alt="HIMTIKA"
@@ -252,7 +252,7 @@ export default function Footer() {
 
       {/* HIMTIKA Logo Large */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img 
+      <img loading="lazy"
         className="w-52 h-52 absolute left-[239px] top-[10px]" 
         style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
         src={`${BASE_PATH}/images/img-himtika.png`} 
@@ -277,7 +277,7 @@ export default function Footer() {
       {/* HIMTIKA Logo Large */}
       <div className="flex flex-col items-center gap-4 mb-10 text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img 
+        <img loading="lazy"
           className="w-28 h-28" 
           style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", borderRadius: "50%" }}
           src={`${BASE_PATH}/images/img-himtika.png`} 
@@ -394,7 +394,7 @@ export default function Footer() {
         </div>
         <div className="flex items-center gap-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img 
+          <img loading="lazy"
             className="w-7 h-7" 
             src={`${BASE_PATH}/images/img-himtika.png`} 
             alt="HIMTIKA"

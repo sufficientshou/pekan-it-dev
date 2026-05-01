@@ -58,14 +58,14 @@ export default function Events() {
         }}
       />
 
-      <img
+      <img loading="lazy"
         src={`${BASE_PATH}/images/image 7.png`}
         alt="Rocket"
         className="absolute object-cover max-md:!hidden"
         style={{ top: "110px", left: "1190px", width: "228px", height: "225px" }}
       />
 
-      <img
+      <img loading="lazy"
         src={`${BASE_PATH}/images/line2.svg`}
         alt="Line"
         className="absolute object-cover max-md:!hidden"
@@ -167,7 +167,7 @@ export default function Events() {
                   }}
                 >
 
-                  <img
+                  <img loading="lazy"
                     src={card.img}
                     alt={card.title}
                     className="absolute top-0 left-0 object-cover"

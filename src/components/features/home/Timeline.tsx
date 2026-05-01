@@ -135,7 +135,7 @@ export default function Timeline() {
         </h2>
       </div>
 
-      <img
+      <img loading="lazy"
         src={`${BASE_PATH}/images/timeline-rocket.png`}
         alt="Rocket Timeline"
         className="absolute"

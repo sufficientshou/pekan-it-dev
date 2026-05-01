@@ -108,24 +108,24 @@ export default function Inside() {
   return (
     <section id="inside" className="relative h-screen min-h-[2000px] flex items-center justify-center text-white px-4 md:px-8 lg:px-[500px] max-md:!h-auto max-md:!min-h-0 max-md:!flex-col max-md:!px-4 max-md:!py-16 max-md:!gap-0">
 
-      <img
+      <img loading="lazy"
         src={`${BASE_PATH}/images/segitiga.png`}
         alt="bg"
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[1500px] max-w-none opacity-95 max-md:!w-[200%] max-md:!top-0"
       />
 
-      <img
+      <img loading="lazy"
         src={`${BASE_PATH}/images/Kiri.png`}
         className="absolute bottom-10 left-5 w-[160px] md:w-[260px] lg:w-[350px] opacity-90 top-140 max-md:!hidden"
       />
 
-      <img
+      <img loading="lazy"
         src={`${BASE_PATH}/images/Kanan.png`}
         className="absolute bottom-10 right-5 w-[160px] md:w-[260px] lg:w-[400px] opacity-90 top-140 max-md:!hidden"
       />
 
       <div className="relative z-10 text-center flex flex-col items-center gap-4 md:gap-6 bottom-160 max-md:!static max-md:!bottom-auto max-md:!gap-4 max-md:!mt-32 max-md:!mb-8">
-        <img src={`${BASE_PATH}/images/LOGO.png`} alt="Logo" className="w-12 md:w-16 lg:w-27 max-md:!w-14" />
+        <img loading="lazy" src={`${BASE_PATH}/images/LOGO.png`} alt="Logo" className="w-12 md:w-16 lg:w-27 max-md:!w-14" />
 
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide px-4 max-md:!text-2xl">
           Inside SEMANTIK
@@ -139,7 +139,7 @@ export default function Inside() {
       </div>
 
       <div className="absolute left-1/2 -translate-x-1/2 z-20 max-md:!relative max-md:!left-auto max-md:!translate-x-0 max-md:!mb-10">
-        <img
+        <img loading="lazy"
           src={`${BASE_PATH}/images/Crown.png`}
           alt="crown"
           width={400}
@@ -150,7 +150,7 @@ export default function Inside() {
 
       <div className="absolute left-1/2 -translate-x-1/2 top-[75%] w-full max-md:!hidden">
         <div className="hidden lg:block absolute left-[600px] -translate-x-[100%] bottom-[500px]">
-          <img
+          <img loading="lazy"
             src={`${BASE_PATH}/images/left.png`}
             alt="wing"
             className="w-[320px] h-auto drop-shadow-[0_0_40px_rgba(255,0,255,0.6)]"
@@ -158,7 +158,7 @@ export default function Inside() {
         </div>
 
         <div className="hidden lg:block absolute right-[600px] translate-x-[100%] bottom-[500px]">
-          <img
+          <img loading="lazy"
             src={`${BASE_PATH}/images/left.png`}
             alt="wing"
             className="w-[320px] h-auto scale-x-[-1] drop-shadow-[0_0_40px_rgba(255,0,255,0.6)]"

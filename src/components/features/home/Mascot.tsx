@@ -94,7 +94,7 @@ export default function Avatar() {
         </h2>
       </div>
 
-      <img
+      <img loading="lazy"
         src={`${BASE_PATH}/images/mascot.png`}
         alt="Mascot"
         className="absolute"
@@ -110,7 +110,7 @@ export default function Avatar() {
           zIndex: 10,
         }}
       >
-        <img src={`${BASE_PATH}/images/kalung.svg`} alt="Kalung" className="w-[130px] h-[130px] object-contain" />
+        <img loading="lazy" src={`${BASE_PATH}/images/kalung.svg`} alt="Kalung" className="w-[130px] h-[130px] object-contain" />
       </div>
 
       <div
@@ -122,7 +122,7 @@ export default function Avatar() {
           zIndex: 10,
         }}
       >
-        <img src={`${BASE_PATH}/images/gear.svg`} alt="Gear" className="w-[130px] h-[130px] object-contain" />
+        <img loading="lazy" src={`${BASE_PATH}/images/gear.svg`} alt="Gear" className="w-[130px] h-[130px] object-contain" />
       </div>
 
       <div
@@ -134,7 +134,7 @@ export default function Avatar() {
           zIndex: 10,
         }}
       >
-        <img src={`${BASE_PATH}/images/mata.svg`} alt="Mata" className="w-[130px] h-[130px] object-contain" />
+        <img loading="lazy" src={`${BASE_PATH}/images/mata.svg`} alt="Mata" className="w-[130px] h-[130px] object-contain" />
       </div>
 
       <div
@@ -146,7 +146,7 @@ export default function Avatar() {
           zIndex: 10,
         }}
       >
-        <img src={`${BASE_PATH}/images/kabel.svg`} alt="Kabel" className="w-[130px] h-[130px] object-contain" />
+        <img loading="lazy" src={`${BASE_PATH}/images/kabel.svg`} alt="Kabel" className="w-[130px] h-[130px] object-contain" />
       </div>
       </div>
 
@@ -169,7 +169,7 @@ export default function Avatar() {
           </span>
         </h2>
 
-        <img
+        <img loading="lazy"
           src={`${BASE_PATH}/images/mascot.png`}
           alt="Mascot"
           className="w-[280px] h-[280px] object-contain relative z-10 drop-shadow-[0_0_20px_rgba(208,0,203,0.5)]"
@@ -178,16 +178,16 @@ export default function Avatar() {
 
         <div className="grid grid-cols-2 gap-4 w-full max-w-[400px]">
           <div className={`${cardBase} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)" }}>
-            <img src={`${BASE_PATH}/images/kalung.svg`} alt="Kalung" className="w-[90px] h-[90px] object-contain" />
+            <img loading="lazy" src={`${BASE_PATH}/images/kalung.svg`} alt="Kalung" className="w-[90px] h-[90px] object-contain" />
           </div>
           <div className={`${cardBase} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)" }}>
-            <img src={`${BASE_PATH}/images/gear.svg`} alt="Gear" className="w-[90px] h-[90px] object-contain" />
+            <img loading="lazy" src={`${BASE_PATH}/images/gear.svg`} alt="Gear" className="w-[90px] h-[90px] object-contain" />
           </div>
           <div className={`${cardBase} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)" }}>
-            <img src={`${BASE_PATH}/images/kabel.svg`} alt="Kabel" className="w-[90px] h-[90px] object-contain" />
+            <img loading="lazy" src={`${BASE_PATH}/images/kabel.svg`} alt="Kabel" className="w-[90px] h-[90px] object-contain" />
           </div>
           <div className={`${cardBase} flex items-center justify-center !relative !top-auto !left-auto !w-full !h-[120px]`} style={{ background: "#000923", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)" }}>
-            <img src={`${BASE_PATH}/images/mata.svg`} alt="Mata" className="w-[90px] h-[90px] object-contain" />
+            <img loading="lazy" src={`${BASE_PATH}/images/mata.svg`} alt="Mata" className="w-[90px] h-[90px] object-contain" />
           </div>
         </div>
       </div>

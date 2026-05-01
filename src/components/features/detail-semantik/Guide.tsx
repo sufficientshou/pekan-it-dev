@@ -66,7 +66,7 @@ export default function Guide() {
 
           {/* Guidebook cover image — lebar & tinggi mengikuti foto asli */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <img loading="lazy"
             src={`${BASE_PATH}/images/guidebook-cover.png`}
             alt="Guidebook SEMANTIK"
             className="block rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"

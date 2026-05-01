@@ -252,7 +252,7 @@ export default function Journey() {
       {/* Timeline Content - Desktop */}
       <div className="hidden md:block relative z-10">
         {/* Rocket Timeline */}
-        <img
+        <img loading="lazy"
           src={`${BASE_PATH}/images/timeline-rocket.png`}
           alt="Rocket Timeline"
           className="absolute z-5"

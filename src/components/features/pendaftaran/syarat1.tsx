@@ -290,7 +290,7 @@ function SyaratCard({
               style={{ background: lightBg, borderRadius: "20px" }}
             />
 
-            <img
+            <img loading="lazy"
               src={icon}
               alt=""
               className="pointer-events-none absolute max-md:!w-[130px] max-md:!h-[120px] max-md:!opacity-80"

@@ -123,7 +123,7 @@ function SyaratCard({
             }}
           />
 
-          <img
+          <img loading="lazy"
             src={icon}
             alt=""
             className="pointer-events-none absolute top-4 left-5 opacity-90"

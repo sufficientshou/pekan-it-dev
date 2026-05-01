@@ -102,7 +102,7 @@ export default function Tema() {
                 <TablerArrowUp className="w-6 h-6 relative z-10 rotate-90" />
               </div>
 
-              <img 
+              <img loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover" 
                 alt="Body" 
                 src={`${BASE_PATH}/images/body-1.png`} 
@@ -193,7 +193,7 @@ export default function Tema() {
                 <TablerArrowUp className="w-6 h-6 relative z-10 rotate-90" />
               </div>
 
-              <img 
+              <img loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover" 
                 alt="Body" 
                 src={`${BASE_PATH}/images/body-2.png`} 
@@ -269,7 +269,7 @@ export default function Tema() {
               }}
             >
 
-              <img 
+              <img loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover" 
                 alt="Body" 
                 src={`${BASE_PATH}/images/body-3.png`} 
