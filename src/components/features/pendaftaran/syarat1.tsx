@@ -17,7 +17,7 @@ const folders: Folder[] = [
     sub: null,
     bgColor: "#37c7b8",
     lightBg: "#5eddcf",
-    icon: `${BASE_PATH}/images/Vector.svg`,
+    icon: `${BASE_PATH}/images/Vector.webp`,
   },
   {
     id: "follow-himtika",
@@ -25,7 +25,7 @@ const folders: Folder[] = [
     sub: "Klik folder untuk mengikuti @himtika_official",
     bgColor: "#38c7ea",
     lightBg: "#6adaff",
-    icon: `${BASE_PATH}/images/ri_instagram-fill.svg`,
+    icon: `${BASE_PATH}/images/ri_instagram-fill.webp`,
     link: "https://www.instagram.com/himtika_unsika?igsh=MXNoaXdpZmpieWF3Nw==",
   },
   {
@@ -34,7 +34,7 @@ const folders: Folder[] = [
     sub: "Klik folder untuk mengikuti @pekanit_unsika",
     bgColor: "#3f78ff",
     lightBg: "#6f9cff",
-    icon: `${BASE_PATH}/images/ri_instagram-fill (1).svg`,
+    icon: `${BASE_PATH}/images/ri_instagram-fill (1).webp`,
     link: "https://www.instagram.com/pekanit_unsika?igsh=NW9mOXI5MHBvanR4",
   },
   {
@@ -43,7 +43,7 @@ const folders: Folder[] = [
     sub: "Klik folder untuk membuka halaman Twibbon.",
     bgColor: "#6d63ff",
     lightBg: "#9a93ff",
-    icon: `${BASE_PATH}/images/fluent_image-sparkle-20-filled.svg`,
+    icon: `${BASE_PATH}/images/fluent_image-sparkle-20-filled.webp`,
     link: "https://drive.google.com/drive/folders/1wKnQv_H60Mn9l9pTuHHoW-hHPB21ENdD",
   },
   {
@@ -52,7 +52,7 @@ const folders: Folder[] = [
     sub: null,
     bgColor: "#9a56f2",
     lightBg: "#b87ff7",
-    icon: `${BASE_PATH}/images/Vector (1).svg`,
+    icon: `${BASE_PATH}/images/Vector (1).webp`,
   },
   {
     id: "ktm",
@@ -60,7 +60,7 @@ const folders: Folder[] = [
     sub: null,
     bgColor: "#9da8b2",
     lightBg: "#bcc5cd",
-    icon: `${BASE_PATH}/images/Vector (2).svg`,
+    icon: `${BASE_PATH}/images/Vector (2).webp`,
   },
 ];
 

@@ -8,14 +8,14 @@ export default function Hero() {
     <section className="relative w-full h-screen min-h-[832px] bg-black overflow-hidden max-md:!min-h-[100vh] max-md:!h-auto pb-10">
 
       <img
-        src={`${BASE_PATH}/images/night_bg.jpg`}
+        src={`${BASE_PATH}/images/night_bg.webp`}
         alt="Night Sky Background"
         className="absolute inset-0 w-full h-full object-cover"
       />
 
       <div className="absolute bottom-0 left-0 w-full max-md:!top-0 max-md:!h-full">
         <img
-          src={`${BASE_PATH}/images/semantik city.svg`}
+          src={`${BASE_PATH}/images/semantik city.webp`}
           alt="Hero City"
           className="w-full h-auto block transform translate-y-40 max-md:!translate-y-0 max-md:!h-full max-md:!object-cover max-md:!object-[center_bottom]"
         />

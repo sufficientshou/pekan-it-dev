@@ -33,7 +33,7 @@ export default function TerimakasihPage() {
       <section className="relative w-full min-h-[900px] overflow-hidden flex flex-col justify-center items-center max-md:!min-h-[100vh] max-md:!justify-start max-md:!pt-[25vh]">
         {/* Background Night Sky */}
         <img
-          src={`${BASE_PATH}/images/night_bg.jpg`}
+          src={`${BASE_PATH}/images/night_bg.webp`}
           alt="Night Sky Background"
           className="absolute inset-0 w-full h-full object-cover z-[-1]"
         />
@@ -41,7 +41,7 @@ export default function TerimakasihPage() {
         {/* Background Night - Kita pakai night_bg2.png yang sudah ada, atau silakan ganti */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
-          src={`${BASE_PATH}/images/night_bg.png`}
+          src={`${BASE_PATH}/images/night_bg.webp`}
           alt="Night Background" 
           className="absolute inset-0 w-full h-full object-cover z-0 max-md:!object-[center_bottom] max-md:!h-full"
         />
@@ -58,7 +58,7 @@ export default function TerimakasihPage() {
         {/* Nanti pastikan /images/kota-mksh.png ada, kalau belum ada warnanya akan transparan dulu */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
-          src={`${BASE_PATH}/images/kota mksh (1) 1 (1).svg`}
+          src={`${BASE_PATH}/images/kota mksh (1) 1 (1).webp`}
           alt="Cityscape" 
           className="absolute bottom-0 left-0 w-full object-cover z-10"
         />

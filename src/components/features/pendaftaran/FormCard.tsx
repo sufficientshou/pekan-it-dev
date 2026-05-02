@@ -60,7 +60,8 @@ export default function FormCard({ lomba = "Desain Grafis", onSubmitSuccess }: F
       const result = await response.json();
 
       if (response.ok) {
-        setSubmitMessage("✅ Pendaftaran berhasil! Data telah tersimpan.");
+        setSubmitMessage("✅ Pendaftaran berhasil! Data telah tersimpan.");
+
         setForm({
           nama: "",
           telepon: "",

@@ -12,7 +12,7 @@ export default function PendaftaranDitutupPage() {
       <section className="relative w-full min-h-[900px] overflow-hidden flex flex-col justify-center items-center max-md:!min-h-[100vh] max-md:!justify-start max-md:!pt-[25vh]">
         {/* Background Night Sky */}
         <img
-          src={`${BASE_PATH}/images/night_bg.jpg`}
+          src={`${BASE_PATH}/images/night_bg.webp`}
           alt="Night Sky Background"
           className="absolute inset-0 w-full h-full object-cover z-[-1]"
         />
@@ -20,7 +20,7 @@ export default function PendaftaranDitutupPage() {
         {/* Background Night */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
-          src={`${BASE_PATH}/images/close city (1).svg`}
+          src={`${BASE_PATH}/images/close city (1).webp`}
           alt="Night Background" 
           className="absolute inset-0 w-full h-full object-cover z-0 max-md:!object-[center_bottom] max-md:!h-full"
         />
@@ -62,7 +62,7 @@ export default function PendaftaranDitutupPage() {
         {/* Cityscape image -- Optional jika dirancang seperti itu */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
-          src={`${BASE_PATH}/images/kota-mksh.png`}
+          src={`${BASE_PATH}/images/kota-mksh.webp`}
           alt="Cityscape" 
           className="absolute bottom-0 left-0 w-full object-cover z-10"
         />

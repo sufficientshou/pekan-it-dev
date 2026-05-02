@@ -136,7 +136,7 @@ export default function Timeline() {
       </div>
 
       <img loading="lazy"
-        src={`${BASE_PATH}/images/timeline-rocket.png`}
+        src={`${BASE_PATH}/images/timeline-rocket.webp`}
         alt="Rocket Timeline"
         className="absolute"
         style={{ top: "189px", left: "480px", width: "590px", height: "900px", objectFit: "contain" }}

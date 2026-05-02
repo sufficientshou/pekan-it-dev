@@ -105,7 +105,7 @@ export default function Tema() {
               <img loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover" 
                 alt="Body" 
-                src={`${BASE_PATH}/images/body-1.png`} 
+                src={`${BASE_PATH}/images/body-1.webp`} 
               />
 
               <div 
@@ -196,7 +196,7 @@ export default function Tema() {
               <img loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover" 
                 alt="Body" 
-                src={`${BASE_PATH}/images/body-2.png`} 
+                src={`${BASE_PATH}/images/body-2.webp`} 
               />
 
               <div 
@@ -272,7 +272,7 @@ export default function Tema() {
               <img loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover" 
                 alt="Body" 
-                src={`${BASE_PATH}/images/body-3.png`} 
+                src={`${BASE_PATH}/images/body-3.webp`} 
               />
 
               <div 

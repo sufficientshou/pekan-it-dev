@@ -8,7 +8,7 @@ const cards = [
     title: "SEMANTIK",
     subtitle: "Internformatics Competition",
     detail: "3 Competitions",
-    img: `${BASE_PATH}/images/Subtract (1).png`,
+    img: `${BASE_PATH}/images/Subtract (1).webp`,
     link: "/detail-semantik",
   },
   {
@@ -16,7 +16,7 @@ const cards = [
     title: "NIC",
     subtitle: "National IT Competition",
     detail: "2 Competitions",
-    img: `${BASE_PATH}/images/Subtract (2).png`,
+    img: `${BASE_PATH}/images/Subtract (2).webp`,
     link: "#",
   },
   {
@@ -24,7 +24,7 @@ const cards = [
     title: "TECH TALKS",
     subtitle: "Seminar & Exhibition",
     detail: null,
-    img: `${BASE_PATH}/images/Subtract.png`,
+    img: `${BASE_PATH}/images/Subtract.webp`,
     link: "#",
   },
 ];
@@ -59,14 +59,14 @@ export default function Events() {
       />
 
       <img loading="lazy"
-        src={`${BASE_PATH}/images/image 7.png`}
+        src={`${BASE_PATH}/images/image 7.webp`}
         alt="Rocket"
         className="absolute object-cover max-md:!hidden"
         style={{ top: "110px", left: "1190px", width: "228px", height: "225px" }}
       />
 
       <img loading="lazy"
-        src={`${BASE_PATH}/images/line2.svg`}
+        src={`${BASE_PATH}/images/line2.webp`}
         alt="Line"
         className="absolute object-cover max-md:!hidden"
         style={{ top: "214px", left: "64px", width: "302px", height: "3px" }}

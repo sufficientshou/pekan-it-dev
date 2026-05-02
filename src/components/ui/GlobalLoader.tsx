@@ -280,7 +280,7 @@ function LoaderComponent() {
           <div className="ldr-glow" />
           <div className="ldr-orbit-ring" />
           <div className="ldr-orbit-ring-2" />
-          <img src={`${BASE_PATH}/images/LOGO.png`} alt="PEKAN IT" />
+          <img src={`${BASE_PATH}/images/LOGO.webp`} alt="PEKAN IT" />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>

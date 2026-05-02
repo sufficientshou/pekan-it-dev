@@ -14,7 +14,7 @@ export default function About() {
       />
 
       <img loading="lazy"
-        src={`${BASE_PATH}/images/night_bg2.png`}
+        src={`${BASE_PATH}/images/night_bg2.webp`}
         alt="Night Background"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -29,7 +29,7 @@ export default function About() {
       />
 
       <img loading="lazy"
-        src={`${BASE_PATH}/images/Vector 21.png`}
+        src={`${BASE_PATH}/images/Vector 21.webp`}
         alt="Vector"
         className="absolute w-[550px] h-[42px] max-md:!hidden"
         style={{ top: "640px", left: "103px" }}
@@ -95,7 +95,7 @@ export default function About() {
           style={{ top: "240px", left: "1000px" }}
         >
           <img loading="lazy"
-            src={`${BASE_PATH}/images/LOGO.png`}
+            src={`${BASE_PATH}/images/LOGO.webp`}
             alt="Logo"
             className="w-full h-full object-contain"
           />

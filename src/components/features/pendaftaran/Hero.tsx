@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative w-full h-screen min-h-[832px] bg-black overflow-hidden max-md:!min-h-[100vh] max-md:!h-auto pb-10">
 
       <img
-        src={`${BASE_PATH}/images/night_bg.jpg`}
+        src={`${BASE_PATH}/images/night_bg.webp`}
         alt="Night Sky Background"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 w-full max-md:!top-0">
         
         <img
-          src={`${BASE_PATH}/images/tokyo city (1) 1(1).svg`}
+          src={`${BASE_PATH}/images/tokyo city (1) 1(1).webp`}
           alt="Hero City"
           className="w-full h-auto block transform translate-y-40 max-md:!transform-none max-md:!absolute max-md:!inset-0 max-md:!w-full max-md:!h-full max-md:!object-cover max-md:!object-bottom max-md:!scale-[1.1] max-md:!origin-bottom"
         />
@@ -28,8 +28,7 @@ export default function Hero() {
             background: "linear-gradient(180deg, transparent 0%, rgba(0,9,35,0.3) 30%, rgba(0,9,35,0.7) 60%, rgba(0,9,35,1) 100%)",
           }}
         />
-        
-        {/* Blur gradient untuk transisi ke section berikutnya */}
+
         <div 
           className="absolute left-0 w-full pointer-events-none"
           style={{ 
@@ -84,7 +83,7 @@ export default function Hero() {
               }}
               className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
               style={{
-                width: "170px",
+                width: "180px",
                 height: "46px",
                 fontFamily: "'Exo 2', sans-serif",
                 background:
@@ -103,7 +102,7 @@ export default function Hero() {
               }}
               className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
               style={{ 
-                width: "170px",
+                width: "190px",
                 height: "46px",
                 fontFamily: "'Exo 2', sans-serif",
                 border: "2px solid transparent",

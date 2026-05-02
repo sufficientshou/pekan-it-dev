@@ -8,7 +8,7 @@ export default function Guide() {
       {/* Background kiri */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px] max-md:!-translate-y-[97%]">
         <Image
-          src={`${BASE_PATH}/images/1.png`}
+          src={`${BASE_PATH}/images/1.webp`}
           alt="bg1"
           fill
           className="object-contain brightness-125 contrast-125"
@@ -17,7 +17,7 @@ export default function Guide() {
 
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!right-[-50px] max-md:!-translate-y-[97%]">
         <Image
-          src={`${BASE_PATH}/images/2.png`}
+          src={`${BASE_PATH}/images/2.webp`}
           alt="bg2"
           fill
           className="object-contain brightness-125 contrast-125"
@@ -67,7 +67,7 @@ export default function Guide() {
           {/* Guidebook cover image — lebar & tinggi mengikuti foto asli */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img loading="lazy"
-            src={`${BASE_PATH}/images/guidebook-cover.png`}
+            src={`${BASE_PATH}/images/guidebook-cover.webp`}
             alt="Guidebook SEMANTIK"
             className="block rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
             style={{

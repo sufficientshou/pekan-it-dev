@@ -33,7 +33,7 @@ function HighlightRow() {
           }}
         >
           <Image
-            src={`${BASE_PATH}/images/glow.svg`}
+            src={`${BASE_PATH}/images/glow.webp`}
             alt="glow"
             width={1000}
             height={1000}
@@ -47,7 +47,7 @@ function HighlightRow() {
           style={{ transform: `translateX(${LOGO_SHIFT_X}px)` }}
         >
           <Image
-            src={`${BASE_PATH}/images/s.png`}
+            src={`${BASE_PATH}/images/s.webp`}
             alt="logo"
             width={LOGO_SIZE}
             height={LOGO_SIZE}
@@ -64,7 +64,7 @@ function HighlightRow() {
           }}
         >
           <Image
-            src={`${BASE_PATH}/images/glow.svg`}
+            src={`${BASE_PATH}/images/glow.webp`}
             alt="glow"
             width={1000}
             height={1000}
@@ -90,7 +90,7 @@ function HighlightRow() {
         </div>
         <div className="relative flex justify-center">
           <Image
-            src={`${BASE_PATH}/images/s.png`}
+            src={`${BASE_PATH}/images/s.webp`}
             alt="logo"
             width={80}
             height={80}
@@ -112,7 +112,7 @@ export default function Highlights() {
       
       <div className="absolute left-[-100px] top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-50 max-md:!w-[300px] max-md:!h-[300px] max-md:!left-[-80px]">
         <Image
-          src={`${BASE_PATH}/images/Elip.png`}
+          src={`${BASE_PATH}/images/Elip.webp`}
           alt="bg1"
           fill
           className="object-contain brightness-125 contrast-125"
@@ -121,7 +121,7 @@ export default function Highlights() {
 
       <div className="absolute right-[-100px] top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-50 max-md:!w-[300px] max-md:!h-[300px] max-md:!right-[-80px]">
         <Image
-          src={`${BASE_PATH}/images/Elips.png`}
+          src={`${BASE_PATH}/images/Elips.webp`}
           alt="bg2"
           fill
           className="object-contain brightness-125 contrast-125"
@@ -158,7 +158,7 @@ export default function Highlights() {
 
         <div className="flex justify-center">
           <Image
-            src={`${BASE_PATH}/images/Line 4.svg`}
+            src={`${BASE_PATH}/images/Line 4.webp`}
             alt="divider line"
             width={800}
             height={2}

@@ -32,7 +32,7 @@ export default function Navbar() {
       <div className="flex items-center gap-2 shrink-0">
         <div className="w-12 h-12 shrink-0">
           <img 
-            src={`${BASE_PATH}/images/LOGO.png`}
+            src={`${BASE_PATH}/images/LOGO.webp`}
             alt="Logo" 
             className="w-full h-full object-contain" 
           />
@@ -79,7 +79,7 @@ export default function Navbar() {
             )}
 
             {item.dropdown && openMenu === item.label && (
-              <div className="absolute left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm border border-indigo-400/30 rounded-xl py-4 min-w-[180px] shadow-lg max-md:!static max-md:!translate-x-0 max-md:!mt-2 max-md:!bg-transparent max-md:!border-none max-md:!shadow-none max-md:!pl-4" style={{ top: "calc(100% + 11px)" }}>
+              <div className="absolute left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm border border-indigo-400/30 rounded-xl py-2 min-w-[180px] min-h-[70px] shadow-lg max-md:!static max-md:!translate-x-0 max-md:!mt-2 max-md:!bg-transparent max-md:!border-none max-md:!shadow-none max-md:!pl-4" style={{ top: "calc(100% + 11px)" }}>
                 {item.items && item.items.length > 0 ? (
                   item.items.map((subItem) => (
                     <Link
@@ -91,8 +91,8 @@ export default function Navbar() {
                           ? "/detail-semantik"
                           : "#"
                       }
-                      className="block px-8 py-2 text-white text-2xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-lg max-md:!px-0 max-md:!py-1"
-                      style={{ fontFamily: "'Exo 2', sans-serif" }}
+                      className="block px-4 py-2 text-white text-xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-lg max-md:!px-0 max-md:!py-1"
+                      style={{ fontFamily: "'Exo 2', sans-serif", paddingLeft: 16, marginTop: 5 }}
                     >
                       {subItem}
                     </Link>

@@ -155,7 +155,7 @@ export default function Footer() {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img loading="lazy"
         className="w-8 h-8 absolute left-[721px] top-[384px]" 
-        src={`${BASE_PATH}/images/img-himtika.png`} 
+        src={`${BASE_PATH}/images/img-himtika.webp`} 
         alt="HIMTIKA"
       />
 
@@ -254,8 +254,7 @@ export default function Footer() {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img loading="lazy"
         className="w-52 h-52 absolute left-[239px] top-[10px]" 
-        style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
-        src={`${BASE_PATH}/images/img-himtika.png`} 
+        src={`${BASE_PATH}/images/img-himtika.webp`} 
         alt="HIMTIKA Logo"
       />
 
@@ -279,8 +278,7 @@ export default function Footer() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img loading="lazy"
           className="w-28 h-28" 
-          style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", borderRadius: "50%" }}
-          src={`${BASE_PATH}/images/img-himtika.png`} 
+          src={`${BASE_PATH}/images/img-himtika.webp`} 
           alt="HIMTIKA Logo"
         />
         <div 
@@ -396,7 +394,7 @@ export default function Footer() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img loading="lazy"
             className="w-7 h-7" 
-            src={`${BASE_PATH}/images/img-himtika.png`} 
+            src={`${BASE_PATH}/images/img-himtika.webp`} 
             alt="HIMTIKA"
           />
           <div 
