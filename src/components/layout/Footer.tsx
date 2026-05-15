@@ -142,131 +142,135 @@ export default function Footer() {
   return (
     <>
     {/* Desktop Footer (Hidden on Mobile) */}
-    <footer className="relative w-full h-[458px] bg-[#252742] max-md:!hidden">
-      {/* Copyright Text */}
-      <div 
-        className="absolute left-[650px] top-[359px] text-center text-white text-base font-semibold"
-        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-      >
-        Licensed, Registered, and authorized by
-      </div>
+    <footer className="relative w-full bg-[#252742] max-md:!hidden" style={{ minHeight: "458px" }}>
+      <div className="max-w-[1280px] mx-auto px-8 pt-12 pb-6 flex flex-col h-full">
+        {/* Top section */}
+        <div className="flex items-start justify-between flex-1">
+          {/* Left - Logo, text, social */}
+          <div className="flex flex-col items-center" style={{ minWidth: "280px" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img loading="lazy"
+              className="w-52 h-52" 
+              src={`${BASE_PATH}/images/img-himtika.webp`} 
+              alt="HIMTIKA Logo"
+            />
+            <div 
+              className="text-white text-3xl font-semibold mt-[-10px]"
+              style={{ 
+                fontFamily: "'Figtree', sans-serif",
+                textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
+              }}
+            >
+              HIMTIKA
+            </div>
+            <div className="flex gap-[18px] mt-4">
+              {socialIcons.map(({ Component, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="hover:opacity-80 transition-opacity"
+                >
+                  <Component className="w-10 h-10" />
+                </a>
+              ))}
+            </div>
+          </div>
 
-      {/* HIMTIKA Logo Small */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy"
-        className="w-8 h-8 absolute left-[721px] top-[384px]" 
-        src={`${BASE_PATH}/images/img-himtika.webp`} 
-        alt="HIMTIKA"
-      />
+          {/* Right - Link columns */}
+          <div className="flex gap-16 pt-2">
+            {/* Media Column */}
+            <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
+              <div 
+                className="text-white text-base font-bold"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                Media
+              </div>
+              {mediaLinks.map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-base font-medium hover:text-[#00ffff] transition-colors"
+                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
 
-      {/* HIMTIKA 2025 Text */}
-      <div 
-        className="absolute left-[759px] top-[389px] text-center text-white text-sm font-semibold"
-        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-      >
-        HIMTIKA 2025
-      </div>
+            {/* Event Column */}
+            <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
+              <div 
+                className="text-white text-base font-bold"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                Event
+              </div>
+              {eventLinks.map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-base font-medium hover:text-[#00ffff] transition-colors"
+                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
 
-      {/* Media Column */}
-      <div className="w-40 absolute left-[708px] top-[54px] inline-flex flex-col justify-start items-start gap-5">
-        <div 
-          className="self-stretch h-5 text-white text-base font-bold"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
-          Media
+            {/* Aplikasi Publik Column */}
+            <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
+              <div 
+                className="text-white text-base font-bold"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                Aplikasi Publik
+              </div>
+              {appLinks.map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-base font-medium hover:text-[#00ffff] transition-colors"
+                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
-        {mediaLinks.map((link) => (
-          <a 
-            key={link.label}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="self-stretch text-white text-base font-medium hover:text-[#00ffff] transition-colors"
+
+        {/* Divider Line */}
+        <div className="w-full border-t-2 border-white mt-6 mb-4" />
+
+        {/* Copyright */}
+        <div className="flex items-center justify-center gap-2 pb-2">
+          <span 
+            className="text-white text-base font-semibold"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            {link.label}
-          </a>
-        ))}
-      </div>
-
-      {/* Event Column */}
-      <div className="w-40 absolute left-[954px] top-[54px] inline-flex flex-col justify-start items-start gap-5">
-        <div 
-          className="self-stretch h-5 text-white text-base font-bold"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
-          Event
-        </div>
-        {eventLinks.map((link) => (
-          <a 
-            key={link.label}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="self-stretch text-white text-base font-medium hover:text-[#00ffff] transition-colors"
+            Licensed, Registered, and authorized by
+          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img loading="lazy"
+            className="w-8 h-8" 
+            src={`${BASE_PATH}/images/img-himtika.webp`} 
+            alt="HIMTIKA"
+          />
+          <span 
+            className="text-white text-sm font-semibold"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            {link.label}
-          </a>
-        ))}
-      </div>
-
-      {/* Aplikasi Publik Column */}
-      <div className="w-40 absolute left-[1200px] top-[54px] inline-flex flex-col justify-start items-start gap-5">
-        <div 
-          className="self-stretch h-5 text-white text-base font-bold"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
-          Aplikasi Publik
+            HIMTIKA 2025
+          </span>
         </div>
-        {appLinks.map((link) => (
-          <a 
-            key={link.label}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="self-stretch text-white text-base font-medium hover:text-[#00ffff] transition-colors"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            {link.label}
-          </a>
-        ))}
-      </div>
-
-      {/* Divider Line */}
-      <div className="w-[1215px] h-0 absolute left-[160px] top-[331px] border-t-2 border-white" />
-
-      {/* Social Icons */}
-      <div className="absolute left-[206px] top-[263px] flex gap-[18px]">
-        {socialIcons.map(({ Component, label }) => (
-          <a
-            key={label}
-            href="#"
-            aria-label={label}
-            className="hover:opacity-80 transition-opacity"
-          >
-            <Component className="w-10 h-10" />
-          </a>
-        ))}
-      </div>
-
-      {/* HIMTIKA Logo Large */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy"
-        className="w-52 h-52 absolute left-[239px] top-[10px]" 
-        src={`${BASE_PATH}/images/img-himtika.webp`} 
-        alt="HIMTIKA Logo"
-      />
-
-      {/* HIMTIKA Text */}
-      <div 
-        className="absolute left-[284px] top-[206px] text-white text-3xl font-semibold"
-        style={{ 
-          fontFamily: "'Figtree', sans-serif",
-          textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
-        }}
-      >
-        HIMTIKA
       </div>
     </footer>
 

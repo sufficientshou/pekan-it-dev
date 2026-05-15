@@ -3,7 +3,7 @@ import { Hero, About, Events, Timeline, Mascot, Tema } from "@/components/featur
 
 export default function Home() {
   return (
-    <main className="min-h-screen" style={{ background: "#000923" }}>
+    <main className="min-h-screen overflow-x-hidden" style={{ background: "#000923", width: "100%", maxWidth: "100vw" }}>
       <Navbar />
       <Hero />
       <About />

@@ -1,10 +1,17 @@
 import { BASE_PATH } from '@/config/constants';
+const FONT_CONFIG = {
+  your: 50,          // Font size "Your" dalam pixel
+  roadmap: 50,       // Font size "Roadmap" dalam pixel
+  forText: 50,       // Font size "For" dalam pixel
+  thisAmazing: 50,   // Font size "This Amazing Event" dalam pixel
+  mobile: 32,
+};
 
 export default function Timeline() {
   return (
     <section
       className="relative w-full min-h-screen overflow-hidden max-md:!min-h-0 max-md:!h-auto max-md:!pb-20"
-      style={{ background: "#000923", minHeight: "1100px" }}
+      style={{ background: "#000923", minHeight: "1100px", maxWidth: "100vw" }}
     >
       <div className="max-md:!hidden">
       
@@ -112,16 +119,17 @@ export default function Timeline() {
 
       <div
         className="absolute flex justify-center"
-        style={{ top: "39px", left: "calc(50% - 500px)", width: "1000px", height: "154px" }}
+        style={{ top: "39px", left: "50%", transform: "translateX(-50%)", width: "1000px", maxWidth: "90%", height: "auto", minHeight: "154px" }}
       >
         
         <h2
           className="text-center font-bold leading-tight"
-          style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "72px" }}
+          style={{ fontFamily: "'Zen Dots', sans-serif" }}
         >
-          <span className="text-white">Your </span>
+          <span className="text-white" style={{ fontSize: `${FONT_CONFIG.your}px` }}>Your </span>
           <span
             style={{
+              fontSize: `${FONT_CONFIG.roadmap}px`,
               background: "linear-gradient(90deg, #ff00ff, #00ffff)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -129,9 +137,9 @@ export default function Timeline() {
           >
             Roadmap
           </span>
-          <span className="text-white"> For</span>
+          <span className="text-white" style={{ fontSize: `${FONT_CONFIG.forText}px` }}> For</span>
           <br />
-          <span className="text-white">This Amazing Event</span>
+          <span className="text-white" style={{ fontSize: `${FONT_CONFIG.thisAmazing}px` }}>This Amazing Event</span>
         </h2>
       </div>
 
@@ -139,7 +147,7 @@ export default function Timeline() {
         src={`${BASE_PATH}/images/timeline-rocket.webp`}
         alt="Rocket Timeline"
         className="absolute"
-        style={{ top: "189px", left: "480px", width: "590px", height: "900px", objectFit: "contain" }}
+        style={{ top: "189px", left: "50%", transform: "translateX(-50%)", width: "590px", height: "900px", objectFit: "contain", maxWidth: "50vw" }}
       />
 
       <div 
@@ -153,21 +161,21 @@ export default function Timeline() {
 
       <TimelineCard
         top={395}
-        left={300}
+        left="max(200px, calc(50% - 590px))"
         title="Semantik Competition"
         date="April - Mei 2026"
       />
 
       <TimelineCard
         top={595}
-        left={1000}
+        left="min(calc(90% - 316px), calc(50% + 324px))"
         title="National IT Competition"
         date="Juni - Juli 2026"
       />
 
       <TimelineCard
         top={754}
-        left={300}
+        left="max(200px, calc(50% - 590px))"
         title="Tech talks"
         date="Agustus 2026"
       />
@@ -175,12 +183,13 @@ export default function Timeline() {
 
       <div className="hidden max-md:!flex flex-col w-full px-6 pt-4 pb-10 gap-10 items-center z-20 relative">
         <h2
-          className="text-center font-bold leading-tight text-4xl"
+          className="text-center font-bold leading-tight"
           style={{ fontFamily: "'Zen Dots', sans-serif" }}
         >
-          <span className="text-white">Your </span>
+          <span className="text-white" style={{ fontSize: `${FONT_CONFIG.mobile}px` }}>Your </span>
           <span
             style={{
+              fontSize: `${FONT_CONFIG.mobile}px`,
               background: "linear-gradient(90deg, #ff00ff, #00ffff)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -188,9 +197,9 @@ export default function Timeline() {
           >
             Roadmap
           </span>
-          <span className="text-white"> For</span>
+          <span className="text-white" style={{ fontSize: `${FONT_CONFIG.mobile}px` }}> For</span>
           <br />
-          <span className="text-white">This Event</span>
+          <span className="text-white" style={{ fontSize: `${FONT_CONFIG.mobile}px` }}>This Event</span>
         </h2>
 
         <div className="flex flex-col w-full max-w-[340px] items-center gap-8 relative mt-8">
@@ -273,7 +282,7 @@ function TimelineCard({
   date,
 }: {
   top: number;
-  left: number;
+  left: number | string;
   title: string;
   date: string;
 }) {
@@ -282,7 +291,7 @@ function TimelineCard({
       className="absolute flex flex-col justify-between"
       style={{
         top,
-        left,
+        left: typeof left === 'string' ? left : `${left}px`,
         width: "266px",
         height: "137px",
         padding: "30px 24px",

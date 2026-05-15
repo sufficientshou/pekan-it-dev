@@ -1,7 +1,7 @@
 import { BASE_PATH } from '@/config/constants';
-
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+
 const competitions = [
   { id: "desain", title: "Design\nGrafis" },
   { id: "typing", title: "Typing\nCompetition" },
@@ -24,10 +24,11 @@ function CompetitionCard({ title }: { title: string }) {
 
   return (
     <Link
-      href="/pendaftaran"
+      href="/pendaftaran-ditutup"
       className="relative group cursor-pointer transition-transform duration-300 hover:-translate-y-1 w-full max-w-[280px] block"
       style={{ height: "250px" }}
     >
+
       <div
         className="absolute inset-0 rounded-2xl"
         style={{
@@ -48,19 +49,10 @@ function CompetitionCard({ title }: { title: string }) {
         }}
       />
 
-      <div className="absolute top-4 left-4 opacity-60">
-        <Sparkle size={18} />
-      </div>
-      <div className="absolute top-6 right-6 opacity-50">
-        <Sparkle size={14} />
-      </div>
-      <div className="absolute bottom-16 right-4 opacity-40">
-        <Sparkle size={16} />
-      </div>
-      <div className="absolute bottom-20 left-6 opacity-30">
-        <Sparkle size={12} />
-      </div>
-
+      <div className="absolute top-4 left-4 opacity-60"><Sparkle size={18} /></div>
+      <div className="absolute top-6 right-6 opacity-50"><Sparkle size={14} /></div>
+      <div className="absolute bottom-16 right-4 opacity-40"><Sparkle size={16} /></div>
+      <div className="absolute bottom-20 left-6 opacity-30"><Sparkle size={12} /></div>
       <div className="absolute inset-0 flex items-center justify-center px-6 pb-14">
         <h3
           className="text-white text-center font-bold leading-tight"
@@ -82,21 +74,18 @@ function CompetitionCard({ title }: { title: string }) {
         className="absolute bottom-0 left-0 w-full flex items-center gap-3 px-4 py-3 rounded-b-2xl"
         style={{ background: "rgba(0,0,0,0.2)" }}
       >
-        <div className="relative">
-          <button
-            className="relative flex items-center justify-center gap-1 rounded-full text-white text-sm md:text-base font-semibold shrink-0 cursor-pointer transition-all hover:opacity-80 overflow-hidden"
-            style={{
-              width: "90px",
-              height: "25px",
-              fontFamily: "'Exo 2', sans-serif",
-              background: "linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%)",
-            }}
-          >
-            <span className="relative z-10">Daftar</span> 
-            <ArrowUpRight size={16} className="relative z-10" />
-          </button>
-        </div>
-
+        <button
+          className="relative flex items-center justify-center gap-1 rounded-full text-white text-sm font-semibold shrink-0 cursor-pointer transition-all hover:opacity-80 overflow-hidden"
+          style={{
+            width: "90px",
+            height: "25px",
+            fontFamily: "'Exo 2', sans-serif",
+            background: "linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%)",
+          }}
+        >
+          <span className="relative z-10">Daftar</span>
+          <ArrowUpRight size={16} className="relative z-10" />
+        </button>
         <div
           className="flex-1 rounded-full h-2"
           style={{
@@ -111,119 +100,138 @@ function CompetitionCard({ title }: { title: string }) {
 
 export default function Inside() {
   return (
-    <section id="inside" className="relative h-screen min-h-[2000px] flex items-center justify-center text-white px-4 md:px-8 lg:px-[500px] max-md:!h-auto max-md:!min-h-0 max-md:!flex-col max-md:!px-4 max-md:!py-16 max-md:!gap-0">
-
-      <img loading="lazy"
+    <section
+      id="inside"
+      className="relative w-full overflow-hidden text-white"
+      style={{ background: "transparent" }}
+    >
+      <img
+        loading="lazy"
         src={`${BASE_PATH}/images/segitiga.webp`}
         alt="bg"
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[1500px] max-w-none opacity-95 max-md:!w-[200%] max-md:!top-0"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[1500px] max-w-none opacity-95 max-md:w-[200%] pointer-events-none"
       />
-
-      <img loading="lazy"
+      <img
+        loading="lazy"
         src={`${BASE_PATH}/images/Kiri.webp`}
-        className="absolute bottom-10 left-5 w-[160px] md:w-[260px] lg:w-[350px] opacity-90 top-140 max-md:!hidden"
+        className="hidden md:block absolute bottom-10 left-5 w-[160px] lg:w-[260px] xl:w-[350px] opacity-90 pointer-events-none"
+        style={{ top: "clamp(600px, 70vh, 800px)", right: "clamp(600px, 70vw, 800px)" }}
       />
-
-      <img loading="lazy"
+      <img
+        loading="lazy"
         src={`${BASE_PATH}/images/Kanan.webp`}
-        className="absolute bottom-10 right-5 w-[160px] md:w-[260px] lg:w-[400px] opacity-90 top-140 max-md:!hidden"
+        className="hidden md:block absolute bottom-10 right-5 w-[160px] lg:w-[260px] xl:w-[400px] opacity-90 pointer-events-none"
+        style={{ top: "clamp(600px, 70vh, 800px)" }}
       />
 
-      <div className="relative z-10 text-center flex flex-col items-center gap-4 md:gap-6 bottom-160 max-md:!static max-md:!bottom-auto max-md:!gap-4 max-md:!mt-32 max-md:!mb-8">
-        <img loading="lazy" src={`${BASE_PATH}/images/LOGO.webp`} alt="Logo" className="w-12 md:w-16 lg:w-27 max-md:!w-14" />
+      <img
+        loading="lazy"
+        src={`${BASE_PATH}/images/left.webp`}
+        alt="wing"
+        className="hidden xl:block absolute pointer-events-none"
+        style={{
+          width: "clamp(300px, 30vw, 420px)",
+          left: "clamp(20px, 8vw, 200px)",
+          top: "clamp(1020px, 118vh, 1000px)",
+          filter: "drop-shadow(0 0 40px rgba(255,0,255,0.6))",
+        }}
+      />
+      <img
+        loading="lazy"
+        src={`${BASE_PATH}/images/left.webp`}
+        alt="wing"
+        className="hidden xl:block absolute pointer-events-none scale-x-[-1]"
+        style={{
+          width: "clamp(300px, 30vw, 420px)",
+          right: "clamp(20px, 8vw, 200px)",
+          top: "clamp(1020px, 118vh, 1000px)",
+          filter: "drop-shadow(0 0 40px rgba(255,0,255,0.6))",
+        }}
+      />
 
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide px-4 max-md:!text-2xl">
-          Inside SEMANTIK
-        </h2>
+      <div className="relative z-10 flex flex-col items-center w-full px-4 md:px-8"
+        style={{ paddingTop: "clamp(30px, 12vw, 400px)", paddingBottom: "clamp(48px, 8vh, 120px)", paddingLeft: "clamp(0px, 8vw, 120px)", paddingRight: "clamp(0px, 8vw, 120px)" }}
+      >
 
-        <p className="max-w-xl text-gray-200 leading-relaxed px-6 md:px-4 max-md:!text-sm max-md:!px-4" style={{ fontSize: "clamp(14px, 2.5vw, 20px)" }}>
-          SEMANTIK 9.0 adalah wadah bagi mahasiswa informatika unsika untuk
-          menunjukan bakat dan keahlian melalui ajang kompetisi hard skill dalam
-          bidang informatika.
-        </p>
-      </div>
-
-      <div className="absolute left-1/2 -translate-x-1/2 z-20 max-md:!relative max-md:!left-auto max-md:!translate-x-0 max-md:!mb-10">
-        <img loading="lazy"
-          src={`${BASE_PATH}/images/Crown.webp`}
-          alt="crown"
-          width={400}
-          height={400}
-          className="w-[250px] md:w-[350px] lg:w-[400px] max-md:!w-[200px]"
-        />
-      </div>
-
-      <div className="absolute left-1/2 -translate-x-1/2 top-[75%] w-full max-md:!hidden">
-        <div className="hidden lg:block absolute left-[600px] -translate-x-[100%] bottom-[500px]">
-          <img loading="lazy"
-            src={`${BASE_PATH}/images/left.webp`}
-            alt="wing"
-            className="w-[320px] h-auto drop-shadow-[0_0_40px_rgba(255,0,255,0.6)]"
+        <div className="flex flex-col items-center gap-4 md:gap-6 text-center max-w-xl" style={{ paddingTop: "clamp(5px, 10vw, 220px)" }}>
+          <img
+            loading="lazy"
+            src={`${BASE_PATH}/images/LOGO.webp`}
+            alt="Logo"
+            className="w-12 md:w-16 lg:w-24"
           />
+          <h2
+            className="font-bold tracking-wide"
+            style={{ fontSize: "clamp(22px, 5vw, 48px)" }}
+          >
+            Inside SEMANTIK
+          </h2>
+          <p
+            className="text-gray-200 leading-relaxed px-2"
+            style={{ fontSize: "clamp(13px, 2vw, 18px)" }}
+          >
+            SEMANTIK 9.0 adalah wadah bagi mahasiswa informatika unsika untuk
+            menunjukan bakat dan keahlian melalui ajang kompetisi hard skill dalam
+            bidang informatika.
+          </p>
         </div>
 
-        <div className="hidden lg:block absolute right-[600px] translate-x-[100%] bottom-[500px]">
-          <img loading="lazy"
-            src={`${BASE_PATH}/images/left.webp`}
-            alt="wing"
-            className="w-[320px] h-auto scale-x-[-1] drop-shadow-[0_0_40px_rgba(255,0,255,0.6)]"
+        <div 
+          className="flex justify-center"
+          style={{ marginTop: "clamp(20px, 8vw, 220px)" }}
+        >
+          <img
+            loading="lazy"
+            src={`${BASE_PATH}/images/Crown.webp`}
+            alt="crown"
+            className="w-[180px] md:w-[280px] lg:w-[360px]"
           />
         </div>
-
-        <h2 className="font-bold text-center" style={{ marginTop: '-350px', fontSize: "clamp(32px, 6vw, 72px)" }}>
-          Choose Your
-        </h2>
-
-        <h2 className="font-bold text-cyan-400 text-center drop-shadow-[0_0_20px_rgba(0,255,255,1)]" style={{ fontSize: "clamp(32px, 6vw, 72px)" }}>
-          Challenge
-        </h2>
-        
-        <p className="text-center text-gray-300 leading-relaxed mx-auto px-4" style={{ 
-          marginTop: '30px', 
-          marginBottom: '64px', 
-          fontSize: "clamp(14px, 2.5vw, 20px)", 
-          maxWidth: '480px',
-          marginLeft: 'auto',
-          marginRight: 'auto'
-        }}>
-          Jelajahi berbagai kompetisi dan temukan tantangan
-          yang sesuai dengan keterampilan dan minat kamu
-        </p>
 
         <div
-          className="flex flex-col md:flex-row gap-6 justify-center items-center px-4 md:px-8"
-          style={{ maxWidth: "1200px", margin: "0 auto" }}
+          className="flex flex-col items-center text-center mt-8 md:mt-12"
+          style={{ gap: "clamp(4px, 1vh, 12px)" }}
+        >
+          <h2
+            className="font-bold"
+            style={{ fontSize: "clamp(28px, 6vw, 72px)", marginTop: "clamp(2px, 4vh, 90px)" }}
+          >
+            Choose Your
+          </h2>
+          <h2
+            className="font-bold text-cyan-400"
+            style={{
+              fontSize: "clamp(28px, 6vw, 72px)",
+              filter: "drop-shadow(0 0 20px rgba(0,255,255,1))",
+            }}
+          >
+            Challenge
+          </h2>
+          <p
+            className="text-gray-300 leading-relaxed max-w-[480px] px-4"
+            style={{
+              fontSize: "clamp(15px, 2vw, 20px)",
+              marginTop: "clamp(12px, 2vh, 12px)",
+            }}
+          >
+            Jelajahi berbagai kompetisi dan temukan tantangan
+            yang sesuai dengan keterampilan dan minat kamu
+          </p>
+        </div>
+
+        <div
+          className="flex flex-col md:flex-row gap-5 md:gap-6 justify-center items-center w-full"
+          style={{
+            marginTop: "clamp(40px, 15vh, 200px)",
+            maxWidth: "1200px",
+          }}
         >
           {competitions.map((comp) => (
             <CompetitionCard key={comp.id} title={comp.title} />
           ))}
         </div>
-      </div>
 
-      <div className="hidden max-md:!flex flex-col items-center w-full relative z-10 mt-4">
-        <h2 className="font-bold text-center text-3xl">
-          Choose Your
-        </h2>
-
-        <h2 className="font-bold text-cyan-400 text-center drop-shadow-[0_0_20px_rgba(0,255,255,1)] text-3xl">
-          Challenge
-        </h2>
-        
-        <p 
-          className="text-center text-gray-300 leading-relaxed mx-auto px-6 text-sm mt-4 max-w-[320px]"
-          style={{ marginBottom: "60px" }}
-        >
-          Jelajahi berbagai kompetisi dan temukan tantangan
-          yang sesuai dengan keterampilan dan minat kamu
-        </p>
-
-        <div className="flex flex-col gap-5 items-center w-full px-6" style={{ marginTop: "20px" }}>
-          {competitions.map((comp) => (
-            <CompetitionCard key={comp.id} title={comp.title} />
-          ))}
-        </div>
       </div>
     </section>
   );
 }
-

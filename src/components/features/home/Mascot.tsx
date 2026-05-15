@@ -1,15 +1,25 @@
 import { BASE_PATH } from '@/config/constants';
 
+// ========================================
+// KONFIGURASI MANUAL POSISI - ATUR DI SINI
+// ========================================
+const POSITION_CONFIG = {
+  titleTop: 50,      // Posisi "Meet Our Mascott" dari atas (dalam pixel)
+  mascotTop: 477,    // Posisi mascot dari atas (dalam pixel)
+  topCardsTop: 242,  // Posisi card atas (Kalung & Gear) dari atas (dalam pixel)
+  bottomCardsTop: 914, // Posisi card bawah (Kabel & Mata) dari atas (dalam pixel)
+};
+// ========================================
+
 export default function Avatar() {
   const cardBase =
     "absolute rounded-[15px] border-2 border-[#d000cb] backdrop-blur-[2px] backdrop-brightness-100 backdrop-saturate-100";
-  const cardShadow =
-    "shadow-[0px_0px_100px_#d000cb,inset_0_1px_0_rgba(255,255,255,0.40),inset_1px_0_0_rgba(255,255,255,0.32),inset_0_-1px_1px_rgba(0,0,0,0.13),inset_-1px_0_1px_rgba(0,0,0,0.11)]";
+  const cardBoxShadow = "0px 0px 100px #d000cb, inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)";
 
   return (
     <section
       className="relative w-full overflow-hidden max-md:!h-auto max-md:!pb-0"
-      style={{ height: "1265px", background: "#000923" }}
+      style={{ height: "1265px", background: "#000923", maxWidth: "100vw" }}
     >
       <div className="max-md:!hidden">
       
@@ -25,7 +35,7 @@ export default function Avatar() {
       <div
         className="absolute"
         style={{
-          top: "292px", left: "747px", width: "527px", height: "444px",
+          top: "292px", left: "599px", width: "527px", height: "444px",
           background: "linear-gradient(135deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
           filter: "blur(18px)",
           transform: "rotate(0deg)",
@@ -36,7 +46,7 @@ export default function Avatar() {
       <div
         className="absolute"
         style={{
-          top: "719px", left: "338px", width: "527px", height: "444px",
+          top: "620px", left: "178px", width: "527px", height: "444px",
           background: "linear-gradient(135deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
           filter: "blur(18px)",
           pointerEvents: "none",
@@ -46,7 +56,7 @@ export default function Avatar() {
       <div
         className="absolute"
         style={{
-          top: "719px", left: "747px", width: "527px", height: "444px",
+          top: "599px", left: "550px", width: "527px", height: "444px",
           background: "linear-gradient(225deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
           filter: "blur(18px)",
           pointerEvents: "none",
@@ -56,30 +66,21 @@ export default function Avatar() {
       <div
         className="absolute"
         style={{
-          top: "292px", left: "338px", width: "527px", height: "444px",
+          top: "292px", left: "208px", width: "527px", height: "444px",
           background: "linear-gradient(225deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
           filter: "blur(18px)",
           pointerEvents: "none",
         }}
       />
 
-      <div
-        className="absolute rounded-full"
-        style={{
-          top: "540px", left: "590px", width: "400px", height: "400px",
-          background: "rgba(208,0,203,0.25)",
-          filter: "blur(80px)",
-          pointerEvents: "none",
-        }}
-      />
 
       <div
         className="absolute flex items-center justify-center"
-        style={{ top: "120px", left: "calc(50% - 356px)", width: "713px", height: "64px" }}
+        style={{ top: `${POSITION_CONFIG.titleTop}px`, left: "50%", transform: "translateX(-50%)", width: "713px", maxWidth: "90%", height: "64px" }}
       >
         <h2
           className="font-bold text-center whitespace-nowrap"
-          style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "70px", lineHeight: 1 }}
+          style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "65px", lineHeight: 1 }}
         >
           <span className="text-white">Meet Our </span>
           <span
@@ -98,52 +99,56 @@ export default function Avatar() {
         src={`${BASE_PATH}/images/mascot.webp`}
         alt="Mascot"
         className="absolute"
-        style={{ top: "547px", left: "648px", width: "332px", height: "328px", objectFit: "contain" }}
+        style={{ top: `${POSITION_CONFIG.mascotTop}px`, left: "52%", transform: "translateX(-50%)", width: "332px", height: "328px", objectFit: "contain" }}
       />
 
       <div
-        className={`${cardBase} ${cardShadow} flex items-center justify-center`}
+        className={`${cardBase} flex items-center justify-center`}
         style={{
-          top: "312px", left: "341px",
+          top: `${POSITION_CONFIG.topCardsTop}px`, left: "max(50px, calc(50% - 473px))",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
+          boxShadow: cardBoxShadow,
         }}
       >
         <img loading="lazy" src={`${BASE_PATH}/images/kalung.webp`} alt="Kalung" className="w-[130px] h-[130px] object-contain" />
       </div>
 
       <div
-        className={`${cardBase} ${cardShadow} flex items-center justify-center`}
+        className={`${cardBase} flex items-center justify-center`}
         style={{
-          top: "312px", left: "1062px",
+          top: `${POSITION_CONFIG.topCardsTop}px`, left: "min(calc(100% - 257px), calc(50% + 266px))",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
+          boxShadow: cardBoxShadow,
         }}
       >
         <img loading="lazy" src={`${BASE_PATH}/images/gear.webp`} alt="Gear" className="w-[130px] h-[130px] object-contain" />
       </div>
 
       <div
-        className={`${cardBase} ${cardShadow} flex items-center justify-center`}
+        className={`${cardBase} flex items-center justify-center`}
         style={{
-          top: "984px", left: "1062px",
+          top: `${POSITION_CONFIG.bottomCardsTop}px`, left: "min(calc(100% - 257px), calc(50% + 266px))",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
+          boxShadow: cardBoxShadow,
         }}
       >
         <img loading="lazy" src={`${BASE_PATH}/images/mata.webp`} alt="Mata" className="w-[130px] h-[130px] object-contain" />
       </div>
 
       <div
-        className={`${cardBase} ${cardShadow} flex items-center justify-center`}
+        className={`${cardBase} flex items-center justify-center`}
         style={{
-          top: "984px", left: "341px",
+          top: `${POSITION_CONFIG.bottomCardsTop}px`, left: "max(50px, calc(50% - 473px))",
           width: "207px", height: "159px",
           background: "#000923",
           zIndex: 10,
+          boxShadow: cardBoxShadow,
         }}
       >
         <img loading="lazy" src={`${BASE_PATH}/images/kabel.webp`} alt="Kabel" className="w-[130px] h-[130px] object-contain" />

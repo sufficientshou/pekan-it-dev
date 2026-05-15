@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&family=Exo+2:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
+/* Google Fonts loaded via <link> in layout.tsx for consistent dev/build behavior */
 
 :root {
   --color-background: #000923;
@@ -417,4 +417,13 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(#FF00FF, #00FFFF);
+}
+
+/* Hide scrollbar utility - works across all browsers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

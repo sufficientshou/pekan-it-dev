@@ -2,6 +2,25 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { BASE_PATH } from '@/config/constants';
 
+// ========================================
+// KONFIGURASI MANUAL CARD - ATUR DI SINI
+// ========================================
+const CARD_CONFIG = {
+  // Ukuran Card
+  width: 390,        // Lebar card dalam pixel
+  height: 250,       // Tinggi card dalam pixel
+  
+  // Posisi & Spacing
+  gap: 200,          // Jarak antar card dalam pixel
+  paddingLeft: 60,    // Geser card ke kanan (nilai positif) atau kiri (nilai negatif) dalam pixel
+  
+  // Mask/Cut Corner (untuk efek folder)
+  maskSize: 100,     // Ukuran potongan sudut (semakin besar = potongan lebih besar)
+  maskRadius: 30,    // Radius rounded corner
+  maskOffset: 70,    // Offset mask
+};
+
+
 const cards = [
   {
     id: "semantik",
@@ -49,7 +68,7 @@ export default function Events() {
         className="absolute rounded-full"
         style={{
           top: "100px",
-          left: "1180px",
+          left: "930px",
           width: "250px",
           height: "250px",
           background: "rgba(208,0,203,0.8)",
@@ -62,7 +81,7 @@ export default function Events() {
         src={`${BASE_PATH}/images/image 7.webp`}
         alt="Rocket"
         className="absolute object-cover max-md:!hidden"
-        style={{ top: "110px", left: "1190px", width: "228px", height: "225px" }}
+        style={{ top: "110px", left: "940px", width: "228px", height: "225px" }}
       />
 
       <img loading="lazy"
@@ -73,7 +92,7 @@ export default function Events() {
       />
 
       <div
-        className="absolute flex flex-col items-start max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-full max-md:!px-0 max-md:!gap-12 max-md:!pt-[15vh] max-md:!items-center"
+        className="absolute flex flex-col items-start max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-full max-md:!px-0 max-md:!gap-12 max-md:!pt-[5vh] max-md:!items-center"
         style={{
           top: "150px",
           left: "calc(50% - 680px)",
@@ -84,8 +103,8 @@ export default function Events() {
 
         <div className="flex flex-col items-start max-md:!w-full max-md:!px-4 max-md:!gap-6 max-md:!items-center" style={{ width: "851px", gap: "50px" }}>
           <h2
-            className="leading-tight max-md:!text-4xl max-md:!text-center max-md:!w-full"
-            style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "65px", fontWeight: 400, width: "834px" }}
+            className="leading-tight max-md:!text-4xl max-md:!text-center max-md:!w-full max-md:!ml-0"
+            style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "55px", fontWeight: 400, width: "834px", marginLeft: 120 }}
           >
             <span className="text-white">Choose Your</span><br/>
             <span className="text-white"> Journey in </span>
@@ -101,8 +120,8 @@ export default function Events() {
           </h2>
 
           <p
-            className="text-white text-2xl font-normal leading-normal max-md:!text-center max-md:!text-lg"
-            style={{ fontFamily: "'Exo 2', sans-serif", alignSelf: "stretch" }}
+            className="text-white text-2xl font-normal leading-normal max-md:!text-center max-md:!text-lg max-md:!ml-0"
+            style={{ fontFamily: "'Exo 2', sans-serif", alignSelf: "stretch",fontSize: "20px", marginLeft: 125 }}
           >
             Jelajahi berbagai rangkaian kegiatan Pekan IT yang menghadirkan
             kompetisi, inovasi digital, serta kesempatan belajar dari para
@@ -110,17 +129,17 @@ export default function Events() {
           </p>
         </div>
 
-        <div className="flex items-center w-full max-md:!flex-nowrap max-md:!overflow-x-auto max-md:[&::-webkit-scrollbar]:!hidden max-md:!snap-x max-md:!snap-mandatory max-md:!gap-6 max-md:!px-4 max-md:-mx-4 max-md:!w-screen" style={{ gap: "300px" }}>
+        <div className="flex items-center w-full max-md:!flex-nowrap max-md:!overflow-x-auto hide-scrollbar max-md:!snap-x max-md:!snap-mandatory max-md:!gap-6 max-md:!px-4 max-md:-mx-4 max-md:!w-screen max-md:!pl-0" style={{ gap: `${CARD_CONFIG.gap}px`, paddingLeft: `${CARD_CONFIG.paddingLeft}px` }}>
           {cards.map((card) => (
-            <div key={card.id} className="relative max-md:!scale-[0.79] max-md:!origin-center max-md:!flex-shrink-0 max-md:!snap-center" style={{ width: "400px", height: "280px" }}>
+            <div key={card.id} className="relative max-md:!scale-[0.79] max-md:!origin-center max-md:!flex-shrink-0 max-md:!snap-center" style={{ width: `${CARD_CONFIG.width}px`, height: `${CARD_CONFIG.height}px` }}>
 
               {/* Desktop Arrow Button */}
               <Link href={card.link}>
                 <button
                   className="absolute flex items-center justify-center z-10 cursor-pointer hover:scale-110 hover:brightness-110 transition-all duration-300 max-md:!hidden"
                   style={{
-                    top: "10px",
-                    right: "-243px",
+                    top: "5px",
+                    right: "-170px",
                     width: "50px",
                     height: "50px",
                     borderRadius: "25px",
@@ -136,8 +155,8 @@ export default function Events() {
                 <button
                   className="absolute hidden max-md:!flex items-center justify-center z-10 cursor-pointer active:scale-95 transition-all duration-300"
                   style={{
-                    top: "10px",
-                    right: "-15px",
+                    top: "2px",
+                    right: "-5px",
                     width: "50px",
                     height: "50px",
                     borderRadius: "25px",
@@ -152,18 +171,18 @@ export default function Events() {
               <Link href={card.link} className="block w-full h-full">
                 <div
                   className="absolute top-0 left-0 flex flex-col justify-end items-start cursor-pointer hover:brightness-110 transition-all duration-300"
-                  style={{ width: "400px", height: "280px", padding: "32px" }}
+                  style={{ width: `${CARD_CONFIG.width}px`, height: `${CARD_CONFIG.height}px`, padding: "32px" }}
                 >
 
                 <div
                   className="absolute left-0 top-0 w-full h-full"
                   style={{
                     WebkitMask:
-                      "conic-gradient(at calc(100% - 100px) 100px, transparent 25%, black 0), " +
-                      "radial-gradient(30px, transparent 98%, black 100%) 100% 0 / calc(100% - 70px) calc(100% - 70px) no-repeat",
+                      `conic-gradient(at calc(100% - ${CARD_CONFIG.maskSize}px) ${CARD_CONFIG.maskSize}px, transparent 25%, black 0), ` +
+                      `radial-gradient(${CARD_CONFIG.maskRadius}px, transparent 98%, black 100%) 100% 0 / calc(100% - ${CARD_CONFIG.maskOffset}px) calc(100% - ${CARD_CONFIG.maskOffset}px) no-repeat`,
                     mask:
-                      "conic-gradient(at calc(100% - 100px) 100px, transparent 25%, black 0), " +
-                      "radial-gradient(30px, transparent 98%, black 100%) 100% 0 / calc(100% - 70px) calc(100% - 70px) no-repeat",
+                      `conic-gradient(at calc(100% - ${CARD_CONFIG.maskSize}px) ${CARD_CONFIG.maskSize}px, transparent 25%, black 0), ` +
+                      `radial-gradient(${CARD_CONFIG.maskRadius}px, transparent 98%, black 100%) 100% 0 / calc(100% - ${CARD_CONFIG.maskOffset}px) calc(100% - ${CARD_CONFIG.maskOffset}px) no-repeat`,
                   }}
                 >
 
@@ -171,14 +190,14 @@ export default function Events() {
                     src={card.img}
                     alt={card.title}
                     className="absolute top-0 left-0 object-cover"
-                    style={{ width: "400px", height: "280px", borderRadius: "30px" }}
+                    style={{ width: `${CARD_CONFIG.width}px`, height: `${CARD_CONFIG.height}px`, borderRadius: "30px" }}
                   />
 
                   <div
                     className="absolute left-0 top-0"
                     style={{
-                      width: "400px",
-                      height: "280px",
+                      width: `${CARD_CONFIG.width}px`,
+                      height: `${CARD_CONFIG.height}px`,
                       borderRadius: "30px",
                       background: "linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.01) 60%)",
                     }}
