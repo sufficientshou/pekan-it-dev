@@ -3,10 +3,10 @@ import { BASE_PATH } from '@/config/constants';
 
 export default function Guide() {
   return (
-    <section className="relative pb-16 md:pb-32 pt-32 md:pt-[500px] text-center overflow-hidden max-md:!pb-0" style={{ minHeight: "900px", marginTop: "60px" }}>
+    <section className="relative pb-16 md:pb-32 pt-32 md:pt-[500px] text-center overflow-hidden max-md:!pb-0" style={{ marginTop: "60px" }}>
       
       {/* Background kiri */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px] max-md:!-translate-y-[97%]">
+      <div className="absolute left-0 top-[60%] -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px] max-md:!-translate-y-[45%]">
         <Image
           src={`${BASE_PATH}/images/1.webp`}
           alt="bg1"
@@ -15,7 +15,7 @@ export default function Guide() {
         />
       </div>
 
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!right-[-50px] max-md:!-translate-y-[97%]">
+      <div className="absolute right-0 top-[60%] -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!right-[-50px] max-md:!-translate-y-[45%]">
         <Image
           src={`${BASE_PATH}/images/2.webp`}
           alt="bg2"

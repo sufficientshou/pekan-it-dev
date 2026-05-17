@@ -132,22 +132,24 @@ export default function Footer() {
   ];
 
   const socialIcons = [
-    { Component: IconIg, label: "Instagram" },
-    { Component: IconX, label: "X (Twitter)" },
-    { Component: Linkedin, label: "LinkedIn" },
-    { Component: Youtube, label: "YouTube" },
-    { Component: Tiktok, label: "TikTok" },
+    { iconUrl: "https://cdn.simpleicons.org/instagram/white", label: "Instagram", url: "https://www.instagram.com/himtika_unsika/" },
+    { iconUrl: "https://cdn.simpleicons.org/x/white", label: "X (Twitter)", url: "https://x.com/himtika_unsika" },
+    { iconUrl: "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22white%22%3E%3Cpath%20d%3D%22M20.447%2020.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853%200-2.136%201.445-2.136%202.939v5.667H9.351V9h3.414v1.561h.046c.477-.9%201.637-1.85%203.37-1.85%203.601%200%204.267%202.37%204.267%205.455v6.286zM5.337%207.433c-1.144%200-2.063-.926-2.063-2.065%200-1.138.92-2.063%202.063-2.063%201.14%200%202.064.925%202.064%202.063%200%201.139-.925%202.065-2.064%202.065zm1.782%2013.019H3.555V9h3.564v11.452zM22.225%200H1.771C.792%200%200%20.774%200%201.729v20.542C0%2023.227.792%2024%201.771%2024h20.451C23.2%2024%2024%2023.227%2024%2022.271V1.729C24%20.774%2023.2%200%2022.222%200h.003z%22%2F%3E%3C%2Fsvg%3E", label: "LinkedIn", url: "https://www.linkedin.com/company/himtika-unsika/" },
+    { iconUrl: "https://cdn.simpleicons.org/youtube/white", label: "YouTube", url: "https://www.youtube.com/@HIMTIKAUNSIKA" },
+    { iconUrl: "https://cdn.simpleicons.org/tiktok/white", label: "TikTok", url: "https://www.tiktok.com/@himtika.unsika" },
   ];
 
   return (
     <>
     {/* Desktop Footer (Hidden on Mobile) */}
-    <footer className="relative w-full bg-[#252742] max-md:!hidden" style={{ minHeight: "458px" }}>
-      <div className="max-w-[1280px] mx-auto px-8 pt-12 pb-6 flex flex-col h-full">
+    <footer className="relative w-full bg-[#252742] max-md:!hidden flex flex-col items-center">
+      <div className="w-full max-w-[1440px] px-8 lg:px-20 pt-20 pb-10 flex flex-col h-full justify-between">
+        
         {/* Top section */}
-        <div className="flex items-start justify-between flex-1">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full gap-16 lg:gap-10" style={{ marginTop: "25px" }}>
+          
           {/* Left - Logo, text, social */}
-          <div className="flex flex-col items-center" style={{ minWidth: "280px" }}>
+          <div className="flex flex-col items-center lg:ml-12" style={{ minWidth: "400px" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img loading="lazy"
               className="w-52 h-52" 
@@ -163,22 +165,25 @@ export default function Footer() {
             >
               HIMTIKA
             </div>
-            <div className="flex gap-[18px] mt-4">
-              {socialIcons.map(({ Component, label }) => (
+            <div className="flex gap-[18px]" style={{ marginTop: "30px", marginBottom: "20px" }}>
+              {socialIcons.map(({ iconUrl, label, url }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
-                  className="hover:opacity-80 transition-opacity"
+                  className="w-[42px] h-[42px] bg-[#3A3C5A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                 >
-                  <Component className="w-10 h-10" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={iconUrl} alt={label} className="w-[20px] h-[20px]" />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Right - Link columns */}
-          <div className="flex gap-16 pt-2">
+          <div className="flex flex-wrap justify-center lg:justify-end gap-12 lg:gap-24 pt-8 lg:pr-16 w-full lg:w-auto" style={{ marginTop: "20px", marginLeft: "40px" }}>
             {/* Media Column */}
             <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
               <div 
@@ -247,29 +252,32 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider Line */}
-        <div className="w-full border-t-2 border-white mt-6 mb-4" />
+        {/* Bottom Section */}
+        <div className="w-full flex flex-col mt-24">
+          {/* Divider Line */}
+          <div className="w-full border-t-2 border-white mb-6 opacity-80" />
 
-        {/* Copyright */}
-        <div className="flex items-center justify-center gap-2 pb-2">
-          <span 
-            className="text-white text-base font-semibold"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            Licensed, Registered, and authorized by
-          </span>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img loading="lazy"
-            className="w-8 h-8" 
-            src={`${BASE_PATH}/images/img-himtika.webp`} 
-            alt="HIMTIKA"
-          />
-          <span 
-            className="text-white text-sm font-semibold"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            HIMTIKA 2025
-          </span>
+          {/* Copyright */}
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <span 
+              className="text-white text-base font-semibold text-center"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+            >
+              Licensed, Registered, and authorized by
+            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img loading="lazy"
+              className="w-8 h-8" 
+              src={`${BASE_PATH}/images/img-himtika.webp`} 
+              alt="HIMTIKA"
+            />
+            <span 
+              className="text-white text-sm font-semibold whitespace-nowrap"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+            >
+              HIMTIKA 2025
+            </span>
+          </div>
         </div>
       </div>
     </footer>
@@ -297,53 +305,56 @@ export default function Footer() {
       </div>
 
       {/* Links Layout */}
-      <div className="w-full max-w-[400px] flex justify-between gap-6 mb-8 flex-wrap border-t border-white/20 pt-8 mt-2 max-md:!px-2">
-        {/* Media Column */}
-        <div className="flex flex-col gap-3 flex-1 min-w-[130px]">
-          <div 
-            className="text-white text-base font-bold"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            Media
-          </div>
-          {mediaLinks.map((link) => (
-            <a 
-              key={link.label}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
+      <div className="w-full max-w-[400px] flex flex-col gap-6 mb-8 border-t border-white/20 pt-8 mt-2 px-2">
+        {/* Top Row: Media & Event */}
+        <div className="flex justify-between w-full gap-4">
+          {/* Media Column */}
+          <div className="flex flex-col gap-3 flex-1">
+            <div 
+              className="text-white text-base font-bold"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
-              {link.label}
-            </a>
-          ))}
-        </div>
+              Media
+            </div>
+            {mediaLinks.map((link) => (
+              <a 
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
 
-        {/* Event Column */}
-        <div className="flex flex-col gap-3 flex-1 min-w-[130px] items-end text-right">
-          <div 
-            className="text-white text-base font-bold"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            Event
-          </div>
-          {eventLinks.map((link) => (
-            <a 
-              key={link.label}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
+          {/* Event Column */}
+          <div className="flex flex-col gap-3 flex-1 items-end text-right">
+            <div 
+              className="text-white text-base font-bold"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
-              {link.label}
-            </a>
-          ))}
+              Event
+            </div>
+            {eventLinks.map((link) => (
+              <a 
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Aplikasi Publik Column */}
-        <div className="flex flex-col gap-4 min-w-[130px] w-full mt-6">
+        <div className="flex flex-col gap-4 w-full mt-4">
           <div 
             className="text-white text-base font-bold"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
@@ -372,19 +383,22 @@ export default function Footer() {
         className="flex gap-5 justify-center w-full"
         style={{ marginTop: "45px", marginBottom: "45px" }}
       >
-        {socialIcons.map(({ Component, label }) => (
+        {socialIcons.map(({ iconUrl, label, url }) => (
           <a
             key={label}
-            href="#"
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={label}
-            className="hover:opacity-80 transition-opacity"
+            className="w-[44px] h-[44px] bg-[#3A3C5A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
           >
-            <Component className="w-[44px] h-[44px]" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={iconUrl} alt={label} className="w-[22px] h-[22px]" />
           </a>
         ))}
       </div>
 
-      <div className="w-full border-t border-white/30" style={{ marginBottom: "24px" }} />
+      <div className="w-full border-t border-white/30" style={{marginBottom: "24px" }} />
 
       {/* Copyright */}
       <div className="flex flex-col items-center gap-3 pb-6">

@@ -201,28 +201,29 @@ export default function Journey() {
       </div>
 
       {/* Desktop Timeline - 3 column flexbox layout */}
-      <div
-        className="hidden md:block relative z-10 w-full mx-auto"
-        style={{ maxWidth: "1200px", padding: "50px clamp(16px, 3%, 40px) 40px" }}
-      >
-        {/* Rocket image - in flow so it sets container height */}
-        <img
-          loading="lazy"
-          src={`${BASE_PATH}/images/timeline-rocket.webp`}
-          alt="Rocket Timeline"
-          className="block mx-auto"
-          style={{
-            width: "clamp(340px, 49%, 590px)",
-            height: "auto",
-            objectFit: "contain",
-            position: "relative",
-            zIndex: 1,
-            transform: "translateX(490px)",
-          }}
-        />
+      <div className="hidden md:flex relative z-10 w-full justify-center">
+        <div
+          className="relative w-full"
+          style={{ maxWidth: "1200px", padding: "50px clamp(16px, 3%, 40px) 40px" }}
+        >
+          {/* Rocket image - in flow so it sets container height */}
+          <img
+            loading="lazy"
+            src={`${BASE_PATH}/images/timeline-rocket.webp`}
+            alt="Rocket Timeline"
+            className="block mx-auto"
+            style={{
+              width: "clamp(340px, 49%, 590px)",
+              height: "auto",
+              objectFit: "contain",
+              position: "relative",
+              zIndex: 1,
+              transform: "translateX(300px)", /* Ganti angka ini untuk mengatur seberapa jauh gesernya */
+            }}
+          />
 
-        {/* Timeline rows - overlaps the rocket via negative margin */}
-        <div className="relative" style={{ zIndex: 5, marginTop: "clamp(-600px, -45%, -300px)" }}>
+          {/* Timeline rows - overlaps the rocket via negative margin */}
+          <div className="relative w-full" style={{ zIndex: 5, marginTop: "clamp(-800px, -65%, -500px)", marginBottom: "clamp(100px, 15%, 400px)" }}>
           {cards.map((card, i) => {
             const isLeft = card.side === "left";
             return (
@@ -272,6 +273,7 @@ export default function Journey() {
               "linear-gradient(0deg, rgba(0,9,35,1) 0%, rgba(0,9,35,0.8) 30%, transparent 100%)",
           }}
         />
+        </div>
       </div>
 
       <div className="md:hidden relative z-10 flex flex-col items-center px-4 pb-8 w-full">
