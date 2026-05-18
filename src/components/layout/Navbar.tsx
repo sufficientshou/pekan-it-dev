@@ -12,7 +12,11 @@ const navItems = [
     dropdown: true,
     items: ["Detail SEMANTIK", "Pendaftaran"],
   },
-  { label: "NIC", dropdown: true, items: [] },
+  { 
+    label: "NIC", 
+    dropdown: true, 
+    items: ["Detail NIC", "Pendaftaran"] 
+  },
   { label: "Seminar", dropdown: true, items: [] },
 ];
 
@@ -89,6 +93,8 @@ export default function Navbar() {
                           ? "/pendaftaran-ditutup"
                           : subItem === "Detail SEMANTIK"
                           ? "/detail-semantik"
+                          : subItem === "Detail NIC"
+                          ? "/detail-nic"
                           : "#"
                       }
                       className="block px-4 py-2 text-white text-xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-lg max-md:!px-0 max-md:!py-1"
