@@ -52,7 +52,7 @@ export default function Hero() {
               fontSize: "clamp(40px, 8vw, 20px)",
             }}
           >
-            SEMANTIK
+            NIC
           </h6>
 
           <h1
@@ -69,7 +69,7 @@ export default function Hero() {
             className="w-full max-w-[536px] text-center text-white text-2xl font-normal leading-relaxed max-md:!text-base max-md:!leading-snug"
             style={{ fontFamily: "'Exo 2', sans-serif" }}
           >
-            Mulai perjalananmu dan tunjukan inovasi terbaikmu di SEMANTIK
+            Mulai perjalananmu dan tunjukan inovasi terbaikmu di N I C
           </p>
 
           <div className="flex items-center gap-7 mt-1 flex-wrap justify-center max-md:!gap-4 max-md:!flex-col max-md:!w-full max-md:!mt-4">

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 
-const tabs = ["Desain Grafis", "Typing Competition", "Competitive Programming"];
+const tabs = ["UI/UX Design", "Software Development"];
 
 const lombas: Record<
   string,
@@ -14,25 +14,18 @@ const lombas: Record<
     cp: { name: string; wa: string };
   }
 > = {
-  "Desain Grafis": {
-    title: "Grafis",
-    titleAccent: "Desain",
+  "UI/UX Design": {
+    title: "Design",
+    titleAccent: "UI/UX",
     description:
-      "Perlombaan ini menantang peserta untuk membuat poster kreatif dengan memanfaatkan elemen visual seperti gambar, warna, dan tipografi. Melalui tema \"Peran AI sebagai Pendukung Kreativitas Manusia\", peserta diajak mengeksplorasi ide dan kreativitas dalam desain visual.",
-    cp: { name: "M. Rafisyah", wa: "082125622387" },
+      "Perlombaan ini menantang peserta untuk merancang antarmuka pengguna yang intuitif dan menarik. Peserta diajak mengeksplorasi kreativitas dalam desain interaksi dan pengalaman pengguna yang optimal.",
+    cp: { name: "Fajar Abdilah", wa: "085714556256" },
   },
-  "Typing Competition": {
-    title: "Competition",
-    titleAccent: "Typing",
+  "Software Development": {
+    title: "Development",
+    titleAccent: "Software",
     description:
-      "Uji kecepatan dan akurasi mengetikmu! Peserta akan berkompetisi menyelesaikan teks dalam waktu tercepat dengan kesalahan seminimal mungkin.",
-    cp: { name: "Julian Manasye Nasyok", wa: "081236294806" },
-  },
-  "Competitive Programming": {
-    title: "Programming",
-    titleAccent: "Competitive",
-    description:
-      "Tantang kemampuan algoritmamu! Selesaikan berbagai soal pemrograman dengan logika dan efisiensi terbaik dalam waktu yang ditentukan.",
+      "Tantang kemampuanmu dalam membangun aplikasi perangkat lunak! Peserta akan mengembangkan solusi digital inovatif dengan teknologi terkini.",
     cp: { name: "Fajar Abdilah", wa: "085714556256" },
   },
 };
@@ -246,7 +239,7 @@ export default function AboutLombaSemantik() {
   // }, [step, activeTab]); // Re-run saat ganti lomba atau step
 
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState("Desain Grafis");
+  const [activeTab, setActiveTab] = useState("UI/UX Design");
   const [step, setStep] = useState(1);
   const [formDataState, setFormDataState] = useState({
     nama: "",
@@ -532,11 +525,11 @@ export default function AboutLombaSemantik() {
   return (
     <section
       id="form-pendaftaran-section"
-      className="relative w-full overflow-hidden max-md:!px-4"
+      className="relative w-full overflow-hidden max-md:!px-4 flex flex-col items-center"
       style={{ background: "#000923", minHeight: "832px", padding: "60px 0 80px" }}
     >
       
-      <div className="flex flex-col items-center mb-8 max-md:!mb-8">
+      <div className="flex flex-col items-center w-full mb-8 max-md:!mb-8">
         <h2
           className="text-center font-bold leading-tight max-md:!mb-10"
           style={{marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(40px, 5vw, 64px)" }}
@@ -557,7 +550,7 @@ export default function AboutLombaSemantik() {
 
       </div>
 
-      <div className="flex justify-center gap-20 mb-12 flex-wrap px-4 max-md:!flex-row max-md:!justify-center max-md:!flex-nowrap max-md:!gap-2 max-md:!pb-6 max-md:!mb-10 max-md:!px-3">
+      <div className="flex justify-center w-full gap-20 mb-12 flex-wrap px-4 max-md:!flex-row max-md:!justify-center max-md:!flex-nowrap max-md:!gap-2 max-md:!pb-6 max-md:!mb-10 max-md:!px-3">
         {tabs.map((tab) => (
           <div key={tab} className="relative w-[300px] max-md:!flex-1 max-md:!min-w-0 max-md:!w-auto">
             <div 
@@ -592,18 +585,16 @@ export default function AboutLombaSemantik() {
       </div>
 
       <div
-        className="mx-auto flex flex-col md:flex-row justify-between gap-10 px-6 md:px-12 items-start w-full max-md:!px-0"
+        className="flex flex-col md:flex-row justify-center gap-[clamp(2rem,4vw,5rem)] px-6 md:px-12 items-start w-full max-md:!px-0"
         style={{ maxWidth: "1200px" }}
       >
         
         <div 
           className="flex flex-col gap-6 max-md:!transform-none max-md:!pt-0 max-md:!flex-auto max-md:!w-full max-md:!text-center max-md:!items-center max-md:!mt-4 max-md:!gap-4 max-md:!px-5" 
           style={{ 
-
-            flex: "0 0 630px",
-
-            transform: "translateX(90px)",
-
+            flex: "1 1 auto",
+            maxWidth: "630px",
+            minWidth: "0",
             paddingTop: "90px"
           }}
         >
@@ -664,14 +655,10 @@ export default function AboutLombaSemantik() {
           className="rounded-2xl flex flex-col w-full md:w-auto relative max-md:!transform-none max-md:!mt-10 max-md:!mx-auto max-md:!mb-10 max-md:!w-[95%] max-md:!min-h-[560px] max-md:!pb-8"
           style={{
             width: "100%",
-            maxWidth: "450px", // 🟩 Atur lebar form di sini (contoh: 480px)
-            minHeight: "600px", // 🟩 Atur tinggi form di sini (contoh: 560px)
-
-            transform: "translateX(270px)", 
-
-            marginTop: "80px", 
-            
-            marginLeft: "auto", // Membantu mendorong form penuh ke sisi kanan
+            maxWidth: "450px",
+            minHeight: "600px",
+            marginTop: "80px",
+            flexShrink: 0,
             background: "rgba(0,9,35,0.85)",
             backdropFilter: "blur(12px)",
             boxShadow: "0 0 40px rgba(16,230,241,0.15), 0 0 80px rgba(208,0,203,0.1)",
@@ -724,13 +711,13 @@ export default function AboutLombaSemantik() {
             <div className="flex justify-between items-center mb-6">
               <span
                 className="text-white font-semibold flex-1 max-md:!ml-0"
-                style={{ marginLeft: 30, marginTop: 10,fontFamily: "'Exo 2', sans-serif", fontSize: "14px" }}
+                style={{ marginLeft: "6.5%", marginTop: 10, fontFamily: "'Exo 2', sans-serif", fontSize: "14px" }}
               >
                 Informasi Peserta
               </span>
               <span
                 className="text-white opacity-60 text-sm max-md:!mr-0 max-md:!text-xs"
-                style={{ marginRight: 30, fontFamily: "'Exo 2', sans-serif" }}
+                style={{ marginRight: "6.5%", fontFamily: "'Exo 2', sans-serif" }}
               >
                 Step {step}/2
               </span>
@@ -740,9 +727,9 @@ export default function AboutLombaSemantik() {
               {step === 1 ? (
                 <div className="flex flex-col gap-6 max-md:!gap-4">
                   <div className="flex flex-col gap-8 max-md:!gap-1">
-                      <span className="w-full flex flex-col gap-2 sm:gap-3 lg:gap-4">
+                      <span className="w-full flex flex-col gap-2">
                           <label htmlFor="Nama" className="text-white text-sm opacity-80 max-md:!ml-0"
-                        style={{marginLeft:30 , fontFamily: "'Exo 2', sans-serif" }}>
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
                             Nama Lengkap :
                           </label>
                           <input type="text" name="nama" id="Nama" placeholder="Light Yagami" required 
@@ -750,11 +737,10 @@ export default function AboutLombaSemantik() {
                                   onChange={(e) => setFormDataState({ ...formDataState, nama: e.target.value })}
                                   className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
                                   style={{
-
-                                    marginLeft: 30,
+                                    marginLeft: "6.5%",
                                     paddingLeft: 10,
-                                    width: "87%", // Ganti nilainya untuk mengatur lebar secara manual
-                                    height: "40px", // Ganti nilainya untuk mengatur tinggi secara manual
+                                    width: "87%",
+                                    height: "40px",
 
                                     background: "rgba(255, 255, 255, 1)",
                                     border: "1px solid rgba(255,255,255,0.15)",
@@ -768,9 +754,9 @@ export default function AboutLombaSemantik() {
                                   }  />
                       </span>
                       
-                      <span className="w-full flex flex-col gap-2 sm:gap-3 lg:gap-4">
+                      <span className="w-full flex flex-col gap-2">
                           <label htmlFor="NoTelepon" className="text-white text-sm opacity-80 max-md:!ml-0"
-                        style={{marginLeft:30 , fontFamily: "'Exo 2', sans-serif" }}>
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
                             No. WhatsApp :
                           </label>
                           <input type="text" name="no_telepon" id="NoTelepon" placeholder="0895xxxxxxxx" required 
@@ -778,11 +764,10 @@ export default function AboutLombaSemantik() {
                             onChange={(e) => setFormDataState({ ...formDataState, telepon: e.target.value })}
                             className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
                             style={{
-
-                              marginLeft: 30,
+                              marginLeft: "6.5%",
                               paddingLeft: 10,
-                              width: "87%", // Ganti nilainya untuk mengatur lebar secara manual
-                              height: "40px", // Ganti nilainya untuk mengatur tinggi secara manual
+                              width: "87%",
+                              height: "40px",
 
                               background: "rgba(255, 255, 255, 1)",
                               border: "1px solid rgba(255,255,255,0.15)",
@@ -796,9 +781,9 @@ export default function AboutLombaSemantik() {
                             }  />
                       </span>
 
-                      <span className="w-full flex flex-col gap-2 sm:gap-3 lg:gap-4">
+                      <span className="w-full flex flex-col gap-2">
                           <label htmlFor="npm" className="text-white text-sm opacity-80 max-md:!ml-0"
-                        style={{marginLeft:30 , fontFamily: "'Exo 2', sans-serif" }}>
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
                             NPM :
                           </label>
                           <input type="text" name="npm" id="npm" placeholder="2_10631170___" required 
@@ -806,11 +791,10 @@ export default function AboutLombaSemantik() {
                                   onChange={(e) => setFormDataState({ ...formDataState, npm: e.target.value })}
                                   className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
                                   style={{
-
-                                    marginLeft: 30,
+                                    marginLeft: "6.5%",
                                     paddingLeft: 10,
-                                    width: "87%", // Ganti nilainya untuk mengatur lebar secara manual
-                                    height: "40px", // Ganti nilainya untuk mengatur tinggi secara manual
+                                    width: "87%",
+                                    height: "40px",
 
                                     background: "rgba(255, 255, 255, 1)",
                                     border: "1px solid rgba(255,255,255,0.15)",
@@ -824,9 +808,9 @@ export default function AboutLombaSemantik() {
                                   }  />
                       </span>
                       
-                      <span className="w-full flex flex-col gap-2 sm:gap-3 lg:gap-4">
+                      <span className="w-full flex flex-col gap-2">
                           <label htmlFor="angkatan" className="text-white text-sm opacity-80 max-md:!ml-0"
-                        style={{marginLeft:30 , fontFamily: "'Exo 2', sans-serif" }}>
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
                             Angkatan :
                           </label>
                           <input type="text" name="angkatan" id="angkatan" placeholder="202_" required 
@@ -834,11 +818,10 @@ export default function AboutLombaSemantik() {
                                   onChange={(e) => setFormDataState({ ...formDataState, angkatan: e.target.value })}
                                   className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
                                   style={{
-
-                                    marginLeft: 30,
+                                    marginLeft: "6.5%",
                                     paddingLeft: 10,
-                                    width: "87%", // Ganti nilainya untuk mengatur lebar secara manual
-                                    height: "40px", // Ganti nilainya untuk mengatur tinggi secara manual
+                                    width: "87%",
+                                    height: "40px",
 
                                     background: "rgba(255, 255, 255, 1)",
                                     border: "1px solid rgba(255,255,255,0.15)",
@@ -858,9 +841,9 @@ export default function AboutLombaSemantik() {
                     onClick={() => setStep(2)}
                     className="w-full py-3 rounded-lg text-white font-semibold mt-2 transition-opacity hover:opacity-90 cursor-pointer max-md:!ml-0 max-md:!mt-8 max-md:!w-full max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
                     style={{
-                      marginTop: 20,  
-                      marginLeft: 30,
-                      width: "87%", // Ganti nilainya untuk mengatur lebar secara manual
+                      marginTop: 20,
+                      marginLeft: "6.5%",
+                      width: "87%",
                       height: "40px",
                       fontFamily: "'Exo 2', sans-serif",
                       background:
@@ -875,15 +858,15 @@ export default function AboutLombaSemantik() {
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-5 transition-all duration-500">
                         <span className="w-full">
-                            <label htmlFor="bukti-grup" className="text-white opacity-70 text-sm max-md:!ml-0" style={{ marginLeft: 30, fontFamily: "'Exo 2', sans-serif" }}>Upload Bukti Share Pamflet ke 2 Grup Whatsapp :</label>
+                            <label htmlFor="bukti-grup" className="text-white opacity-70 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>Upload Bukti Share Pamflet ke 2 Grup Whatsapp :</label>
                             <input type="file" id="bukti-grup" name="bukti_grup" accept=".jpg,.jpeg,.png,.pdf" style={{display: "none"}} required />
                             <div className="flex justify-center items-center gap-4 flex-wrap">
                                 <label htmlFor="bukti-grup" 
                                   className="flex items-center justify-center pr-[150px] gap-3 rounded-lg py-10 cursor-pointer transition-colors max-md:!mt-2 max-md:!ml-0 max-md:!w-full max-md:!h-[80px]"
                                   style={{
-                                    marginLeft: 5,
-                                    marginTop: 10,  
-                                    width: "87%", // Ganti nilainya untuk mengatur lebar secara manual
+                                    marginLeft: "1%",
+                                    marginTop: 10,
+                                    width: "87%",
                                     height: "80px",
                                     border: "2px dashed rgba(16,230,241,0.4)",
                                     background: "rgba(16,230,241,0.04)",
@@ -904,15 +887,15 @@ export default function AboutLombaSemantik() {
                         </span>
 
                         <span className="w-full">
-                            <label htmlFor="bukti-story" className="text-white opacity-70 text-sm max-md:!ml-0" style={{ marginLeft: 30, fontFamily: "'Exo 2', sans-serif" }}>Bukti Share SG, Follow IG, & Post Twibbon :</label>
+                            <label htmlFor="bukti-story" className="text-white opacity-70 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>Bukti Share SG, Follow IG, & Post Twibbon :</label>
                             <input type="file" id="bukti-story" name="bukti-story" accept=".jpg,.jpeg,.png,.pdf" style={{display: "none"}} required />
                             <div className="flex justify-center items-center gap-4 flex-wrap">
                                 <label htmlFor="bukti-story" 
                                   className="flex items-center justify-center pr-[100px] gap-3 rounded-lg py-10 cursor-pointer transition-colors max-md:!mt-2 max-md:!ml-0 max-md:!w-full max-md:!h-[80px]"
                                   style={{
-                                    marginLeft: 5,
-                                    marginTop: 10,  
-                                    width: "87%", // Ganti nilainya untuk mengatur lebar secara manual
+                                    marginLeft: "1%",
+                                    marginTop: 10,
+                                    width: "87%",
                                     height: "80px",
                                     border: "2px dashed rgba(16,230,241,0.4)",
                                     background: "rgba(16,230,241,0.04)",
@@ -933,15 +916,15 @@ export default function AboutLombaSemantik() {
                         </span>
                         
                         <span className="w-full">
-                            <label htmlFor="bukti-ktm" className="text-white opacity-70 text-sm max-md:!ml-0" style={{ marginLeft: 30, fontFamily: "'Exo 2', sans-serif" }}>Upload KRS/KTM :</label>
+                            <label htmlFor="bukti-ktm" className="text-white opacity-70 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>Upload KRS/KTM :</label>
                             <input type="file" id="bukti-ktm" name="bukti_ktm" accept=".jpg,.jpeg,.png,.pdf" style={{display: "none"}} required />
                             <div className="flex justify-center items-center gap-4 flex-wrap">
                                 <label htmlFor="bukti-ktm" 
                                   className="flex items-center justify-center pr-[100px] gap-3 rounded-lg py-10 cursor-pointer transition-colors max-md:!mt-2 max-md:!ml-0 max-md:!w-full max-md:!h-[80px]"
                                   style={{
-                                    marginLeft: 5,
-                                    marginTop: 10,  
-                                    width: "87%", // Ganti nilainya untuk mengatur lebar secara manual
+                                    marginLeft: "1%",
+                                    marginTop: 10,
+                                    width: "87%",
                                     height: "80px",
                                     border: "2px dashed rgba(16,230,241,0.4)",
                                     background: "rgba(16,230,241,0.04)",
@@ -962,7 +945,7 @@ export default function AboutLombaSemantik() {
                         </span>
                     </div>
 
-                    <div className="flex gap-3 mt-2 max-md:!mt-4 max-md:!ml-0 max-md:!w-full max-md:!gap-2" style={{ marginTop: 20, marginLeft: 30, width: "87%" }}>
+                    <div className="flex gap-3 mt-2 max-md:!mt-4 max-md:!ml-0 max-md:!w-full max-md:!gap-2" style={{ marginTop: 20, marginLeft: "6.5%", width: "87%" }}>
                       <button
                         type="button"
                         onClick={() => setStep(1)}
@@ -999,7 +982,7 @@ export default function AboutLombaSemantik() {
                       <div 
                         className="mt-4 p-3 rounded-lg text-sm text-center max-md:!ml-0 max-md:!w-full"
                         style={{
-                          marginLeft: 30,
+                          marginLeft: "6.5%",
                           width: "87%",
                           background: submitMessage.includes("✅") 
                             ? "rgba(0,255,0,0.1)" 
