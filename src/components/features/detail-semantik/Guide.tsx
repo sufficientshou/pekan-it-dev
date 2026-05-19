@@ -4,8 +4,6 @@ import { BASE_PATH } from '@/config/constants';
 export default function Guide() {
   return (
     <section className="relative pb-16 md:pb-32 pt-32 md:pt-[500px] text-center overflow-hidden max-md:!pb-0" style={{ marginTop: "60px" }}>
-      
-      {/* Background kiri */}
       <div className="absolute left-0 top-[60%] -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px] max-md:!-translate-y-[45%]">
         <Image
           src={`${BASE_PATH}/images/1.webp`}
@@ -24,7 +22,6 @@ export default function Guide() {
         />
       </div>
 
-      {/* Title */}
       <div className="flex flex-col items-center mb-8 relative z-20 px-4">
         <h2
           className="text-center font-bold leading-tight"
@@ -46,26 +43,19 @@ export default function Guide() {
         </h2>
       </div>
 
-      {/* Subtitle */}
       <p className="text-white mt-4 max-w-xl relative z-10 px-6 md:px-4" style={{ fontSize: "clamp(13px, 2.5vw, 15px)", marginLeft: "auto", marginRight: "auto", paddingLeft: "10px", top: "-30px", lineHeight: "1.6" }}>
         Pastikan kamu memahami seluruh ketentuan, alur pendaftaran,
         <br className="hidden md:block" />
         dan detail perlombaan yang telah disusun.
       </p>
 
-      {/* Guidebook Card */}
       <div className="relative mt-12 md:mt-16 flex justify-center z-10 px-4 max-md:!mt-10">
 
-        {/* Clickable Guidebook Image — ukuran mengikuti foto */}
         <a
           href={`${BASE_PATH}/files/Guidebook.pdf`}
           download="Guidebook-SEMANTIK.pdf"
           className="relative group cursor-pointer inline-block"
         >
-          {/* Glow di belakang - REMOVED */}
-
-          {/* Guidebook cover image — lebar & tinggi mengikuti foto asli */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img loading="lazy"
             src={`${BASE_PATH}/images/guidebook-cover.webp`}
             alt="Guidebook SEMANTIK"
@@ -77,13 +67,10 @@ export default function Guide() {
               boxShadow: "0 8px 40px rgba(208, 0, 203, 0.4)",
             }}
           />
-
-          {/* Hover overlay with download icon */}
           <div
             className="absolute inset-0 rounded-2xl flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style={{ background: "rgba(0, 9, 35, 0.7)", backdropFilter: "blur(4px)" }}
           >
-            {/* Download icon */}
             <svg
               className="w-12 h-12 text-white drop-shadow-lg animate-bounce"
               viewBox="0 0 24 24"
@@ -104,8 +91,6 @@ export default function Guide() {
               Download Guidebook
             </span>
           </div>
-
-          {/* Badge PDF */}
           <div
             className="absolute top-3 right-3 px-2 py-1 rounded-full font-bold text-white"
             style={{

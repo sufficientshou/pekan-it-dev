@@ -200,13 +200,11 @@ export default function Journey() {
         </h3>
       </div>
 
-      {/* Desktop Timeline - 3 column flexbox layout */}
       <div className="hidden md:flex relative z-10 w-full justify-center">
         <div
           className="relative w-full"
           style={{ maxWidth: "1200px", padding: "50px clamp(16px, 3%, 40px) 40px" }}
         >
-          {/* Rocket image - in flow so it sets container height */}
           <img
             loading="lazy"
             src={`${BASE_PATH}/images/timeline-rocket.webp`}
@@ -218,11 +216,10 @@ export default function Journey() {
               objectFit: "contain",
               position: "relative",
               zIndex: 1,
-              transform: "translateX(300px)", /* Ganti angka ini untuk mengatur seberapa jauh gesernya */
+              transform: "translateX(300px)",
             }}
           />
 
-          {/* Timeline rows - overlaps the rocket via negative margin */}
           <div className="relative w-full" style={{ zIndex: 5, marginTop: "clamp(-800px, -65%, -500px)", marginBottom: "clamp(100px, 15%, 400px)" }}>
           {cards.map((card, i) => {
             const isLeft = card.side === "left";
@@ -235,7 +232,6 @@ export default function Journey() {
                   gap: "clamp(20px, 5%, 80px)",
                 }}
               >
-                {/* Left column */}
                 <div className="flex-1 flex justify-end" style={{ minWidth: 0 }}>
                   {isLeft ? (
                     <div style={{ width: "clamp(200px, 80%, 280px)" }}>
@@ -246,10 +242,8 @@ export default function Journey() {
                   )}
                 </div>
 
-                {/* Center spacer (rocket area) */}
                 <div style={{ width: "clamp(200px, 35%, 440px)", flexShrink: 0 }} />
 
-                {/* Right column */}
                 <div className="flex-1 flex justify-start" style={{ minWidth: 0 }}>
                   {!isLeft ? (
                     <div style={{ width: "clamp(200px, 80%, 280px)" }}>
@@ -264,7 +258,6 @@ export default function Journey() {
           })}
         </div>
 
-        {/* Bottom fade */}
         <div
           className="absolute bottom-0 left-0 w-full pointer-events-none z-10"
           style={{

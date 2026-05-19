@@ -1,86 +1,38 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { BASE_PATH } from '@/config/constants';
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-function HighlightRow({ images }: { images: string[] }) {
-  return (
-    <>
-      <div className="hidden md:flex items-center justify-center gap-4 w-full max-w-5xl mx-auto">
-        <div
-          className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
-          style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        >
-          <img src={`${BASE_PATH}/images/${images[0]}`} alt="Highlight 1" className="w-full h-full object-cover" />
-        </div>
-
-        <div
-          className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
-          style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        >
-          <img src={`${BASE_PATH}/images/${images[1]}`} alt="Highlight 2" className="w-full h-full object-cover" />
-        </div>
-
-        <div className="relative z-30 flex-shrink-0 flex justify-center"
-          style={{ width: "clamp(80px, 10vw, 120px)", height: "clamp(80px, 10vw, 120px)" }}
-        >
-          <Image
-            src={`${BASE_PATH}/images/s.webp`}
-            alt="logo"
-            fill
-            className="object-contain"
-            style={{ filter: "drop-shadow(0 0 15px rgba(168,85,247,0.5))" }}
-          />
-        </div>
-
-        <div
-          className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
-          style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        >
-          <img src={`${BASE_PATH}/images/${images[2]}`} alt="Highlight 3" className="w-full h-full object-cover" />
-        </div>
-
-        <div
-          className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
-          style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        >
-          <img src={`${BASE_PATH}/images/${images[3]}`} alt="Highlight 4" className="w-full h-full object-cover" />
-        </div>
-      </div>
-
-      <div className="md:hidden flex flex-col items-center gap-5 w-full px-4">
-        <div className="flex gap-3 w-full justify-center">
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden">
-            <img src={`${BASE_PATH}/images/${images[0]}`} alt="Highlight 1" className="w-full h-full object-cover" />
-          </div>
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden">
-            <img src={`${BASE_PATH}/images/${images[1]}`} alt="Highlight 2" className="w-full h-full object-cover" />
-          </div>
-        </div>
-        <div className="relative w-16 h-16">
-          <Image
-            src={`${BASE_PATH}/images/s.webp`}
-            alt="logo"
-            fill
-            className="object-contain"
-            style={{ filter: "drop-shadow(0 0 15px rgba(168,85,247,0.5))" }}
-          />
-        </div>
-        <div className="flex gap-3 w-full justify-center">
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden">
-            <img src={`${BASE_PATH}/images/${images[2]}`} alt="Highlight 3" className="w-full h-full object-cover" />
-          </div>
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden">
-            <img src={`${BASE_PATH}/images/${images[3]}`} alt="Highlight 4" className="w-full h-full object-cover" />
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
+const highlightImages = [
+  "dok1.webp",
+  "dok2.webp",
+  "dok3.webp",
+  "dok4.webp",
+  "dok5.webp"
+];
 
 export default function Highlights() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % highlightImages.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + highlightImages.length) % highlightImages.length);
+  };
+
+  const currentImages = [
+    highlightImages[currentIndex],
+    highlightImages[(currentIndex + 1) % highlightImages.length],
+    highlightImages[(currentIndex + 2) % highlightImages.length],
+  ];
+
   return (
     <section
-      className="relative text-center text-white overflow-hidden"
+      className="relative text-white overflow-hidden flex flex-col items-center w-full"
       style={{
         background: "#000923",
         paddingTop: "clamp(130px, 12vw, 220px)",
@@ -98,45 +50,82 @@ export default function Highlights() {
         <Image src={`${BASE_PATH}/images/Elips.webp`} alt="bg2" fill className="object-contain object-right brightness-125 contrast-125" />
       </div>
 
-      <div className="flex flex-col items-center text-center relative z-20 px-4"
-        style={{ marginBottom: "clamp(20px, 4vh, 40px)" }}
+      <div className="flex flex-col items-center text-center relative z-20 px-4 w-full"
+        style={{ marginBottom: "clamp(30px, 6vh, 60px)" }}
       >
         <h2
           className="font-bold leading-tight"
           style={{ fontFamily: "'Zen Dots', cursive", fontSize: "clamp(26px, 5vw, 64px)", marginBottom: "clamp(12px, 2vh, 24px)" }}
         >
-          <span style={{ color: "#ffffff" }}>NIC </span>
+          <span style={{ color: "#ffffff" }}>N-I-C </span>
           <span style={{
-            background: "linear-gradient(90deg, #ff00ff 0%, #00ffff 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: "#00ffff",
+            filter: "drop-shadow(0 0 15px rgba(0,255,255,0.6))"
           }}>
             Highlights
           </span>
         </h2>
         <p
-          className="text-white relative z-10 mx-auto px-6 text-center"
-          style={{ maxWidth: "640px", fontSize: "clamp(13px, 2vw, 20px)" }}
+          className="text-gray-300 relative z-10 mx-auto px-6 text-center"
+          style={{ maxWidth: "700px", fontSize: "clamp(14px, 2vw, 22px)" }}
         >
           Sekilas tentang momen-momen menarik yang menangkap
           <br className="hidden md:block" />
-          energi dan kreativitas para peserta NIC
+          energi dan kreativitas para peserta N-I-C
         </p>
       </div>
-      <div className="relative z-10 flex flex-col items-center gap-6 md:gap-8 px-4">
-        <HighlightRow images={["dok1.webp", "dok2.webp", "dok3.webp", "dok4.webp"]} />
 
-        <div className="flex justify-center w-full">
-          <Image
-            src={`${BASE_PATH}/images/Line 4.webp`}
-            alt="divider line"
-            width={800}
-            height={2}
-            className="opacity-70 w-[90%] max-w-[800px]"
-          />
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[1000px] px-4 md:px-12">
+        <div className="flex items-center justify-center w-full gap-4 md:gap-12">
+          
+          <button 
+            onClick={handlePrev}
+            className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 border-[3px] border-white rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5 md:w-8 md:h-8 text-white stroke-[3px]" />
+          </button>
+
+          <div className="flex flex-col md:flex-row gap-3 md:gap-6 w-full max-w-[800px]">
+            <div className="flex flex-col gap-3 md:gap-6 flex-1">
+              <div className="bg-gray-300 rounded-xl w-full aspect-[4/3] relative overflow-hidden">
+                {currentImages[0] && (
+                  <img 
+                    src={`${BASE_PATH}/images/${currentImages[0]}`} 
+                    alt="Highlight 1" 
+                    className="w-full h-full object-cover" 
+                  />
+                )}
+              </div>
+              <div className="bg-gray-300 rounded-xl w-full aspect-[4/3] relative overflow-hidden">
+                {currentImages[1] && (
+                  <img 
+                    src={`${BASE_PATH}/images/${currentImages[1]}`} 
+                    alt="Highlight 2" 
+                    className="w-full h-full object-cover" 
+                  />
+                )}
+              </div>
+            </div>
+
+            <div className="bg-gray-300 rounded-xl flex-1 relative overflow-hidden">
+              {currentImages[2] && (
+                <img 
+                  src={`${BASE_PATH}/images/${currentImages[2]}`} 
+                  alt="Highlight 3" 
+                  className="w-full h-full object-cover" 
+                />
+              )}
+            </div>
+          </div>
+
+          <button 
+            onClick={handleNext}
+            className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 border-[3px] border-white rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
+          >
+            <ArrowRight className="w-5 h-5 md:w-8 md:h-8 text-white stroke-[3px]" />
+          </button>
+
         </div>
-
-        <HighlightRow images={["dok5.webp", "dok1.webp", "dok2.webp", "dok3.webp"]} />
       </div>
     </section>
   );

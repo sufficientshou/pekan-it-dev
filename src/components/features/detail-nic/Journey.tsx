@@ -3,24 +3,20 @@
 import { useState } from "react";
 import { BASE_PATH } from '@/config/constants';
 
-const tabs = ["Desain Grafis", "Typing Competition", "Competitive Programming"];
+const tabs = ["UI/UX Design", "Software Development"];
 
 const timelineData: Record<string, Array<{ title: string; date: string; side: "left" | "right" }>> = {
-  "Desain Grafis": [
+  "UI/UX Design": [
     { title: "Pendaftaran", date: "18 April - 1 Mei 2026", side: "left" },
     { title: "Pengumpulan Karya", date: "3 Mei 2026", side: "right" },
     { title: "Technical Meeting", date: "7 Mei 2026", side: "left" },
     { title: "Presentasi & Pengumuman Pemenang", date: "9 Mei 2026", side: "right" },
   ],
-  "Typing Competition": [
+  "Software Development": [
     { title: "Pendaftaran", date: "18 April - 1 Mei 2026", side: "left" },
-    { title: "Technical Meeting", date: "7 Mei 2026", side: "right" },
-    { title: "Perlombaan & Pengumuman Pemenang", date: "9 Mei 2026", side: "left" },
-  ],
-  "Competitive Programming": [
-    { title: "Pendaftaran", date: "18 April - 1 Mei 2026", side: "left" },
-    { title: "Technical Meeting", date: "7 Mei 2026", side: "right" },
-    { title: "Perlombaan & Pengumuman Pemenang", date: "9 Mei 2026", side: "left" },
+    { title: "Pengumpulan Karya", date: "3 Mei 2026", side: "right" },
+    { title: "Technical Meeting", date: "7 Mei 2026", side: "left" },
+    { title: "Presentasi & Pengumuman Pemenang", date: "9 Mei 2026", side: "right" },
   ],
 };
 
@@ -114,7 +110,7 @@ function TimelineCardMobile({ title, date }: { title: string; date: string }) {
 }
 
 export default function Journey() {
-  const [activeTab, setActiveTab] = useState("Desain Grafis");
+  const [activeTab, setActiveTab] = useState("UI/UX Design");
   const cards = timelineData[activeTab] ?? [];
 
   return (

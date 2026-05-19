@@ -141,16 +141,10 @@ export default function Footer() {
 
   return (
     <>
-    {/* Desktop Footer (Hidden on Mobile) */}
     <footer className="relative w-full bg-[#252742] max-md:!hidden flex flex-col items-center">
       <div className="w-full max-w-[1440px] px-8 lg:px-20 pt-20 pb-10 flex flex-col h-full justify-between">
-        
-        {/* Top section */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full gap-16 lg:gap-10" style={{ marginTop: "25px" }}>
-          
-          {/* Left - Logo, text, social */}
           <div className="flex flex-col items-center lg:ml-12" style={{ minWidth: "400px" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img loading="lazy"
               className="w-52 h-52" 
               src={`${BASE_PATH}/images/img-himtika.webp`} 
@@ -175,16 +169,13 @@ export default function Footer() {
                   aria-label={label}
                   className="w-[42px] h-[42px] bg-[#3A3C5A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={iconUrl} alt={label} className="w-[20px] h-[20px]" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Right - Link columns */}
           <div className="flex flex-wrap justify-center lg:justify-end gap-12 lg:gap-24 pt-8 lg:pr-16 w-full lg:w-auto" style={{ marginTop: "20px", marginLeft: "40px" }}>
-            {/* Media Column */}
             <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
               <div 
                 className="text-white text-base font-bold"
@@ -206,7 +197,6 @@ export default function Footer() {
               ))}
             </div>
 
-            {/* Event Column */}
             <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
               <div 
                 className="text-white text-base font-bold"
@@ -228,7 +218,6 @@ export default function Footer() {
               ))}
             </div>
 
-            {/* Aplikasi Publik Column */}
             <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
               <div 
                 className="text-white text-base font-bold"
@@ -252,12 +241,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
         <div className="w-full flex flex-col mt-24">
-          {/* Divider Line */}
           <div className="w-full border-t-2 border-white mb-6 opacity-80" />
-
-          {/* Copyright */}
           <div className="flex flex-wrap items-center justify-center gap-2">
             <span 
               className="text-white text-base font-semibold text-center"
@@ -265,7 +250,6 @@ export default function Footer() {
             >
               Licensed, Registered, and authorized by
             </span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img loading="lazy"
               className="w-8 h-8" 
               src={`${BASE_PATH}/images/img-himtika.webp`} 
@@ -282,12 +266,8 @@ export default function Footer() {
       </div>
     </footer>
 
-    {/* Mobile Footer (Hidden on Desktop) */}
     <footer className="hidden max-md:!flex flex-col w-full bg-[#252742] max-md:!px-8 py-10 items-center justify-center pt-16">
-      
-      {/* HIMTIKA Logo Large */}
       <div className="flex flex-col items-center gap-4 mb-10 text-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img loading="lazy"
           className="w-28 h-28" 
           src={`${BASE_PATH}/images/img-himtika.webp`} 
@@ -303,12 +283,8 @@ export default function Footer() {
           HIMTIKA
         </div>
       </div>
-
-      {/* Links Layout */}
       <div className="w-full max-w-[400px] flex flex-col gap-6 mb-8 border-t border-white/20 pt-8 mt-2 px-2">
-        {/* Top Row: Media & Event */}
         <div className="flex justify-between w-full gap-4">
-          {/* Media Column */}
           <div className="flex flex-col gap-3 flex-1">
             <div 
               className="text-white text-base font-bold"
@@ -329,8 +305,6 @@ export default function Footer() {
               </a>
             ))}
           </div>
-
-          {/* Event Column */}
           <div className="flex flex-col gap-3 flex-1 items-end text-right">
             <div 
               className="text-white text-base font-bold"
@@ -353,7 +327,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Aplikasi Publik Column */}
         <div className="flex flex-col gap-4 w-full mt-4">
           <div 
             className="text-white text-base font-bold"
@@ -378,7 +351,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Social Icons */}
       <div 
         className="flex gap-5 justify-center w-full"
         style={{ marginTop: "45px", marginBottom: "45px" }}
@@ -392,15 +364,12 @@ export default function Footer() {
             aria-label={label}
             className="w-[44px] h-[44px] bg-[#3A3C5A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={iconUrl} alt={label} className="w-[22px] h-[22px]" />
           </a>
         ))}
       </div>
 
       <div className="w-full border-t border-white/30" style={{marginBottom: "24px" }} />
-
-      {/* Copyright */}
       <div className="flex flex-col items-center gap-3 pb-6">
         <div 
           className="text-center text-white/80 text-xs font-semibold"
@@ -409,7 +378,6 @@ export default function Footer() {
           Licensed, Registered, and authorized by
         </div>
         <div className="flex items-center gap-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img loading="lazy"
             className="w-7 h-7" 
             src={`${BASE_PATH}/images/img-himtika.webp`} 

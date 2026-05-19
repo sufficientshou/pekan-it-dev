@@ -3,9 +3,8 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const competitions = [
-  { id: "desain", title: "Design\nGrafis" },
-  { id: "typing", title: "Typing\nCompetition" },
-  { id: "cp", title: "Competitive\nProgramming" },
+  { id: "ui-ux", title: "UI/UX\nDesign" },
+  { id: "software-development", title: "Software\nDevelopment" },
 ];
 
 function Sparkle({ size = 20, opacity = 1 }: { size?: number; opacity?: number }) {
@@ -105,72 +104,86 @@ export default function Inside() {
       className="relative w-full overflow-hidden text-white"
       style={{ background: "transparent" }}
     >
-      <img
-        loading="lazy"
-        src={`${BASE_PATH}/images/segitiga.webp`}
-        alt="bg"
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[1500px] max-w-none opacity-95 max-md:w-[200%] pointer-events-none"
-      />
+      
       <img
         loading="lazy"
         src={`${BASE_PATH}/images/Kiri.webp`}
         className="hidden md:block absolute bottom-10 left-5 w-[160px] lg:w-[260px] xl:w-[350px] opacity-90 pointer-events-none"
-        style={{ top: "clamp(600px, 70vh, 800px)", right: "clamp(600px, 70vw, 800px)" }}
+        style={{ top: "clamp(-100px, -20vh, -300px)", right: "clamp(600px, 70vw, 800px)" }}
       />
       <img
         loading="lazy"
         src={`${BASE_PATH}/images/Kanan.webp`}
         className="hidden md:block absolute bottom-10 right-5 w-[160px] lg:w-[260px] xl:w-[400px] opacity-90 pointer-events-none"
-        style={{ top: "clamp(600px, 70vh, 800px)" }}
+        style={{ top: "clamp(-100px, -20vh, -300px)" }}
       />
 
-      <img
-        loading="lazy"
-        src={`${BASE_PATH}/images/left.webp`}
-        alt="wing"
-        className="hidden xl:block absolute pointer-events-none"
-        style={{
-          width: "clamp(300px, 30vw, 420px)",
-          left: "clamp(20px, 8vw, 200px)",
-          top: "clamp(1020px, 118vh, 1000px)",
-          filter: "drop-shadow(0 0 40px rgba(255,0,255,0.6))",
-        }}
-      />
-      <img
-        loading="lazy"
-        src={`${BASE_PATH}/images/left.webp`}
-        alt="wing"
-        className="hidden xl:block absolute pointer-events-none scale-x-[-1]"
-        style={{
-          width: "clamp(300px, 30vw, 420px)",
-          right: "clamp(20px, 8vw, 200px)",
-          top: "clamp(1020px, 118vh, 1000px)",
-          filter: "drop-shadow(0 0 40px rgba(255,0,255,0.6))",
-        }}
-      />
+     
 
       <div className="relative z-10 flex flex-col items-center w-full px-4 md:px-8"
         style={{ paddingTop: "clamp(30px, 12vw, 400px)", paddingBottom: "clamp(48px, 8vh, 120px)", paddingLeft: "clamp(0px, 8vw, 120px)", paddingRight: "clamp(0px, 8vw, 120px)" }}
       >
 
-        <div className="flex flex-col items-center gap-4 md:gap-6 text-center max-w-xl" style={{ paddingTop: "clamp(5px, 10vw, 220px)" }}>
-          <img
-            loading="lazy"
-            src={`${BASE_PATH}/images/LOGO.webp`}
-            alt="Logo"
-            className="w-12 md:w-16 lg:w-24"
-          />
+        <div className="flex flex-col items-center gap-4 md:gap-6 text-center w-full" style={{ paddingTop: "clamp(5px, 7vh, 100px)" }}>
           <h2
-            className="font-bold tracking-wide"
-            style={{ fontSize: "clamp(22px, 5vw, 48px)" }}
+            className="font-bold tracking-wide max-w-xl"
+            style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(22px, 5vw, 48px)" }}
           >
-            Inside NIC
+            Inside N I C
           </h2>
+          
+          <div className="flex items-center justify-center w-full relative">
+            <div 
+              className="absolute right-[42%] w-[60vw] h-[100px] md:h-[150px] lg:h-[200px] pointer-events-none"
+              style={{
+                maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)'
+              }}
+            >
+              <img
+                loading="lazy"
+                src={`${BASE_PATH}/images/pol kiri.png`}
+                alt=""
+                className="w-full h-full object-cover object-right opacity-90"
+                style={{
+                  maskImage: 'linear-gradient(to right, transparent 0%, black 30%)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%)'
+                }}
+              />
+            </div>
+
+            <img
+              loading="lazy"
+              src={`${BASE_PATH}/images/bintang.png`}
+              alt="Logo"
+              className="w-24 md:w-32 lg:w-48 relative z-10 shrink-0"
+            />
+
+            <div 
+              className="absolute left-[42%] w-[60vw] h-[100px] md:h-[150px] lg:h-[200px] pointer-events-none"
+              style={{
+                maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)'
+              }}
+            >
+              <img
+                loading="lazy"
+                src={`${BASE_PATH}/images/pol kanan.png`}
+                alt=""
+                className="w-full h-full object-cover object-left opacity-90"
+                style={{
+                  maskImage: 'linear-gradient(to left, transparent 0%, black 30%)',
+                  WebkitMaskImage: 'linear-gradient(to left, transparent 0%, black 30%)'
+                }}
+              />
+            </div>
+          </div>
+
           <p
-            className="text-gray-200 leading-relaxed px-2"
-            style={{ fontSize: "clamp(13px, 2vw, 18px)" }}
+            className="text-gray-200 leading-relaxed px-2 max-w-xl"
+            style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(13px, 2vw, 18px)", paddingTop: "clamp(30px, 4vh, 90px)" }}
           >
-            NIC adalah wadah bagi mahasiswa informatika unsika untuk
+            N I C adalah wadah bagi mahasiswa informatika unsika untuk
             menunjukan bakat dan keahlian melalui ajang kompetisi hard skill dalam
             bidang informatika.
           </p>
@@ -182,36 +195,44 @@ export default function Inside() {
         >
           <img
             loading="lazy"
-            src={`${BASE_PATH}/images/Crown.webp`}
+            src={`${BASE_PATH}/images/roket.png`}
             alt="crown"
-            className="w-[180px] md:w-[280px] lg:w-[360px]"
+            className="w-[50px] md:w-[100px] lg:w-[90px]"
           />
         </div>
 
         <div
-          className="flex flex-col items-center text-center mt-8 md:mt-12"
-          style={{ gap: "clamp(4px, 1vh, 12px)" }}
+          className="flex flex-col items-center text-center mt-8 md:mt-12 w-full max-w-[800px] px-4"
         >
+          <div className="flex justify-between items-center w-full" style={{ marginTop: "clamp(2px, 4vh, 90px)" }}>
+            <h2
+              className="font-bold tracking-wide"
+              style={{ fontSize: "clamp(28px, 6vw, 72px)" }}
+            >
+              Choose
+            </h2>
+            <h2
+              className="font-bold tracking-wide text-cyan-400"
+              style={{
+                marginRight: "clamp(-50px, -5vw, -80px)",
+                fontSize: "clamp(28px, 6vw, 72px)",
+                filter: "drop-shadow(0 0 20px rgba(0,255,255,1))",
+              }}
+            >
+              Challenge
+            </h2>
+          </div>
           <h2
-            className="font-bold"
-            style={{ fontSize: "clamp(28px, 6vw, 72px)", marginTop: "clamp(2px, 4vh, 90px)" }}
+            className="font-bold tracking-wide"
+            style={{ fontSize: "clamp(24px, 5vw, 60px)", marginTop: "clamp(-10px, -2vw, -20px)" }}
           >
-            Choose Your
-          </h2>
-          <h2
-            className="font-bold text-cyan-400"
-            style={{
-              fontSize: "clamp(28px, 6vw, 72px)",
-              filter: "drop-shadow(0 0 20px rgba(0,255,255,1))",
-            }}
-          >
-            Challenge
+            Your
           </h2>
           <p
             className="text-gray-300 leading-relaxed max-w-[480px] px-4"
             style={{
               fontSize: "clamp(15px, 2vw, 20px)",
-              marginTop: "clamp(12px, 2vh, 12px)",
+              marginTop: "clamp(20px, 4vh, 40px)",
             }}
           >
             Jelajahi berbagai kompetisi dan temukan tantangan
