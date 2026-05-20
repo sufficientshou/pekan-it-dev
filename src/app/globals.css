@@ -427,3 +427,21 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==================== ANIMATED COSMIC STARS ==================== */
+@keyframes star-pulse {
+  0%, 100% {
+    transform: scale(0.9) rotate(0deg);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.75)) drop-shadow(0 0 25px rgba(16, 230, 241, 0.35));
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.08) rotate(8deg);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 40px rgba(208, 0, 203, 0.55));
+    opacity: 1;
+  }
+}
+
+.animate-star-pulse {
+  animation: star-pulse 4s ease-in-out infinite;
+}

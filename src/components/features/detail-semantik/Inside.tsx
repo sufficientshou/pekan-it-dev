@@ -19,18 +19,87 @@ function Sparkle({ size = 20, opacity = 1 }: { size?: number; opacity?: number }
   );
 }
 
+function StarCluster({ position }: { position: "left" | "right" }) {
+  const isLeft = position === "left";
+  return (
+    <div
+      className={`hidden md:block absolute pointer-events-none select-none ${
+        isLeft ? "left-5 lg:left-12 xl:left-20" : "right-5 lg:right-12 xl:right-20"
+      }`}
+      style={{
+        top: "clamp(550px, 60vh, 700px)",
+        width: "200px",
+        height: "200px",
+      }}
+    >
+      <div 
+        className="absolute inset-0 rounded-full bg-purple-600/30 blur-[50px] animate-pulse"
+        style={{ animationDuration: "5s" }}
+      />
+
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white animate-star-pulse"
+        style={{ width: "65px", height: "65px" }}
+      >
+        <svg className="w-full h-full drop-shadow-[0_0_20px_rgba(255,255,255,0.95)]" viewBox="0 0 32 32" fill="none">
+          <path
+            d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+
+      <div 
+        className="absolute text-white animate-star-pulse"
+        style={{ 
+          width: "32px", 
+          height: "32px",
+          top: "60%",
+          left: isLeft ? "20%" : "68%",
+          animationDelay: "1s"
+        }}
+      >
+        <svg className="w-full h-full drop-shadow-[0_0_12px_rgba(255,255,255,0.85)]" viewBox="0 0 32 32" fill="none">
+          <path
+            d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+
+      <div 
+        className="absolute text-white animate-star-pulse"
+        style={{ 
+          width: "20px", 
+          height: "20px",
+          top: "35%",
+          left: isLeft ? "72%" : "20%",
+          animationDelay: "2.5s"
+        }}
+      >
+        <svg className="w-full h-full drop-shadow-[0_0_8px_rgba(255,255,255,0.75)]" viewBox="0 0 32 32" fill="none">
+          <path
+            d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 function CompetitionCard({ title }: { title: string }) {
   const lines = title.split("\n");
 
   return (
     <Link
       href="/pendaftaran-ditutup"
-      className="relative group cursor-pointer transition-transform duration-300 hover:-translate-y-1 w-full max-w-[280px] block"
+      className="relative group cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] w-full max-w-[280px] block"
       style={{ height: "250px" }}
     >
 
       <div
-        className="absolute inset-0 rounded-2xl"
+        className="absolute inset-0 rounded-2xl transition-all duration-300 group-hover:scale-[1.01]"
         style={{
           padding: "3px",
           background: "linear-gradient(135deg, #00ffff 0%, #ff00ff 100%)",
@@ -42,20 +111,20 @@ function CompetitionCard({ title }: { title: string }) {
       />
 
       <div
-        className="absolute inset-0 rounded-2xl"
+        className="absolute inset-0 rounded-2xl transition-all duration-300 group-hover:!bg-[#341f5a] group-hover:!shadow-[0_15px_30px_rgba(255,0,255,0.4),0_0_30px_rgba(0,255,255,0.3)]"
         style={{
           background: "#2d1b4e",
           boxShadow: "0 0 20px rgba(255,0,255,0.2)",
         }}
       />
 
-      <div className="absolute top-4 left-4 opacity-60"><Sparkle size={18} /></div>
-      <div className="absolute top-6 right-6 opacity-50"><Sparkle size={14} /></div>
-      <div className="absolute bottom-16 right-4 opacity-40"><Sparkle size={16} /></div>
-      <div className="absolute bottom-20 left-6 opacity-30"><Sparkle size={12} /></div>
+      <div className="absolute top-4 left-4 opacity-60 transition-all duration-500 group-hover:scale-125 group-hover:rotate-45 group-hover:opacity-100"><Sparkle size={18} /></div>
+      <div className="absolute top-6 right-6 opacity-50 transition-all duration-500 group-hover:scale-125 group-hover:-rotate-45 group-hover:opacity-100"><Sparkle size={14} /></div>
+      <div className="absolute bottom-16 right-4 opacity-40 transition-all duration-500 group-hover:scale-125 group-hover:rotate-90 group-hover:opacity-100"><Sparkle size={16} /></div>
+      <div className="absolute bottom-20 left-6 opacity-30 transition-all duration-500 group-hover:scale-125 group-hover:-rotate-90 group-hover:opacity-100"><Sparkle size={12} /></div>
       <div className="absolute inset-0 flex items-center justify-center px-6 pb-14">
         <h3
-          className="text-white text-center font-bold leading-tight"
+          className="text-white text-center font-bold leading-tight transition-all duration-300 group-hover:!text-white group-hover:[text-shadow:0_0_12px_rgba(255,255,255,0.5),0_0_20px_rgba(208,0,203,0.3)]"
           style={{
             fontFamily: "'Zen Dots', cursive",
             fontSize: "clamp(18px, 2.2vw, 24px)",
@@ -71,11 +140,11 @@ function CompetitionCard({ title }: { title: string }) {
       </div>
 
       <div
-        className="absolute bottom-0 left-0 w-full flex items-center gap-3 px-4 py-3 rounded-b-2xl"
+        className="absolute bottom-0 left-0 w-full flex items-center gap-3 px-4 py-3 rounded-b-2xl transition-all duration-300 group-hover:bg-black/30"
         style={{ background: "rgba(0,0,0,0.2)" }}
       >
         <button
-          className="relative flex items-center justify-center gap-1 rounded-full text-white text-sm font-semibold shrink-0 cursor-pointer transition-all hover:opacity-80 overflow-hidden"
+          className="relative flex items-center justify-center gap-1 rounded-full text-white text-sm font-semibold shrink-0 cursor-pointer transition-all hover:opacity-80 overflow-hidden group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(139,92,246,0.5)]"
           style={{
             width: "90px",
             height: "25px",
@@ -84,10 +153,10 @@ function CompetitionCard({ title }: { title: string }) {
           }}
         >
           <span className="relative z-10">Daftar</span>
-          <ArrowUpRight size={16} className="relative z-10" />
+          <ArrowUpRight size={16} className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </button>
         <div
-          className="flex-1 rounded-full h-2"
+          className="flex-1 rounded-full h-2 transition-all duration-300 group-hover:h-2.5 group-hover:opacity-100 group-hover:shadow-[0_0_10px_rgba(0,255,255,0.8)]"
           style={{
             background: "linear-gradient(90deg, #00ffff 0%, #ff00ff 100%)",
             opacity: 0.9,
@@ -111,18 +180,8 @@ export default function Inside() {
         alt="bg"
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[1500px] max-w-none opacity-95 max-md:w-[200%] pointer-events-none"
       />
-      <img
-        loading="lazy"
-        src={`${BASE_PATH}/images/Kiri.webp`}
-        className="hidden md:block absolute bottom-10 left-5 w-[160px] lg:w-[260px] xl:w-[350px] opacity-90 pointer-events-none"
-        style={{ top: "clamp(600px, 70vh, 800px)", right: "clamp(600px, 70vw, 800px)" }}
-      />
-      <img
-        loading="lazy"
-        src={`${BASE_PATH}/images/Kanan.webp`}
-        className="hidden md:block absolute bottom-10 right-5 w-[160px] lg:w-[260px] xl:w-[400px] opacity-90 pointer-events-none"
-        style={{ top: "clamp(600px, 70vh, 800px)" }}
-      />
+      <StarCluster position="left" />
+      <StarCluster position="right" />
 
       <img
         loading="lazy"
