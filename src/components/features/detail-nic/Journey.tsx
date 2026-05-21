@@ -98,7 +98,7 @@ function TimelineCardMobile({ title, date }: { title: string; date: string }) {
       style={{
         padding: "20px",
         borderRadius: "16px",
-        background: "rgba(0,9,35,1)",
+        background: "rgba(0,9,35,0.75)",
         backdropFilter: "blur(6px)",
         boxShadow: "inset 0px 1px 2px rgba(255,255,255,0.1)",
         gap: "10px",
@@ -123,6 +123,78 @@ export default function Journey() {
         marginTop: "clamp(-80px, -10vw, -200px)",
       }}
     >
+      <style>{`
+        @keyframes planet-float {
+          0%, 100% {
+            transform: var(--planet-base-transform) translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: var(--planet-base-transform) translateY(-15px) rotate(3deg);
+          }
+        }
+        @keyframes planet-float-mobile {
+          0%, 100% {
+            transform: translate(-50%, -50%) translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translate(-50%, -50%) translateY(-15px) rotate(3deg);
+          }
+        }
+        @keyframes line-glow {
+          0%, 100% {
+            opacity: 0.55;
+            filter: brightness(1);
+            transform: var(--line-base-transform) scale(1.0);
+          }
+          50% {
+            opacity: 0.8;
+            filter: brightness(1.2) drop-shadow(0 0 10px rgba(255, 0, 255, 0.3));
+            transform: var(--line-base-transform) scale(1.02);
+          }
+        }
+        .animate-planet {
+          width: clamp(120px, 28vw, 180px);
+          --planet-base-transform: translate(25%, 25%);
+          animation: planet-float 10s ease-in-out infinite;
+        }
+        .animate-planet-mobile {
+          animation: planet-float-mobile 10s ease-in-out infinite;
+          transform-origin: center center;
+        }
+        .animate-line {
+          display: none;
+          --line-base-transform: scale(1);
+          animation: line-glow 8s ease-in-out infinite;
+          transform-origin: center center;
+        }
+
+        @media (min-width: 768px) {
+          .animate-planet {
+            width: clamp(280px, 28vw, 420px);
+            --planet-base-transform: translate(16%, 10%);
+          }
+          .animate-line {
+            display: block;
+            --line-base-transform: scale(1);
+          }
+        }
+      `}</style>
+
+      {/* Background Decorative Elements */}
+      <img
+        src={`${BASE_PATH}/images/garis.png`}
+        alt="Decorative Line"
+        className="absolute top-0 left-0 w-full h-full object-cover object-center pointer-events-none z-0 animate-line"
+      />
+      <img
+        src={`${BASE_PATH}/images/planet.png`}
+        alt="Decorative Planet"
+        className="hidden md:block absolute bottom-0 right-0 pointer-events-none z-0 animate-planet"
+        style={{
+          height: "auto",
+          opacity: 0.9,
+        }}
+      />
 
       <div className="flex flex-col items-center relative z-20 px-4"
         style={{ marginBottom: "clamp(24px, 4vh, 50px)", paddingTop: "clamp(5px, 10vw, 220px)" }}
@@ -257,8 +329,9 @@ export default function Journey() {
             );
           })}
         </div>
+        </div>
 
-        {/* Bottom fade */}
+        {/* Bottom fade - moved here to be full width */}
         <div
           className="absolute bottom-0 left-0 w-full pointer-events-none z-10"
           style={{
@@ -267,12 +340,24 @@ export default function Journey() {
               "linear-gradient(0deg, rgba(0,9,35,1) 0%, rgba(0,9,35,0.8) 30%, transparent 100%)",
           }}
         />
-        </div>
       </div>
 
       <div className="md:hidden relative z-10 flex flex-col items-center px-4 pb-8 w-full">
-        <div className="relative flex flex-col w-full max-w-[340px] items-center gap-8">
+        {/* Background Decorative Planet for Mobile - moved to outer w-full container to prevent clipping */}
+        <img
+          src={`${BASE_PATH}/images/planet.png`}
+          alt="Decorative Planet Mobile"
+          className="absolute pointer-events-none z-0 animate-planet-mobile"
+          style={{
+            width: "clamp(300px, 85vw, 420px)",
+            height: "auto",
+            opacity: 0.45,
+            top: "50%",
+            left: "45%",
+          }}
+        />
 
+        <div className="relative flex flex-col w-full max-w-[340px] items-center gap-8">
           <div className="absolute top-3 bottom-3 left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#10e6f1] via-[#d000cb] to-[#7B2FFE] opacity-90 z-0" />
           <div className="absolute top-3 bottom-3 left-1/2 -translate-x-1/2 w-[8px] bg-gradient-to-b from-[#10e6f1] via-[#d000cb] to-[#7B2FFE] opacity-30 blur-[4px] z-0" />
 
