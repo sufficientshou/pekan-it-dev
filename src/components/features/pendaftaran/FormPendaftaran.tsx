@@ -231,242 +231,183 @@ export default function AboutLombaSemantik() {
   //         setSubmitMessage("❌ Gagal memeriksa duplikasi.");
   //         alert("Gagal memeriksa duplikasi. Error: " + error.message);
   //         setIsSubmitting(false);
-  //       });
-  //   };
-
-  //   form.addEventListener('submit', handleSubmit);
-  //   return () => form.removeEventListener('submit', handleSubmit);
-  // }, [step, activeTab]); // Re-run saat ganti lomba atau step
-
-  const router = useRouter();
+const router = useRouter();
   const [activeTab, setActiveTab] = useState("UI/UX Design");
   const [step, setStep] = useState(1);
   const [formDataState, setFormDataState] = useState({
-    nama: "",
-    telepon: "",
-    npm: "",
+    leaderName: "",
+    anggota2: "",
+    anggota3: "",
+    anggota4: "",
+    anggota5: "",
+    leaderPhone: "",
+    teamName: "",
+    institution: "",
     angkatan: "",
   });
+  const [filesState, setFilesState] = useState<{
+    buktiGrup: File | null;
+    buktiStory: File | null;
+    buktiKtm: File | null;
+    buktiPembayaran: File | null;
+  }>({
+    buktiGrup: null,
+    buktiStory: null,
+    buktiKtm: null,
+    buktiPembayaran: null,
+  });
+  const [selectedPayment, setSelectedPayment] = useState<"dana" | "seabank" | null>(null);
+  const [copiedPayment, setCopiedPayment] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
 
   const lomba = lombas[activeTab];
   const scriptURL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || '';
 
-  useEffect(() => {
-    const setupFileUpload = (inputId: string, labelId: string, successId: string, changeBtnId: string) => {
-      const input = document.getElementById(inputId) as HTMLInputElement;
-      const label = document.getElementById(labelId);
-      const successMsg = document.getElementById(successId);
-      const changeBtn = document.getElementById(changeBtnId);
-
-      if (!input || !label || !successMsg || !changeBtn) return;
-
-      input.onchange = () => {
-        if (input.files && input.files.length > 0) {
-          label.style.display = "none";
-          successMsg.style.display = "inline-block";
-          changeBtn.style.display = "inline-block";
-        }
-      };
-
-      changeBtn.onclick = () => {
-        input.value = "";
-        label.style.display = "inline-block";
-        successMsg.style.display = "none";
-        changeBtn.style.display = "none";
-      };
-    };
-
-    if (step === 2) {
-      setupFileUpload("bukti-grup", "upload-label-grup", "upload-success-grup", "change-file-button-grup");
-      setupFileUpload("bukti-story", "upload-label-story", "upload-success-story", "change-file-button-story");
-      setupFileUpload("bukti-ktm", "upload-label-ktm", "upload-success-ktm", "change-file-button-ktm");
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof typeof filesState) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      if (file.size > 5 * 1024 * 1024) {
+        alert("Ukuran file maksimal 5MB!");
+        e.target.value = "";
+        return;
+      }
+      setFilesState((prev) => ({
+        ...prev,
+        [key]: file,
+      }));
     }
-  }, [step]);
+  };
+
+  const handleRemoveFile = (key: keyof typeof filesState, inputId: string) => {
+    setFilesState((prev) => ({
+      ...prev,
+      [key]: null,
+    }));
+    const input = document.getElementById(inputId) as HTMLInputElement;
+    if (input) {
+      input.value = "";
+    }
+  };
+
+  const isStep1Valid = 
+    activeTab === "UI/UX Design"
+      ? formDataState.leaderName.trim() !== "" &&
+        formDataState.anggota2.trim() !== "" &&
+        formDataState.leaderPhone.trim() !== ""
+      : formDataState.leaderName.trim() !== "" &&
+        formDataState.anggota2.trim() !== "" &&
+        formDataState.anggota3.trim() !== "" &&
+        formDataState.leaderPhone.trim() !== "";
+
+  const isStep2Valid = 
+    formDataState.teamName.trim() !== "" &&
+    formDataState.institution.trim() !== "" &&
+    formDataState.angkatan.trim() !== "";
+
+  const isStep3Valid = 
+    filesState.buktiGrup !== null &&
+    filesState.buktiStory !== null &&
+    filesState.buktiKtm !== null;
+
+  const isStep4Valid =
+    selectedPayment !== null &&
+    filesState.buktiPembayaran !== null;
+
+  const paymentMethods = {
+    dana: { name: "DANA", number: "085813549224", holder: "Atika Sari Ramadhani", color: "#8B5CF6", gradient: "linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)" },
+    seabank: { name: "SeaBank", number: "901043234643", holder: "Atika Sari R.", color: "#F97316", gradient: "linear-gradient(135deg, #F97316 0%, #EA580C 100%)" },
+  };
+
+  const handleCopyPayment = (key: "dana" | "seabank") => {
+    navigator.clipboard.writeText(paymentMethods[key].number).then(() => {
+      setCopiedPayment(key);
+      setTimeout(() => setCopiedPayment(null), 2000);
+    });
+  };
+
+  const getStepTitle = () => {
+    switch (step) {
+      case 1: return "Data Anggota";
+      case 2: return "Informasi Team";
+      case 3: return "Upload Berkas";
+      case 4: return "Pembayaran";
+      default: return "Informasi Peserta";
+    }
+  };
 
   // --- LOGIC 2: SUBMIT HANDLER ---
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
-  //   setSubmitMessage("⏳ Sedang memproses data...");
-
-  //   const form = e.currentTarget as HTMLFormElement;
-  //   const formData = new FormData(form);
-    
-  //   // Sinkronisasi tab ke formData
-  //   formData.append("mata_lomba", activeTab);
-
-  //   try {
-  //     // 1. Validasi Input Kosong
-  //     let isEmpty = false;
-  //     const inputs = form.querySelectorAll('input[required]');
-  //     inputs.forEach((input: any) => {
-  //       if (!input.value.trim()) isEmpty = true;
-  //     });
-
-  //     if (isEmpty) {
-  //       throw new Error("Kamu wajib mengisi semua data.");
-  //     }
-
-  //     // 2. Cek Duplikat via CSV (Fitur lama)
-  //     const csvRes = await fetch(sheetDataURL);
-  //     const csvText = await csvRes.text();
-  //     const rows = csvText.split('\n').map(row => row.split(','));
-  //     const header = rows[0];
-  //     const namaIdx = header.indexOf("nama");
-  //     const telpIdx = header.indexOf("no_telepon");
-      
-  //     const namaBaru = (formData.get("nama") as string).trim().toLowerCase();
-  //     const telpBaru = (formData.get("no_telepon") as string).trim();
-
-  //     const isDuplicate = rows.some((row, i) => {
-  //       if (i === 0) return false;
-  //       return row[namaIdx]?.trim().toLowerCase() === namaBaru && row[telpIdx]?.trim() === telpBaru;
-  //     });
-
-  //     if (isDuplicate) {
-  //       throw new Error("Data dengan nama & nomor ini sudah terdaftar.");
-  //     }
-
-  //     // 3. Proses File Upload (FileReader + Promise.all)
-  //     const fileInputs = form.querySelectorAll('input[type="file"]');
-  //     const filePromises = Array.from(fileInputs).map((input: any) => {
-  //       if (input.files.length > 0) {
-  //         return new Promise((resolve, reject) => {
-  //           const reader = new FileReader();
-  //           reader.onload = () => resolve({ name: input.name, filename: input.files[0].name, value: reader.result });
-  //           reader.onerror = reject;
-  //           reader.readAsDataURL(input.files[0]);
-  //         });
-  //       }
-  //       return null;
-  //     });
-
-  //     const files = await Promise.all(filePromises);
-  //     files.forEach((f: any) => {
-  //       if (f) {
-  //         formData.append(f.name, f.value);
-  //         formData.append(f.name + '_filename', f.filename);
-  //       }
-  //     });
-
-  //     // 4. Kirim ke Apps Script
-  //     const response = await fetch(scriptURL, { method: 'POST', body: formData });
-  //     const result = await response.json();
-
-  //     if (result.result === 'success') {
-  //       setSubmitMessage("✅ Berhasil! Mengalihkan halaman...");
-  //       alert("Terima kasih! Pendaftaran berhasil.");
-  //       form.reset();
-  //       setStep(1);
-  //       router.push(`/terimakasih?jenis=${encodeURIComponent(activeTab)}`);
-  //     } else {
-  //       throw new Error(result.error || result.message || "Gagal menyimpan ke spreadsheet");
-  //     }
-
-  //   } catch (error: any) {
-  //     setSubmitMessage(`❌ Error: ${error.message}`);
-  //     alert(`Gagal: ${error.message}`);
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
-
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
-  //   setSubmitMessage("⏳ Sedang memproses data...");
-
-  //   // 1. Ambil data dari STATE 'form', bukan dari DOM
-  //   // Ini aman karena state 'form' tidak hilang meski kamu pindah Step
-  //   const namaBaru = form.nama.trim().toLowerCase();
-  //   const telpBaru = form.telepon.trim(); // Sesuaikan key-nya (tadi di state 'telepon')
-  //   const npmBaru = form.npm.trim();
-  //   const angkatanBaru = form.angkatan.trim();
-
-  //   // 2. Buat objek FormData baru untuk dikirim ke Apps Script
-  //   const sendData = new FormData();
-  //   sendData.append("nama", namaBaru);
-  //   sendData.append("no_telepon", telpBaru); // Apps Script minta 'no_telepon'
-  //   sendData.append("npm", npmBaru);
-  //   sendData.append("angkatan", angkatanBaru);
-  //   sendData.append("mata_lomba", activeTab);
-
-  //   try {
-  //     // Validasi sederhana
-  //     if (!namaBaru || !telpBaru || !npmBaru) {
-  //       throw new Error("Data Step 1 belum lengkap!");
-  //     }
-
-  //     // 3. Cek Duplikat via CSV (Gunakan variabel baru tadi)
-  //     const csvRes = await fetch(sheetDataURL);
-  //     const csvText = await csvRes.text();
-  //     const rows = csvText.split('\n').map(row => row.split(','));
-  //     const header = rows[0];
-  //     const namaIdx = header.indexOf("nama");
-  //     const telpIdx = header.indexOf("no_telepon");
-
-  //     const isDuplicate = rows.some((row, i) => {
-  //       if (i === 0) return false;
-  //       return row[namaIdx]?.trim().toLowerCase() === namaBaru && row[telpIdx]?.trim() === telpBaru;
-  //     });
-
-  //     if (isDuplicate) {
-  //       throw new Error("Nama dan nomor telepon ini sudah terdaftar.");
-  //     }
-
-  //     // 4. Proses File (Tetap ambil dari DOM karena input file ada di Step 2)
-  //     const formElement = e.currentTarget as HTMLFormElement;
-  //     const fileInputs = formElement.querySelectorAll('input[type="file"]');
-      
-  //     // ... Sisa logic FileReader dan fetch(scriptURL) di bawahnya ...
-  //     // Gunakan 'sendData' sebagai body fetch, bukan 'formData' lama
-  //   } catch (error: any) {
-  //     setSubmitMessage(`❌ Error: ${error.message}`);
-  //     alert(`Gagal: ${error.message}`);
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const formElement = e.currentTarget; 
     
     setIsSubmitting(true);
     setSubmitMessage("Sedang memproses data...");
 
-    const namaBaru = formDataState.nama.trim();
-    const telpBaru = formDataState.telepon.trim();
-    const npmBaru = formDataState.npm.trim();
-    const angkatanBaru = formDataState.angkatan.trim();
-
-    // Buat objek FormData untuk dikirim
     const sendData = new FormData();
-    sendData.append("nama", namaBaru);
-    sendData.append("no_telepon", telpBaru);
-    sendData.append("npm", npmBaru);
-    sendData.append("angkatan", angkatanBaru);
+    sendData.append("nama", formDataState.leaderName.trim());
+    sendData.append("leader_name", formDataState.leaderName.trim());
+    sendData.append("anggota_2", formDataState.anggota2.trim());
+    sendData.append("anggota_3", formDataState.anggota3.trim());
+    sendData.append("anggota_4", activeTab === "Software Development" ? formDataState.anggota4.trim() : "");
+    sendData.append("anggota_5", activeTab === "Software Development" ? formDataState.anggota5.trim() : "");
+    sendData.append("no_telepon", formDataState.leaderPhone.trim());
+    sendData.append("nama_tim", formDataState.teamName.trim());
+    sendData.append("institusi", formDataState.institution.trim());
+    sendData.append("angkatan", formDataState.angkatan.trim());
+    sendData.append("npm", "");
     sendData.append("mata_lomba", activeTab);
 
     try {
-      if (!namaBaru || !telpBaru || !npmBaru) {
-        throw new Error("Data Step 1 belum lengkap!");
+      const isLeaderValid = formDataState.leaderName.trim() !== "";
+      const isAnggota2Valid = formDataState.anggota2.trim() !== "";
+      const isAnggota3Valid = activeTab === "UI/UX Design" || formDataState.anggota3.trim() !== "";
+      const isPhoneValid = formDataState.leaderPhone.trim() !== "";
+      const isTeamNameValid = formDataState.teamName.trim() !== "";
+      const isInstitutionValid = formDataState.institution.trim() !== "";
+      const isAngkatanValid = formDataState.angkatan.trim() !== "";
+
+      if (
+        !isLeaderValid ||
+        !isAnggota2Valid ||
+        !isAnggota3Valid ||
+        !isPhoneValid ||
+        !isTeamNameValid ||
+        !isInstitutionValid ||
+        !isAngkatanValid
+      ) {
+        throw new Error("Mohon lengkapi semua data pendaftaran!");
       }
 
-      // Proses File (Gunakan formElement yang sudah disimpan di awal tadi)
-      const fileInputs = formElement.querySelectorAll('input[type="file"]');
-      const filePromises = Array.from(fileInputs).map((fileInput: any) => {
-        if (fileInput.files && fileInput.files.length > 0) {
-          const file = fileInput.files[0];
-          const reader = new FileReader();
+      if (!filesState.buktiGrup || !filesState.buktiStory || !filesState.buktiKtm) {
+        throw new Error("Mohon upload semua berkas yang diperlukan!");
+      }
 
-          return new Promise((resolve, reject) => {
+      if (!filesState.buktiPembayaran) {
+        throw new Error("Mohon upload bukti pembayaran!");
+      }
+
+      if (!selectedPayment) {
+        throw new Error("Mohon pilih metode pembayaran!");
+      }
+
+      sendData.append("metode_pembayaran", selectedPayment === "dana" ? "DANA" : "SeaBank");
+
+      const fileKeys: (keyof typeof filesState)[] = ["buktiGrup", "buktiStory", "buktiKtm", "buktiPembayaran"];
+      const fileNamesInForm: Record<string, string> = {
+        buktiGrup: "bukti_grup",
+        buktiStory: "bukti_sg_follow_twibbon",
+        buktiKtm: "bukti_ktm",
+        buktiPembayaran: "bukti_pembayaran",
+      };
+
+      const filePromises = fileKeys.map((key) => {
+        const file = filesState[key];
+        if (file) {
+          const reader = new FileReader();
+          return new Promise<{ name: string; filename: string; value: string | ArrayBuffer | null }>((resolve, reject) => {
             reader.onloadend = () => {
               resolve({
-                name: fileInput.name,
+                name: fileNamesInForm[key],
                 filename: file.name,
                 value: reader.result
               });
@@ -475,19 +416,18 @@ export default function AboutLombaSemantik() {
             reader.readAsDataURL(file);
           });
         }
-        return null;
+        return Promise.resolve(null);
       });
 
-      const files = await Promise.all(filePromises);
+      const processedFiles = await Promise.all(filePromises);
       
-      files.forEach((fileData: any) => {
+      processedFiles.forEach((fileData) => {
         if (fileData) {
-          sendData.append(fileData.name, fileData.value);
+          sendData.append(fileData.name, fileData.value as string);
           sendData.append(fileData.name + '_filename', fileData.filename);
         }
       });
 
-      // Kirim ke Google Apps Script (duplicate check dilakukan di server)
       const response = await fetch(scriptURL, {
         method: 'POST',
         body: sendData,
@@ -496,17 +436,33 @@ export default function AboutLombaSemantik() {
       const result = await response.json();
 
       if (result.result === 'success') {
-        setSubmitMessage("Pendaftaran berhasil!");
-        alert("Terima kasih! Pendaftaran berhasil.");
-        setFormDataState({ nama: "", telepon: "", npm: "", angkatan: "" }); // Reset state
+        setSubmitMessage("Pendaftaran berhasil! Mengalihkan halaman...");
+        alert("Terima kasih! Pendaftaran tim Anda berhasil.");
+        
+        setFormDataState({
+          leaderName: "",
+          anggota2: "",
+          anggota3: "",
+          anggota4: "",
+          anggota5: "",
+          leaderPhone: "",
+          teamName: "",
+          institution: "",
+          angkatan: "",
+        });
+        setFilesState({
+          buktiGrup: null,
+          buktiStory: null,
+          buktiKtm: null,
+          buktiPembayaran: null,
+        });
+        setSelectedPayment(null);
         setStep(1);
         
-        // Simpan `activeTab` (misal "Desain Grafis") ke sessionStorage agar bisa dibaca page Terima Kasih
         sessionStorage.setItem("selectedLomba", activeTab);
-        
         router.push(`/terimakasih?jenis=${encodeURIComponent(activeTab)}`);
       } else if (result.result === 'duplicate') {
-        throw new Error("NPM atau nomor telepon sudah terdaftar di lomba ini.");
+        throw new Error("NPM atau nomor telepon leader sudah terdaftar di lomba ini.");
       } else if (result.result === 'spam') {
         throw new Error("Mohon tunggu 30 detik sebelum submit kembali.");
       } else {
@@ -521,7 +477,6 @@ export default function AboutLombaSemantik() {
     }
   };
 
-
   return (
     <section
       id="form-pendaftaran-section"
@@ -532,7 +487,7 @@ export default function AboutLombaSemantik() {
       <div className="flex flex-col items-center w-full mb-8 max-md:!mb-8">
         <h2
           className="text-center font-bold leading-tight max-md:!mb-10"
-          style={{marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(40px, 5vw, 64px)" }}
+          style={{ marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(40px, 5vw, 64px)" }}
         >
           <span 
             style={{ 
@@ -547,7 +502,6 @@ export default function AboutLombaSemantik() {
           <br />
           <span className="text-white">Journey Now</span>
         </h2>
-
       </div>
 
       <div className="flex justify-center w-full gap-20 mb-12 flex-wrap px-4 max-md:!flex-row max-md:!justify-center max-md:!flex-nowrap max-md:!gap-2 max-md:!pb-6 max-md:!mb-10 max-md:!px-3">
@@ -585,8 +539,8 @@ export default function AboutLombaSemantik() {
       </div>
 
       <div
-        className="flex flex-col md:flex-row justify-center gap-[clamp(2rem,4vw,5rem)] px-6 md:px-12 items-start w-full max-md:!px-0"
-        style={{ maxWidth: "1200px" }}
+        className="flex flex-col md:flex-row justify-center gap-[clamp(2rem,4vw,6rem)] px-6 md:px-12 items-start w-full max-md:!px-0"
+        style={{ maxWidth: "1300px", marginLeft: "auto", marginRight: "auto" }}
       >
         
         <div 
@@ -656,8 +610,9 @@ export default function AboutLombaSemantik() {
           style={{
             width: "100%",
             maxWidth: "450px",
-            minHeight: "600px",
+            minHeight: activeTab === "Software Development" ? "720px" : "600px",
             marginTop: "80px",
+            marginLeft: "1rem",
             flexShrink: 0,
             background: "rgba(0,9,35,0.85)",
             backdropFilter: "blur(12px)",
@@ -707,297 +662,905 @@ export default function AboutLombaSemantik() {
             </h4>
           </div>
 
-          <div className="px-8 py-6 max-md:!px-5 max-md:!pt-8">
+          <div className="px-8 py-6 max-md:!px-5 max-md:!pt-8 flex-1 flex flex-col">
             <div className="flex justify-between items-center mb-6">
               <span
                 className="text-white font-semibold flex-1 max-md:!ml-0"
                 style={{ marginLeft: "6.5%", marginTop: 10, fontFamily: "'Exo 2', sans-serif", fontSize: "14px" }}
               >
-                Informasi Peserta
+                {getStepTitle()}
               </span>
               <span
                 className="text-white opacity-60 text-sm max-md:!mr-0 max-md:!text-xs"
                 style={{ marginRight: "6.5%", fontFamily: "'Exo 2', sans-serif" }}
               >
-                Step {step}/2
+                Step {step}/4
               </span>
             </div>
 
-            <form key={step} id="form-pendaftaran-semantik" name="form-pendaftaran-semantik" onSubmit={handleSubmit} action="" method="post" encType="multipart/form-data" className="mt-5">
-              {step === 1 ? (
-                <div className="flex flex-col gap-6 max-md:!gap-4">
-                  <div className="flex flex-col gap-8 max-md:!gap-1">
-                      <span className="w-full flex flex-col gap-2">
-                          <label htmlFor="Nama" className="text-white text-sm opacity-80 max-md:!ml-0"
+            <form id="form-pendaftaran-semantik" name="form-pendaftaran-semantik" onSubmit={handleSubmit} className="mt-5">
+              {step === 1 && (
+                <div className={`flex flex-col gap-6 max-md:!gap-4 ${activeTab === "Software Development" ? "pb-6" : ""}`}>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="leaderName" className="text-white text-sm opacity-80 max-md:!ml-0"
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
-                            Nama Lengkap :
-                          </label>
-                          <input type="text" name="nama" id="Nama" placeholder="Light Yagami" required 
-                                  value={formDataState.nama} 
-                                  onChange={(e) => setFormDataState({ ...formDataState, nama: e.target.value })}
-                                  className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
-                                  style={{
-                                    marginLeft: "6.5%",
-                                    paddingLeft: 10,
-                                    width: "87%",
-                                    height: "40px",
+                        Leader Team :
+                      </label>
+                      <input type="text" name="leaderName" id="leaderName" placeholder="Akmal" required 
+                        value={formDataState.leaderName} 
+                        onChange={(e) => setFormDataState({ ...formDataState, leaderName: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
+                        style={{
+                          marginLeft: "6.5%",
+                          paddingLeft: 12,
+                          width: "87%",
+                          height: "40px",
+                          background: "rgba(255, 255, 255, 1)",
+                          border: "1px solid rgba(255,255,255,0.15)",
+                          fontFamily: "'Exo 2', sans-serif",
+                        }}
+                        onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                        onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                      />
+                    </div>
+                    
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="anggota2" className="text-white text-sm opacity-80 max-md:!ml-0"
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                        Anggota 2 :
+                      </label>
+                      <input type="text" name="anggota2" id="anggota2" placeholder="Akmal" required 
+                        value={formDataState.anggota2} 
+                        onChange={(e) => setFormDataState({ ...formDataState, anggota2: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
+                        style={{
+                          marginLeft: "6.5%",
+                          paddingLeft: 12,
+                          width: "87%",
+                          height: "40px",
+                          background: "rgba(255, 255, 255, 1)",
+                          border: "1px solid rgba(255,255,255,0.15)",
+                          fontFamily: "'Exo 2', sans-serif",
+                        }}
+                        onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                        onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                      />
+                    </div>
 
-                                    background: "rgba(255, 255, 255, 1)",
-                                    border: "1px solid rgba(255,255,255,0.15)",
-                                    fontFamily: "'Exo 2', sans-serif",
-                                  }}
-                                  onFocus={(e) =>
-                                    (e.target.style.borderColor = "rgba(16,230,241,0.6)")
-                                  }
-                                  onBlur={(e) =>
-                                    (e.target.style.borderColor = "rgba(255,255,255,0.15)")
-                                  }  />
-                      </span>
-                      
-                      <span className="w-full flex flex-col gap-2">
-                          <label htmlFor="NoTelepon" className="text-white text-sm opacity-80 max-md:!ml-0"
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="anggota3" className="text-white text-sm opacity-80 max-md:!ml-0"
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
-                            No. WhatsApp :
+                        {activeTab === "UI/UX Design" ? "Anggota 3 (Opsional) :" : "Anggota 3 :"}
+                      </label>
+                      <input type="text" name="anggota3" id="anggota3" placeholder="Akmal" required={activeTab !== "UI/UX Design"}
+                        value={formDataState.anggota3} 
+                        onChange={(e) => setFormDataState({ ...formDataState, anggota3: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
+                        style={{
+                          marginLeft: "6.5%",
+                          paddingLeft: 12,
+                          width: "87%",
+                          height: "40px",
+                          background: "rgba(255, 255, 255, 1)",
+                          border: "1px solid rgba(255,255,255,0.15)",
+                          fontFamily: "'Exo 2', sans-serif",
+                        }}
+                        onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                        onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                      />
+                    </div>
+
+                    {activeTab === "Software Development" && (
+                      <>
+                        <div className="flex flex-col gap-2">
+                          <label htmlFor="anggota4" className="text-white text-sm opacity-80 max-md:!ml-0"
+                            style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                            Anggota 4 (Opsional) :
                           </label>
-                          <input type="text" name="no_telepon" id="NoTelepon" placeholder="0895xxxxxxxx" required 
-                            value={formDataState.telepon} 
-                            onChange={(e) => setFormDataState({ ...formDataState, telepon: e.target.value })}
+                          <input type="text" name="anggota4" id="anggota4" placeholder="Akmal"
+                            value={formDataState.anggota4} 
+                            onChange={(e) => setFormDataState({ ...formDataState, anggota4: e.target.value })}
                             className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
                             style={{
                               marginLeft: "6.5%",
-                              paddingLeft: 10,
+                              paddingLeft: 12,
                               width: "87%",
                               height: "40px",
-
                               background: "rgba(255, 255, 255, 1)",
                               border: "1px solid rgba(255,255,255,0.15)",
                               fontFamily: "'Exo 2', sans-serif",
                             }}
-                            onFocus={(e) =>
-                              (e.target.style.borderColor = "rgba(16,230,241,0.6)")
-                            }
-                            onBlur={(e) =>
-                              (e.target.style.borderColor = "rgba(255,255,255,0.15)")
-                            }  />
-                      </span>
+                            onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                            onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                          />
+                        </div>
 
-                      <span className="w-full flex flex-col gap-2">
-                          <label htmlFor="npm" className="text-white text-sm opacity-80 max-md:!ml-0"
-                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
-                            NPM :
+                        <div className="flex flex-col gap-2">
+                          <label htmlFor="anggota5" className="text-white text-sm opacity-80 max-md:!ml-0"
+                            style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                            Anggota 5 (Opsional) :
                           </label>
-                          <input type="text" name="npm" id="npm" placeholder="2_10631170___" required 
-                                  value={formDataState.npm} 
-                                  onChange={(e) => setFormDataState({ ...formDataState, npm: e.target.value })}
-                                  className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
-                                  style={{
-                                    marginLeft: "6.5%",
-                                    paddingLeft: 10,
-                                    width: "87%",
-                                    height: "40px",
-
-                                    background: "rgba(255, 255, 255, 1)",
-                                    border: "1px solid rgba(255,255,255,0.15)",
-                                    fontFamily: "'Exo 2', sans-serif",
-                                  }}
-                                  onFocus={(e) =>
-                                    (e.target.style.borderColor = "rgba(16,230,241,0.6)")
-                                  }
-                                  onBlur={(e) =>
-                                    (e.target.style.borderColor = "rgba(255,255,255,0.15)")
-                                  }  />
-                      </span>
-                      
-                      <span className="w-full flex flex-col gap-2">
-                          <label htmlFor="angkatan" className="text-white text-sm opacity-80 max-md:!ml-0"
+                          <input type="text" name="anggota5" id="anggota5" placeholder="Akmal"
+                            value={formDataState.anggota5} 
+                            onChange={(e) => setFormDataState({ ...formDataState, anggota5: e.target.value })}
+                            className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
+                            style={{
+                              marginLeft: "6.5%",
+                              paddingLeft: 12,
+                              width: "87%",
+                              height: "40px",
+                              background: "rgba(255, 255, 255, 1)",
+                              border: "1px solid rgba(255,255,255,0.15)",
+                              fontFamily: "'Exo 2', sans-serif",
+                            }}
+                            onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                            onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                          />
+                        </div>
+                      </>
+                    )}
+                    
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="leaderPhone" className="text-white text-sm opacity-80 max-md:!ml-0"
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
-                            Angkatan :
-                          </label>
-                          <input type="text" name="angkatan" id="angkatan" placeholder="202_" required 
-                                  value={formDataState.angkatan} 
-                                  onChange={(e) => setFormDataState({ ...formDataState, angkatan: e.target.value })}
-                                  className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
-                                  style={{
-                                    marginLeft: "6.5%",
-                                    paddingLeft: 10,
-                                    width: "87%",
-                                    height: "40px",
-
-                                    background: "rgba(255, 255, 255, 1)",
-                                    border: "1px solid rgba(255,255,255,0.15)",
-                                    fontFamily: "'Exo 2', sans-serif",
-                                  }}
-                                  onFocus={(e) =>
-                                    (e.target.style.borderColor = "rgba(16,230,241,0.6)")
-                                  }
-                                  onBlur={(e) =>
-                                    (e.target.style.borderColor = "rgba(255,255,255,0.15)")
-                                  }  />
-                      </span>
+                        No. Telp Leader Team :
+                      </label>
+                      <input type="text" name="leaderPhone" id="leaderPhone" placeholder="0821" required 
+                        value={formDataState.leaderPhone} 
+                        onChange={(e) => setFormDataState({ ...formDataState, leaderPhone: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
+                        style={{
+                          marginLeft: "6.5%",
+                          paddingLeft: 12,
+                          width: "87%",
+                          height: "40px",
+                          background: "rgba(255, 255, 255, 1)",
+                          border: "1px solid rgba(255,255,255,0.15)",
+                          fontFamily: "'Exo 2', sans-serif",
+                        }}
+                        onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                        onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                      />
+                    </div>
                   </div>
 
                   <button
                     type="button"
+                    disabled={!isStep1Valid}
                     onClick={() => setStep(2)}
-                    className="w-full py-3 rounded-lg text-white font-semibold mt-2 transition-opacity hover:opacity-90 cursor-pointer max-md:!ml-0 max-md:!mt-8 max-md:!w-full max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+                    className={`w-full py-3 rounded-lg text-white font-semibold transition-all duration-300 max-md:!ml-0 max-md:!mt-8 max-md:!w-full max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center ${
+                      isStep1Valid 
+                        ? "cursor-pointer hover:opacity-90 active:scale-[0.98]" 
+                        : "cursor-not-allowed opacity-50"
+                    }`}
                     style={{
-                      marginTop: 20,
+                      marginTop: activeTab === "Software Development" ? 30 : 20,
                       marginLeft: "6.5%",
                       width: "87%",
                       height: "40px",
                       fontFamily: "'Exo 2', sans-serif",
-                      background:
-                        "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)",
-                      boxShadow: "0 4px 20px rgba(208,0,203,0.4)",
+                      background: isStep1Valid
+                        ? "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)"
+                        : "rgba(128, 128, 128, 0.2)",
+                      boxShadow: isStep1Valid
+                        ? "0 4px 20px rgba(208, 0, 203, 0.4)"
+                        : "none",
                     }}
                   >
                     Next
                   </button>
                 </div>
-              ) : (
-                <div className="flex flex-col gap-4">
-                    <div className="flex flex-col gap-5 transition-all duration-500">
-                        <span className="w-full">
-                            <label htmlFor="bukti-grup" className="text-white opacity-70 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>Upload Bukti Share Pamflet ke 2 Grup Whatsapp :</label>
-                            <input type="file" id="bukti-grup" name="bukti_grup" accept=".jpg,.jpeg,.png,.pdf" style={{display: "none"}} required />
-                            <div className="flex justify-center items-center gap-4 flex-wrap">
-                                <label htmlFor="bukti-grup" 
-                                  className="flex items-center justify-center pr-[150px] gap-3 rounded-lg py-10 cursor-pointer transition-colors max-md:!mt-2 max-md:!ml-0 max-md:!w-full max-md:!h-[80px]"
-                                  style={{
-                                    marginLeft: "1%",
-                                    marginTop: 10,
-                                    width: "87%",
-                                    height: "80px",
-                                    border: "2px dashed rgba(16,230,241,0.4)",
-                                    background: "rgba(16,230,241,0.04)",
-                                  }} 
-                                  id="upload-label-grup">
-                                    <svg width="20" height="20" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg" className='w-[20px] h-[20px] sm:w-[30px] sm:h-[30px] md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px] fill-current'>
-                                        <path d="M60.7327 73.4824L55.2502 79.0074V55.2499C55.2502 54.1228 54.8024 53.0418 54.0054 52.2447C53.2084 51.4477 52.1274 50.9999 51.0002 50.9999C49.873 50.9999 48.792 51.4477 47.995 52.2447C47.198 53.0418 46.7502 54.1228 46.7502 55.2499V79.0074L41.2677 73.4824C40.8714 73.0862 40.401 72.7718 39.8833 72.5574C39.3655 72.3429 38.8106 72.2325 38.2502 72.2325C37.6898 72.2325 37.1349 72.3429 36.6171 72.5574C36.0994 72.7718 35.629 73.0862 35.2327 73.4824C34.8364 73.8787 34.5221 74.3491 34.3076 74.8669C34.0932 75.3846 33.9828 75.9395 33.9828 76.4999C33.9828 77.0603 34.0932 77.6152 34.3076 78.133C34.5221 78.6507 34.8364 79.1212 35.2327 79.5174L47.9827 92.2674C48.3869 92.6544 48.8635 92.9577 49.3852 93.1599C49.8939 93.3848 50.444 93.5009 51.0002 93.5009C51.5564 93.5009 52.1065 93.3848 52.6152 93.1599C53.1369 92.9577 53.6135 92.6544 54.0177 92.2674L66.7677 79.5174C67.568 78.7171 68.0176 77.6317 68.0176 76.4999C68.0176 75.3681 67.568 74.2827 66.7677 73.4824C65.9674 72.6821 64.882 72.2325 63.7502 72.2325C62.6184 72.2325 61.533 72.6821 60.7327 73.4824ZM78.2852 26.4349C75.6884 20.4679 71.2068 15.517 65.527 12.3408C59.8472 9.16452 53.2827 7.93821 46.8393 8.84973C40.3959 9.76126 34.4291 12.7603 29.8533 17.3874C25.2774 22.0145 22.345 28.0143 21.5052 34.4674C17.4532 35.4378 13.8986 37.8625 11.5166 41.281C9.13453 44.6995 8.09086 48.8738 8.58378 53.0111C9.07669 57.1484 11.0719 60.9606 14.1904 63.7238C17.3089 66.487 21.3336 68.0087 25.5002 67.9999C26.6274 67.9999 27.7084 67.5522 28.5054 66.7551C29.3024 65.9581 29.7502 64.8771 29.7502 63.7499C29.7502 62.6228 29.3024 61.5418 28.5054 60.7447C27.7084 59.9477 26.6274 59.4999 25.5002 59.4999C23.2459 59.4999 21.0839 58.6044 19.4898 57.0103C17.8957 55.4163 17.0002 53.2543 17.0002 50.9999C17.0002 48.7456 17.8957 46.5836 19.4898 44.9895C21.0839 43.3955 23.2459 42.4999 25.5002 42.4999C26.6274 42.4999 27.7084 42.0522 28.5054 41.2551C29.3024 40.4581 29.7502 39.3771 29.7502 38.2499C29.7611 33.2234 31.5534 28.3634 34.8088 24.5334C38.0643 20.7034 42.572 18.1515 47.5311 17.3309C52.4903 16.5103 57.5798 17.4742 61.8954 20.0515C66.211 22.6287 69.4733 26.6523 71.1027 31.4074C71.3456 32.1377 71.7823 32.7884 72.3662 33.2899C72.95 33.7914 73.6591 34.1249 74.4177 34.2549C77.2485 34.7899 79.8147 36.2677 81.6981 38.4477C83.5815 40.6277 84.6711 43.3812 84.7894 46.2596C84.9077 49.1381 84.0477 51.9718 82.3495 54.2989C80.6513 56.6261 78.215 58.3095 75.4377 59.0749C74.8963 59.2145 74.3877 59.4593 73.941 59.7953C73.4942 60.1314 73.118 60.5522 72.8338 61.0337C72.5497 61.5151 72.3632 62.0479 72.2849 62.6014C72.2066 63.155 72.2382 63.7186 72.3777 64.2599C72.5172 64.8013 72.762 65.3099 73.0981 65.7567C73.4342 66.2034 73.855 66.5796 74.3364 66.8638C74.8179 67.1479 75.3506 67.3345 75.9042 67.4127C76.4578 67.491 77.0213 67.4595 77.5627 67.3199C82.0353 66.1381 86.0001 63.5289 88.855 59.8887C91.7098 56.2484 93.2988 51.776 93.3805 47.1506C93.4622 42.5251 92.0323 37.9994 89.3079 34.2605C86.5834 30.5217 82.7133 27.7741 78.2852 26.4349Z" />
-                                    </svg>
-                                    <span>Pilih File</span>
-                                </label>
-                                <span id="upload-success-grup" className="text-2xl text-green-500 font-semibold" style={{display: "none"}}>
-                                    Berhasil diunggah!
-                                </span>
-                                <button type="button" id="change-file-button-grup" className="rounded-3xl px-4 py-2 border-none bg-[#707070] hover:bg-[#505050] text-white cursor-pointer transition-colors duration-300" style={{display: "none"}}>
-                                    Ganti File
-                                </button>
-                            </div>
-                        </span>
+              )}
 
-                        <span className="w-full">
-                            <label htmlFor="bukti-story" className="text-white opacity-70 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>Bukti Share SG, Follow IG, & Post Twibbon :</label>
-                            <input type="file" id="bukti-story" name="bukti-story" accept=".jpg,.jpeg,.png,.pdf" style={{display: "none"}} required />
-                            <div className="flex justify-center items-center gap-4 flex-wrap">
-                                <label htmlFor="bukti-story" 
-                                  className="flex items-center justify-center pr-[100px] gap-3 rounded-lg py-10 cursor-pointer transition-colors max-md:!mt-2 max-md:!ml-0 max-md:!w-full max-md:!h-[80px]"
-                                  style={{
-                                    marginLeft: "1%",
-                                    marginTop: 10,
-                                    width: "87%",
-                                    height: "80px",
-                                    border: "2px dashed rgba(16,230,241,0.4)",
-                                    background: "rgba(16,230,241,0.04)",
-                                  }} 
-                                  id="upload-label-story">
-                                    <svg width="20" height="20" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg" className='w-[20px] h-[20px] sm:w-[30px] sm:h-[30px] md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px] fill-current'>
-                                        <path d="M60.7327 73.4824L55.2502 79.0074V55.2499C55.2502 54.1228 54.8024 53.0418 54.0054 52.2447C53.2084 51.4477 52.1274 50.9999 51.0002 50.9999C49.873 50.9999 48.792 51.4477 47.995 52.2447C47.198 53.0418 46.7502 54.1228 46.7502 55.2499V79.0074L41.2677 73.4824C40.8714 73.0862 40.401 72.7718 39.8833 72.5574C39.3655 72.3429 38.8106 72.2325 38.2502 72.2325C37.6898 72.2325 37.1349 72.3429 36.6171 72.5574C36.0994 72.7718 35.629 73.0862 35.2327 73.4824C34.8364 73.8787 34.5221 74.3491 34.3076 74.8669C34.0932 75.3846 33.9828 75.9395 33.9828 76.4999C33.9828 77.0603 34.0932 77.6152 34.3076 78.133C34.5221 78.6507 34.8364 79.1212 35.2327 79.5174L47.9827 92.2674C48.3869 92.6544 48.8635 92.9577 49.3852 93.1599C49.8939 93.3848 50.444 93.5009 51.0002 93.5009C51.5564 93.5009 52.1065 93.3848 52.6152 93.1599C53.1369 92.9577 53.6135 92.6544 54.0177 92.2674L66.7677 79.5174C67.568 78.7171 68.0176 77.6317 68.0176 76.4999C68.0176 75.3681 67.568 74.2827 66.7677 73.4824C65.9674 72.6821 64.882 72.2325 63.7502 72.2325C62.6184 72.2325 61.533 72.6821 60.7327 73.4824ZM78.2852 26.4349C75.6884 20.4679 71.2068 15.517 65.527 12.3408C59.8472 9.16452 53.2827 7.93821 46.8393 8.84973C40.3959 9.76126 34.4291 12.7603 29.8533 17.3874C25.2774 22.0145 22.345 28.0143 21.5052 34.4674C17.4532 35.4378 13.8986 37.8625 11.5166 41.281C9.13453 44.6995 8.09086 48.8738 8.58378 53.0111C9.07669 57.1484 11.0719 60.9606 14.1904 63.7238C17.3089 66.487 21.3336 68.0087 25.5002 67.9999C26.6274 67.9999 27.7084 67.5522 28.5054 66.7551C29.3024 65.9581 29.7502 64.8771 29.7502 63.7499C29.7502 62.6228 29.3024 61.5418 28.5054 60.7447C27.7084 59.9477 26.6274 59.4999 25.5002 59.4999C23.2459 59.4999 21.0839 58.6044 19.4898 57.0103C17.8957 55.4163 17.0002 53.2543 17.0002 50.9999C17.0002 48.7456 17.8957 46.5836 19.4898 44.9895C21.0839 43.3955 23.2459 42.4999 25.5002 42.4999C26.6274 42.4999 27.7084 42.0522 28.5054 41.2551C29.3024 40.4581 29.7502 39.3771 29.7502 38.2499C29.7611 33.2234 31.5534 28.3634 34.8088 24.5334C38.0643 20.7034 42.572 18.1515 47.5311 17.3309C52.4903 16.5103 57.5798 17.4742 61.8954 20.0515C66.211 22.6287 69.4733 26.6523 71.1027 31.4074C71.3456 32.1377 71.7823 32.7884 72.3662 33.2899C72.95 33.7914 73.6591 34.1249 74.4177 34.2549C77.2485 34.7899 79.8147 36.2677 81.6981 38.4477C83.5815 40.6277 84.6711 43.3812 84.7894 46.2596C84.9077 49.1381 84.0477 51.9718 82.3495 54.2989C80.6513 56.6261 78.215 58.3095 75.4377 59.0749C74.8963 59.2145 74.3877 59.4593 73.941 59.7953C73.4942 60.1314 73.118 60.5522 72.8338 61.0337C72.5497 61.5151 72.3632 62.0479 72.2849 62.6014C72.2066 63.155 72.2382 63.7186 72.3777 64.2599C72.5172 64.8013 72.762 65.3099 73.0981 65.7567C73.4342 66.2034 73.855 66.5796 74.3364 66.8638C74.8179 67.1479 75.3506 67.3345 75.9042 67.4127C76.4578 67.491 77.0213 67.4595 77.5627 67.3199C82.0353 66.1381 86.0001 63.5289 88.855 59.8887C91.7098 56.2484 93.2988 51.776 93.3805 47.1506C93.4622 42.5251 92.0323 37.9994 89.3079 34.2605C86.5834 30.5217 82.7133 27.7741 78.2852 26.4349Z" />
-                                    </svg>
-                                    <span>Pilih File</span>
-                                </label>
-                                <span id="upload-success-story" className="text-2xl text-green-500 font-semibold" style={{display: "none"}}>
-                                    Berhasil diunggah!
-                                </span>
-                                <button type="button" id="change-file-button-story" className="rounded-3xl px-4 py-2 border-none bg-[#707070] hover:bg-[#505050] text-white cursor-pointer transition-colors duration-300" style={{display: "none"}}>
-                                    Ganti File
-                                </button>
-                            </div>
-                        </span>
-                        
-                        <span className="w-full">
-                            <label htmlFor="bukti-ktm" className="text-white opacity-70 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>Upload KRS/KTM :</label>
-                            <input type="file" id="bukti-ktm" name="bukti_ktm" accept=".jpg,.jpeg,.png,.pdf" style={{display: "none"}} required />
-                            <div className="flex justify-center items-center gap-4 flex-wrap">
-                                <label htmlFor="bukti-ktm" 
-                                  className="flex items-center justify-center pr-[100px] gap-3 rounded-lg py-10 cursor-pointer transition-colors max-md:!mt-2 max-md:!ml-0 max-md:!w-full max-md:!h-[80px]"
-                                  style={{
-                                    marginLeft: "1%",
-                                    marginTop: 10,
-                                    width: "87%",
-                                    height: "80px",
-                                    border: "2px dashed rgba(16,230,241,0.4)",
-                                    background: "rgba(16,230,241,0.04)",
-                                  }} 
-                                  id="upload-label-ktm">
-                                    <svg width="20" height="20" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg" className='w-[20px] h-[20px] sm:w-[30px] sm:h-[30px] md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px] fill-current'>
-                                        <path d="M60.7327 73.4824L55.2502 79.0074V55.2499C55.2502 54.1228 54.8024 53.0418 54.0054 52.2447C53.2084 51.4477 52.1274 50.9999 51.0002 50.9999C49.873 50.9999 48.792 51.4477 47.995 52.2447C47.198 53.0418 46.7502 54.1228 46.7502 55.2499V79.0074L41.2677 73.4824C40.8714 73.0862 40.401 72.7718 39.8833 72.5574C39.3655 72.3429 38.8106 72.2325 38.2502 72.2325C37.6898 72.2325 37.1349 72.3429 36.6171 72.5574C36.0994 72.7718 35.629 73.0862 35.2327 73.4824C34.8364 73.8787 34.5221 74.3491 34.3076 74.8669C34.0932 75.3846 33.9828 75.9395 33.9828 76.4999C33.9828 77.0603 34.0932 77.6152 34.3076 78.133C34.5221 78.6507 34.8364 79.1212 35.2327 79.5174L47.9827 92.2674C48.3869 92.6544 48.8635 92.9577 49.3852 93.1599C49.8939 93.3848 50.444 93.5009 51.0002 93.5009C51.5564 93.5009 52.1065 93.3848 52.6152 93.1599C53.1369 92.9577 53.6135 92.6544 54.0177 92.2674L66.7677 79.5174C67.568 78.7171 68.0176 77.6317 68.0176 76.4999C68.0176 75.3681 67.568 74.2827 66.7677 73.4824C65.9674 72.6821 64.882 72.2325 63.7502 72.2325C62.6184 72.2325 61.533 72.6821 60.7327 73.4824ZM78.2852 26.4349C75.6884 20.4679 71.2068 15.517 65.527 12.3408C59.8472 9.16452 53.2827 7.93821 46.8393 8.84973C40.3959 9.76126 34.4291 12.7603 29.8533 17.3874C25.2774 22.0145 22.345 28.0143 21.5052 34.4674C17.4532 35.4378 13.8986 37.8625 11.5166 41.281C9.13453 44.6995 8.09086 48.8738 8.58378 53.0111C9.07669 57.1484 11.0719 60.9606 14.1904 63.7238C17.3089 66.487 21.3336 68.0087 25.5002 67.9999C26.6274 67.9999 27.7084 67.5522 28.5054 66.7551C29.3024 65.9581 29.7502 64.8771 29.7502 63.7499C29.7502 62.6228 29.3024 61.5418 28.5054 60.7447C27.7084 59.9477 26.6274 59.4999 25.5002 59.4999C23.2459 59.4999 21.0839 58.6044 19.4898 57.0103C17.8957 55.4163 17.0002 53.2543 17.0002 50.9999C17.0002 48.7456 17.8957 46.5836 19.4898 44.9895C21.0839 43.3955 23.2459 42.4999 25.5002 42.4999C26.6274 42.4999 27.7084 42.0522 28.5054 41.2551C29.3024 40.4581 29.7502 39.3771 29.7502 38.2499C29.7611 33.2234 31.5534 28.3634 34.8088 24.5334C38.0643 20.7034 42.572 18.1515 47.5311 17.3309C52.4903 16.5103 57.5798 17.4742 61.8954 20.0515C66.211 22.6287 69.4733 26.6523 71.1027 31.4074C71.3456 32.1377 71.7823 32.7884 72.3662 33.2899C72.95 33.7914 73.6591 34.1249 74.4177 34.2549C77.2485 34.7899 79.8147 36.2677 81.6981 38.4477C83.5815 40.6277 84.6711 43.3812 84.7894 46.2596C84.9077 49.1381 84.0477 51.9718 82.3495 54.2989C80.6513 56.6261 78.215 58.3095 75.4377 59.0749C74.8963 59.2145 74.3877 59.4593 73.941 59.7953C73.4942 60.1314 73.118 60.5522 72.8338 61.0337C72.5497 61.5151 72.3632 62.0479 72.2849 62.6014C72.2066 63.155 72.2382 63.7186 72.3777 64.2599C72.5172 64.8013 72.762 65.3099 73.0981 65.7567C73.4342 66.2034 73.855 66.5796 74.3364 66.8638C74.8179 67.1479 75.3506 67.3345 75.9042 67.4127C76.4578 67.491 77.0213 67.4595 77.5627 67.3199C82.0353 66.1381 86.0001 63.5289 88.855 59.8887C91.7098 56.2484 93.2988 51.776 93.3805 47.1506C93.4622 42.5251 92.0323 37.9994 89.3079 34.2605C86.5834 30.5217 82.7133 27.7741 78.2852 26.4349Z" />
-                                    </svg>
-                                    <span>Pilih File</span>
-                                </label>
-                                <span id="upload-success-ktm" className="text-2xl text-green-500 font-semibold" style={{display: "none"}}>
-                                    Berhasil diunggah!
-                                </span>
-                                <button type="button" id="change-file-button-ktm" className="rounded-3xl px-4 py-2 border-none bg-[#707070] hover:bg-[#505050] text-white cursor-pointer transition-colors duration-300" style={{display: "none"}}>
-                                    Ganti File
-                                </button>
-                            </div>
-                        </span>
-                    </div>
-
-                    <div className="flex gap-3 mt-2 max-md:!mt-4 max-md:!ml-0 max-md:!w-full max-md:!gap-2" style={{ marginTop: 20, marginLeft: "6.5%", width: "87%" }}>
-                      <button
-                        type="button"
-                        onClick={() => setStep(1)}
-                        className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-80 cursor-pointer max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
-                        style={{
-                          height: "40px",
-                          fontFamily: "'Exo 2', sans-serif",
-                          background: "rgba(255,255,255,0.08)",
-                          border: "1px solid rgba(255,255,255,0.2)",
-                        }}
-                      >
-                        Back
-                      </button>
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
-                        style={{
-                          height: "40px",
-                          fontFamily: "'Exo 2', sans-serif",
-                          background: isSubmitting 
-                            ? "rgba(128,128,128,0.5)"
-                            : "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)",
-                          boxShadow: isSubmitting 
-                            ? "none"
-                            : "0 4px 20px rgba(208,0,203,0.4)",
-                        }}
-                      >
-                        {isSubmitting ? "Mengirim..." : "Submit ✈"}
-                      </button>
-                    </div>
-
-                    {submitMessage && (
-                      <div 
-                        className="mt-4 p-3 rounded-lg text-sm text-center max-md:!ml-0 max-md:!w-full"
+              {step === 2 && (
+                <div className="flex flex-col gap-6 max-md:!gap-4">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="teamName" className="text-white text-sm opacity-80 max-md:!ml-0"
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                        Nama Team :
+                      </label>
+                      <input type="text" name="teamName" id="teamName" placeholder="ingpo Kicau mania" required 
+                        value={formDataState.teamName} 
+                        onChange={(e) => setFormDataState({ ...formDataState, teamName: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
                         style={{
                           marginLeft: "6.5%",
+                          paddingLeft: 12,
                           width: "87%",
-                          background: submitMessage.includes("✅") 
-                            ? "rgba(0,255,0,0.1)" 
-                            : "rgba(255,0,0,0.1)",
-                          border: `1px solid ${submitMessage.includes("✅") 
-                            ? "rgba(0,255,0,0.3)" 
-                            : "rgba(255,0,0,0.3)"}`,
-                          color: submitMessage.includes("✅") ? "#00ff00" : "#ff6b6b",
+                          height: "40px",
+                          background: "rgba(255, 255, 255, 1)",
+                          border: "1px solid rgba(255,255,255,0.15)",
                           fontFamily: "'Exo 2', sans-serif",
                         }}
+                        onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                        onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="institution" className="text-white text-sm opacity-80 max-md:!ml-0"
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                        Institusi :
+                      </label>
+                      <span className="text-[#10e6f1] text-[10px] max-md:!ml-0 block mt-[-4px] mb-[2px] opacity-90"
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif", fontStyle: "italic" }}>
+                        *Institusi diisi berdasarkan institusi leader tim.
+                      </span>
+                      <input type="text" name="institution" id="institution" placeholder="Universitas Singaperbangsa Karawang" required 
+                        value={formDataState.institution} 
+                        onChange={(e) => setFormDataState({ ...formDataState, institution: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
+                        style={{
+                          marginLeft: "6.5%",
+                          paddingLeft: 12,
+                          width: "87%",
+                          height: "40px",
+                          background: "rgba(255, 255, 255, 1)",
+                          border: "1px solid rgba(255,255,255,0.15)",
+                          fontFamily: "'Exo 2', sans-serif",
+                        }}
+                        onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                        onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="angkatan" className="text-white text-sm opacity-80 max-md:!ml-0"
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                        Angkatan :
+                      </label>
+                      <input type="text" name="angkatan" id="angkatan" placeholder="Value" required 
+                        value={formDataState.angkatan} 
+                        onChange={(e) => setFormDataState({ ...formDataState, angkatan: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
+                        style={{
+                          marginLeft: "6.5%",
+                          paddingLeft: 12,
+                          width: "87%",
+                          height: "40px",
+                          background: "rgba(255, 255, 255, 1)",
+                          border: "1px solid rgba(255,255,255,0.15)",
+                          fontFamily: "'Exo 2', sans-serif",
+                        }}
+                        onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                        onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3 mt-2 max-md:!mt-4 max-md:!ml-0 max-md:!w-full max-md:!gap-2" style={{ marginTop: 20, marginLeft: "6.5%", width: "87%" }}>
+                    <button
+                      type="button"
+                      onClick={() => setStep(1)}
+                      className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-80 cursor-pointer max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+                      style={{
+                        height: "40px",
+                        fontFamily: "'Exo 2', sans-serif",
+                        background: "rgba(255,255,255,0.08)",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                      }}
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="button"
+                      disabled={!isStep2Valid}
+                      onClick={() => setStep(3)}
+                      className={`flex-1 py-3 rounded-lg text-white font-semibold transition-all duration-300 max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center ${
+                        isStep2Valid 
+                          ? "cursor-pointer hover:opacity-90 active:scale-[0.98]" 
+                          : "cursor-not-allowed opacity-50"
+                      }`}
+                      style={{
+                        height: "40px",
+                        fontFamily: "'Exo 2', sans-serif",
+                        background: isStep2Valid
+                          ? "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)"
+                          : "rgba(128, 128, 128, 0.2)",
+                        boxShadow: isStep2Valid
+                          ? "0 4px 20px rgba(208, 0, 203, 0.4)"
+                          : "none",
+                      }}
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {step === 3 && (
+                <div className="flex flex-col gap-5 max-md:!gap-4">
+                  <div className="flex flex-col gap-2 w-full">
+                    <label className="text-white opacity-80 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                      Bukti Share Ke 2 Group WhatsApp :
+                    </label>
+                    <input 
+                      type="file" 
+                      id="bukti-grup" 
+                      accept=".jpg,.jpeg,.png,.pdf" 
+                      className="hidden" 
+                      onChange={(e) => handleFileChange(e, 'buktiGrup')}
+                    />
+                    <div className="flex justify-center items-center gap-4 flex-wrap w-full" style={{paddingRight: "20px"}}>
+                      {filesState.buktiGrup ? (
+                        <div 
+                          className="relative rounded-2xl overflow-hidden"
+                          style={{
+                            marginLeft: "6%",
+                            width: "90%",
+                            background: "white",
+                            border: "2px solid rgba(255,255,255,0.3)",
+                            boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                          }}
+                        >
+                          <div className="flex items-center justify-between px-4 py-4">
+                            <div className="flex items-center gap-3 flex-1 min-w-0">
+                              <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(16,230,241,0.15)" }}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#10e6f1" strokeWidth="2"/>
+                                  <polyline points="14,2 14,8 20,8" stroke="#10e6f1" strokeWidth="2"/>
+                                </svg>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-gray-800 font-bold text-sm leading-tight mb-1">{filesState.buktiGrup.name}</p>
+                                <p className="text-gray-600 text-xs leading-tight truncate">{(filesState.buktiGrup.size / (1024 * 1024)).toFixed(2)} MB</p>
+                              </div>
+                            </div>
+                            <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>
+                              <button
+                                type="button"
+                                onClick={() => handleRemoveFile('buktiGrup', 'bukti-grup')}
+                                className="flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100"
+                                style={{ 
+                                  background: "#F5F5F5",
+                                  border: "1px solid #E0E0E0"
+                                }}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <line x1="18" y1="6" x2="6" y2="18" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
+                                  <line x1="6" y1="6" x2="18" y2="18" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
+                                </svg>
+                                <span className="text-gray-700 text-xs font-medium">Hapus</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <label 
+                          htmlFor="bukti-grup" 
+                          className="relative flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all hover:bg-[rgba(16,230,241,0.08)] max-md:!ml-0"
+                          style={{
+                            marginLeft: "6.5%",
+                            width: "87%",
+                            height: "75px",
+                            background: "rgba(16,230,241,0.04)",
+                          }}
+                        >
+                          <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                              <linearGradient id="dashed-gradient-grup" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#10e6f1" />
+                                <stop offset="100%" stopColor="#d000cb" />
+                              </linearGradient>
+                            </defs>
+                            <rect 
+                              x="1" 
+                              y="1" 
+                              width="calc(100% - 2px)" 
+                              height="calc(100% - 2px)" 
+                              rx="12" 
+                              fill="none" 
+                              stroke="url(#dashed-gradient-grup)" 
+                              strokeWidth="2" 
+                              strokeDasharray="6, 6" 
+                            />
+                          </svg>
+                          
+                          <div className="flex items-center justify-center gap-2">
+                            <svg width="18" height="18" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg" className="fill-[#10e6f1]">
+                              <path d="M60.7327 73.4824L55.2502 79.0074V55.2499C55.2502 54.1228 54.8024 53.0418 54.0054 52.2447C53.2084 51.4477 52.1274 50.9999 51.0002 50.9999C49.873 50.9999 48.792 51.4477 47.995 52.2447C47.198 53.0418 46.7502 54.1228 46.7502 55.2499V79.0074L41.2677 73.4824C40.8714 73.0862 40.401 72.7718 39.8833 72.5574C39.3655 72.3429 38.8106 72.2325 38.2502 72.2325C37.6898 72.2325 37.1349 72.3429 36.6171 72.5574C36.0994 72.7718 35.629 73.0862 35.2327 73.4824C34.8364 73.8787 34.5221 74.3491 34.3076 74.8669C34.0932 75.3846 33.9828 75.9395 33.9828 76.4999C33.9828 77.0603 34.0932 77.6152 34.3076 78.133C34.5221 78.6507 34.8364 79.1212 35.2327 79.5174L47.9827 92.2674C48.3869 92.6544 48.8635 92.9577 49.3852 93.1599C49.8939 93.3848 50.444 93.5009 51.0002 93.5009C51.5564 93.5009 52.1065 93.3848 52.6152 93.1599C53.1369 92.9577 53.6135 92.6544 54.0177 92.2674L66.7677 79.5174C67.568 78.7171 68.0176 77.6317 68.0176 76.4999C68.0176 75.3681 67.568 74.2827 66.7677 73.4824C65.9674 72.6821 64.882 72.2325 63.7502 72.2325C62.6184 72.2325 61.533 72.6821 60.7327 73.4824ZM78.2852 26.4349C75.6884 20.4679 71.2068 15.517 65.527 12.3408C59.8472 9.16452 53.2827 7.93821 46.8393 8.84973C40.3959 9.76126 34.4291 12.7603 29.8533 17.3874C25.2774 22.0145 22.345 28.0143 21.5052 34.4674C17.4532 35.4378 13.8986 37.8625 11.5166 41.281C9.13453 44.6995 8.09086 48.8738 8.58378 53.0111C9.07669 57.1484 11.0719 60.9606 14.1904 63.7238C17.3089 66.487 21.3336 68.0087 25.5002 67.9999C26.6274 67.9999 27.7084 67.5522 28.5054 66.7551C29.3024 65.9581 29.7502 64.8771 29.7502 63.7499C29.7502 62.6228 29.3024 61.5418 28.5054 60.7447C27.7084 59.9477 26.6274 59.4999 25.5002 59.4999C23.2459 59.4999 21.0839 58.6044 19.4898 57.0103C17.8957 55.4163 17.0002 53.2543 17.0002 50.9999C17.0002 48.7456 17.8957 46.5836 19.4898 44.9895C21.0839 43.3955 23.2459 42.4999 25.5002 42.4999C26.6274 42.4999 27.7084 42.0522 28.5054 41.2551C29.3024 40.4581 29.7502 39.3771 29.7502 38.2499C29.7611 33.2234 31.5534 28.3634 34.8088 24.5334C38.0643 20.7034 42.572 18.1515 47.5311 17.3309C52.4903 16.5103 57.5798 17.4742 61.8954 20.0515C66.211 22.6287 69.4733 26.6523 71.1027 31.4074C71.3456 32.1377 71.7823 32.7884 72.3662 33.2899C72.95 33.7914 73.6591 34.1249 74.4177 34.2549C77.2485 34.7899 79.8147 36.2677 81.6981 38.4477C83.5815 40.6277 84.6711 43.3812 84.7894 46.2596C84.9077 49.1381 84.0477 51.9718 82.3495 54.2989C80.6513 56.6261 78.215 58.3095 75.4377 59.0749C74.8963 59.2145 74.3877 59.4593 73.941 59.7953C73.4942 60.1314 73.118 60.5522 72.8338 61.0337C72.5497 61.5151 72.3632 62.0479 72.2849 62.6014C72.2066 63.155 72.2382 63.7186 72.3777 64.2599C72.5172 64.8013 72.762 65.3099 73.0981 65.7567C73.4342 66.2034 73.855 66.5796 74.3364 66.8638C74.8179 67.1479 75.3506 67.3345 75.9042 67.4127C76.4578 67.491 77.0213 67.4595 77.5627 67.3199C82.0353 66.1381 86.0001 63.5289 88.855 59.8887C91.7098 56.2484 93.2988 51.776 93.3805 47.1506C93.4622 42.5251 92.0323 37.9994 89.3079 34.2605C86.5834 30.5217 82.7133 27.7741 78.2852 26.4349Z" />
+                            </svg>
+                            <span className="text-white text-xs font-semibold" style={{ fontFamily: "'Exo 2', sans-serif" }}>Pilih File</span>
+                          </div>
+                          <span className="text-white/40 text-[10px] mt-1" style={{ fontFamily: "'Exo 2', sans-serif" }}>
+                            namafile.pdf, 5MB
+                          </span>
+                        </label>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-2 w-full">
+                    <label className="text-white opacity-80 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                      Bukti Share SG & Follow Instagram :
+                    </label>
+                    <input 
+                      type="file" 
+                      id="bukti-story" 
+                      accept=".jpg,.jpeg,.png,.pdf" 
+                      className="hidden" 
+                      onChange={(e) => handleFileChange(e, 'buktiStory')}
+                    />
+                    <div className="flex justify-center items-center gap-4 flex-wrap w-full" style={{paddingRight: "20px"}}>
+                      {filesState.buktiStory ? (
+                        <div 
+                          className="relative rounded-2xl overflow-hidden"
+                          style={{
+                            marginLeft: "6%",
+                            width: "90%",
+                            background: "white",
+                            border: "2px solid rgba(255,255,255,0.3)",
+                            boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                          }}
+                        >
+                          <div className="flex items-center justify-between px-4 py-4">
+                            <div className="flex items-center gap-3 flex-1 min-w-0">
+                              <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(16,230,241,0.15)" }}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#10e6f1" strokeWidth="2"/>
+                                  <polyline points="14,2 14,8 20,8" stroke="#10e6f1" strokeWidth="2"/>
+                                </svg>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-gray-800 font-bold text-sm leading-tight mb-1">{filesState.buktiStory.name}</p>
+                                <p className="text-gray-600 text-xs leading-tight truncate">{(filesState.buktiStory.size / (1024 * 1024)).toFixed(2)} MB</p>
+                              </div>
+                            </div>
+                            <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>
+                              <button
+                                type="button"
+                                onClick={() => handleRemoveFile('buktiStory', 'bukti-story')}
+                                className="flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100"
+                                style={{ 
+                                  background: "#F5F5F5",
+                                  border: "1px solid #E0E0E0"
+                                }}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <line x1="18" y1="6" x2="6" y2="18" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
+                                  <line x1="6" y1="6" x2="18" y2="18" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
+                                </svg>
+                                <span className="text-gray-700 text-xs font-medium">Hapus</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <label 
+                          htmlFor="bukti-story" 
+                          className="relative flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all hover:bg-[rgba(16,230,241,0.08)] max-md:!ml-0"
+                          style={{
+                            marginLeft: "6.5%",
+                            width: "87%",
+                            height: "75px",
+                            background: "rgba(16,230,241,0.04)",
+                          }}
+                        >
+                          <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                              <linearGradient id="dashed-gradient-story" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#10e6f1" />
+                                <stop offset="100%" stopColor="#d000cb" />
+                              </linearGradient>
+                            </defs>
+                            <rect 
+                              x="1" 
+                              y="1" 
+                              width="calc(100% - 2px)" 
+                              height="calc(100% - 2px)" 
+                              rx="12" 
+                              fill="none" 
+                              stroke="url(#dashed-gradient-story)" 
+                              strokeWidth="2" 
+                              strokeDasharray="6, 6" 
+                            />
+                          </svg>
+                          
+                          <div className="flex items-center justify-center gap-2">
+                            <svg width="18" height="18" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg" className="fill-[#10e6f1]">
+                              <path d="M60.7327 73.4824L55.2502 79.0074V55.2499C55.2502 54.1228 54.8024 53.0418 54.0054 52.2447C53.2084 51.4477 52.1274 50.9999 51.0002 50.9999C49.873 50.9999 48.792 51.4477 47.995 52.2447C47.198 53.0418 46.7502 54.1228 46.7502 55.2499V79.0074L41.2677 73.4824C40.8714 73.0862 40.401 72.7718 39.8833 72.5574C39.3655 72.3429 38.8106 72.2325 38.2502 72.2325C37.6898 72.2325 37.1349 72.3429 36.6171 72.5574C36.0994 72.7718 35.629 73.0862 35.2327 73.4824C34.8364 73.8787 34.5221 74.3491 34.3076 74.8669C34.0932 75.3846 33.9828 75.9395 33.9828 76.4999C33.9828 77.0603 34.0932 77.6152 34.3076 78.133C34.5221 78.6507 34.8364 79.1212 35.2327 79.5174L47.9827 92.2674C48.3869 92.6544 48.8635 92.9577 49.3852 93.1599C49.8939 93.3848 50.444 93.5009 51.0002 93.5009C51.5564 93.5009 52.1065 93.3848 52.6152 93.1599C53.1369 92.9577 53.6135 92.6544 54.0177 92.2674L66.7677 79.5174C67.568 78.7171 68.0176 77.6317 68.0176 76.4999C68.0176 75.3681 67.568 74.2827 66.7677 73.4824C65.9674 72.6821 64.882 72.2325 63.7502 72.2325C62.6184 72.2325 61.533 72.6821 60.7327 73.4824ZM78.2852 26.4349C75.6884 20.4679 71.2068 15.517 65.527 12.3408C59.8472 9.16452 53.2827 7.93821 46.8393 8.84973C40.3959 9.76126 34.4291 12.7603 29.8533 17.3874C25.2774 22.0145 22.345 28.0143 21.5052 34.4674C17.4532 35.4378 13.8986 37.8625 11.5166 41.281C9.13453 44.6995 8.09086 48.8738 8.58378 53.0111C9.07669 57.1484 11.0719 60.9606 14.1904 63.7238C17.3089 66.487 21.3336 68.0087 25.5002 67.9999C26.6274 67.9999 27.7084 67.5522 28.5054 66.7551C29.3024 65.9581 29.7502 64.8771 29.7502 63.7499C29.7502 62.6228 29.3024 61.5418 28.5054 60.7447C27.7084 59.9477 26.6274 59.4999 25.5002 59.4999C23.2459 59.4999 21.0839 58.6044 19.4898 57.0103C17.8957 55.4163 17.0002 53.2543 17.0002 50.9999C17.0002 48.7456 17.8957 46.5836 19.4898 44.9895C21.0839 43.3955 23.2459 42.4999 25.5002 42.4999C26.6274 42.4999 27.7084 42.0522 28.5054 41.2551C29.3024 40.4581 29.7502 39.3771 29.7502 38.2499C29.7611 33.2234 31.5534 28.3634 34.8088 24.5334C38.0643 20.7034 42.572 18.1515 47.5311 17.3309C52.4903 16.5103 57.5798 17.4742 61.8954 20.0515C66.211 22.6287 69.4733 26.6523 71.1027 31.4074C71.3456 32.1377 71.7823 32.7884 72.3662 33.2899C72.95 33.7914 73.6591 34.1249 74.4177 34.2549C77.2485 34.7899 79.8147 36.2677 81.6981 38.4477C83.5815 40.6277 84.6711 43.3812 84.7894 46.2596C84.9077 49.1381 84.0477 51.9718 82.3495 54.2989C80.6513 56.6261 78.215 58.3095 75.4377 59.0749C74.8963 59.2145 74.3877 59.4593 73.941 59.7953C73.4942 60.1314 73.118 60.5522 72.8338 61.0337C72.5497 61.5151 72.3632 62.0479 72.2849 62.6014C72.2066 63.155 72.2382 63.7186 72.3777 64.2599C72.5172 64.8013 72.762 65.3099 73.0981 65.7567C73.4342 66.2034 73.855 66.5796 74.3364 66.8638C74.8179 67.1479 75.3506 67.3345 75.9042 67.4127C76.4578 67.491 77.0213 67.4595 77.5627 67.3199C82.0353 66.1381 86.0001 63.5289 88.855 59.8887C91.7098 56.2484 93.2988 51.776 93.3805 47.1506C93.4622 42.5251 92.0323 37.9994 89.3079 34.2605C86.5834 30.5217 82.7133 27.7741 78.2852 26.4349Z" />
+                            </svg>
+                            <span className="text-white text-xs font-semibold" style={{ fontFamily: "'Exo 2', sans-serif" }}>Pilih File</span>
+                          </div>
+                          <span className="text-white/40 text-[10px] mt-1" style={{ fontFamily: "'Exo 2', sans-serif" }}>
+                            namafile.pdf, 5MB
+                          </span>
+                        </label>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-2 w-full">
+                    <label className="text-white opacity-80 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                      Upload KRS / KTM / Kartu Pelajar / KTP :
+                    </label>
+                    <input 
+                      type="file" 
+                      id="bukti-ktm" 
+                      accept=".jpg,.jpeg,.png,.pdf" 
+                      className="hidden" 
+                      onChange={(e) => handleFileChange(e, 'buktiKtm')}
+                    />
+                    <div className="flex justify-center items-center gap-4 flex-wrap w-full" style={{paddingRight: "20px"}}>
+                      {filesState.buktiKtm ? (
+                        <div 
+                          className="relative rounded-2xl overflow-hidden"
+                          style={{
+                            marginLeft: "6%",
+                            width: "90%",
+                            background: "white",
+                            border: "2px solid rgba(255,255,255,0.3)",
+                            boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                          }}
+                        >
+                          <div className="flex items-center justify-between px-4 py-4">
+                            <div className="flex items-center gap-3 flex-1 min-w-0">
+                              <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(16,230,241,0.15)" }}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#10e6f1" strokeWidth="2"/>
+                                  <polyline points="14,2 14,8 20,8" stroke="#10e6f1" strokeWidth="2"/>
+                                </svg>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-gray-800 font-bold text-sm leading-tight mb-1">{filesState.buktiKtm.name}</p>
+                                <p className="text-gray-600 text-xs leading-tight truncate">{(filesState.buktiKtm.size / (1024 * 1024)).toFixed(2)} MB</p>
+                              </div>
+                            </div>
+                            <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>
+                              <button
+                                type="button"
+                                onClick={() => handleRemoveFile('buktiKtm', 'bukti-ktm')}
+                                className="flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100"
+                                style={{ 
+                                  background: "#F5F5F5",
+                                  border: "1px solid #E0E0E0"
+                                }}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <line x1="18" y1="6" x2="6" y2="18" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
+                                  <line x1="6" y1="6" x2="18" y2="18" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
+                                </svg>
+                                <span className="text-gray-700 text-xs font-medium">Hapus</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <label 
+                          htmlFor="bukti-ktm" 
+                          className="relative flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all hover:bg-[rgba(16,230,241,0.08)] max-md:!ml-0"
+                          style={{
+                            marginLeft: "6.5%",
+                            width: "87%",
+                            height: "75px",
+                            background: "rgba(16,230,241,0.04)",
+                          }}
+                        >
+                          <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                              <linearGradient id="dashed-gradient-ktm" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#10e6f1" />
+                                <stop offset="100%" stopColor="#d000cb" />
+                              </linearGradient>
+                            </defs>
+                            <rect 
+                              x="1" 
+                              y="1" 
+                              width="calc(100% - 2px)" 
+                              height="calc(100% - 2px)" 
+                              rx="12" 
+                              fill="none" 
+                              stroke="url(#dashed-gradient-ktm)" 
+                              strokeWidth="2" 
+                              strokeDasharray="6, 6" 
+                            />
+                          </svg>
+                          
+                          <div className="flex items-center justify-center gap-2">
+                            <svg width="18" height="18" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg" className="fill-[#10e6f1]">
+                              <path d="M60.7327 73.4824L55.2502 79.0074V55.2499C55.2502 54.1228 54.8024 53.0418 54.0054 52.2447C53.2084 51.4477 52.1274 50.9999 51.0002 50.9999C49.873 50.9999 48.792 51.4477 47.995 52.2447C47.198 53.0418 46.7502 54.1228 46.7502 55.2499V79.0074L41.2677 73.4824C40.8714 73.0862 40.401 72.7718 39.8833 72.5574C39.3655 72.3429 38.8106 72.2325 38.2502 72.2325C37.6898 72.2325 37.1349 72.3429 36.6171 72.5574C36.0994 72.7718 35.629 73.0862 35.2327 73.4824C34.8364 73.8787 34.5221 74.3491 34.3076 74.8669C34.0932 75.3846 33.9828 75.9395 33.9828 76.4999C33.9828 77.0603 34.0932 77.6152 34.3076 78.133C34.5221 78.6507 34.8364 79.1212 35.2327 79.5174L47.9827 92.2674C48.3869 92.6544 48.8635 92.9577 49.3852 93.1599C49.8939 93.3848 50.444 93.5009 51.0002 93.5009C51.5564 93.5009 52.1065 93.3848 52.6152 93.1599C53.1369 92.9577 53.6135 92.6544 54.0177 92.2674L66.7677 79.5174C67.568 78.7171 68.0176 77.6317 68.0176 76.4999C68.0176 75.3681 67.568 74.2827 66.7677 73.4824C65.9674 72.6821 64.882 72.2325 63.7502 72.2325C62.6184 72.2325 61.533 72.6821 60.7327 73.4824ZM78.2852 26.4349C75.6884 20.4679 71.2068 15.517 65.527 12.3408C59.8472 9.16452 53.2827 7.93821 46.8393 8.84973C40.3959 9.76126 34.4291 12.7603 29.8533 17.3874C25.2774 22.0145 22.345 28.0143 21.5052 34.4674C17.4532 35.4378 13.8986 37.8625 11.5166 41.281C9.13453 44.6995 8.09086 48.8738 8.58378 53.0111C9.07669 57.1484 11.0719 60.9606 14.1904 63.7238C17.3089 66.487 21.3336 68.0087 25.5002 67.9999C26.6274 67.9999 27.7084 67.5522 28.5054 66.7551C29.3024 65.9581 29.7502 64.8771 29.7502 63.7499C29.7502 62.6228 29.3024 61.5418 28.5054 60.7447C27.7084 59.9477 26.6274 59.4999 25.5002 59.4999C23.2459 59.4999 21.0839 58.6044 19.4898 57.0103C17.8957 55.4163 17.0002 53.2543 17.0002 50.9999C17.0002 48.7456 17.8957 46.5836 19.4898 44.9895C21.0839 43.3955 23.2459 42.4999 25.5002 42.4999C26.6274 42.4999 27.7084 42.0522 28.5054 41.2551C29.3024 40.4581 29.7502 39.3771 29.7502 38.2499C29.7611 33.2234 31.5534 28.3634 34.8088 24.5334C38.0643 20.7034 42.572 18.1515 47.5311 17.3309C52.4903 16.5103 57.5798 17.4742 61.8954 20.0515C66.211 22.6287 69.4733 26.6523 71.1027 31.4074C71.3456 32.1377 71.7823 32.7884 72.3662 33.2899C72.95 33.7914 73.6591 34.1249 74.4177 34.2549C77.2485 34.7899 79.8147 36.2677 81.6981 38.4477C83.5815 40.6277 84.6711 43.3812 84.7894 46.2596C84.9077 49.1381 84.0477 51.9718 82.3495 54.2989C80.6513 56.6261 78.215 58.3095 75.4377 59.0749C74.8963 59.2145 74.3877 59.4593 73.941 59.7953C73.4942 60.1314 73.118 60.5522 72.8338 61.0337C72.5497 61.5151 72.3632 62.0479 72.2849 62.6014C72.2066 63.155 72.2382 63.7186 72.3777 64.2599C72.5172 64.8013 72.762 65.3099 73.0981 65.7567C73.4342 66.2034 73.855 66.5796 74.3364 66.8638C74.8179 67.1479 75.3506 67.3345 75.9042 67.4127C76.4578 67.491 77.0213 67.4595 77.5627 67.3199C82.0353 66.1381 86.0001 63.5289 88.855 59.8887C91.7098 56.2484 93.2988 51.776 93.3805 47.1506C93.4622 42.5251 92.0323 37.9994 89.3079 34.2605C86.5834 30.5217 82.7133 27.7741 78.2852 26.4349Z" />
+                            </svg>
+                            <span className="text-white text-xs font-semibold" style={{ fontFamily: "'Exo 2', sans-serif" }}>Pilih File</span>
+                          </div>
+                          <span className="text-white/40 text-[10px] mt-1" style={{ fontFamily: "'Exo 2', sans-serif" }}>
+                            namafile.pdf, 5MB
+                          </span>
+                        </label>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3 mt-2 max-md:!mt-4 max-md:!ml-0 max-md:!w-full max-md:!gap-2" style={{ marginTop: 20, marginLeft: "6.5%", width: "87%" }}>
+                    <button
+                      type="button"
+                      onClick={() => setStep(2)}
+                      className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-80 cursor-pointer max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+                      style={{
+                        height: "40px",
+                        fontFamily: "'Exo 2', sans-serif",
+                        background: "rgba(255,255,255,0.08)",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                      }}
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="button"
+                      disabled={!isStep3Valid}
+                      onClick={() => setStep(4)}
+                      className={`flex-1 py-3 rounded-lg text-white font-semibold transition-all duration-300 max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center ${
+                        isStep3Valid 
+                          ? "cursor-pointer hover:opacity-90 active:scale-[0.98]" 
+                          : "cursor-not-allowed opacity-50"
+                      }`}
+                      style={{
+                        height: "40px",
+                        fontFamily: "'Exo 2', sans-serif",
+                        background: isStep3Valid
+                          ? "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)"
+                          : "rgba(128, 128, 128, 0.2)",
+                        boxShadow: isStep3Valid
+                          ? "0 4px 20px rgba(208, 0, 203, 0.4)"
+                          : "none",
+                      }}
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {step === 4 && (
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-5 text-left max-md:!ml-0" style={{ marginLeft: "6.5%", width: "87%", fontFamily: "'Exo 2', sans-serif" }}>
+                    <div className="flex flex-col gap-3">
+                      <p className="text-white font-semibold text-sm" style={{ fontFamily: "'Exo 2', sans-serif" }}>Pilih Metode Pembayaran</p>
+                      <div
+                        onClick={() => setSelectedPayment("dana")}
+                        className="relative rounded-2xl cursor-pointer transition-all duration-200 overflow-hidden"
+                        style={{
+                          background: selectedPayment === "dana" 
+                            ? "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)" 
+                            : "white",
+                          border: selectedPayment === "dana"
+                            ? "2px solid #6e8efb"
+                            : "2px solid rgba(255,255,255,0.3)",
+                          boxShadow: selectedPayment === "dana" 
+                            ? "0 4px 20px rgba(208, 0, 203, 0.4)" 
+                            : "0 4px 16px rgba(0,0,0,0.1)",
+                        }}
                       >
-                        {submitMessage}
+                        <div className="flex items-center justify-between px-4 py-4">
+                          <div className="flex items-center gap-3 flex-1 min-w-0">
+                            <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                              <img 
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/2560px-Logo_dana_blue.svg.png" 
+                                alt="DANA Logo" 
+                                className="w-full h-full object-contain"
+                                style={{ filter: "brightness(1.1)" }}
+                              />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className={`font-bold text-sm leading-tight mb-1 ${selectedPayment === "dana" ? "text-white" : "text-gray-800"}`}>DANA</p>
+                              <p className={`text-xs leading-tight truncate ${selectedPayment === "dana" ? "text-white/80" : "text-gray-600"}`}>085813549224 (Atika Sari Ramadhani)</p>
+                            </div>
+                          </div>
+                          <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>
+                            <button
+                              type="button"
+                              onClick={(e) => { e.stopPropagation(); handleCopyPayment("dana"); }}
+                              className="flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-200 hover:opacity-80"
+                              style={{ 
+                                background: selectedPayment === "dana" 
+                                  ? (copiedPayment === "dana" ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.15)")
+                                  : (copiedPayment === "dana" ? "#E8F5E8" : "#F5F5F5"),
+                                border: selectedPayment === "dana" 
+                                  ? "1px solid rgba(255,255,255,0.3)" 
+                                  : "1px solid #E0E0E0"
+                              }}
+                            >
+                              {copiedPayment === "dana" ? (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <path d="M20 6L9 17l-5-5" stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              ) : (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <rect x="9" y="9" width="13" height="13" rx="2" stroke={selectedPayment === "dana" ? "white" : "#666"} strokeWidth="1.5"/>
+                                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke={selectedPayment === "dana" ? "white" : "#666"} strokeWidth="1.5"/>
+                                </svg>
+                              )}
+                              <span className={`text-xs font-medium ${selectedPayment === "dana" ? "text-white" : "text-gray-700"}`}>
+                                {copiedPayment === "dana" ? "Copied!" : "Salin"}
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                    )}
-                  
+
+                      <div
+                        onClick={() => setSelectedPayment("seabank")}
+                        className="relative rounded-2xl cursor-pointer transition-all duration-200 overflow-hidden"
+                        style={{
+                          background: selectedPayment === "seabank" 
+                            ? "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)" 
+                            : "white",
+                          border: selectedPayment === "seabank"
+                            ? "2px solid #6e8efb"
+                            : "2px solid rgba(255,255,255,0.3)",
+                          boxShadow: selectedPayment === "seabank" 
+                            ? "0 4px 20px rgba(208, 0, 203, 0.4)" 
+                            : "0 4px 16px rgba(0,0,0,0.1)",
+                        }}
+                      >
+                        <div className="flex items-center justify-between px-4 py-4">
+                          <div className="flex items-center gap-3 flex-1 min-w-0">
+                            <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                              <img 
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/SeaBank_logo.svg/2560px-SeaBank_logo.svg.png" 
+                                alt="SeaBank Logo" 
+                                className="w-full h-full object-contain"
+                                style={{ filter: "brightness(1.1)" }}
+                              />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className={`font-bold text-sm leading-tight mb-1 ${selectedPayment === "seabank" ? "text-white" : "text-gray-800"}`}>SEABANK</p>
+                              <p className={`text-xs leading-tight truncate ${selectedPayment === "seabank" ? "text-white/80" : "text-gray-600"}`}>901043234643 (Atika Sari R.)</p>
+                            </div>
+                          </div>
+                          <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>
+                            <button
+                              type="button"
+                              onClick={(e) => { e.stopPropagation(); handleCopyPayment("seabank"); }}
+                              className="flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-200 hover:opacity-80"
+                              style={{ 
+                                background: selectedPayment === "seabank" 
+                                  ? (copiedPayment === "seabank" ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.15)")
+                                  : (copiedPayment === "seabank" ? "#E8F5E8" : "#F5F5F5"),
+                                border: selectedPayment === "seabank" 
+                                  ? "1px solid rgba(255,255,255,0.3)" 
+                                  : "1px solid #E0E0E0"
+                              }}
+                            >
+                              {copiedPayment === "seabank" ? (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <path d="M20 6L9 17l-5-5" stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              ) : (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <rect x="9" y="9" width="13" height="13" rx="2" stroke={selectedPayment === "seabank" ? "white" : "#666"} strokeWidth="1.5"/>
+                                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke={selectedPayment === "seabank" ? "white" : "#666"} strokeWidth="1.5"/>
+                                </svg>
+                              )}
+                              <span className={`text-xs font-medium ${selectedPayment === "seabank" ? "text-white" : "text-gray-700"}`}>
+                                {copiedPayment === "seabank" ? "Copied!" : "Salin"}
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-2.5">
+                      <p className="text-white font-semibold text-sm" style={{ fontFamily: "'Exo 2', sans-serif" }}>Upload Bukti Pembayaran</p>
+                      <input
+                        type="file"
+                        id="bukti-pembayaran"
+                        accept="image/*,application/pdf"
+                        className="hidden"
+                        onChange={(e) => handleFileChange(e, 'buktiPembayaran')}
+                      />
+                      {filesState.buktiPembayaran ? (
+                        <div 
+                          className="relative rounded-2xl overflow-hidden"
+                          style={{
+                            background: "white",
+                            border: "2px solid rgba(255,255,255,0.3)",
+                            boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                          }}
+                        >
+                          <div className="flex items-center justify-between px-4 py-4">
+                            <div className="flex items-center gap-3 flex-1 min-w-0">
+                              <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(16,230,241,0.15)" }}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#10e6f1" strokeWidth="2"/>
+                                  <polyline points="14,2 14,8 20,8" stroke="#10e6f1" strokeWidth="2"/>
+                                </svg>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-gray-800 font-bold text-sm leading-tight mb-1">{filesState.buktiPembayaran.name}</p>
+                                <p className="text-gray-600 text-xs leading-tight truncate">{(filesState.buktiPembayaran.size / (1024 * 1024)).toFixed(2)} MB</p>
+                              </div>
+                            </div>
+                            <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>
+                              <button
+                                type="button"
+                                onClick={() => handleRemoveFile('buktiPembayaran', 'bukti-pembayaran')}
+                                className="flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100"
+                                style={{ 
+                                  background: "#F5F5F5",
+                                  border: "1px solid #E0E0E0"
+                                }}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <line x1="18" y1="6" x2="6" y2="18" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
+                                  <line x1="6" y1="6" x2="18" y2="18" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
+                                </svg>
+                                <span className="text-gray-700 text-xs font-medium">Hapus</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <label
+                          htmlFor="bukti-pembayaran"
+                          className="flex flex-col items-center justify-center gap-2 py-6 rounded-2xl cursor-pointer transition-all duration-200 hover:border-[#10e6f1]/60 hover:bg-white/5"
+                          style={{ border: "2px dashed rgba(16,230,241,0.4)", background: "rgba(16,230,241,0.03)" }}
+                        >
+                          <div style={{ marginTop: "8px" }}>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" stroke="#10e6f1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><polyline points="17,8 12,3 7,8" stroke="#10e6f1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><line x1="12" y1="3" x2="12" y2="15" stroke="#10e6f1" strokeWidth="1.8" strokeLinecap="round"/></svg>
+                          </div>
+                          <p className="text-white font-semibold text-sm">Pilih File</p>
+                          <p className="text-white/40 text-[10px]" style={{ paddingBottom: "4px" }}>JPG, PNG, PDF — Maks. 5MB</p>
+                        </label>
+                      )}
+                    </div>
+
+                  </div>
+
+                  <div className="flex gap-3 mt-2 max-md:!ml-0 max-md:!w-full max-md:!gap-2" style={{ marginLeft: "6.5%", width: "87%" }}>
+                    <button
+                      type="button"
+                      onClick={() => setStep(3)}
+                      className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-80 cursor-pointer max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+                      style={{
+                        height: "40px",
+                        fontFamily: "'Exo 2', sans-serif",
+                        background: "rgba(255,255,255,0.08)",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                      }}
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting || !isStep4Valid}
+                      className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+                      style={{
+                        height: "40px",
+                        fontFamily: "'Exo 2', sans-serif",
+                        background: (isSubmitting || !isStep4Valid)
+                          ? "rgba(128,128,128,0.5)"
+                          : "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)",
+                        boxShadow: (isSubmitting || !isStep4Valid)
+                          ? "none"
+                          : "0 4px 20px rgba(208,0,203,0.4)",
+                      }}
+                    >
+                      {isSubmitting ? "Mengirim..." : "Submit Tim ✈"}
+                    </button>
+                  </div>
+
+                  {submitMessage && (
+                    <div 
+                      className="mt-4 p-3 rounded-lg text-xs text-center max-md:!ml-0 max-md:!w-full"
+                      style={{
+                        marginLeft: "6.5%",
+                        width: "87%",
+                        background: submitMessage.includes("✅") 
+                          ? "rgba(0,255,0,0.1)" 
+                          : "rgba(255,0,0,0.1)",
+                        border: `1px solid ${submitMessage.includes("✅") 
+                          ? "rgba(0,255,0,0.3)" 
+                          : "rgba(255,0,0,0.3)"}`,
+                        color: submitMessage.includes("✅") ? "#00ff00" : "#ff6b6b",
+                        fontFamily: "'Exo 2', sans-serif",
+                      }}
+                    >
+                      {submitMessage}
+                    </div>
+                  )}
                 </div>
               )}
             </form>
