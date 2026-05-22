@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_PATH } from '@/config/constants';
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 
@@ -19,7 +20,7 @@ const lombas: Record<
     titleAccent: "UI/UX",
     description:
       "Perlombaan ini menantang peserta untuk merancang antarmuka pengguna yang intuitif dan menarik. Peserta diajak mengeksplorasi kreativitas dalam desain interaksi dan pengalaman pengguna yang optimal.",
-    cp: { name: "Fajar Abdilah", wa: "085714556256" },
+    cp: { name: "Muhammad Rafisyah Rizkiyawan", wa: "082125622387" },
   },
   "Software Development": {
     title: "Development",
@@ -256,13 +257,19 @@ const router = useRouter();
     buktiKtm: null,
     buktiPembayaran: null,
   });
-  const [selectedPayment, setSelectedPayment] = useState<"dana" | "seabank" | null>(null);
+  const [selectedPayment, setSelectedPayment] = useState<"dana" | "btn" | null>(null);
   const [copiedPayment, setCopiedPayment] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const lomba = lombas[activeTab];
-  const scriptURL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || '';
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyjbIEpci5wktPurqKp3uhw-y9hUHK6fAtby196KGtB7EOrfW7M23EKKSkxKqKV3xLzdw/exec';
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof typeof filesState) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -290,7 +297,7 @@ const router = useRouter();
     }
   };
 
-  const isStep1Valid = 
+  const isStep1Valid = hasMounted && (
     activeTab === "UI/UX Design"
       ? formDataState.leaderName.trim() !== "" &&
         formDataState.anggota2.trim() !== "" &&
@@ -298,28 +305,32 @@ const router = useRouter();
       : formDataState.leaderName.trim() !== "" &&
         formDataState.anggota2.trim() !== "" &&
         formDataState.anggota3.trim() !== "" &&
-        formDataState.leaderPhone.trim() !== "";
+        formDataState.leaderPhone.trim() !== ""
+  );
 
-  const isStep2Valid = 
+  const isStep2Valid = hasMounted && (
     formDataState.teamName.trim() !== "" &&
     formDataState.institution.trim() !== "" &&
-    formDataState.angkatan.trim() !== "";
+    formDataState.angkatan.trim() !== ""
+  );
 
-  const isStep3Valid = 
+  const isStep3Valid = hasMounted && (
     filesState.buktiGrup !== null &&
     filesState.buktiStory !== null &&
-    filesState.buktiKtm !== null;
+    filesState.buktiKtm !== null
+  );
 
-  const isStep4Valid =
+  const isStep4Valid = hasMounted && (
     selectedPayment !== null &&
-    filesState.buktiPembayaran !== null;
+    filesState.buktiPembayaran !== null
+  );
 
   const paymentMethods = {
-    dana: { name: "DANA", number: "085813549224", holder: "Atika Sari Ramadhani", color: "#8B5CF6", gradient: "linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)" },
-    seabank: { name: "SeaBank", number: "901043234643", holder: "Atika Sari R.", color: "#F97316", gradient: "linear-gradient(135deg, #F97316 0%, #EA580C 100%)" },
+    dana: { name: "DANA", number: "085664527826", holder: "a.n. Rafli Rizqi Fadillah", color: "#8B5CF6", gradient: "linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)" },
+    btn: { name: "Bank BTN", number: "18101610249143", holder: "a.n. Rafli Rizqi Fadillah", color: "#F97316", gradient: "linear-gradient(135deg, #F97316 0%, #EA580C 100%)" },
   };
 
-  const handleCopyPayment = (key: "dana" | "seabank") => {
+  const handleCopyPayment = (key: "dana" | "btn") => {
     navigator.clipboard.writeText(paymentMethods[key].number).then(() => {
       setCopiedPayment(key);
       setTimeout(() => setCopiedPayment(null), 2000);
@@ -336,26 +347,11 @@ const router = useRouter();
     }
   };
 
-  // --- LOGIC 2: SUBMIT HANDLER ---
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     setIsSubmitting(true);
-    setSubmitMessage("Sedang memproses data...");
-
-    const sendData = new FormData();
-    sendData.append("nama", formDataState.leaderName.trim());
-    sendData.append("leader_name", formDataState.leaderName.trim());
-    sendData.append("anggota_2", formDataState.anggota2.trim());
-    sendData.append("anggota_3", formDataState.anggota3.trim());
-    sendData.append("anggota_4", activeTab === "Software Development" ? formDataState.anggota4.trim() : "");
-    sendData.append("anggota_5", activeTab === "Software Development" ? formDataState.anggota5.trim() : "");
-    sendData.append("no_telepon", formDataState.leaderPhone.trim());
-    sendData.append("nama_tim", formDataState.teamName.trim());
-    sendData.append("institusi", formDataState.institution.trim());
-    sendData.append("angkatan", formDataState.angkatan.trim());
-    sendData.append("npm", "");
-    sendData.append("mata_lomba", activeTab);
+    setSubmitMessage("Sedang memproses berkas dan mengirim data pendaftaran...");
 
     try {
       const isLeaderValid = formDataState.leaderName.trim() !== "";
@@ -390,26 +386,36 @@ const router = useRouter();
         throw new Error("Mohon pilih metode pembayaran!");
       }
 
-      sendData.append("metode_pembayaran", selectedPayment === "dana" ? "DANA" : "SeaBank");
+      const searchParams = new URLSearchParams();
+      searchParams.append("nama_team", formDataState.teamName.trim());
+      searchParams.append("institusi", formDataState.institution.trim());
+      searchParams.append("angkatan", formDataState.angkatan.trim());
+      searchParams.append("leader_team", formDataState.leaderName.trim());
+      searchParams.append("anggota_2", formDataState.anggota2.trim());
+      searchParams.append("anggota_3", formDataState.anggota3.trim());
+      searchParams.append("anggota_4", activeTab === "Software Development" ? formDataState.anggota4.trim() : "");
+      searchParams.append("anggota_5", activeTab === "Software Development" ? formDataState.anggota5.trim() : "");
+      searchParams.append("no_telp_leader", formDataState.leaderPhone.trim());
+      searchParams.append("mata_lomba", activeTab);
+      searchParams.append("metode_pembayaran", selectedPayment === "dana" ? "DANA" : "Bank BTN");
 
-      const fileKeys: (keyof typeof filesState)[] = ["buktiGrup", "buktiStory", "buktiKtm", "buktiPembayaran"];
-      const fileNamesInForm: Record<string, string> = {
-        buktiGrup: "bukti_grup",
-        buktiStory: "bukti_sg_follow_twibbon",
-        buktiKtm: "bukti_ktm",
+      const fileKeys: (keyof typeof filesState)[] = ["buktiPembayaran", "buktiGrup", "buktiStory", "buktiKtm"];
+      const fileNamesInBackend: Record<string, string> = {
         buktiPembayaran: "bukti_pembayaran",
+        buktiGrup: "bukti_share_wa",       
+        buktiStory: "bukti_share_ig",      
+        buktiKtm: "bukti_identitas",       
       };
 
       const filePromises = fileKeys.map((key) => {
         const file = filesState[key];
         if (file) {
           const reader = new FileReader();
-          return new Promise<{ name: string; filename: string; value: string | ArrayBuffer | null }>((resolve, reject) => {
+          return new Promise<{ name: string; value: string }>((resolve, reject) => {
             reader.onloadend = () => {
               resolve({
-                name: fileNamesInForm[key],
-                filename: file.name,
-                value: reader.result
+                name: fileNamesInBackend[key],
+                value: reader.result as string
               });
             };
             reader.onerror = reject;
@@ -423,51 +429,21 @@ const router = useRouter();
       
       processedFiles.forEach((fileData) => {
         if (fileData) {
-          sendData.append(fileData.name, fileData.value as string);
-          sendData.append(fileData.name + '_filename', fileData.filename);
+          searchParams.append(fileData.name, fileData.value);
         }
       });
 
-      const response = await fetch(scriptURL, {
+      await fetch(scriptURL, {
         method: 'POST',
-        body: sendData,
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: searchParams.toString(),
       });
 
-      const result = await response.json();
-
-      if (result.result === 'success') {
-        setSubmitMessage("Pendaftaran berhasil! Mengalihkan halaman...");
-        alert("Terima kasih! Pendaftaran tim Anda berhasil.");
-        
-        setFormDataState({
-          leaderName: "",
-          anggota2: "",
-          anggota3: "",
-          anggota4: "",
-          anggota5: "",
-          leaderPhone: "",
-          teamName: "",
-          institution: "",
-          angkatan: "",
-        });
-        setFilesState({
-          buktiGrup: null,
-          buktiStory: null,
-          buktiKtm: null,
-          buktiPembayaran: null,
-        });
-        setSelectedPayment(null);
-        setStep(1);
-        
-        sessionStorage.setItem("selectedLomba", activeTab);
-        router.push(`/terimakasih?jenis=${encodeURIComponent(activeTab)}`);
-      } else if (result.result === 'duplicate') {
-        throw new Error("NPM atau nomor telepon leader sudah terdaftar di lomba ini.");
-      } else if (result.result === 'spam') {
-        throw new Error("Mohon tunggu 30 detik sebelum submit kembali.");
-      } else {
-        throw new Error(result.message || "Gagal menyimpan data.");
-      }
+      setSubmitMessage("✅ Pendaftaran berhasil!");
+      setShowSuccessModal(true);
 
     } catch (error: any) {
       setSubmitMessage(`Error: ${error.message}`);
@@ -1336,7 +1312,7 @@ const router = useRouter();
                           <div className="flex items-center gap-3 flex-1 min-w-0">
                             <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
                               <img 
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/2560px-Logo_dana_blue.svg.png" 
+                                src= {`${BASE_PATH}/images/dana.png`} 
                                 alt="DANA Logo" 
                                 className="w-full h-full object-contain"
                                 style={{ filter: "brightness(1.1)" }}
@@ -1344,7 +1320,7 @@ const router = useRouter();
                             </div>
                             <div className="flex-1 min-w-0">
                               <p className={`font-bold text-sm leading-tight mb-1 ${selectedPayment === "dana" ? "text-white" : "text-gray-800"}`}>DANA</p>
-                              <p className={`text-xs leading-tight truncate ${selectedPayment === "dana" ? "text-white/80" : "text-gray-600"}`}>085813549224 (Atika Sari Ramadhani)</p>
+                              <p className={`text-xs leading-tight truncate ${selectedPayment === "dana" ? "text-white/80" : "text-gray-600"}`}>085664527826</p>
                             </div>
                           </div>
                           <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>
@@ -1380,16 +1356,16 @@ const router = useRouter();
                       </div>
 
                       <div
-                        onClick={() => setSelectedPayment("seabank")}
+                        onClick={() => setSelectedPayment("btn")}
                         className="relative rounded-2xl cursor-pointer transition-all duration-200 overflow-hidden"
                         style={{
-                          background: selectedPayment === "seabank" 
+                          background: selectedPayment === "btn" 
                             ? "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)" 
                             : "white",
-                          border: selectedPayment === "seabank"
+                          border: selectedPayment === "btn"
                             ? "2px solid #6e8efb"
                             : "2px solid rgba(255,255,255,0.3)",
-                          boxShadow: selectedPayment === "seabank" 
+                          boxShadow: selectedPayment === "btn" 
                             ? "0 4px 20px rgba(208, 0, 203, 0.4)" 
                             : "0 4px 16px rgba(0,0,0,0.1)",
                         }}
@@ -1398,43 +1374,43 @@ const router = useRouter();
                           <div className="flex items-center gap-3 flex-1 min-w-0">
                             <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
                               <img 
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/SeaBank_logo.svg/2560px-SeaBank_logo.svg.png" 
-                                alt="SeaBank Logo" 
+                                src= {`${BASE_PATH}/images/btn.svg`} 
+                                alt="Bank BTN Logo" 
                                 className="w-full h-full object-contain"
                                 style={{ filter: "brightness(1.1)" }}
                               />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <p className={`font-bold text-sm leading-tight mb-1 ${selectedPayment === "seabank" ? "text-white" : "text-gray-800"}`}>SEABANK</p>
-                              <p className={`text-xs leading-tight truncate ${selectedPayment === "seabank" ? "text-white/80" : "text-gray-600"}`}>901043234643 (Atika Sari R.)</p>
+                              <p className={`font-bold text-sm leading-tight mb-1 ${selectedPayment === "btn" ? "text-white" : "text-gray-800"}`}>BANK BTN</p>
+                              <p className={`text-xs leading-tight truncate ${selectedPayment === "btn" ? "text-white/80" : "text-gray-600"}`}>18101610249143</p>
                             </div>
                           </div>
                           <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>
                             <button
                               type="button"
-                              onClick={(e) => { e.stopPropagation(); handleCopyPayment("seabank"); }}
+                              onClick={(e) => { e.stopPropagation(); handleCopyPayment("btn"); }}
                               className="flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-200 hover:opacity-80"
                               style={{ 
-                                background: selectedPayment === "seabank" 
-                                  ? (copiedPayment === "seabank" ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.15)")
-                                  : (copiedPayment === "seabank" ? "#E8F5E8" : "#F5F5F5"),
-                                border: selectedPayment === "seabank" 
+                                background: selectedPayment === "btn" 
+                                  ? (copiedPayment === "btn" ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.15)")
+                                  : (copiedPayment === "btn" ? "#E8F5E8" : "#F5F5F5"),
+                                border: selectedPayment === "btn" 
                                   ? "1px solid rgba(255,255,255,0.3)" 
                                   : "1px solid #E0E0E0"
                               }}
                             >
-                              {copiedPayment === "seabank" ? (
+                              {copiedPayment === "btn" ? (
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                                   <path d="M20 6L9 17l-5-5" stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                               ) : (
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                  <rect x="9" y="9" width="13" height="13" rx="2" stroke={selectedPayment === "seabank" ? "white" : "#666"} strokeWidth="1.5"/>
-                                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke={selectedPayment === "seabank" ? "white" : "#666"} strokeWidth="1.5"/>
+                                  <rect x="9" y="9" width="13" height="13" rx="2" stroke={selectedPayment === "btn" ? "white" : "#666"} strokeWidth="1.5"/>
+                                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke={selectedPayment === "btn" ? "white" : "#666"} strokeWidth="1.5"/>
                                 </svg>
                               )}
-                              <span className={`text-xs font-medium ${selectedPayment === "seabank" ? "text-white" : "text-gray-700"}`}>
-                                {copiedPayment === "seabank" ? "Copied!" : "Salin"}
+                              <span className={`text-xs font-medium ${selectedPayment === "btn" ? "text-white" : "text-gray-700"}`}>
+                                {copiedPayment === "btn" ? "Copied!" : "Salin"}
                               </span>
                             </button>
                           </div>
@@ -1567,6 +1543,160 @@ const router = useRouter();
           </div>
         </div>
       </div>
+
+      {showSuccessModal && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          style={{
+            padding: "24px",
+            background: "rgba(0,0,0,0.88)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              maxWidth: "480px",
+              borderRadius: "24px",
+              padding: "2px",
+              background: "linear-gradient(160deg, #00ffff 0%, #6e8efb 40%, #ff00ff 100%)",
+              boxShadow: "0 0 60px rgba(0,255,255,0.15), 0 0 100px rgba(255,0,255,0.1)",
+            }}
+          >
+            <div
+              style={{
+                borderRadius: "22px",
+                background: "linear-gradient(180deg, rgba(0,9,35,0.97) 0%, rgba(5,2,30,0.98) 100%)",
+                padding: "48px 40px 40px",
+                position: "relative",
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+              }}
+            >
+              <div style={{ position: "absolute", top: "-60px", left: "-60px", width: "180px", height: "180px", background: "radial-gradient(circle, rgba(0,255,255,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+              <div style={{ position: "absolute", bottom: "-60px", right: "-60px", width: "180px", height: "180px", background: "radial-gradient(circle, rgba(255,0,255,0.10) 0%, transparent 70%)", pointerEvents: "none" }} />
+
+              <div
+                style={{
+                  width: "88px",
+                  height: "88px",
+                  borderRadius: "50%",
+                  border: "2px solid rgba(0,255,255,0.35)",
+                  background: "rgba(0,255,255,0.06)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "28px",
+                  position: "relative",
+                  boxShadow: "0 0 30px rgba(0,255,255,0.12)",
+                }}
+              >
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+
+              <h3
+                style={{
+                  fontFamily: "'Zen Dots', sans-serif",
+                  fontSize: "clamp(18px, 4.5vw, 24px)",
+                  color: "#ffffff",
+                  letterSpacing: "0.06em",
+                  lineHeight: "1.3",
+                  marginBottom: "16px",
+                }}
+              >
+                Pendaftaran Berhasil!
+              </h3>
+
+              <div style={{ width: "60px", height: "2px", background: "linear-gradient(90deg, #00ffff, #ff00ff)", borderRadius: "2px", marginBottom: "20px" }} />
+
+              <p
+                style={{
+                  fontFamily: "'Exo 2', sans-serif",
+                  fontSize: "clamp(13px, 3.2vw, 15px)",
+                  color: "rgba(255,255,255,0.82)",
+                  lineHeight: "1.7",
+                  marginBottom: "32px",
+                  maxWidth: "380px",
+                }}
+              >
+                Data pendaftaran untuk tim{" "}
+                <span style={{ color: "#e040fb", fontWeight: 600 }}>{formDataState.teamName || "Anda"}</span>{" "}
+                di cabang lomba{" "}
+                <span style={{ color: "#00e5ff", fontWeight: 600 }}>{activeTab}</span>{" "}
+                telah berhasil disimpan.
+              </p>
+
+              <button
+                onClick={() => {
+                  setFormDataState({
+                    leaderName: "",
+                    anggota2: "",
+                    anggota3: "",
+                    anggota4: "",
+                    anggota5: "",
+                    leaderPhone: "",
+                    teamName: "",
+                    institution: "",
+                    angkatan: "",
+                  });
+                  setFilesState({
+                    buktiGrup: null,
+                    buktiStory: null,
+                    buktiKtm: null,
+                    buktiPembayaran: null,
+                  });
+                  setSelectedPayment(null);
+                  setStep(1);
+                  setShowSuccessModal(false);
+                  
+                  sessionStorage.setItem("selectedLomba", activeTab);
+                  router.push(`/terimakasih?jenis=${encodeURIComponent(activeTab)}`);
+                }}
+                style={{
+                  width: "100%",
+                  maxWidth: "340px",
+                  padding: "14px 24px",
+                  borderRadius: "14px",
+                  border: "none",
+                  cursor: "pointer",
+                  fontFamily: "'Exo 2', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "15px",
+                  color: "#ffffff",
+                  background: "linear-gradient(135deg, #6e8efb 0%, #d000cb 100%)",
+                  boxShadow: "0 6px 24px rgba(208, 0, 203, 0.35)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "10px",
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+                onMouseEnter={(ev) => {
+                  ev.currentTarget.style.transform = "scale(1.04)";
+                  ev.currentTarget.style.boxShadow = "0 8px 30px rgba(208, 0, 203, 0.5)";
+                }}
+                onMouseLeave={(ev) => {
+                  ev.currentTarget.style.transform = "scale(1)";
+                  ev.currentTarget.style.boxShadow = "0 6px 24px rgba(208, 0, 203, 0.35)";
+                }}
+                onMouseDown={(ev) => { ev.currentTarget.style.transform = "scale(0.97)"; }}
+                onMouseUp={(ev) => { ev.currentTarget.style.transform = "scale(1.04)"; }}
+              >
+                <span>Next</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
