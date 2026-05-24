@@ -3,20 +3,21 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const competitions = [
-  { id: "ui-ux", title: "UI/UX\nDesign" },
-  { id: "software-development", title: "Software\nDevelopment" },
+  { 
+    id: "ui-ux", 
+    title: "UI/UX Design",
+    description: "Kompetisi desain antarmuka dan pengalaman pengguna aplikasi/website yang menguji kemampuan peserta menciptakan solusi digital yang intuitif dan menarik.",
+    team: "2-3 Orang",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop"
+  },
+  { 
+    id: "software-development", 
+    title: "Software Development",
+    description: "Kompetisi pengembangan aplikasi/website yang menguji kemampuan peserta menciptakan solusi digital kreatif dan fungsional melalui teknologi.",
+    team: "3-5 Orang",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop"
+  },
 ];
-
-function Sparkle({ size = 20, opacity = 1 }: { size?: number; opacity?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" style={{ opacity }}>
-      <path
-        d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z"
-        fill="white"
-      />
-    </svg>
-  );
-}
 
 function StarCluster({ position }: { position: "left" | "right" }) {
   const isLeft = position === "left";
@@ -87,80 +88,73 @@ function StarCluster({ position }: { position: "left" | "right" }) {
   );
 }
 
-function CompetitionCard({ title }: { title: string }) {
-  const lines = title.split("\n");
-
+function CompetitionCard({ 
+  title, 
+  description, 
+  team, 
+  image 
+}: { 
+  title: string; 
+  description: string; 
+  team: string; 
+  image: string; 
+}) {
   return (
     <Link
-      href="/pendaftaran-ditutup"
-      className="relative group cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] w-full max-w-[280px] block"
-      style={{ height: "250px" }}
+      href="/pendaftaran"
+      className="relative flex flex-col group w-full max-w-[340px] min-h-[440px] rounded-[24px] overflow-hidden transition-all duration-300 hover:-translate-y-2 cursor-pointer block"
+      style={{
+        background: "#1b233d",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+      }}
     >
-
-      <div
-        className="absolute inset-0 rounded-2xl transition-all duration-300 group-hover:scale-[1.01]"
-        style={{
-          padding: "3px",
-          background: "linear-gradient(135deg, #00ffff 0%, #ff00ff 100%)",
-          WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-          WebkitMaskComposite: "xor",
-          maskComposite: "exclude",
-          borderRadius: "16px",
-        }}
-      />
-
-      <div
-        className="absolute inset-0 rounded-2xl transition-all duration-300 group-hover:!bg-[#341f5a] group-hover:!shadow-[0_15px_30px_rgba(255,0,255,0.4),0_0_30px_rgba(0,255,255,0.3)]"
-        style={{
-          background: "#2d1b4e",
-          boxShadow: "0 0 20px rgba(255,0,255,0.2)",
-        }}
-      />
-
-      <div className="absolute top-4 left-4 opacity-60 transition-all duration-500 group-hover:scale-125 group-hover:rotate-45 group-hover:opacity-100"><Sparkle size={18} /></div>
-      <div className="absolute top-6 right-6 opacity-50 transition-all duration-500 group-hover:scale-125 group-hover:-rotate-45 group-hover:opacity-100"><Sparkle size={14} /></div>
-      <div className="absolute bottom-16 right-4 opacity-40 transition-all duration-500 group-hover:scale-125 group-hover:rotate-90 group-hover:opacity-100"><Sparkle size={16} /></div>
-      <div className="absolute bottom-20 left-6 opacity-30 transition-all duration-500 group-hover:scale-125 group-hover:-rotate-90 group-hover:opacity-100"><Sparkle size={12} /></div>
-      <div className="absolute inset-0 flex items-center justify-center px-6 pb-14">
-        <h3
-          className="text-white text-center font-bold leading-tight transition-all duration-300 group-hover:!text-white group-hover:[text-shadow:0_0_12px_rgba(255,255,255,0.5),0_0_20px_rgba(208,0,203,0.3)]"
-          style={{
-            fontFamily: "'Zen Dots', cursive",
-            fontSize: "clamp(18px, 2.2vw, 24px)",
-          }}
-        >
-          {lines.map((line, i) => (
-            <span key={i}>
-              {line}
-              {i < lines.length - 1 && <br />}
-            </span>
-          ))}
-        </h3>
+      <div className="relative w-full px-6 pt-6 pb-0">
+        <div className="relative w-[297px] h-[170px] rounded-[16px] overflow-hidden" style={{left: "22px", top: "20px"}}>
+          <img 
+            src={image} 
+            alt={title} 
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          
+          <div className="absolute top-0 left-0 bg-[#1b233d] px-3.5 py-1.5 rounded-br-[16px] flex items-center gap-1.5 z-10">
+            <div className="absolute right-[-16px] top-0 w-[16px] h-[16px] bg-transparent pointer-events-none" style={{boxShadow: "-8px -8px 0 8px #1b233d", borderTopLeftRadius: "16px"}}></div>
+            <div className="absolute left-0 bottom-[-16px] w-[16px] h-[16px] bg-transparent pointer-events-none" style={{boxShadow: "-8px -8px 0 8px #1b233d", borderTopLeftRadius: "16px"}}></div>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-gray-300 relative z-10" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+            <span className="text-gray-300 text-[11px] font-medium relative z-10" style={{paddingRight: "70px", paddingBottom: "3px"}}>{team}</span>
+          </div>
+        </div>
       </div>
 
-      <div
-        className="absolute bottom-0 left-0 w-full flex items-center gap-3 px-4 py-3 rounded-b-2xl transition-all duration-300 group-hover:bg-black/30"
-        style={{ background: "rgba(0,0,0,0.2)" }}
-      >
-        <button
-          className="relative flex items-center justify-center gap-1 rounded-full text-white text-sm font-semibold shrink-0 cursor-pointer transition-all hover:opacity-80 overflow-hidden group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(139,92,246,0.5)]"
+      <div className="flex flex-col flex-1 px-5 py-5 pt-4" style={{paddingTop: "50px", paddingLeft: "20px", paddingRight: "20px"}}>
+        <h3
+          className="text-white font-bold mb-2.5"
           style={{
-            width: "90px",
-            height: "25px",
-            fontFamily: "'Exo 2', sans-serif",
-            background: "linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%)",
+            fontFamily: "'Zen Dots', sans-serif",
+            fontSize: "15px",
+            letterSpacing: "0.7px",
           }}
         >
-          <span className="relative z-10">Daftar</span>
-          <ArrowUpRight size={16} className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </button>
-        <div
-          className="flex-1 rounded-full h-2 transition-all duration-300 group-hover:h-2.5 group-hover:opacity-100 group-hover:shadow-[0_0_10px_rgba(0,255,255,0.8)]"
-          style={{
-            background: "linear-gradient(90deg, #00ffff 0%, #ff00ff 100%)",
-            opacity: 0.9,
-          }}
-        />
+          {title}
+        </h3>
+        
+        <p className="text-gray-400 text-[13.5px] leading-relaxed mb-6 flex-1">
+          {description}
+        </p>    
+        
+        <div className="w-full mt-auto block" style={{ marginBottom: "15px" }}>
+          <div
+            className="w-full h-[52px] flex items-center justify-center gap-2 rounded-full text-white text-[16px] font-semibold transition-all duration-300 hover:opacity-90 active:scale-95 group-hover:shadow-[0_0_15px_rgba(139,92,246,0.5)]"
+            style={{
+              background: "linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%)",
+            }}
+          >
+            <span>Daftar</span>
+            <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+          </div>
+        </div>
       </div>
     </Link>
   );
@@ -170,7 +164,7 @@ export default function Inside() {
   return (
     <section
       id="inside"
-      className="relative w-full overflow-hidden text-white"
+      className="relative w-full text-white"
       style={{ background: "transparent" }}
     >
       <style dangerouslySetInnerHTML={{ __html: `
@@ -280,139 +274,36 @@ export default function Inside() {
           mask-position: center;
         }
       `}} />
-      
-      <StarCluster position="left" />
-      <StarCluster position="right" />
 
-      
-
-      <div className="relative z-10 flex flex-col items-center w-full px-4 md:px-8"
-        style={{ paddingTop: "clamp(130px, 16vw, 680px)", paddingBottom: "clamp(48px, 8vh, 120px)", paddingLeft: "clamp(0px, 8vw, 120px)", paddingRight: "clamp(0px, 8vw, 120px)" }}
+      <div className="relative z-10 flex flex-col items-center w-full"
+        style={{ paddingTop: "clamp(40px, 8vw, 160px)", paddingLeft: "clamp(0px, 8vw, 120px)", paddingRight: "clamp(0px, 8vw, 120px)" }}
       >
-
-        <div className="flex flex-col items-center gap-4 md:gap-6 text-center w-full" style={{ paddingTop: "clamp(25px, 8vh, 120px)" }}>
+        <div className="flex flex-col items-center gap-4 md:gap-6 text-center w-full" style={{ paddingTop: "clamp(15px, 4vh, 70px)" }}>
           <h2
             className="font-bold tracking-wide max-w-xl relative"
-            style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(22px, 5vw, 48px)", top: "-90px" }}
+            style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(22px, 5vw, 48px)" }}
           >
-            Inside N I C
-            <div 
-              className="absolute -top-3 left-[56%] md:-top-5 lg:-top-6 -translate-x-1/2 text-cyan-400 animate-pulse pointer-events-none"
-              style={{ width: "16px", height: "16px", filter: "drop-shadow(0 0 8px rgba(16, 230, 241, 0.9))" }}
-            >
-              <svg className="w-full h-full animate-spin" style={{ animationDuration: "12s" }} viewBox="0 0 32 32" fill="none">
-                <path
-                  d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z"
-                  fill="#10E6F1"
-                />
-              </svg>
-            </div>
+            Inside{" "}
+            <span style={{ color: "#47237B" }} className="relative inline-block">
+              N{" "}
+              <span className="relative inline-block">
+                <svg
+                  className="absolute"
+                  style={{ top: "-18px", left: "50%", transform: "translateX(-50%)", width: "14px", height: "14px" }}
+                  viewBox="0 0 32 32" fill="none"
+                >
+                  <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+                </svg>
+                I
+              </span>
+              {" "}C
+            </span>
           </h2>
-          
-          <div className="flex items-center justify-center w-full relative">
-            <div 
-              className="absolute right-[41%] w-[60vw] h-[120px] md:h-[180px] lg:h-[240px] pointer-events-none animate-beam-left"
-              style={{
-                maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)'
-              }}
-            >
-              <img
-                loading="lazy"
-                src={`${BASE_PATH}/images/pol kiri.png`}
-                alt=""
-                className="w-full h-full object-cover object-right opacity-100"
-                style={{
-                  filter: "drop-shadow(0 0 25px rgba(208, 0, 203, 0.8)) brightness(1.2)",
-                  maskImage: 'linear-gradient(to right, transparent 0%, black 15%)',
-                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%)'
-                }}
-              />
-            </div>
-
-            <div 
-              className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 relative z-10 shrink-0 flex items-center justify-center animate-star-pulse"
-              style={{ animationDelay: "0.5s" }}
-            >
-              <svg className="w-full h-full drop-shadow-[0_0_25px_rgba(255,255,255,1)]" viewBox="0 0 32 32" fill="none">
-                <path
-                  d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z"
-                  fill="white"
-                />
-              </svg>
-            </div>
-
-            <div 
-              className="absolute left-[41%] w-[60vw] h-[120px] md:h-[180px] lg:h-[240px] pointer-events-none animate-beam-right"
-              style={{
-                maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)'
-              }}
-            >
-              <img
-                loading="lazy"
-                src={`${BASE_PATH}/images/pol kanan.png`}
-                alt=""
-                className="w-full h-full object-cover object-left opacity-100"
-                style={{
-                  filter: "drop-shadow(0 0 25px rgba(208, 0, 203, 0.8)) brightness(1.2)",
-                  maskImage: 'linear-gradient(to left, transparent 0%, black 15%)',
-                  WebkitMaskImage: 'linear-gradient(to left, transparent 0%, black 15%)'
-                }}
-              />
-            </div>
-          </div>
 
           <div className="relative w-full max-w-xl flex justify-center">
-            <div 
-              className="absolute hidden md:block bottom-[-200px] w-[240px] h-[180px] pointer-events-none select-none"
-              style={{
-                left: "calc(-50vw + 50% + clamp(32px, 6vw, 100px))"
-              }}
-            >
-              <div className="absolute left-[15%] top-[40%] animate-pulse" style={{ width: "36px", height: "36px", animationDelay: "0.2s", filter: "drop-shadow(0 0 14px rgba(255,255,255,0.95))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-              <div className="absolute left-[50%] top-[10%] animate-pulse" style={{ width: "26px", height: "26px", animationDelay: "1.2s", filter: "drop-shadow(0 0 11px rgba(255,255,255,0.85))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-              <div className="absolute left-[35%] top-[70%] animate-pulse" style={{ width: "20px", height: "20px", animationDelay: "2.1s", filter: "drop-shadow(0 0 8px rgba(255,255,255,0.75))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-              <div className="absolute left-[80%] top-[30%] animate-pulse" style={{ width: "28px", height: "28px", animationDelay: "0.7s", filter: "drop-shadow(0 0 12px rgba(255,255,255,0.85))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-              <div className="absolute left-[65%] top-[80%] animate-pulse" style={{ width: "32px", height: "32px", animationDelay: "1.7s", filter: "drop-shadow(0 0 13px rgba(255,255,255,0.95))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-            </div>
-
-            <div 
-              className="absolute hidden md:block bottom-[-200px] w-[240px] h-[180px] pointer-events-none select-none"
-              style={{
-                right: "calc(-50vw + 50% + clamp(32px, 6vw, 100px))"
-              }}
-            >
-              <div className="absolute right-[15%] top-[40%] animate-pulse" style={{ width: "36px", height: "36px", animationDelay: "0.5s", filter: "drop-shadow(0 0 14px rgba(255,255,255,0.95))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-              <div className="absolute right-[50%] top-[10%] animate-pulse" style={{ width: "26px", height: "26px", animationDelay: "1.5s", filter: "drop-shadow(0 0 11px rgba(255,255,255,0.85))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-              <div className="absolute right-[35%] top-[70%] animate-pulse" style={{ width: "20px", height: "20px", animationDelay: "2.4s", filter: "drop-shadow(0 0 8px rgba(255,255,255,0.75))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-              <div className="absolute right-[80%] top-[30%] animate-pulse" style={{ width: "28px", height: "28px", animationDelay: "0.9s", filter: "drop-shadow(0 0 12px rgba(255,255,255,0.85))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-              <div className="absolute right-[65%] top-[80%] animate-pulse" style={{ width: "32px", height: "32px", animationDelay: "1.9s", filter: "drop-shadow(0 0 13px rgba(255,255,255,0.95))" }}>
-                <svg className="w-full h-full" viewBox="0 0 32 32" fill="none"><path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white" /></svg>
-              </div>
-            </div>
-
             <p
               className="text-gray-200 leading-relaxed px-2 max-w-xl"
-              style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(13px, 2vw, 18px)", paddingTop: "clamp(30px, 4vh, 90px)" }}
+              style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(13px, 2vw, 18px)", paddingTop: "clamp(20px, 2vh, 40px)" }}
             >
               N I C adalah wadah bagi mahasiswa informatika unsika untuk
               menunjukan bakat dan keahlian melalui ajang kompetisi hard skill dalam
@@ -420,70 +311,33 @@ export default function Inside() {
             </p>
           </div>
         </div>
+      </div>
 
-        <div 
-          className="flex justify-center items-center w-full relative"
-          style={{ marginTop: "clamp(280px, 22vw, 480px)" }}
+      <div
+        className="w-full pointer-events-none select-none"
+        style={{ marginTop: "clamp(60px, 10vw, 160px)" }}
+      >
+        <svg
+          width="100%"
+          viewBox="0 0 1280 151"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          style={{ display: "block" }}
         >
-          <div className="absolute right-[45%] mr-[40px] md:mr-[70px] lg:mr-[90px] w-[55vw] pointer-events-none select-none animate-energy-left">
-            <div className="relative w-full h-[550px]">
-              <img
-                loading="lazy"
-                src={`${BASE_PATH}/images/blur kiri.png`}
-                alt=""
-                className="w-full h-[550px] opacity-95 object-fill"
-                style={{
-                  filter: "drop-shadow(0 0 35px rgba(236, 72, 153, 0.7)) brightness(1.2)"
-                }}
-              />
-              <div 
-                className="absolute top-0 left-0 w-full h-[550px] energy-mask-left"
-                style={{
-                  background: 'linear-gradient(to left, transparent 0%, rgba(255,255,255,0) 25%, rgba(255, 230, 255, 0.8) 50%, rgba(255,255,255,0) 75%, transparent 100%)',
-                  backgroundSize: '200% 100%',
-                  mixBlendMode: 'color-dodge',
-                  animation: 'flow-left 5s linear infinite'
-                }}
-              />
-            </div>
-          </div>
+          <path
+            d="M-36.26 5.35328C-36.7533 5.43466 -37.2467 5.51605 -37.74 5.59743C-32.6247 30.2574 -9.80233 44.5514 10.5346 56.2889C207.535 142.857 428.041 147.145 640.274 151C641.194 151 642.114 151 643.033 150.999C856.064 146.656 1077.9 143.332 1274.87 53.5473C1294.55 41.5853 1317.88 25.5799 1318.75 0.00103024C1318.25 0.000668934 1317.75 0.000307629 1317.25 -5.3676e-05C1316.35 24.3492 1293.5 40.1416 1273.88 51.8398C1077.53 139.887 855.729 142.699 643.03 146.999C642.111 147 641.193 147.001 640.274 147.001C428.364 143.188 207.924 139.439 11.4841 54.5571C-8.78466 43.0845 -31.2792 28.9172 -36.26 5.35328Z"
+            fill="#47237B"
+          />
+        </svg>
+      </div>
 
-          <div className="relative z-10 shrink-0 w-[100px] md:w-[160px] lg:w-[200px] flex justify-center items-center">
-            <img
-              loading="lazy"
-              src={`${BASE_PATH}/images/mahkota.png`}
-              alt="crown"
-              className="w-full h-auto animate-crown-float"
-            />
-          </div>
-
-          <div className="absolute left-[50%] ml-[40px] md:ml-[70px] lg:ml-[90px] w-[55vw] pointer-events-none select-none animate-energy-right">
-            <div className="relative w-full h-[550px]">
-              <img
-                loading="lazy"
-                src={`${BASE_PATH}/images/blur kanan.png`}
-                alt=""
-                className="w-full h-[550px] opacity-95 object-fill"
-                style={{
-                  filter: "drop-shadow(0 0 35px rgba(236, 72, 153, 0.7)) brightness(1.2)"
-                }}
-              />
-              <div 
-                className="absolute top-0 left-0 w-full h-[550px] energy-mask-right"
-                style={{
-                  background: 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0) 25%, rgba(255, 230, 255, 0.8) 50%, rgba(255,255,255,0) 75%, transparent 100%)',
-                  backgroundSize: '200% 100%',
-                  mixBlendMode: 'color-dodge',
-                  animation: 'flow-right 5s linear infinite'
-                }}
-              />
-            </div>
-          </div>
-        </div>
-
+      <div className="relative z-10 flex flex-col items-center w-full"
+        style={{ paddingBottom: "clamp(48px, 8vh, 120px)", paddingLeft: "clamp(0px, 8vw, 120px)", paddingRight: "clamp(0px, 8vw, 120px)" }}
+      >
         <div
           className="flex flex-col items-center text-center w-full max-w-[900px] px-4"
-          style={{ marginTop: "clamp(112px, 15vh, 128px)" }}
+          style={{ marginTop: "clamp(40px, 6vh, 80px)" }}
         >
           <div 
             className="flex flex-row justify-center items-center gap-4 md:gap-8 lg:gap-12 w-full font-bold tracking-wide text-center" 
@@ -496,7 +350,7 @@ export default function Inside() {
 
             <div className="border-b-[3px] md:border-b-[4px] border-white pb-1 md:pb-2 flex select-none shrink-0">
               <span className="text-white">Choo</span>
-              <span style={{ color: "#ff00ff" }}>se</span>
+              <span style={{ color: "#ff00ff" }}>ese</span>
             </div>
 
             <div className="border-b-[3px] md:border-b-[4px] border-white pb-1 md:pb-2 flex select-none shrink-0">
@@ -523,14 +377,20 @@ export default function Inside() {
         </div>
 
         <div
-          className="flex flex-col md:flex-row gap-5 md:gap-6 justify-center items-center w-full"
+          className="flex flex-col md:flex-row gap-5 md:gap-8 justify-center items-stretch w-full px-4"
           style={{
             marginTop: "clamp(40px, 15vh, 200px)",
             maxWidth: "1200px",
           }}
         >
           {competitions.map((comp) => (
-            <CompetitionCard key={comp.id} title={comp.title} />
+            <CompetitionCard 
+              key={comp.id} 
+              title={comp.title} 
+              description={comp.description}
+              team={comp.team}
+              image={comp.image}
+            />
           ))}
         </div>
 

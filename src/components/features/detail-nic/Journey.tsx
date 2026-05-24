@@ -180,7 +180,6 @@ export default function Journey() {
         }
       `}</style>
 
-      {/* Background Decorative Elements */}
       <img
         src={`${BASE_PATH}/images/garis.png`}
         alt="Decorative Line"
@@ -229,7 +228,7 @@ export default function Journey() {
                 WebkitMaskComposite: "xor",
                 maskComposite: "exclude",
                 zIndex: 10,
-                opacity: 0.4,
+                opacity: activeTab === tab ? 1 : 0.6,
               }}
             />
             <button
@@ -239,7 +238,8 @@ export default function Journey() {
                 fontFamily: "'Exo 2', sans-serif",
                 fontSize: "clamp(10px, 1.5vw, 14px)",
                 padding: "clamp(8px, 1.2vh, 12px) clamp(8px, 1.5vw, 24px)",
-                background: activeTab === tab ? "rgba(10,15,35,1)" : "rgba(255,255,255,0.05)",
+                background: activeTab === tab ? "rgba(10,15,35,1)" : "rgba(0,9,35,0.5)",
+                backdropFilter: activeTab === tab ? "none" : "blur(8px)",
                 boxShadow: activeTab === tab ? "0 0 60px 10px rgba(180,0,203,0.45)" : "none",
                 zIndex: 2,
               }}
@@ -251,7 +251,7 @@ export default function Journey() {
       </div>
 
       <div className="flex flex-col items-center relative z-20 px-4"
-        style={{ marginBottom: "clamp(16px, 3vh, 40px)", marginTop: "clamp(16px, 2vh, 30px)", paddingTop: "clamp(20px, 2vw, 40px)" }}
+        style={{ marginBottom: "clamp(16px, 3vh, 40px)", marginTop: "clamp(16px, 2vh, 30px)", paddingTop: "clamp(30px, 3vw, 50px)" }}
       >
         <h3
           className="text-center font-bold leading-tight"
@@ -301,7 +301,6 @@ export default function Journey() {
                   gap: "clamp(20px, 5%, 80px)",
                 }}
               >
-                {/* Left column */}
                 <div className="flex-1 flex justify-end" style={{ minWidth: 0 }}>
                   {isLeft ? (
                     <div style={{ width: "clamp(200px, 80%, 280px)" }}>
@@ -312,10 +311,8 @@ export default function Journey() {
                   )}
                 </div>
 
-                {/* Center spacer (rocket area) */}
                 <div style={{ width: "clamp(200px, 35%, 440px)", flexShrink: 0 }} />
 
-                {/* Right column */}
                 <div className="flex-1 flex justify-start" style={{ minWidth: 0 }}>
                   {!isLeft ? (
                     <div style={{ width: "clamp(200px, 80%, 280px)" }}>
@@ -331,7 +328,6 @@ export default function Journey() {
         </div>
         </div>
 
-        {/* Bottom fade - moved here to be full width */}
         <div
           className="absolute bottom-0 left-0 w-full pointer-events-none z-10"
           style={{
@@ -343,7 +339,6 @@ export default function Journey() {
       </div>
 
       <div className="md:hidden relative z-10 flex flex-col items-center px-4 pb-8 w-full">
-        {/* Background Decorative Planet for Mobile - moved to outer w-full container to prevent clipping */}
         <img
           src={`${BASE_PATH}/images/planet.png`}
           alt="Decorative Planet Mobile"

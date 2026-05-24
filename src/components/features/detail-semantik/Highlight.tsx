@@ -8,16 +8,12 @@ function HighlightRow({ images }: { images: string[] }) {
         <div
           className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
           style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        >
-          <img src={`${BASE_PATH}/images/${images[0]}`} alt="Highlight 1" className="w-full h-full object-cover" />
-        </div>
+        ></div>
 
         <div
           className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
           style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        >
-          <img src={`${BASE_PATH}/images/${images[1]}`} alt="Highlight 2" className="w-full h-full object-cover" />
-        </div>
+        ></div>
 
         <div className="relative z-30 flex-shrink-0 flex justify-center"
           style={{ width: "clamp(80px, 10vw, 120px)", height: "clamp(80px, 10vw, 120px)" }}
@@ -34,26 +30,18 @@ function HighlightRow({ images }: { images: string[] }) {
         <div
           className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
           style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        >
-          <img src={`${BASE_PATH}/images/${images[2]}`} alt="Highlight 3" className="w-full h-full object-cover" />
-        </div>
+        ></div>
 
         <div
           className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
           style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        >
-          <img src={`${BASE_PATH}/images/${images[3]}`} alt="Highlight 4" className="w-full h-full object-cover" />
-        </div>
+        ></div>
       </div>
 
       <div className="md:hidden flex flex-col items-center gap-5 w-full px-4">
         <div className="flex gap-3 w-full justify-center">
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden">
-            <img src={`${BASE_PATH}/images/${images[0]}`} alt="Highlight 1" className="w-full h-full object-cover" />
-          </div>
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden">
-            <img src={`${BASE_PATH}/images/${images[1]}`} alt="Highlight 2" className="w-full h-full object-cover" />
-          </div>
+          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden"></div>
+          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden"></div>
         </div>
         <div className="relative w-16 h-16">
           <Image
@@ -65,12 +53,8 @@ function HighlightRow({ images }: { images: string[] }) {
           />
         </div>
         <div className="flex gap-3 w-full justify-center">
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden">
-            <img src={`${BASE_PATH}/images/${images[2]}`} alt="Highlight 3" className="w-full h-full object-cover" />
-          </div>
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden">
-            <img src={`${BASE_PATH}/images/${images[3]}`} alt="Highlight 4" className="w-full h-full object-cover" />
-          </div>
+          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden"></div>
+          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden"></div>
         </div>
       </div>
     </>
@@ -90,12 +74,12 @@ export default function Highlights() {
       <div className="hidden md:block absolute left-0 -translate-y-1/2 pointer-events-none"
         style={{ top: "60%", width: "clamp(200px, 40vw, 600px)", height: "clamp(200px, 40vw, 600px)", opacity: 0.5 }}
       >
-        <Image src={`${BASE_PATH}/images/Elip.webp`} alt="bg1" fill className="object-contain object-left brightness-125 contrast-125" />
+        <div className="w-full h-full bg-[#7c3aed] rounded-full blur-[120px] -translate-x-1/2"></div>
       </div>
       <div className="hidden md:block absolute right-0 -translate-y-1/2 pointer-events-none"
         style={{ top: "60%", width: "clamp(200px, 40vw, 600px)", height: "clamp(200px, 40vw, 600px)", opacity: 0.5 }}
       >
-        <Image src={`${BASE_PATH}/images/Elips.webp`} alt="bg2" fill className="object-contain object-right brightness-125 contrast-125" />
+        <div className="w-full h-full bg-[#7c3aed] rounded-full blur-[120px] translate-x-1/2"></div>
       </div>
 
       <div className="flex flex-col items-center text-center relative z-20 px-4"

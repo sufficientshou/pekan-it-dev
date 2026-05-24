@@ -42,12 +42,12 @@ export default function Highlights() {
       <div className="hidden md:block absolute left-0 -translate-y-1/2 pointer-events-none"
         style={{ top: "60%", width: "clamp(200px, 40vw, 600px)", height: "clamp(200px, 40vw, 600px)", opacity: 0.5 }}
       >
-        <Image src={`${BASE_PATH}/images/Elip.webp`} alt="bg1" fill className="object-contain object-left brightness-125 contrast-125" />
+        <div className="w-full h-full bg-[#7c3aed] rounded-full blur-[120px] -translate-x-1/2"></div>
       </div>
       <div className="hidden md:block absolute right-0 -translate-y-1/2 pointer-events-none"
         style={{ top: "60%", width: "clamp(200px, 40vw, 600px)", height: "clamp(200px, 40vw, 600px)", opacity: 0.5 }}
       >
-        <Image src={`${BASE_PATH}/images/Elips.webp`} alt="bg2" fill className="object-contain object-right brightness-125 contrast-125" />
+        <div className="w-full h-full bg-[#7c3aed] rounded-full blur-[120px] translate-x-1/2"></div>
       </div>
 
       <div className="flex flex-col items-center text-center relative z-20 px-4 w-full"
@@ -87,35 +87,11 @@ export default function Highlights() {
 
           <div className="flex flex-col md:flex-row gap-3 md:gap-6 w-full max-w-[800px]">
             <div className="flex flex-col gap-3 md:gap-6 flex-1">
-              <div className="bg-gray-300 rounded-xl w-full aspect-[4/3] relative overflow-hidden">
-                {currentImages[0] && (
-                  <img 
-                    src={`${BASE_PATH}/images/${currentImages[0]}`} 
-                    alt="Highlight 1" 
-                    className="w-full h-full object-cover" 
-                  />
-                )}
-              </div>
-              <div className="bg-gray-300 rounded-xl w-full aspect-[4/3] relative overflow-hidden">
-                {currentImages[1] && (
-                  <img 
-                    src={`${BASE_PATH}/images/${currentImages[1]}`} 
-                    alt="Highlight 2" 
-                    className="w-full h-full object-cover" 
-                  />
-                )}
-              </div>
+              <div className="bg-gray-300 rounded-xl w-full aspect-[4/3] relative overflow-hidden"></div>
+              <div className="bg-gray-300 rounded-xl w-full aspect-[4/3] relative overflow-hidden"></div>
             </div>
 
-            <div className="bg-gray-300 rounded-xl flex-1 relative overflow-hidden">
-              {currentImages[2] && (
-                <img 
-                  src={`${BASE_PATH}/images/${currentImages[2]}`} 
-                  alt="Highlight 3" 
-                  className="w-full h-full object-cover" 
-                />
-              )}
-            </div>
+            <div className="bg-gray-300 rounded-xl flex-1 relative overflow-hidden"></div>
           </div>
 
           <button 
