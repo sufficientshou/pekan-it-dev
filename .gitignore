@@ -56,6 +56,10 @@ Thumbs.db
 # Internal documentation (not needed in repo)
 AGENTS.md
 CLAUDE.md
+CHANGELOG.md
+CONTRIBUTING.md
+README.md
+SECURITY.md
 SECURITY_FIX.md
 TURNSTILE_SETUP.md
 DOCS_INDEX.md
@@ -75,8 +79,5 @@ PendaftaranSemantik_NO_TURNSTILE.gs
 *.gs
 
 # Keep these important docs:
-# README.md
-# CONTRIBUTING.md
-# CHANGELOG.md
 # src/components/README.md
 # src/app/api/README.md
