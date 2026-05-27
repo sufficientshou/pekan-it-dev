@@ -25,7 +25,7 @@ export default function Guide() {
       <div className="flex flex-col items-center mb-8 relative z-20 px-4">
         <h2
           className="text-center font-bold leading-tight"
-          style={{marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(28px, 5vw, 64px)" }}
+          style={{marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(20px, 4vw, 54px)" }}
         >
           <span style={{ color: "#ffffff" }}>Your </span>
           <span 

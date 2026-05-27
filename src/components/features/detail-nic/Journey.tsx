@@ -5,18 +5,28 @@ import { BASE_PATH } from '@/config/constants';
 
 const tabs = ["UI/UX Design", "Software Development"];
 
-const timelineData: Record<string, Array<{ title: string; date: string; side: "left" | "right" }>> = {
+type TimelineItem = { title: string; date: string; side: "left" | "right" };
+
+const timelineData: Record<string, TimelineItem[]> = {
   "UI/UX Design": [
     { title: "Pendaftaran", date: "18 April - 1 Mei 2026", side: "left" },
-    { title: "Pengumpulan Karya", date: "3 Mei 2026", side: "right" },
-    { title: "Technical Meeting", date: "7 Mei 2026", side: "left" },
-    { title: "Presentasi & Pengumuman Pemenang", date: "9 Mei 2026", side: "right" },
+    { title: "Seleksi Berkas", date: "2 Mei 2026", side: "right" },
+    { title: "Technical Meeting", date: "5 Mei 2026", side: "left" },
+    { title: "Pengumuman Lolos Seleksi", date: "6 Mei 2026", side: "right" },
+    { title: "Pengumpulan Karya", date: "7 Mei 2026", side: "left" },
+    { title: "Penilaian Karya", date: "8 Mei 2026", side: "right" },
+    { title: "Babak Final", date: "9 Mei 2026", side: "left" },
+    { title: "Presentasi & Pengumuman Pemenang", date: "10 Mei 2026", side: "right" },
   ],
   "Software Development": [
     { title: "Pendaftaran", date: "18 April - 1 Mei 2026", side: "left" },
-    { title: "Pengumpulan Karya", date: "3 Mei 2026", side: "right" },
-    { title: "Technical Meeting", date: "7 Mei 2026", side: "left" },
-    { title: "Presentasi & Pengumuman Pemenang", date: "9 Mei 2026", side: "right" },
+    { title: "Seleksi Berkas", date: "2 Mei 2026", side: "right" },
+    { title: "Technical Meeting", date: "5 Mei 2026", side: "left" },
+    { title: "Pengumuman Lolos Seleksi", date: "6 Mei 2026", side: "right" },
+    { title: "Pengumpulan Proposal", date: "7 Mei 2026", side: "left" },
+    { title: "Penilaian Karya", date: "8 Mei 2026", side: "right" },
+    { title: "Babak Final", date: "9 Mei 2026", side: "left" },
+    { title: "Presentasi & Pengumuman Pemenang", date: "10 Mei 2026", side: "right" },
   ],
 };
 
@@ -76,14 +86,14 @@ function TimelineCardDesktop({
     <div
       className="relative flex flex-col justify-between w-full"
       style={{
-        minHeight: "120px",
-        padding: "20px",
+        minHeight: "90px",
+        padding: "16px",
         borderRadius: "16px",
         background:
           "linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), linear-gradient(105deg, rgba(255,255,255,0.01), rgba(255,255,255,0))",
         backdropFilter: "blur(6px)",
         boxShadow: "inset 0px 1px 2px rgba(255,255,255,0.1)",
-        gap: "10px",
+        gap: "6px",
       }}
     >
       <CardInner title={title} date={date} fontSize="clamp(13px,1.2vw,16px)" dateSize="clamp(11px,1vw,13px)" />
@@ -200,7 +210,7 @@ export default function Journey() {
       >
         <h2
           className="text-center font-bold leading-tight"
-          style={{ fontFamily: "'Zen Dots', cursive", fontSize: "clamp(24px, 5vw, 64px)" }}
+          style={{ fontFamily: "'Zen Dots', cursive", fontSize: "clamp(20px, 4vw, 54px)" }}
         >
           <span style={{
             background: "linear-gradient(90deg, #ff00ff 0%, #00ffff 100%)",
@@ -297,7 +307,7 @@ export default function Journey() {
                 key={i}
                 className="flex items-start"
                 style={{
-                  marginBottom: "clamp(20px, 3%, 50px)",
+                  marginBottom: "clamp(-30px, -4vw, -10px)",
                   gap: "clamp(20px, 5%, 80px)",
                 }}
               >
@@ -328,14 +338,6 @@ export default function Journey() {
         </div>
         </div>
 
-        <div
-          className="absolute bottom-0 left-0 w-full pointer-events-none z-10"
-          style={{
-            height: "200px",
-            background:
-              "linear-gradient(0deg, rgba(0,9,35,1) 0%, rgba(0,9,35,0.8) 30%, transparent 100%)",
-          }}
-        />
       </div>
 
       <div className="md:hidden relative z-10 flex flex-col items-center px-4 pb-8 w-full">
@@ -371,6 +373,15 @@ export default function Journey() {
           })}
         </div>
       </div>
+
+      <div
+        className="absolute bottom-0 left-0 w-full pointer-events-none z-[100]"
+        style={{
+          height: "200px",
+          background:
+            "linear-gradient(0deg, rgba(0,9,35,1) 0%, rgba(0,9,35,0.8) 30%, transparent 100%)",
+        }}
+      />
     </section>
   );
 }

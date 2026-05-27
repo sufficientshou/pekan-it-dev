@@ -7,8 +7,15 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section className="relative w-full bg-black overflow-hidden" style={{ minHeight: "100svh" }}>
+
       <img
-        src={`${BASE_PATH}/images/semantik city (1).svg`}
+        src={`${BASE_PATH}/images/night_bg.webp`}
+        alt="Night Sky Background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      <img
+        src={`${BASE_PATH}/images/nic city.svg`}
         alt="Night Sky Background"
         className="absolute inset-0 w-full h-full object-cover"
       />

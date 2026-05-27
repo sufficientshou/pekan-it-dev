@@ -343,7 +343,7 @@ export default function Inside() {
             className="flex flex-row justify-center items-center gap-4 md:gap-8 lg:gap-12 w-full font-bold tracking-wide text-center" 
             style={{ 
               fontFamily: "'Zen Dots', sans-serif", 
-              fontSize: "clamp(24px, 5.5vw, 64px)",
+              fontSize: "clamp(20px, 4vw, 54px)",
               marginTop: "clamp(2px, 4vh, 90px)" 
             }}
           >
