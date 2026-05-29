@@ -3,7 +3,33 @@ import { BASE_PATH } from '@/config/constants';
 
 export default function Guide() {
   return (
-    <section className="relative pb-16 md:pb-32 pt-32 md:pt-[500px] text-center overflow-hidden max-md:!pb-0" style={{ marginTop: "60px" }}>
+    <section className="relative pb-16 md:pb-32 text-center overflow-hidden max-md:!pb-0" style={{ marginTop: "0px" }}>
+      {/* Top Header Graphics */}
+      <div className="relative w-full aspect-[1280/151] pointer-events-none z-[10]">
+        
+        {/* Upward Curve with Solid Mask */}
+        <svg
+          className="absolute inset-0 z-[2]"
+          width="100%"
+          height="100%"
+          viewBox="0 0 1280 151"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          style={{ display: "block", transform: "scaleY(-1)" }}
+        >
+          {/* Solid Fill Below Curve (When scaleY(-1) is applied, y=0 becomes the bottom visually) */}
+          <path 
+            d="M-36.26 5.35328C-36.7533 5.43466 -37.2467 5.51605 -37.74 5.59743C-32.6247 30.2574 -9.80233 44.5514 10.5346 56.2889C207.535 142.857 428.041 147.145 640.274 151C641.194 151 642.114 151 643.033 150.999C856.064 146.656 1077.9 143.332 1274.87 53.5473C1294.55 41.5853 1317.88 25.5799 1318.75 0.00103024 L1320 0 L-40 0 Z" 
+            fill="#000923" 
+          />
+          {/* Curve Line */}
+          <path
+            d="M-36.26 5.35328C-36.7533 5.43466 -37.2467 5.51605 -37.74 5.59743C-32.6247 30.2574 -9.80233 44.5514 10.5346 56.2889C207.535 142.857 428.041 147.145 640.274 151C641.194 151 642.114 151 643.033 150.999C856.064 146.656 1077.9 143.332 1274.87 53.5473C1294.55 41.5853 1317.88 25.5799 1318.75 0.00103024C1318.25 0.000668934 1317.75 0.000307629 1317.25 -5.3676e-05C1316.35 24.3492 1293.5 40.1416 1273.88 51.8398C1077.53 139.887 855.729 142.699 643.03 146.999C642.111 147 641.193 147.001 640.274 147.001C428.364 143.188 207.924 139.439 11.4841 54.5571C-8.78466 43.0845 -31.2792 28.9172 -36.26 5.35328Z"
+            fill="#47237B"
+          />
+        </svg>
+      </div>
       <div className="absolute left-0 top-[60%] -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px] max-md:!-translate-y-[45%]">
         <Image
           src={`${BASE_PATH}/images/1.webp`}
@@ -22,7 +48,7 @@ export default function Guide() {
         />
       </div>
 
-      <div className="flex flex-col items-center mb-8 relative z-20 px-4">
+      <div className="flex flex-col items-center mb-8 relative z-20 px-4 pt-[130px] max-md:!pt-[35px]">
         <h2
           className="text-center font-bold leading-tight"
           style={{marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(20px, 4vw, 54px)" }}

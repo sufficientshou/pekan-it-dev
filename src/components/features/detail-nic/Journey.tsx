@@ -9,24 +9,24 @@ type TimelineItem = { title: string; date: string; side: "left" | "right" };
 
 const timelineData: Record<string, TimelineItem[]> = {
   "UI/UX Design": [
-    { title: "Pendaftaran", date: "18 April - 1 Mei 2026", side: "left" },
-    { title: "Seleksi Berkas", date: "2 Mei 2026", side: "right" },
-    { title: "Technical Meeting", date: "5 Mei 2026", side: "left" },
-    { title: "Pengumuman Lolos Seleksi", date: "6 Mei 2026", side: "right" },
-    { title: "Pengumpulan Karya", date: "7 Mei 2026", side: "left" },
-    { title: "Penilaian Karya", date: "8 Mei 2026", side: "right" },
-    { title: "Babak Final", date: "9 Mei 2026", side: "left" },
-    { title: "Presentasi & Pengumuman Pemenang", date: "10 Mei 2026", side: "right" },
+    { title: "Pendaftaran Lomba", date: "2 - 30 Juni 2026", side: "left" },
+    { title: "Pengumpulan Karya", date: "2 - 30 Juni 2026", side: "right" },
+    { title: "Penilaian Karya", date: "9 - 11 Juli 2026", side: "left" },
+    { title: "Pengumuman Finalis", date: "12 Juli 2026", side: "right" },
+    { title: "Technical Meeting", date: "15 Juli 2026", side: "left" },
+    { title: "Presentasi Finalis", date: "18 Juli 2026", side: "right" },
+    { title: "Pengumuman Pemenang", date: "20 Juli 2026", side: "left" },
+    { title: "Pembagian Hadiah", date: "8 Agustus 2026", side: "right" },
   ],
   "Software Development": [
-    { title: "Pendaftaran", date: "18 April - 1 Mei 2026", side: "left" },
-    { title: "Seleksi Berkas", date: "2 Mei 2026", side: "right" },
-    { title: "Technical Meeting", date: "5 Mei 2026", side: "left" },
-    { title: "Pengumuman Lolos Seleksi", date: "6 Mei 2026", side: "right" },
-    { title: "Pengumpulan Proposal", date: "7 Mei 2026", side: "left" },
-    { title: "Penilaian Karya", date: "8 Mei 2026", side: "right" },
-    { title: "Babak Final", date: "9 Mei 2026", side: "left" },
-    { title: "Presentasi & Pengumuman Pemenang", date: "10 Mei 2026", side: "right" },
+    { title: "Pendaftaran Lomba", date: "2 - 30 Juni 2026", side: "left" },
+    { title: "Pengumpulan Karya", date: "2 - 30 Juni 2026", side: "right" },
+    { title: "Penilaian Karya", date: "9 - 11 Juli 2026", side: "left" },
+    { title: "Pengumuman Finalis", date: "12 Juli 2026", side: "right" },
+    { title: "Technical Meeting", date: "15 Juli 2026", side: "left" },
+    { title: "Presentasi Finalis", date: "18 Juli 2026", side: "right" },
+    { title: "Pengumuman Pemenang", date: "20 Juli 2026", side: "left" },
+    { title: "Pembagian Hadiah", date: "8 Agustus 2026", side: "right" },
   ],
 };
 
@@ -133,6 +133,7 @@ export default function Journey() {
         marginTop: "clamp(-80px, -10vw, -200px)",
       }}
     >
+      <StarryBackgroundJourney />
       <style>{`
         @keyframes planet-float {
           0%, 100% {
@@ -375,7 +376,7 @@ export default function Journey() {
       </div>
 
       <div
-        className="absolute bottom-0 left-0 w-full pointer-events-none z-[100]"
+        className="absolute bottom-0 left-0 w-full pointer-events-none z-[100] max-md:hidden"
         style={{
           height: "200px",
           background:
@@ -383,5 +384,111 @@ export default function Journey() {
         }}
       />
     </section>
+  );
+}
+
+function StarryBackgroundJourney() {
+  return (
+    <div 
+      className="absolute inset-0 pointer-events-none z-[1]"
+      style={{ 
+        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 150px, black calc(100% - 150px), transparent 100%)",
+        maskImage: "linear-gradient(to bottom, transparent 0%, black 150px, black calc(100% - 150px), transparent 100%)"
+      }}
+    >
+      {/* Background Dots */}
+      <div className="absolute w-1 h-1 bg-white rounded-full opacity-60 top-[10%] left-[20%] shadow-[0_0_4px_white]" />
+      <div className="absolute w-1.5 h-1.5 bg-white rounded-full opacity-80 top-[15%] left-[80%] shadow-[0_0_6px_white]" />
+      <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 top-[25%] left-[40%]" />
+      <div className="absolute w-1 h-1 bg-white rounded-full opacity-50 top-[35%] left-[10%] shadow-[0_0_4px_white]" />
+      <div className="absolute w-[5px] h-[5px] bg-white rounded-full opacity-70 top-[45%] left-[85%] shadow-[0_0_8px_white]" />
+      <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-30 top-[55%] left-[30%]" />
+      <div className="absolute w-1.5 h-1.5 bg-white rounded-full opacity-80 top-[65%] left-[70%] shadow-[0_0_5px_white]" />
+      <div className="absolute w-[2px] h-[2px] bg-white rounded-full opacity-60 top-[75%] left-[15%]" />
+      <div className="absolute w-1 h-1 bg-white rounded-full opacity-50 top-[85%] left-[90%] shadow-[0_0_3px_white]" />
+      <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 top-[90%] left-[40%]" />
+      <div className="absolute w-1.5 h-1.5 bg-white rounded-full opacity-70 top-[95%] left-[60%] shadow-[0_0_6px_white]" />
+      <div className="absolute w-1 h-1 bg-white rounded-full opacity-60 top-[5%] left-[60%] shadow-[0_0_4px_white]" />
+      <div className="absolute w-[5px] h-[5px] bg-white rounded-full opacity-80 top-[80%] left-[5%] shadow-[0_0_8px_white]" />
+      
+      <div className="absolute w-[2px] h-[2px] bg-white rounded-full opacity-50 top-[18%] left-[32%]" />
+      <div className="absolute w-1 h-1 bg-white rounded-full opacity-70 top-[28%] left-[65%] shadow-[0_0_3px_white]" />
+      <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 top-[48%] left-[15%]" />
+      <div className="absolute w-[2px] h-[2px] bg-white rounded-full opacity-60 top-[62%] left-[45%]" />
+      <div className="absolute w-1.5 h-1.5 bg-white rounded-full opacity-50 top-[82%] left-[35%] shadow-[0_0_5px_white]" />
+      <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-80 top-[12%] left-[92%]" />
+      <div className="absolute w-[4px] h-[4px] bg-white rounded-full opacity-60 top-[38%] left-[78%] shadow-[0_0_4px_white]" />
+      <div className="absolute w-[2px] h-[2px] bg-white rounded-full opacity-40 top-[52%] left-[88%]" />
+      <div className="absolute w-1 h-1 bg-white rounded-full opacity-70 top-[72%] left-[55%] shadow-[0_0_3px_white]" />
+      <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 top-[92%] left-[82%]" />
+
+      {/* Blurred Dots */}
+      <div className="absolute w-2 h-2 bg-white rounded-full opacity-80 blur-[2px] top-[20%] left-[5%]" />
+      <div className="absolute w-3 h-3 bg-white rounded-full opacity-60 blur-[2px] top-[40%] left-[95%]" />
+      <div className="absolute w-2 h-2 bg-white rounded-full opacity-70 blur-[2px] top-[60%] left-[8%]" />
+      <div className="absolute w-3 h-3 bg-white rounded-full opacity-80 blur-[2px] top-[80%] left-[85%]" />
+      <div className="absolute w-2.5 h-2.5 bg-white rounded-full opacity-90 blur-[1px] top-[30%] left-[50%]" />
+      <div className="absolute w-2 h-2 bg-white rounded-full opacity-60 blur-[1.5px] top-[15%] left-[45%]" />
+      <div className="absolute w-3 h-3 bg-white rounded-full opacity-75 blur-[2.5px] top-[55%] left-[75%]" />
+      <div className="absolute w-2.5 h-2.5 bg-white rounded-full opacity-85 blur-[1px] top-[88%] left-[25%]" />
+
+      {/* 4-Pointed Stars */}
+      <div className="absolute w-[20px] h-[20px] top-[15%] right-[15%] animate-pulse text-white">
+        <svg className="w-full h-full drop-shadow-[0_0_12px_rgba(255,255,255,0.85)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      <div className="absolute w-[28px] h-[28px] top-[35%] right-[5%] animate-pulse text-white" style={{ animationDelay: '1s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      <div className="absolute w-[24px] h-[24px] top-[55%] left-[8%] animate-pulse text-white" style={{ animationDelay: '0.5s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_12px_rgba(255,255,255,0.85)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      <div className="absolute w-[16px] h-[16px] top-[80%] left-[20%] animate-pulse text-white" style={{ animationDelay: '1.5s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      <div className="absolute w-[20px] h-[20px] top-[85%] right-[25%] animate-pulse text-white" style={{ animationDelay: '2s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      <div className="absolute w-[14px] h-[14px] top-[25%] left-[25%] animate-pulse text-white" style={{ animationDelay: '0.8s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      
+      <div className="absolute w-[12px] h-[12px] top-[8%] left-[70%] animate-pulse text-white" style={{ animationDelay: '1.2s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      <div className="absolute w-[22px] h-[22px] top-[45%] left-[35%] animate-pulse text-white" style={{ animationDelay: '2.5s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      <div className="absolute w-[18px] h-[18px] top-[65%] right-[40%] animate-pulse text-white" style={{ animationDelay: '0.3s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_10px_rgba(255,255,255,0.75)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      <div className="absolute w-[15px] h-[15px] top-[22%] right-[35%] animate-pulse text-white" style={{ animationDelay: '1.8s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+      <div className="absolute w-[26px] h-[26px] top-[75%] left-[60%] animate-pulse text-white" style={{ animationDelay: '0.9s' }}>
+        <svg className="w-full h-full drop-shadow-[0_0_14px_rgba(255,255,255,0.85)]" viewBox="0 0 32 32" fill="none">
+          <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
   );
 }
