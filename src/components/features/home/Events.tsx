@@ -2,22 +2,14 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { BASE_PATH } from '@/config/constants';
 
-// ========================================
-// KONFIGURASI MANUAL CARD - ATUR DI SINI
-// ========================================
 const CARD_CONFIG = {
-  // Ukuran Card
-  width: 390,        // Lebar card dalam pixel
-  height: 250,       // Tinggi card dalam pixel
-  
-  // Posisi & Spacing
-  gap: 200,          // Jarak antar card dalam pixel
-  paddingLeft: 60,    // Geser card ke kanan (nilai positif) atau kiri (nilai negatif) dalam pixel
-  
-  // Mask/Cut Corner (untuk efek folder)
-  maskSize: 100,     // Ukuran potongan sudut (semakin besar = potongan lebih besar)
-  maskRadius: 30,    // Radius rounded corner
-  maskOffset: 70,    // Offset mask
+  width: 390,
+  height: 250,
+  gap: 200,        
+  paddingLeft: 60,   
+  maskSize: 100,    
+  maskRadius: 30,  
+  maskOffset: 70,   
 };
 
 
@@ -65,10 +57,10 @@ export default function Events() {
       />
 
       <div
-        className="absolute rounded-full"
+        className="absolute rounded-full max-md:!hidden"
         style={{
-          top: "100px",
-          left: "930px",
+          top: "120px",
+          left: "calc(50% + 300px)",
           width: "250px",
           height: "250px",
           background: "rgba(208,0,203,0.8)",
@@ -81,15 +73,9 @@ export default function Events() {
         src={`${BASE_PATH}/images/image 7.webp`}
         alt="Rocket"
         className="absolute object-cover max-md:!hidden"
-        style={{ top: "110px", left: "940px", width: "228px", height: "225px" }}
+        style={{ top: "130px", left: "calc(50% + 300px)", width: "228px", height: "225px" }}
       />
 
-      <img loading="lazy"
-        src={`${BASE_PATH}/images/line2.webp`}
-        alt="Line"
-        className="absolute object-cover max-md:!hidden"
-        style={{ top: "214px", left: "64px", width: "302px", height: "3px" }}
-      />
 
       <div
         className="absolute flex flex-col items-start max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-full max-md:!px-0 max-md:!gap-12 max-md:!pt-[5vh] max-md:!items-center"
@@ -150,7 +136,6 @@ export default function Events() {
                 </button>
               </Link>
 
-              {/* Mobile Arrow Button */}
               <Link href={card.link}>
                 <button
                   className="absolute hidden max-md:!flex items-center justify-center z-10 cursor-pointer active:scale-95 transition-all duration-300"
@@ -167,7 +152,6 @@ export default function Events() {
                 </button>
               </Link>
 
-              {/* Clickable Card */}
               <Link href={card.link} className="block w-full h-full">
                 <div
                   className="absolute top-0 left-0 flex flex-col justify-end items-start cursor-pointer hover:brightness-110 transition-all duration-300"

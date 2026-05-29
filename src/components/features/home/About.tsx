@@ -1,20 +1,13 @@
 import { BASE_PATH } from '@/config/constants';
 
-// ========================================
-// KONFIGURASI MANUAL FONT SIZE - ATUR DI SINI
-// ========================================
 const FONT_CONFIG = {
-  // Desktop
-  stepInto: 60,      // Font size "Step Into" dalam pixel
-  digital: 60,       // Font size "Digital" dalam pixel
-  innovation: 60,    // Font size "Innovation" dalam pixel
-  lineHeight: 1.3,   // Jarak antar baris (1.0 = rapat, 1.5 = renggang, 2.0 = sangat renggang)
-  
-  // Mobile
-  mobileFontSize: 38, // Font size untuk mobile dalam pixel
-  mobileLogoSize: 900, // Ukuran logo di mobile dalam pixel
+  stepInto: 60,
+  digital: 60,
+  innovation: 60,
+  lineHeight: 1.3,
+  mobileFontSize: 38,
+  mobileLogoSize: 900,
 };
-// ========================================
 
 export default function About() {
   return (
@@ -48,12 +41,12 @@ export default function About() {
         src={`${BASE_PATH}/images/Vector 21.webp`}
         alt="Vector"
         className="absolute w-[550px] h-[42px] max-md:!hidden"
-        style={{ top: "640px", left: "max(0px, calc(50% - 640px + 103px))", maxWidth: "40vw" }}
+        style={{ top: "540px", left: "max(0px, calc(50% - 640px + 103px))", maxWidth: "40vw" }}
       />
 
       <div
         className="absolute max-md:!relative max-md:!flex max-md:!flex-col max-md:!items-center max-md:!w-full max-md:!h-auto max-md:!mx-auto max-md:!px-4 max-md:!mt-[5vh]"
-        style={{ top: "0", left: "50%", transform: "translateX(-50%)", width: "1280px", maxWidth: "100%", height: "832px" }}
+        style={{ top: "-10%", left: "50%", transform: "translateX(-50%)", width: "1280px", maxWidth: "100%", height: "832px" }}
       >
 
         <div className="absolute flex flex-col max-md:!relative max-md:!top-auto max-md:!left-auto max-md:!w-full max-md:!items-center max-md:!max-w-full" style={{ top: "240px", left: "105px", width: "600px", maxWidth: "calc(100% - 210px)" }}>

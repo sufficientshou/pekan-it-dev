@@ -1,15 +1,11 @@
 import { BASE_PATH } from '@/config/constants';
 
-// ========================================
-// KONFIGURASI MANUAL POSISI - ATUR DI SINI
-// ========================================
 const POSITION_CONFIG = {
-  titleTop: 50,      // Posisi "Meet Our Mascott" dari atas (dalam pixel)
-  mascotTop: 477,    // Posisi mascot dari atas (dalam pixel)
-  topCardsTop: 242,  // Posisi card atas (Kalung & Gear) dari atas (dalam pixel)
-  bottomCardsTop: 914, // Posisi card bawah (Kabel & Mata) dari atas (dalam pixel)
+  titleTop: 50,
+  mascotTop: 477,
+  topCardsTop: 242,
+  bottomCardsTop: 914,
 };
-// ========================================
 
 export default function Avatar() {
   const cardBase =
@@ -32,46 +28,48 @@ export default function Avatar() {
         }}
       />
 
-      <div
-        className="absolute"
-        style={{
-          top: "292px", left: "599px", width: "527px", height: "444px",
-          background: "linear-gradient(135deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
-          filter: "blur(18px)",
-          transform: "rotate(0deg)",
-          pointerEvents: "none",
-        }}
-      />
-      
-      <div
-        className="absolute"
-        style={{
-          top: "620px", left: "178px", width: "527px", height: "444px",
-          background: "linear-gradient(135deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
-          filter: "blur(18px)",
-          pointerEvents: "none",
-        }}
-      />
-      
-      <div
-        className="absolute"
-        style={{
-          top: "599px", left: "550px", width: "527px", height: "444px",
-          background: "linear-gradient(225deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
-          filter: "blur(18px)",
-          pointerEvents: "none",
-        }}
-      />
-      
-      <div
-        className="absolute"
-        style={{
-          top: "292px", left: "208px", width: "527px", height: "444px",
-          background: "linear-gradient(225deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
-          filter: "blur(18px)",
-          pointerEvents: "none",
-        }}
-      />
+      <div className="absolute top-0 left-[calc(51%+70px)] -translate-x-1/2 w-[1440px] h-full pointer-events-none">
+        <div
+          className="absolute"
+          style={{
+            top: "292px", left: "599px", width: "527px", height: "444px",
+            background: "linear-gradient(135deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
+            filter: "blur(18px)",
+            transform: "rotate(0deg)",
+            pointerEvents: "none",
+          }}
+        />
+        
+        <div
+          className="absolute"
+          style={{
+            top: "620px", left: "178px", width: "527px", height: "444px",
+            background: "linear-gradient(135deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
+            filter: "blur(18px)",
+            pointerEvents: "none",
+          }}
+        />
+        
+        <div
+          className="absolute"
+          style={{
+            top: "599px", left: "550px", width: "527px", height: "444px",
+            background: "linear-gradient(225deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
+            filter: "blur(18px)",
+            pointerEvents: "none",
+          }}
+        />
+        
+        <div
+          className="absolute"
+          style={{
+            top: "292px", left: "208px", width: "527px", height: "444px",
+            background: "linear-gradient(225deg, transparent 30%, rgba(208,0,203,0.55) 50%, transparent 70%)",
+            filter: "blur(18px)",
+            pointerEvents: "none",
+          }}
+        />
+      </div>
 
 
       <div
