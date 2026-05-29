@@ -396,7 +396,6 @@ function StarryBackgroundJourney() {
         maskImage: "linear-gradient(to bottom, transparent 0%, black 150px, black calc(100% - 150px), transparent 100%)"
       }}
     >
-      {/* Background Dots */}
       <div className="absolute w-1 h-1 bg-white rounded-full opacity-60 top-[10%] left-[20%] shadow-[0_0_4px_white]" />
       <div className="absolute w-1.5 h-1.5 bg-white rounded-full opacity-80 top-[15%] left-[80%] shadow-[0_0_6px_white]" />
       <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 top-[25%] left-[40%]" />
@@ -422,7 +421,6 @@ function StarryBackgroundJourney() {
       <div className="absolute w-1 h-1 bg-white rounded-full opacity-70 top-[72%] left-[55%] shadow-[0_0_3px_white]" />
       <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 top-[92%] left-[82%]" />
 
-      {/* Blurred Dots */}
       <div className="absolute w-2 h-2 bg-white rounded-full opacity-80 blur-[2px] top-[20%] left-[5%]" />
       <div className="absolute w-3 h-3 bg-white rounded-full opacity-60 blur-[2px] top-[40%] left-[95%]" />
       <div className="absolute w-2 h-2 bg-white rounded-full opacity-70 blur-[2px] top-[60%] left-[8%]" />
@@ -432,7 +430,6 @@ function StarryBackgroundJourney() {
       <div className="absolute w-3 h-3 bg-white rounded-full opacity-75 blur-[2.5px] top-[55%] left-[75%]" />
       <div className="absolute w-2.5 h-2.5 bg-white rounded-full opacity-85 blur-[1px] top-[88%] left-[25%]" />
 
-      {/* 4-Pointed Stars */}
       <div className="absolute w-[20px] h-[20px] top-[15%] right-[15%] animate-pulse text-white">
         <svg className="w-full h-full drop-shadow-[0_0_12px_rgba(255,255,255,0.85)]" viewBox="0 0 32 32" fill="none">
           <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
