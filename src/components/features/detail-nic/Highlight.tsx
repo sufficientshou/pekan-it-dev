@@ -1,35 +1,6 @@
-"use client";
-
-import { useState } from "react";
-import Image from "next/image";
 import { BASE_PATH } from '@/config/constants';
-import { ArrowLeft, ArrowRight } from "lucide-react";
-
-const highlightImages = [
-  "dok1.webp",
-  "dok2.webp",
-  "dok3.webp",
-  "dok4.webp",
-  "dok5.webp"
-];
 
 export default function Highlights() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % highlightImages.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + highlightImages.length) % highlightImages.length);
-  };
-
-  const currentImages = [
-    highlightImages[currentIndex],
-    highlightImages[(currentIndex + 1) % highlightImages.length],
-    highlightImages[(currentIndex + 2) % highlightImages.length],
-  ];
-
   return (
     <section
       className="relative text-white overflow-hidden flex flex-col items-center w-full"
@@ -75,32 +46,16 @@ export default function Highlights() {
         </p>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[1000px] px-4 md:px-12">
-        <div className="flex items-center justify-center w-full gap-4 md:gap-12">
-          
-          <button 
-            onClick={handlePrev}
-            className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 border-[3px] border-white rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5 md:w-8 md:h-8 text-white stroke-[3px]" />
-          </button>
-
-          <div className="flex flex-col md:flex-row gap-3 md:gap-6 w-full max-w-[800px]">
-            <div className="flex flex-col gap-3 md:gap-6 flex-1">
-              <div className="bg-gray-300 rounded-xl w-full aspect-[4/3] relative overflow-hidden"></div>
-              <div className="bg-gray-300 rounded-xl w-full aspect-[4/3] relative overflow-hidden"></div>
-            </div>
-
-            <div className="bg-gray-300 rounded-xl flex-1 relative overflow-hidden"></div>
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[800px] px-4 md:px-12">
+        <div className="flex flex-col gap-4 md:gap-6 w-full">
+          <div className="flex gap-4 md:gap-6 w-full h-[160px] sm:h-[220px] md:h-[280px]">
+            <div className="bg-gray-300 rounded-xl md:rounded-2xl flex-[3] relative overflow-hidden"></div>
+            <div className="bg-gray-300 rounded-xl md:rounded-2xl flex-[2] relative overflow-hidden"></div>
           </div>
-
-          <button 
-            onClick={handleNext}
-            className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 border-[3px] border-white rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
-          >
-            <ArrowRight className="w-5 h-5 md:w-8 md:h-8 text-white stroke-[3px]" />
-          </button>
-
+          <div className="flex gap-4 md:gap-6 w-full h-[160px] sm:h-[220px] md:h-[280px]">
+            <div className="bg-gray-300 rounded-xl md:rounded-2xl flex-[2] relative overflow-hidden"></div>
+            <div className="bg-gray-300 rounded-xl md:rounded-2xl flex-[3] relative overflow-hidden"></div>
+          </div>
         </div>
       </div>
     </section>

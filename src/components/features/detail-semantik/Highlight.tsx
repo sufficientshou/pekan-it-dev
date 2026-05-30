@@ -1,70 +1,30 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { BASE_PATH } from '@/config/constants';
+import { X } from "lucide-react";
 
-function HighlightRow({ images }: { images: string[] }) {
-  return (
-    <>
-      <div className="hidden md:flex items-center justify-center gap-4 w-full max-w-5xl mx-auto">
-        <div
-          className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
-          style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        ></div>
-
-        <div
-          className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
-          style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        ></div>
-
-        <div className="relative z-30 flex-shrink-0 flex justify-center"
-          style={{ width: "clamp(80px, 10vw, 120px)", height: "clamp(80px, 10vw, 120px)" }}
-        >
-          <Image
-            src={`${BASE_PATH}/images/s.webp`}
-            alt="logo"
-            fill
-            className="object-contain"
-            style={{ filter: "drop-shadow(0 0 15px rgba(168,85,247,0.5))" }}
-          />
-        </div>
-
-        <div
-          className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
-          style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        ></div>
-
-        <div
-          className="bg-gray-300 rounded-sm flex-shrink-0 relative overflow-hidden"
-          style={{ width: "clamp(180px, 22vw, 300px)", aspectRatio: "3/2" }}
-        ></div>
-      </div>
-
-      <div className="md:hidden flex flex-col items-center gap-5 w-full px-4">
-        <div className="flex gap-3 w-full justify-center">
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden"></div>
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden"></div>
-        </div>
-        <div className="relative w-16 h-16">
-          <Image
-            src={`${BASE_PATH}/images/s.webp`}
-            alt="logo"
-            fill
-            className="object-contain"
-            style={{ filter: "drop-shadow(0 0 15px rgba(168,85,247,0.5))" }}
-          />
-        </div>
-        <div className="flex gap-3 w-full justify-center">
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden"></div>
-          <div className="bg-gray-300 rounded-lg flex-1 max-w-[160px] aspect-video relative overflow-hidden"></div>
-        </div>
-      </div>
-    </>
-  );
-}
+const highlightImages = [
+  "dok1.webp",
+  "dok2.webp",
+  "dok3.webp",
+  "dok4.webp",
+  "dok5.webp",
+  "dok1.webp",
+  "dok2.webp",
+  "dok3.webp",
+  "dok4.webp"
+];
 
 export default function Highlights() {
+  const displayedImages = highlightImages.slice(0, 4);
+  const remainingCount = highlightImages.length - 4;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section
-      className="relative text-center text-white overflow-hidden"
+      className="relative text-white overflow-hidden flex flex-col items-center w-full"
       style={{
         background: "#000923",
         paddingTop: "clamp(130px, 12vw, 220px)",
@@ -82,8 +42,8 @@ export default function Highlights() {
         <div className="w-full h-full bg-[#7c3aed] rounded-full blur-[120px] translate-x-1/2"></div>
       </div>
 
-      <div className="flex flex-col items-center text-center relative z-20 px-4"
-        style={{ marginBottom: "clamp(20px, 4vh, 40px)" }}
+      <div className="flex flex-col items-center text-center relative z-20 px-4 w-full"
+        style={{ marginBottom: "clamp(30px, 6vh, 60px)" }}
       >
         <h2
           className="font-bold leading-tight"
@@ -107,21 +67,82 @@ export default function Highlights() {
           energi dan kreativitas para peserta SEMANTIK
         </p>
       </div>
-      <div className="relative z-10 flex flex-col items-center gap-6 md:gap-8 px-4">
-        <HighlightRow images={["dok1.webp", "dok2.webp", "dok3.webp", "dok4.webp"]} />
 
-        <div className="flex justify-center w-full">
-          <Image
-            src={`${BASE_PATH}/images/Line 4.webp`}
-            alt="divider line"
-            width={800}
-            height={2}
-            className="opacity-70 w-[90%] max-w-[800px]"
-          />
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[800px] px-4 md:px-12">
+        <div className="flex flex-col gap-4 md:gap-6 w-full">
+          <div className="flex gap-4 md:gap-6 w-full h-[160px] sm:h-[220px] md:h-[280px]">
+            <div 
+              className="bg-gray-300 rounded-xl md:rounded-2xl flex-[3] relative overflow-hidden group cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => setIsModalOpen(true)}
+            >
+              {displayedImages[0] && (
+                <Image src={`${BASE_PATH}/images/${displayedImages[0]}`} alt="Highlight 1" fill className="object-cover" />
+              )}
+            </div>
+            <div 
+              className="bg-gray-300 rounded-xl md:rounded-2xl flex-[2] relative overflow-hidden group cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => setIsModalOpen(true)}
+            >
+              {displayedImages[1] && (
+                <Image src={`${BASE_PATH}/images/${displayedImages[1]}`} alt="Highlight 2" fill className="object-cover" />
+              )}
+            </div>
+          </div>
+          <div className="flex gap-4 md:gap-6 w-full h-[160px] sm:h-[220px] md:h-[280px]">
+            <div 
+              className="bg-gray-300 rounded-xl md:rounded-2xl flex-[2] relative overflow-hidden group cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => setIsModalOpen(true)}
+            >
+              {displayedImages[2] && (
+                <Image src={`${BASE_PATH}/images/${displayedImages[2]}`} alt="Highlight 3" fill className="object-cover" />
+              )}
+            </div>
+            <div 
+              className="bg-gray-300 rounded-xl md:rounded-2xl flex-[3] relative overflow-hidden group cursor-pointer"
+              onClick={() => setIsModalOpen(true)}
+            >
+              {displayedImages[3] && (
+                <Image src={`${BASE_PATH}/images/${displayedImages[3]}`} alt="Highlight 4" fill className="object-cover" />
+              )}
+              {remainingCount > 0 && (
+                <div className="absolute inset-0 bg-black/60 flex items-center justify-center hover:bg-black/50 transition-colors">
+                  <span className="text-white text-3xl md:text-5xl font-semibold">
+                    +{remainingCount}
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-
-        <HighlightRow images={["dok5.webp", "dok1.webp", "dok2.webp", "dok3.webp"]} />
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/90 flex flex-col justify-center items-center backdrop-blur-sm">
+          <button 
+            onClick={() => setIsModalOpen(false)}
+            className="absolute top-6 right-6 md:top-10 md:right-10 text-white hover:text-gray-300 z-50 p-2 bg-white/10 rounded-full transition-colors hover:bg-white/20"
+          >
+            <X size={28} />
+          </button>
+          
+          <div 
+            className="w-full overflow-x-auto px-6 py-8 flex gap-4 md:gap-8 items-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+          >
+            <div className="w-[10vw] flex-shrink-0" /> 
+            {highlightImages.map((img, idx) => (
+              <div 
+                key={idx} 
+                className="flex-shrink-0 w-[75vw] md:w-[600px] aspect-[4/3] relative rounded-xl overflow-hidden shadow-2xl"
+                style={{ scrollSnapAlign: "center" }}
+              >
+                <Image src={`${BASE_PATH}/images/${img}`} alt={`Gallery ${idx + 1}`} fill className="object-cover" />
+              </div>
+            ))}
+            <div className="w-[10vw] flex-shrink-0" /> 
+          </div>
+        </div>
+      )}
     </section>
   );
 }
