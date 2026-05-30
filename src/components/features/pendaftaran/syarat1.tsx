@@ -44,7 +44,7 @@ const folders: Folder[] = [
     bgColor: "#6d63ff",
     lightBg: "#9a93ff",
     icon: `${BASE_PATH}/images/fluent_image-sparkle-20-filled.webp`,
-    link: "https://drive.google.com/drive/folders/1wKnQv_H60Mn9l9pTuHHoW-hHPB21ENdD",
+    link: "https://bit.ly/Twibbon_PekanIT2026",
   },
   {
     id: "share-ig",
@@ -251,85 +251,32 @@ function SyaratCard({
   link?: string;
 }) {
   const CardContent = (
-    <div className="relative max-md:!w-[82vw] max-md:!max-w-[300px] max-md:!h-[210px] max-md:!shrink-0 max-md:!snap-center max-md:active:scale-[0.98] transition-all hover:scale-[1.02] cursor-pointer" style={{ width: "300px", height: "210px" }}>
-
-      <div
-        className="absolute top-0 left-0 flex flex-col justify-end items-start max-md:!w-[82vw] max-md:!max-w-[300px] max-md:!h-[210px] max-md:!p-5"
-        style={{ width: "300px", height: "210px", padding: "24px" }}
-      >
+    <div 
+      className="relative group flex flex-col items-center justify-center max-md:!w-[82vw] max-md:!max-w-[300px] max-md:!h-[210px] max-md:!shrink-0 max-md:!snap-center max-md:active:scale-[0.98] transition-all hover:scale-[1.02] cursor-pointer" 
+      style={{ width: "500px", height: "210px", '--folder-bg': bgColor, '--folder-light': lightBg } as React.CSSProperties}
+    >
+      <div className="file relative w-60 h-40 origin-bottom [perspective:1500px] z-50 scale-[1.2] max-md:scale-[1.1] mt-6 max-md:mt-2">
+        <div className="work-5 bg-[var(--folder-bg)] w-full h-full origin-top rounded-2xl rounded-tl-none relative after:absolute after:content-[''] after:bottom-[99%] after:left-0 after:w-20 after:h-4 after:bg-[var(--folder-bg)] after:rounded-t-2xl before:absolute before:content-[''] before:-top-[15px] before:left-[75.5px] before:w-4 before:h-4 before:bg-[var(--folder-bg)] before:[clip-path:polygon(0_35%,0%_100%,50%_100%)]"></div>
         
-        <div
-          className="absolute left-0 top-0 w-full h-full overflow-hidden"
-          style={{
-            borderRadius: "20px",
-          }}
-        >
-          
-          <div
-            className="absolute top-0 left-0 w-full h-full"
-            style={{ background: bgColor, borderRadius: "20px" }}
-          />
-
-          <div
-            className="absolute left-0 top-0 w-full h-full"
-            style={{
-              borderRadius: "20px",
-              background: "linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.0) 55%)",
-            }}
-          />
-
-          <div
-            className="absolute overflow-hidden"
-            style={{
-              bottom: "12px",
-              left: "12px",
-              right: "12px",
-              height: "90%",
-              borderRadius: "20px",
-            }}
-          >
-            <div
-              className="absolute top-0 left-0 w-full h-full"
-              style={{ background: lightBg, borderRadius: "20px" }}
-            />
-
-            <img loading="lazy"
-              src={icon}
-              alt=""
-              className="pointer-events-none absolute max-md:!w-[130px] max-md:!h-[120px] max-md:!opacity-80"
-              style={{ 
-                bottom: "0px", 
-                right: "-12px", 
-                width: "160px", 
-                height: "150px", 
-                objectFit: "contain",
-                zIndex: 0,
-                opacity: 1
-              }}
-            />
-
-            <div
-              className="relative z-10 flex flex-col justify-center h-full p-5 max-md:!p-4"
-              style={{ gap: "8px" }}
-            >
-              <span
-                className="text-[#101c44] font-semibold leading-[1.3] max-w-[150px] max-md:!text-[15px] max-md:!ml-[10px]"
-                style={{ marginLeft: "14px", fontFamily: "'Zen Dots', sans-serif", fontSize: "16px" }}
-              >
-                {label}
-              </span>
-              {sub && (
-                <span
-                  className="font-normal leading-tight text-[#17234d]/80 max-md:!text-[10px] max-md:!ml-[10px]"
-                  style={{ marginLeft: "14px", fontFamily: "'Zen Dots', sans-serif", fontSize: "11px" }}
-                >
-                  {sub}
-                </span>
-              )}
+        <div className="work-4 absolute inset-1 bg-zinc-400 rounded-2xl origin-bottom select-none"></div>
+        <div className="work-3 absolute inset-1 bg-zinc-300 rounded-2xl origin-bottom"></div>
+        <div className="work-2 absolute inset-1 bg-zinc-200 rounded-2xl origin-bottom"></div>
+        
+        <div className="work-1 absolute bottom-0 bg-gradient-to-t from-[var(--folder-bg)] to-[var(--folder-light)] w-full h-[156px] rounded-2xl rounded-tr-none after:absolute after:content-[''] after:bottom-[99%] after:right-0 after:w-[146px] after:h-[16px] after:bg-[var(--folder-light)] after:rounded-t-2xl before:absolute before:content-[''] before:-top-[10px] before:right-[142px] before:size-3 before:bg-[var(--folder-light)] before:[clip-path:polygon(100%_14%,50%_100%,100%_100%)] origin-bottom">
+            <div className="absolute inset-0 overflow-hidden rounded-2xl rounded-tr-none z-0">
+                <img loading="lazy" src={icon} alt="" className="absolute -bottom-2 -right-4 w-28 h-28 object-contain opacity-[0.35] pointer-events-none" />
             </div>
-          </div>
+            <div className="absolute inset-0 z-10 flex flex-col justify-end gap-1 pointer-events-none" style={{ paddingLeft: "13px", paddingBottom: "20px", paddingRight: "16px" }}>
+                <span className="text-[#101c44] font-semibold leading-[1.2] text-[15px] max-w-[130px]" style={{ fontFamily: "'Zen Dots', sans-serif" }}>
+                  {label}
+                </span>
+                {sub && (
+                  <span className="font-normal leading-tight text-[#17234d]/80 text-[10px] max-w-[150px]" style={{ fontFamily: "'Zen Dots', sans-serif" }}>
+                    {sub}
+                  </span>
+                )}
+            </div>
         </div>
-
       </div>
     </div>
   );

@@ -85,7 +85,7 @@ export default function Hero() {
           ">
 
             <Link
-              href="/pendaftaran-ditutup"
+              href="/pendaftaran"
               className="max-md:w-full max-md:flex max-md:justify-center"
             >
               <button
