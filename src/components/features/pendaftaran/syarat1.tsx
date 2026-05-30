@@ -56,7 +56,7 @@ const folders: Folder[] = [
   },
   {
     id: "ktm",
-    label: "Upload Bukti KRS atau KTM",
+    label: "Upload Kartu Identitas",
     sub: null,
     bgColor: "#9da8b2",
     lightBg: "#bcc5cd",
@@ -80,8 +80,7 @@ export default function Syarat1() {
       className="relative w-full overflow-hidden"
       style={{ background: "#000923", marginTop: "90px" }}
     >
-      
-      {/* Blur gradient untuk transisi dari section sebelumnya */}
+
       <div 
         className="absolute left-0 w-full pointer-events-none"
         style={{ 
@@ -97,9 +96,9 @@ export default function Syarat1() {
         style={{
           top: "57px", left: "-39px", width: "266px", height: "9px",
           transform: "rotate(180deg)",
-          filter: "blur(7px)",
-          background: "linear-gradient(90deg, rgba(16,230,241,0.7) 0%, rgba(208,0,203,1) 100%)",
-          border: "1px solid black",
+          filter: "blur(2px)",
+          background: "linear-gradient(90deg, rgba(16,230,241,0.8) 0%, rgba(208,0,203,1) 100%)",
+          borderRadius: "50px",
         }}
       />
       <div
@@ -107,9 +106,9 @@ export default function Syarat1() {
         style={{
           top: "116px", left: "-61px", width: "210px", height: "9px",
           transform: "rotate(180deg)",
-          filter: "blur(7px)",
-          background: "linear-gradient(90deg, rgba(16,230,241,0.7) 0%, rgba(208,0,203,1) 100%)",
-          border: "1px solid black",
+          filter: "blur(2px)",
+          background: "linear-gradient(90deg, rgba(16,230,241,0.8) 0%, rgba(208,0,203,1) 100%)",
+          borderRadius: "50px",
         }}
       />
       
@@ -118,8 +117,9 @@ export default function Syarat1() {
         style={{
           top: "57px", left: "196px", width: "76px", height: "18px",
           transform: "rotate(180deg)",
-          filter: "blur(11px)",
+          filter: "blur(2px)",
           background: "rgba(16,230,241,1)",
+          boxShadow: "0 0 10px rgba(16,230,241,0.8)",
         }}
       />
       <div
@@ -127,8 +127,8 @@ export default function Syarat1() {
         style={{
           top: "112px", left: "0", width: "151px", height: "9px",
           transform: "rotate(180deg)",
-          filter: "blur(4.5px)",
-          background: "linear-gradient(90deg, rgba(16,230,241,0.3) 0%, rgba(208,0,203,0.15) 100%)",
+          filter: "blur(2px)",
+          background: "linear-gradient(90deg, rgba(16,230,241,0.4) 0%, rgba(208,0,203,0.3) 100%)",
           borderRadius: "15px 0 0 15px",
         }}
       />
@@ -137,9 +137,10 @@ export default function Syarat1() {
         style={{
           top: "108px", left: "97px", width: "60px", height: "18px",
           transform: "rotate(180deg)",
-          filter: "blur(11px)",
+          filter: "blur(2px)",
           background: "rgba(16,230,241,1)",
-          borderRadius: "30px 30px 0 0",
+          borderRadius: "50px",
+          boxShadow: "0 0 10px rgba(16,230,241,0.8)",
         }}
       />
 
@@ -148,9 +149,9 @@ export default function Syarat1() {
         style={{
           top: "57px", right: "-39px", width: "266px", height: "9px",
           transform: "rotate(180deg)",
-          filter: "blur(7px)",
-          background: "linear-gradient(90deg, rgba(16,230,241,0.7) 0%, rgba(208,0,203,1) 100%)",
-          border: "1px solid black",
+          filter: "blur(2px)",
+          background: "linear-gradient(90deg, rgba(16,230,241,0.8) 0%, rgba(208,0,203,1) 100%)",
+          borderRadius: "50px",
         }}
       />
       <div
@@ -158,9 +159,9 @@ export default function Syarat1() {
         style={{
           top: "116px", right: "-61px", width: "210px", height: "9px",
           transform: "rotate(180deg)",
-          filter: "blur(7px)",
-          background: "linear-gradient(90deg, rgba(16,230,241,0.7) 0%, rgba(208,0,203,1) 100%)",
-          border: "1px solid black",
+          filter: "blur(2px)",
+          background: "linear-gradient(90deg, rgba(16,230,241,0.8) 0%, rgba(208,0,203,1) 100%)",
+          borderRadius: "50px",
         }}
       />
       
@@ -169,8 +170,9 @@ export default function Syarat1() {
         style={{
           top: "57px", right: "196px", width: "76px", height: "18px",
           transform: "rotate(180deg)",
-          filter: "blur(11px)",
+          filter: "blur(2px)",
           background: "rgba(16,230,241,1)",
+          boxShadow: "0 0 10px rgba(16,230,241,0.8)",
         }}
       />
       <div
@@ -178,8 +180,8 @@ export default function Syarat1() {
         style={{
           top: "112px", right: "0", width: "151px", height: "9px",
           transform: "rotate(180deg)",
-          filter: "blur(4.5px)",
-          background: "linear-gradient(90deg, rgba(16,230,241,0.3) 0%, rgba(208,0,203,0.15) 100%)",
+          filter: "blur(2px)",
+          background: "linear-gradient(90deg, rgba(16,230,241,0.4) 0%, rgba(208,0,203,0.3) 100%)",
           borderRadius: "15px 0 0 15px",
         }}
       />
@@ -188,9 +190,10 @@ export default function Syarat1() {
         style={{
           top: "108px", right: "97px", width: "60px", height: "18px",
           transform: "rotate(180deg)",
-          filter: "blur(11px)",
+          filter: "blur(2px)",
           background: "rgba(16,230,241,1)",
-          borderRadius: "30px 30px 0 0",
+          borderRadius: "50px",
+          boxShadow: "0 0 10px rgba(16,230,241,0.8)",
         }}
       />
 
@@ -199,7 +202,7 @@ export default function Syarat1() {
         <div className="flex flex-col items-center gap-4 mb-16 max-md:!mb-8">
           <h2
             className="text-center font-bold leading-tight max-md:!text-[40px]"
-            style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "72px" }}
+            style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(20px, 4vw, 54px)" }}
           >
             <span
               style={{
@@ -216,13 +219,13 @@ export default function Syarat1() {
           </h2>
           <p
             className="w-full max-w-[536px] text-center text-white text-2xl font-normal leading-relaxed max-md:!text-lg max-md:!mb-5 max-md:!px-4"
-            style={{ fontFamily: "'Exo 2', sans-serif", marginBottom: "40px" }}
+            style={{ fontFamily: "'Exo 2', sans-serif", marginBottom: "40px", fontSize: "clamp(15px, 3vw, 24px)" }}
           >
             Peserta wajib memenuhi beberapa ketentuan berikut sebelum mengikuti lomba:
           </p>
         </div>
 
-        <div className="mx-auto max-w-[1300px] w-full grid grid-cols-1 gap-x-16 gap-y-20 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-10 place-items-center max-md:!flex max-md:!flex-row max-md:!flex-nowrap max-md:!overflow-x-auto max-md:!snap-x max-md:!snap-mandatory max-md:!justify-start max-md:!items-center max-md:!gap-x-6 max-md:!pb-10 max-md:[scrollbar-width:none] max-md:![&::-webkit-scrollbar]:hidden">
+        <div className="mx-auto max-w-[1100px] w-full grid grid-cols-1 gap-x-10 gap-y-12 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-10 place-items-center max-md:!flex max-md:!flex-row max-md:!flex-nowrap max-md:!overflow-x-auto max-md:!snap-x max-md:!snap-mandatory max-md:!justify-start max-md:!items-center max-md:!gap-x-6 max-md:!pb-10 max-md:[scrollbar-width:none] max-md:![&::-webkit-scrollbar]:hidden">
           {folders.map((f) => (
             <SyaratCard key={f.id} {...f} />
           ))}
@@ -248,11 +251,11 @@ function SyaratCard({
   link?: string;
 }) {
   const CardContent = (
-    <div className="relative max-md:!w-[82vw] max-md:!max-w-[300px] max-md:!h-[210px] max-md:!shrink-0 max-md:!snap-center max-md:active:scale-[0.98] transition-all hover:scale-[1.02] cursor-pointer" style={{ width: "360px", height: "260px" }}>
+    <div className="relative max-md:!w-[82vw] max-md:!max-w-[300px] max-md:!h-[210px] max-md:!shrink-0 max-md:!snap-center max-md:active:scale-[0.98] transition-all hover:scale-[1.02] cursor-pointer" style={{ width: "300px", height: "210px" }}>
 
       <div
         className="absolute top-0 left-0 flex flex-col justify-end items-start max-md:!w-[82vw] max-md:!max-w-[300px] max-md:!h-[210px] max-md:!p-5"
-        style={{ width: "360px", height: "260px", padding: "32px" }}
+        style={{ width: "300px", height: "210px", padding: "24px" }}
       >
         
         <div
@@ -297,8 +300,8 @@ function SyaratCard({
               style={{ 
                 bottom: "0px", 
                 right: "-12px", 
-                width: "200px", 
-                height: "190px", 
+                width: "160px", 
+                height: "150px", 
                 objectFit: "contain",
                 zIndex: 0,
                 opacity: 1
@@ -310,15 +313,15 @@ function SyaratCard({
               style={{ gap: "8px" }}
             >
               <span
-                className="text-[#101c44] font-semibold leading-[1.3] max-w-[170px] max-md:!text-[15px] max-md:!ml-[10px]"
-                style={{ marginLeft: "20px",fontFamily: "'Zen Dots', sans-serif", fontSize: "20px" }}
+                className="text-[#101c44] font-semibold leading-[1.3] max-w-[150px] max-md:!text-[15px] max-md:!ml-[10px]"
+                style={{ marginLeft: "14px", fontFamily: "'Zen Dots', sans-serif", fontSize: "16px" }}
               >
                 {label}
               </span>
               {sub && (
                 <span
                   className="font-normal leading-tight text-[#17234d]/80 max-md:!text-[10px] max-md:!ml-[10px]"
-                  style={{ marginLeft: "20px", fontFamily: "'Zen Dots', sans-serif", fontSize: "12px" }}
+                  style={{ marginLeft: "14px", fontFamily: "'Zen Dots', sans-serif", fontSize: "11px" }}
                 >
                   {sub}
                 </span>

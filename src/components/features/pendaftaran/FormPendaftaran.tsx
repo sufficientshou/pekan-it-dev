@@ -32,206 +32,6 @@ const lombas: Record<
 };
 
 export default function AboutLombaSemantik() {
-  // const router = useRouter();
-  // const [activeTab, setActiveTab] = useState("Desain Grafis");
-  // const [step, setStep] = useState(1);
-  // const [form, setForm] = useState({
-  //   nama: "",
-  //   telepon: "",
-  //   npm: "",
-  //   angkatan: "",
-  // });
-  // const [isSubmitting, setIsSubmitting] = useState(false);
-  // const [submitMessage, setSubmitMessage] = useState("");
-
-  // const lomba = lombas[activeTab];
-
-  // // Masukkan scriptURL dan sheetDataURL kamu di sini
-  // const scriptURL = 'https://script.google.com/macros/s/AKfycbxO3rnzUxdQQ08uyiu4USJ4VqR6BkeXaWzejmpHANJ4sZx4daX_JKNItBBf62rjAe4b/exec';
-  // const sheetDataURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTz8qFQ--NhZVusFMB5Q3dfPp7skPFZx8MLekm8LUF2bpvBvquh22f0olcZ8vxWd-bZkjIzOHroSUEU/pub?gid=1920851944&single=true&output=csv';
-
-  // // LOGIC 1: Interaksi UI Upload File (Muncul/Hilang Label)
-  // useEffect(() => {
-  //   const setupFileUpload = (inputId: string, labelId: string, successId: string, changeBtnId: string) => {
-  //     const input = document.getElementById(inputId) as HTMLInputElement;
-  //     const label = document.getElementById(labelId) as HTMLElement;
-  //     const suc  essMsg = document.getElementById(successId) as HTMLElement;
-  //     const changeBtn = document.getElementById(changeBtnId) as HTMLElement;
-
-  //     if (!input || !label || !successMsg || !changeBtn) return;
-
-  //     const handleChange = () => {
-  //       if (input.files && input.files.length > 0) {
-  //         label.style.display = "none";
-  //         successMsg.style.display = "inline-block";
-  //         changeBtn.style.display = "inline-block";
-  //       }
-  //     };
-
-  //     const handleReset = () => {
-  //       input.value = "";
-  //       label.style.display = "inline-block";
-  //       successMsg.style.display = "none";
-  //       changeBtn.style.display = "none";
-  //     };
-
-  //     input.addEventListener("change", handleChange);
-  //     changeBtn.addEventListener("click", handleReset);
-
-  //     // Cleanup listener
-  //     return () => {
-  //       input.removeEventListener("change", handleChange);
-  //       changeBtn.removeEventListener("click", handleReset);
-  //     };
-  //   };
-
-  //   if (step === 2) {
-  //     setupFileUpload("bukti-grup", "upload-label-grup", "upload-success-grup", "change-file-button-grup");
-  //     setupFileUpload("bukti-story", "upload-label-story", "upload-success-story", "change-file-button-story");
-  //     // ID disesuaikan dengan UI baru (bukti-ktm)
-  //     setupFileUpload("bukti-ktm", "upload-label-ktm", "upload-success-ktm", "change-file-button-ktm");
-  //   }
-  // }, [step]);
-
-  // // LOGIC 2: Pengecekan Duplikat & Submit Data
-  // useEffect(() => {
-  //   const form = document.forms.namedItem('form-pendaftaran-semantik') as HTMLFormElement;
-  //   if (!form) return;
-
-  //   const uploadFormData = (formData: FormData) => {
-  //     const fileInputs = form.querySelectorAll('input[type="file"]');
-  //     let filePromises: Promise<any>[] = [];
-
-  //     fileInputs.forEach((fileInput: any) => {
-  //       if (fileInput.files && fileInput.files.length > 0) {
-  //         const file = fileInput.files[0];
-  //         const reader = new FileReader();
-
-  //         const promise = new Promise((resolve, reject) => {
-  //           reader.onloadend = () => {
-  //             resolve({
-  //               name: fileInput.name,
-  //               filename: file.name,
-  //               value: reader.result
-  //             });
-  //           };
-  //           reader.onerror = reject;
-  //           reader.readAsDataURL(file);
-  //         });
-
-  //         filePromises.push(promise);
-  //       }
-  //     });
-
-  //     Promise.all(filePromises)
-  //       .then(files => {
-  //         files.forEach(fileData => {
-  //           formData.append(fileData.name, fileData.value);
-  //           formData.append(fileData.name + '_filename', fileData.filename);
-  //         });
-
-  //         // Tambahkan mata_lomba dari state activeTab
-  //         formData.append("mata_lomba", activeTab);
-
-  //         return fetch(scriptURL, {
-  //           method: 'POST',
-  //           body: formData,
-  //         });
-  //       })
-  //       .then(response => {
-  //         console.log("Response Status:", response.status);
-  //         return response.json();
-  //       })
-  //       .then(data => {
-  //         console.log("Data dari Server:", data);
-  //         if (data.result === 'success') {
-  //           setSubmitMessage("✅ Pendaftaran berhasil! Data telah tersimpan.");
-  //           alert("Terima kasih! Formulir Anda telah berhasil dikirim. Setelah Klik 'Ok', tunggu sampai berpindah halaman.");
-            
-  //           setTimeout(() => {
-  //             router.push(`/terimakasih?jenis=${encodeURIComponent(activeTab)}`);
-  //           }, 100);
-  //           form.reset();
-  //           setStep(1);
-  //         } else if (data.result === 'duplicate') {
-  //           setSubmitMessage("❌ Data duplikat. Mohon gunakan nama & nomor telepon yang berbeda.");
-  //           alert("Data duplikat. Mohon gunakan nama & nomor telepon yang berbeda.");
-  //         } else {
-  //           throw new Error(data.error || "Kesalahan tidak diketahui dari server.");
-  //         }
-  //       })
-  //       .catch(error => {
-  //         setSubmitMessage("❌ Gagal mengirim: " + error.message);
-  //         alert("Gagal mengirim formulir. Error: " + error.message);
-  //       })
-  //       .finally(() => {
-  //         setIsSubmitting(false);
-  //       });
-  //   };
-
-  //   const handleSubmit = (e: Event) => {
-  //     e.preventDefault();
-  //     setIsSubmitting(true);
-  //     setSubmitMessage("⏳ Sedang memproses data...");
-
-  //     const formData = new FormData(form);
-  //     let isEmpty = false;
-
-  //     formData.append("mata_lomba", activeTab);
-
-  //     // Validasi Input Kosong
-  //     const generalInputs = form.querySelectorAll('input:not([type="radio"]):not([type="file"]), textarea, select');
-  //     generalInputs.forEach((input: any) => {
-  //       if (!input.value.trim()) isEmpty = true;
-  //     });
-
-  //     const fileInputs = form.querySelectorAll('input[type="file"]');
-  //     fileInputs.forEach((fileInput: any) => {
-  //       if (fileInput.files.length === 0) isEmpty = true;
-  //     });
-
-  //     if (isEmpty) {
-  //       setSubmitMessage("❌ Kamu wajib mengisi semua data.");
-  //       alert("Kamu wajib mengisi semua data yang ada.");
-  //       setIsSubmitting(false);
-  //       return;
-  //     }
-
-  //     const nama = (formData.get("nama") as string)?.trim().toLowerCase();
-  //     const noTelepon = (formData.get("no_telepon") as string)?.trim();
-
-  //     // Cek Duplikasi ke Spreadsheet CSV (Fitur lama yang dipertahankan)
-  //     fetch(sheetDataURL)
-  //       .then(response => {
-  //         if (!response.ok) throw new Error("Gagal mengakses data spreadsheet.");
-  //         return response.text();
-  //       })
-  //       .then(csvText => {
-  //         const rows = csvText.split('\n').map(row => row.split(','));
-  //         const header = rows[0];
-  //         const namaIndex = header.indexOf("nama");
-  //         const noTeleponIndex = header.indexOf("no_telepon");
-
-  //         const isDuplicate = rows.some((row, i) => {
-  //           if (i === 0) return false;
-  //           const namaData = row[namaIndex]?.trim().toLowerCase();
-  //           const noTelpData = row[noTeleponIndex]?.trim();
-  //           return namaData === nama && noTelpData === noTelepon;
-  //         });
-
-  //         if (isDuplicate) {
-  //           setSubmitMessage("❌ Nama dan nomor telepon ini sudah terdaftar.");
-  //           alert("Data dengan nama dan nomor telepon ini sudah pernah dikirim.");
-  //           setIsSubmitting(false);
-  //           return;
-  //         }
-
-  //         uploadFormData(formData);
-  //       })
-  //       .catch(error => {
-  //         setSubmitMessage("❌ Gagal memeriksa duplikasi.");
-  //         alert("Gagal memeriksa duplikasi. Error: " + error.message);
-  //         setIsSubmitting(false);
 const router = useRouter();
   const [activeTab, setActiveTab] = useState("UI/UX Design");
   const [step, setStep] = useState(1);
@@ -463,7 +263,7 @@ const router = useRouter();
       <div className="flex flex-col items-center w-full mb-8 max-md:!mb-8">
         <h2
           className="text-center font-bold leading-tight max-md:!mb-10"
-          style={{ marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(40px, 5vw, 64px)" }}
+          style={{ marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(20px, 4vw, 54px)", paddingTop: "20px" }}
         >
           <span 
             style={{ 
@@ -530,8 +330,8 @@ const router = useRouter();
         >
           
           <h3
-            className="font-bold leading-tight max-md:!text-[28px] max-md:!mt-2 max-md:!leading-snug"
-            style={{ fontFamily: "'Zen Dots', cursive", fontSize: "80px" }}
+            className="font-bold leading-tight max-md:!text-[24px] max-md:!mt-2 max-md:!leading-snug"
+            style={{ fontFamily: "'Zen Dots', cursive", fontSize: "56px" }}
           >
             <span 
               style={{ 
@@ -546,8 +346,8 @@ const router = useRouter();
           </h3>
 
           <p
-            className="text-white leading-relaxed text-justify max-md:!text-center max-md:!text-[14px] max-md:!leading-relaxed"
-            style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "20px", opacity: 0.85 }}
+            className="text-white leading-relaxed text-justify max-md:!text-center max-md:!text-[13px] max-md:!leading-relaxed"
+            style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "16px", opacity: 0.85 }}
           >
             {lomba.description}
           </p>
@@ -582,12 +382,11 @@ const router = useRouter();
         </div>
 
         <div
-          className="rounded-2xl flex flex-col w-full md:w-auto relative max-md:!transform-none max-md:!mt-10 max-md:!mx-auto max-md:!mb-10 max-md:!w-[95%] max-md:!min-h-[560px] max-md:!pb-8"
+          className="rounded-2xl flex flex-col w-full md:w-auto relative max-md:!transform-none max-md:!mt-10 max-md:!mx-auto max-md:!mb-10 max-md:!w-[95%] max-md:!pb-8"
           style={{
             width: "100%",
-            maxWidth: "450px",
-            minHeight: activeTab === "Software Development" ? "720px" : "600px",
-            marginTop: "80px",
+            maxWidth: "420px",
+            marginTop: "60px",
             marginLeft: "1rem",
             flexShrink: 0,
             background: "rgba(0,9,35,0.85)",
@@ -609,11 +408,10 @@ const router = useRouter();
           
           <div
             className="px-8 py-5 text-center max-md:!px-4 max-md:!py-4"
-            style={{ borderBottom: "1px solid rgba(16,230,241,0.2)" }}
           >
             <h4
               className="font-bold text-xl max-md:!text-lg max-md:!py-1"
-              style={{ paddingBottom: 10, paddingTop: 10, fontFamily: "'Zen Dots', cursive" }}
+              style={{ paddingBottom: 10, paddingTop: 15, fontFamily: "'Zen Dots', cursive" }}
             >
               <span className="text-white">Daftar </span>
               <span 
@@ -811,10 +609,11 @@ const router = useRouter();
                         : "cursor-not-allowed opacity-50"
                     }`}
                     style={{
-                      marginTop: activeTab === "Software Development" ? 30 : 20,
+                      marginTop: 30,
                       marginLeft: "6.5%",
                       width: "87%",
                       height: "40px",
+                      marginBottom: 24,
                       fontFamily: "'Exo 2', sans-serif",
                       background: isStep1Valid
                         ? "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)"
@@ -906,41 +705,53 @@ const router = useRouter();
                     </div>
                   </div>
 
-                  <div className="flex gap-3 mt-2 max-md:!mt-4 max-md:!ml-0 max-md:!w-full max-md:!gap-2" style={{ marginTop: 20, marginLeft: "6.5%", width: "87%" }}>
+                  <div className="flex gap-3 mt-2 max-md:!mt-4 max-md:!ml-0 max-md:!w-full max-md:!gap-3" style={{ marginTop: 30, marginBottom: 24, marginLeft: "6.5%", width: "87%" }}>
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-80 cursor-pointer max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+                      className="flex-1 rounded-xl font-semibold transition-all duration-200 hover:opacity-85 cursor-pointer flex items-center justify-center gap-2 max-md:!h-12"
                       style={{
-                        height: "40px",
+                        height: "48px",
                         fontFamily: "'Exo 2', sans-serif",
-                        background: "rgba(255,255,255,0.08)",
-                        border: "1px solid rgba(255,255,255,0.2)",
+                        fontSize: "15px",
+                        background: "#ffffff",
+                        color: "#1a1a2e",
+                        border: "none",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                       }}
                     >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                      </svg>
                       Back
                     </button>
                     <button
                       type="button"
                       disabled={!isStep2Valid}
                       onClick={() => setStep(3)}
-                      className={`flex-1 py-3 rounded-lg text-white font-semibold transition-all duration-300 max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center ${
+                      className={`flex-1 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 max-md:!h-12 ${
                         isStep2Valid 
                           ? "cursor-pointer hover:opacity-90 active:scale-[0.98]" 
                           : "cursor-not-allowed opacity-50"
                       }`}
                       style={{
-                        height: "40px",
+                        height: "48px",
                         fontFamily: "'Exo 2', sans-serif",
+                        fontSize: "15px",
+                        color: "#ffffff",
+                        border: "none",
                         background: isStep2Valid
-                          ? "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)"
+                          ? "linear-gradient(90deg, #6e8efb 0%, #9b00d0 100%)"
                           : "rgba(128, 128, 128, 0.2)",
                         boxShadow: isStep2Valid
-                          ? "0 4px 20px rgba(208, 0, 203, 0.4)"
+                          ? "0 4px 20px rgba(155, 0, 208, 0.4)"
                           : "none",
                       }}
                     >
                       Next
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
                     </button>
                   </div>
                 </div>
@@ -1248,41 +1059,53 @@ const router = useRouter();
                     </div>
                   </div>
 
-                  <div className="flex gap-3 mt-2 max-md:!mt-4 max-md:!ml-0 max-md:!w-full max-md:!gap-2" style={{ marginTop: 20, marginLeft: "6.5%", width: "87%" }}>
+                  <div className="flex gap-3 mt-2 max-md:!mt-4 max-md:!ml-0 max-md:!w-full max-md:!gap-3" style={{ marginTop: 30, marginBottom: 24, marginLeft: "6.5%", width: "87%" }}>
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-80 cursor-pointer max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+                      className="flex-1 rounded-xl font-semibold transition-all duration-200 hover:opacity-85 cursor-pointer flex items-center justify-center gap-2 max-md:!h-12"
                       style={{
-                        height: "40px",
+                        height: "48px",
                         fontFamily: "'Exo 2', sans-serif",
-                        background: "rgba(255,255,255,0.08)",
-                        border: "1px solid rgba(255,255,255,0.2)",
+                        fontSize: "15px",
+                        background: "#ffffff",
+                        color: "#1a1a2e",
+                        border: "none",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                       }}
                     >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                      </svg>
                       Back
                     </button>
                     <button
                       type="button"
                       disabled={!isStep3Valid}
                       onClick={() => setStep(4)}
-                      className={`flex-1 py-3 rounded-lg text-white font-semibold transition-all duration-300 max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center ${
+                      className={`flex-1 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 max-md:!h-12 ${
                         isStep3Valid 
                           ? "cursor-pointer hover:opacity-90 active:scale-[0.98]" 
                           : "cursor-not-allowed opacity-50"
                       }`}
                       style={{
-                        height: "40px",
+                        height: "48px",
                         fontFamily: "'Exo 2', sans-serif",
+                        fontSize: "15px",
+                        color: "#ffffff",
+                        border: "none",
                         background: isStep3Valid
-                          ? "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)"
+                          ? "linear-gradient(90deg, #6e8efb 0%, #9b00d0 100%)"
                           : "rgba(128, 128, 128, 0.2)",
                         boxShadow: isStep3Valid
-                          ? "0 4px 20px rgba(208, 0, 203, 0.4)"
+                          ? "0 4px 20px rgba(155, 0, 208, 0.4)"
                           : "none",
                       }}
                     >
                       Next
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
                     </button>
                   </div>
                 </div>
@@ -1485,36 +1308,52 @@ const router = useRouter();
 
                   </div>
 
-                  <div className="flex gap-3 mt-2 max-md:!ml-0 max-md:!w-full max-md:!gap-2" style={{ marginLeft: "6.5%", width: "87%" }}>
+                  <div className="flex gap-3 mt-2 max-md:!ml-0 max-md:!w-full max-md:!gap-3" style={{ marginTop: 30, marginBottom: 24, marginLeft: "6.5%", width: "87%" }}>
                     <button
                       type="button"
                       onClick={() => setStep(3)}
-                      className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-80 cursor-pointer max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+                      className="flex-1 rounded-xl font-semibold transition-all duration-200 hover:opacity-85 cursor-pointer flex items-center justify-center gap-2 max-md:!h-12"
                       style={{
-                        height: "40px",
+                        height: "48px",
                         fontFamily: "'Exo 2', sans-serif",
-                        background: "rgba(255,255,255,0.08)",
-                        border: "1px solid rgba(255,255,255,0.2)",
+                        fontSize: "15px",
+                        background: "#ffffff",
+                        color: "#1a1a2e",
+                        border: "none",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                       }}
                     >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                      </svg>
                       Back
                     </button>
                     <button
                       type="submit"
                       disabled={isSubmitting || !isStep4Valid}
-                      className="flex-1 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed max-md:!h-12 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center"
+                      className={`flex-1 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 max-md:!h-12 ${
+                        (isSubmitting || !isStep4Valid)
+                          ? "cursor-not-allowed opacity-50" 
+                          : "cursor-pointer hover:opacity-90 active:scale-[0.98]"
+                      }`}
                       style={{
-                        height: "40px",
+                        height: "48px",
                         fontFamily: "'Exo 2', sans-serif",
+                        fontSize: "15px",
+                        color: "#ffffff",
+                        border: "none",
                         background: (isSubmitting || !isStep4Valid)
                           ? "rgba(128,128,128,0.5)"
-                          : "linear-gradient(90deg, #6e8efb 0%, #d000cb 100%)",
+                          : "linear-gradient(90deg, #6e8efb 0%, #9b00d0 100%)",
                         boxShadow: (isSubmitting || !isStep4Valid)
                           ? "none"
-                          : "0 4px 20px rgba(208,0,203,0.4)",
+                          : "0 4px 20px rgba(155, 0, 208, 0.4)",
                       }}
                     >
-                      {isSubmitting ? "Mengirim..." : "Submit Tim ✈"}
+                      {isSubmitting ? "Mengirim..." : "Submit Tim"}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
                     </button>
                   </div>
 

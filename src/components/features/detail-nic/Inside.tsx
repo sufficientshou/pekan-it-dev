@@ -97,19 +97,16 @@ function StarryBackgroundBelowCurve() {
         maskImage: "linear-gradient(to bottom, transparent 0%, black 150px, black calc(100% - 150px), transparent 100%)"
       }}
     >
-      {/* Purple glow / blur on left edge */}
       <div 
         className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] rounded-full blur-[60px] md:blur-[90px] opacity-40 pointer-events-none"
         style={{ background: "#a855f7", top: "0%", left: "-5%" }}
       />
       
-      {/* Purple glow / blur on bottom right edge */}
       <div 
         className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] rounded-full blur-[60px] md:blur-[90px] opacity-30 pointer-events-none"
         style={{ background: "#a855f7", bottom: "0%", right: "-5%" }}
       />
-      
-      {/* Background Dots - Original + More */}
+
       <div className="absolute w-1 h-1 bg-white rounded-full opacity-60 top-[10%] left-[20%] shadow-[0_0_4px_white]" />
       <div className="absolute w-1.5 h-1.5 bg-white rounded-full opacity-80 top-[15%] left-[80%] shadow-[0_0_6px_white]" />
       <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 top-[25%] left-[40%]" />
@@ -398,6 +395,8 @@ export default function Inside() {
       <div className="relative z-10 flex flex-col items-center w-full"
         style={{ paddingTop: "clamp(40px, 8vw, 160px)", paddingLeft: "clamp(0px, 8vw, 120px)", paddingRight: "clamp(0px, 8vw, 120px)" }}
       >
+        <StarCluster position="left" />
+        <StarCluster position="right" />
         <div className="flex flex-col items-center gap-4 md:gap-6 text-center w-full" style={{ paddingTop: "clamp(15px, 4vh, 70px)" }}>
           <h2
             className="font-bold tracking-wide max-w-xl relative"
@@ -435,13 +434,14 @@ export default function Inside() {
 
       <div
         className="w-full pointer-events-none select-none relative z-[2]"
-        style={{ marginTop: "clamp(60px, 10vw, 160px)" }}
+        style={{ marginTop: "clamp(120px, 18vw, 300px)" }}
       >
         <div className="absolute left-[50%] bottom-[0%] -translate-x-1/2" style={{ zIndex: 1, width: "clamp(300px, 90vw, 1000px)" }}>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] bg-[#9333ea] blur-[80px] md:blur-[120px] opacity-50 pointer-events-none rounded-full z-0" />
           <img 
             src={`${BASE_PATH}/images/gdg.png`} 
             alt="GDG Logo" 
-            className="w-full h-auto object-contain block"
+            className="w-full h-auto object-contain block relative z-10"
           />
         </div>
 
@@ -467,7 +467,7 @@ export default function Inside() {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center w-full"
+      <div className="relative z-10 flex flex-col items-center w-full bg-[#000923]"
         style={{ paddingBottom: "clamp(48px, 8vh, 120px)", paddingLeft: "clamp(0px, 8vw, 120px)", paddingRight: "clamp(0px, 8vw, 120px)" }}
       >
         <StarryBackgroundBelowCurve />

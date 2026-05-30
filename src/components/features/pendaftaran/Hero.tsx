@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 w-full max-md:!top-0">
         
         <img
-          src={`${BASE_PATH}/images/tokyo city (1) 1(1).webp`}
+          src={`${BASE_PATH}/images/bg daftar.png`}
           alt="Hero City"
           className="w-full h-auto block transform translate-y-40 max-md:!transform-none max-md:!absolute max-md:!inset-0 max-md:!w-full max-md:!h-full max-md:!object-cover max-md:!object-bottom max-md:!scale-[1.1] max-md:!origin-bottom"
         />
@@ -56,17 +56,17 @@ export default function Hero() {
           </h6>
 
           <h1
-            className="w-full text-center text-white leading-none font-normal tracking-wide max-md:!leading-tight max-md:!text-[38px] max-md:!px-2"
+            className="w-full text-center text-white leading-none font-normal tracking-wide max-md:!leading-tight max-md:!text-[32px] max-md:!px-2"
             style={{
               fontFamily: "'Zen Dots', sans-serif",
-              fontSize: "clamp(56px, 8vw, 96px)",
+              fontSize: "clamp(48px, 6vw, 80px)",
             }}
           >
             Pendaftaran
           </h1>
 
           <p
-            className="w-full max-w-[536px] text-center text-white text-2xl font-normal leading-relaxed max-md:!text-base max-md:!leading-snug"
+            className="w-full max-w-[536px] text-center text-white text-xl font-normal leading-relaxed max-md:!text-[15px] max-md:!leading-snug"
             style={{ fontFamily: "'Exo 2', sans-serif" }}
           >
             Mulai perjalananmu dan tunjukan inovasi terbaikmu di N I C
