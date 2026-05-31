@@ -455,7 +455,7 @@ const router = useRouter();
             <form id="form-pendaftaran-semantik" name="form-pendaftaran-semantik" onSubmit={handleSubmit} className="mt-5">
               {step === 1 && (
                 <div className={`flex flex-col gap-6 max-md:!gap-4 ${activeTab === "Software Development" ? "pb-6" : ""}`}>
-                  <div className="flex flex-col gap-4">
+                  <div className={`flex flex-col gap-4 ${activeTab === "Software Development" ? "overflow-y-auto max-h-[360px] pr-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-[#10e6f1]/50 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent" : ""}`}>
                     <div className="flex flex-col gap-2">
                       <label htmlFor="leaderName" className="text-white text-sm opacity-80 max-md:!ml-0"
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
