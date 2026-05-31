@@ -201,7 +201,7 @@ export default function Syarat1() {
         
         <div className="flex flex-col items-center gap-4 mb-16 max-md:!mb-8">
           <h2
-            className="text-center font-bold leading-tight max-md:!text-[40px]"
+            className="text-center font-bold leading-tight max-md:!text-[32px]"
             style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(20px, 4vw, 54px)" }}
           >
             <span
@@ -215,7 +215,7 @@ export default function Syarat1() {
             </span>
             <span className="text-white"> You</span>
             <br className="max-md:!hidden" />
-            <span className="text-white">Register</span>
+            <span className="text-white"> Register</span>
           </h2>
           <p
             className="w-full max-w-[536px] text-center text-white text-2xl font-normal leading-relaxed max-md:!text-lg max-md:!mb-5 max-md:!px-4"
@@ -225,7 +225,7 @@ export default function Syarat1() {
           </p>
         </div>
 
-        <div className="mx-auto max-w-[1100px] w-full grid grid-cols-1 gap-x-10 gap-y-12 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-10 place-items-center max-md:!flex max-md:!flex-row max-md:!flex-nowrap max-md:!overflow-x-auto max-md:!snap-x max-md:!snap-mandatory max-md:!justify-start max-md:!items-center max-md:!gap-x-6 max-md:!pb-10 max-md:[scrollbar-width:none] max-md:![&::-webkit-scrollbar]:hidden">
+        <div className="mx-auto max-w-[1100px] w-full grid grid-cols-1 gap-x-10 gap-y-12 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-10 place-items-center max-md:!flex max-md:!flex-row max-md:!flex-nowrap max-md:!overflow-x-auto max-md:!snap-x max-md:!snap-mandatory max-md:!justify-start max-md:!items-center max-md:!gap-x-6 max-md:!pb-10 max-md:!pt-4 max-md:[scrollbar-width:none] max-md:![&::-webkit-scrollbar]:hidden">
           {folders.map((f) => (
             <SyaratCard key={f.id} {...f} />
           ))}
@@ -252,8 +252,8 @@ function SyaratCard({
 }) {
   const CardContent = (
     <div 
-      className="relative group flex flex-col items-center justify-center max-md:!w-[82vw] max-md:!max-w-[300px] max-md:!h-[210px] max-md:!shrink-0 max-md:!snap-center max-md:active:scale-[0.98] transition-all hover:scale-[1.02] cursor-pointer" 
-      style={{ width: "500px", height: "210px", '--folder-bg': bgColor, '--folder-light': lightBg } as React.CSSProperties}
+      className={`relative group flex flex-col items-center justify-center transition-all hover:scale-[1.02] cursor-pointer w-full max-md:!h-[250px] ${!link ? "max-md:!w-[280px] max-md:!shrink-0 max-md:!snap-center" : ""}`} 
+      style={{ maxWidth: "500px", height: "210px", '--folder-bg': bgColor, '--folder-light': lightBg } as React.CSSProperties}
     >
       <div className="file relative w-60 h-40 origin-bottom [perspective:1500px] z-50 scale-[1.2] max-md:scale-[1.1] mt-6 max-md:mt-2">
         <div className="work-5 bg-[var(--folder-bg)] w-full h-full origin-top rounded-2xl rounded-tl-none relative after:absolute after:content-[''] after:bottom-[99%] after:left-0 after:w-20 after:h-4 after:bg-[var(--folder-bg)] after:rounded-t-2xl before:absolute before:content-[''] before:-top-[15px] before:left-[75.5px] before:w-4 before:h-4 before:bg-[var(--folder-bg)] before:[clip-path:polygon(0_35%,0%_100%,50%_100%)]"></div>
@@ -266,8 +266,8 @@ function SyaratCard({
             <div className="absolute inset-0 overflow-hidden rounded-2xl rounded-tr-none z-0">
                 <img loading="lazy" src={icon} alt="" className="absolute -bottom-2 -right-4 w-28 h-28 object-contain opacity-[0.35] pointer-events-none" />
             </div>
-            <div className="absolute inset-0 z-10 flex flex-col justify-end gap-1 pointer-events-none" style={{ paddingLeft: "13px", paddingBottom: "20px", paddingRight: "16px" }}>
-                <span className="text-[#101c44] font-semibold leading-[1.2] text-[15px] max-w-[130px]" style={{ fontFamily: "'Zen Dots', sans-serif" }}>
+            <div className="absolute inset-0 z-10 flex flex-col justify-end gap-1 pointer-events-none" style={{ paddingLeft: "15px", paddingBottom: "20px", paddingRight: "16px" }}>
+                <span className="text-[#101c44] font-semibold leading-[1.2] text-[15px] max-w-[160px]" style={{ fontFamily: "'Zen Dots', sans-serif" }}>
                   {label}
                 </span>
                 {sub && (
@@ -283,7 +283,7 @@ function SyaratCard({
 
   if (link) {
     return (
-      <a href={link} target="_blank" rel="noopener noreferrer" className="block">
+      <a href={link} target="_blank" rel="noopener noreferrer" className="block max-md:!w-[280px] max-md:!shrink-0 max-md:!snap-center max-md:!h-[250px]">
         {CardContent}
       </a>
     );

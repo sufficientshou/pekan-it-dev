@@ -262,8 +262,8 @@ const router = useRouter();
       
       <div className="flex flex-col items-center w-full mb-8 max-md:!mb-8">
         <h2
-          className="text-center font-bold leading-tight max-md:!mb-10"
-          style={{ marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(20px, 4vw, 54px)", paddingTop: "20px" }}
+          className="text-center font-bold leading-tight max-md:!mb-10 max-md:!text-[32px]"
+          style={{ marginBottom: 50, fontFamily: "'Zen Dots', cursive", fontSize: "clamp(35px, 4vw, 54px)", paddingTop: "clamp(0px, 1vw, 10px)" }}
         >
           <span 
             style={{ 
@@ -770,10 +770,10 @@ const router = useRouter();
                       className="hidden" 
                       onChange={(e) => handleFileChange(e, 'buktiGrup')}
                     />
-                    <div className="flex justify-center items-center gap-4 flex-wrap w-full" style={{paddingRight: "20px"}}>
+                    <div className="flex justify-center items-center gap-4 flex-wrap w-full max-md:!pr-0" style={{paddingRight: "20px"}}>
                       {filesState.buktiGrup ? (
                         <div 
-                          className="relative rounded-2xl overflow-hidden"
+                          className="relative rounded-2xl overflow-hidden max-md:!ml-0 max-md:!w-full"
                           style={{
                             marginLeft: "6%",
                             width: "90%",
@@ -817,7 +817,7 @@ const router = useRouter();
                       ) : (
                         <label 
                           htmlFor="bukti-grup" 
-                          className="relative flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all hover:bg-[rgba(16,230,241,0.08)] max-md:!ml-0"
+                          className="relative flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all hover:bg-[rgba(16,230,241,0.08)] max-md:!ml-0 max-md:!w-full"
                           style={{
                             marginLeft: "6.5%",
                             width: "87%",
@@ -861,7 +861,7 @@ const router = useRouter();
 
                   <div className="flex flex-col gap-2 w-full">
                     <label className="text-white opacity-80 text-sm max-md:!ml-0" style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
-                      Bukti Share SG & Follow Instagram :
+                      Bukti Share SG, follow Instagram & Twibbon :
                     </label>
                     <input 
                       type="file" 
@@ -870,10 +870,10 @@ const router = useRouter();
                       className="hidden" 
                       onChange={(e) => handleFileChange(e, 'buktiStory')}
                     />
-                    <div className="flex justify-center items-center gap-4 flex-wrap w-full" style={{paddingRight: "20px"}}>
+                    <div className="flex justify-center items-center gap-4 flex-wrap w-full max-md:!pr-0" style={{paddingRight: "20px"}}>
                       {filesState.buktiStory ? (
                         <div 
-                          className="relative rounded-2xl overflow-hidden"
+                          className="relative rounded-2xl overflow-hidden max-md:!ml-0 max-md:!w-full"
                           style={{
                             marginLeft: "6%",
                             width: "90%",
@@ -917,7 +917,7 @@ const router = useRouter();
                       ) : (
                         <label 
                           htmlFor="bukti-story" 
-                          className="relative flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all hover:bg-[rgba(16,230,241,0.08)] max-md:!ml-0"
+                          className="relative flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all hover:bg-[rgba(16,230,241,0.08)] max-md:!ml-0 max-md:!w-full"
                           style={{
                             marginLeft: "6.5%",
                             width: "87%",
@@ -970,10 +970,10 @@ const router = useRouter();
                       className="hidden" 
                       onChange={(e) => handleFileChange(e, 'buktiKtm')}
                     />
-                    <div className="flex justify-center items-center gap-4 flex-wrap w-full" style={{paddingRight: "20px"}}>
+                    <div className="flex justify-center items-center gap-4 flex-wrap w-full max-md:!pr-0" style={{paddingRight: "20px"}}>
                       {filesState.buktiKtm ? (
                         <div 
-                          className="relative rounded-2xl overflow-hidden"
+                          className="relative rounded-2xl overflow-hidden max-md:!ml-0 max-md:!w-full"
                           style={{
                             marginLeft: "6%",
                             width: "90%",
@@ -1017,7 +1017,7 @@ const router = useRouter();
                       ) : (
                         <label 
                           htmlFor="bukti-ktm" 
-                          className="relative flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all hover:bg-[rgba(16,230,241,0.08)] max-md:!ml-0"
+                          className="relative flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all hover:bg-[rgba(16,230,241,0.08)] max-md:!ml-0 max-md:!w-full"
                           style={{
                             marginLeft: "6.5%",
                             width: "87%",
@@ -1113,7 +1113,7 @@ const router = useRouter();
 
               {step === 4 && (
                 <div className="flex flex-col gap-4">
-                  <div className="flex flex-col gap-5 text-left max-md:!ml-0" style={{ marginLeft: "6.5%", width: "87%", fontFamily: "'Exo 2', sans-serif" }}>
+                  <div className="flex flex-col gap-5 text-left max-md:!ml-0 max-md:!w-full" style={{ marginLeft: "6.5%", width: "87%", fontFamily: "'Exo 2', sans-serif" }}>
                     <div className="flex flex-col gap-3">
                       <p className="text-white font-semibold text-sm" style={{ fontFamily: "'Exo 2', sans-serif" }}>Pilih Metode Pembayaran</p>
                       <div

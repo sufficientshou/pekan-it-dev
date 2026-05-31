@@ -52,14 +52,24 @@ function CardInner({ title, date, fontSize = "16px", dateSize = "13px" }: {
           fontFamily: "'Zen Dots', sans-serif",
           fontSize,
           fontWeight: 400,
-          background: "linear-gradient(340deg, rgba(208,0,203,1) 0%, rgba(16,230,241,1) 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
           filter: "drop-shadow(0px 4px 4px rgba(0,0,0,0.25))",
           wordBreak: "break-word",
         }}
       >
-        {title}
+        <span
+          style={{
+            background: "linear-gradient(340deg, rgba(208,0,203,1) 0%, rgba(16,230,241,1) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          {title.split(' ')[0]}
+        </span>
+        {title.split(' ').slice(1).length > 0 && (
+          <span style={{ color: "#ffffff" }}>
+            {" "}{title.split(' ').slice(1).join(' ')}
+          </span>
+        )}
       </span>
       <span
         className="text-white"
@@ -211,7 +221,7 @@ export default function Journey() {
       >
         <h2
           className="text-center font-bold leading-tight"
-          style={{ fontFamily: "'Zen Dots', cursive", fontSize: "clamp(20px, 4vw, 54px)" }}
+          style={{ fontFamily: "'Zen Dots', cursive", fontSize: "clamp(30px, 4vw, 54px)" }}
         >
           <span style={{
             background: "linear-gradient(90deg, #ff00ff 0%, #00ffff 100%)",

@@ -26,7 +26,7 @@ export default function Highlights() {
       >
         <h2
           className="font-bold leading-tight"
-          style={{ fontFamily: "'Zen Dots', cursive", fontSize: "clamp(20px, 4vw, 54px)", marginBottom: "clamp(12px, 2vh, 24px)" }}
+          style={{ fontFamily: "'Zen Dots', cursive", fontSize: "clamp(30px, 4vw, 50px)", marginBottom: "clamp(12px, 2vh, 24px)" }}
         >
           <span style={{ color: "#ffffff" }}>N I C </span>
           <span style={{

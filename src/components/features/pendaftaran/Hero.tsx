@@ -5,7 +5,7 @@ import { Navbar } from '@/components/layout';
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[832px] bg-black overflow-hidden max-md:!min-h-[100vh] max-md:!h-auto pb-10">
+    <section className="relative w-full bg-black overflow-hidden" style={{ minHeight: "100svh" }}>
 
       <img
         src={`${BASE_PATH}/images/night_bg.webp`}
@@ -13,12 +13,20 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute bottom-0 left-0 w-full max-md:!top-0">
+      <div className="
+        absolute left-0 w-full
+        max-md:inset-0 max-md:h-full
+        md:bottom-0
+      ">
         
         <img
           src={`${BASE_PATH}/images/bg daftar.png`}
           alt="Hero City"
-          className="w-full h-auto block transform translate-y-40 max-md:!transform-none max-md:!absolute max-md:!inset-0 max-md:!w-full max-md:!h-full max-md:!object-cover max-md:!object-bottom max-md:!scale-[1.1] max-md:!origin-bottom"
+          className="
+            w-full h-auto block
+            max-md:absolute max-md:inset-0 max-md:w-full max-md:h-full max-md:object-cover max-md:object-bottom
+            md:transform md:translate-y-40
+          "
         />
         
         <div 
@@ -40,39 +48,53 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center w-full px-4 max-md:!pt-[15vh]"
-        style={{ paddingTop: "30vh" }}
+      <div
+        className="
+          relative z-10 flex flex-col items-center w-full px-4
+          max-md:pt-[30vh] max-md:pb-10
+        "
+        style={{
+          paddingTop: "clamp(180px, 28vh, 360px)",
+          paddingBottom: "clamp(60px, 12vh, 160px)",
+        }}
       >
-        <div className="flex flex-col items-center gap-7 w-full max-w-[760px] max-md:!gap-5">
+        <div className="flex flex-col items-center w-full max-w-[760px] max-md:gap-5 md:gap-7">
 
           <h6
-            className="w-full text-center text-white leading-none font-normal tracking-wide max-md:!text-[24px]"
+            className="w-full text-center text-white leading-none font-normal tracking-wide"
             style={{
               fontFamily: "'Zen Dots', sans-serif",
-              fontSize: "clamp(40px, 8vw, 20px)",
+              fontSize: "clamp(20px, 3vw, 40px)",
             }}
           >
             NIC
           </h6>
 
           <h1
-            className="w-full text-center text-white leading-none font-normal tracking-wide max-md:!leading-tight max-md:!text-[32px] max-md:!px-2"
+            className="w-full text-center text-white leading-none font-normal tracking-wide"
             style={{
               fontFamily: "'Zen Dots', sans-serif",
-              fontSize: "clamp(48px, 6vw, 80px)",
+              fontSize: "clamp(38px, 7vw, 80px)",
             }}
           >
             Pendaftaran
           </h1>
 
           <p
-            className="w-full max-w-[536px] text-center text-white text-xl font-normal leading-relaxed max-md:!text-[15px] max-md:!leading-snug"
-            style={{ fontFamily: "'Exo 2', sans-serif" }}
+            className="w-full max-w-[536px] text-center text-white font-normal leading-relaxed max-md:px-6 max-md:leading-snug"
+            style={{
+              fontFamily: "'Exo 2', sans-serif",
+              fontSize: "clamp(14px, 2vw, 24px)",
+            }}
           >
-            Mulai perjalananmu dan tunjukan inovasi terbaikmu di N I C
+            Mulai perjalananmu dan tunjukan inovasi <br className="md:hidden" /> terbaikmu di N I C
           </p>
 
-          <div className="flex items-center gap-7 mt-1 flex-wrap justify-center max-md:!gap-4 max-md:!flex-col max-md:!w-full max-md:!mt-4">
+          <div className="
+            flex items-center justify-center mt-4
+            max-md:flex-col max-md:w-full max-md:gap-4
+            md:flex-row md:gap-7 md:mt-1
+          ">
             
             <button
               onClick={() => {
@@ -81,13 +103,16 @@ export default function Hero() {
                   formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
-              className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
+              className="
+                rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)]
+                text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer opacity-80
+                max-md:w-full max-md:max-w-[280px]
+              "
               style={{
-                width: "180px",
-                height: "46px",
                 fontFamily: "'Exo 2', sans-serif",
-                background:
-                  "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
+                fontSize: "clamp(15px, 1.5vw, 18px)",
+                padding: "clamp(12px, 1.5vh, 16px) clamp(24px, 3vw, 40px)",
+                background: "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
               }}
             >
               Daftar Sekarang
@@ -100,13 +125,17 @@ export default function Hero() {
                   syaratSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
-              className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
+              className="
+                rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)]
+                text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer opacity-80
+                max-md:w-full max-md:max-w-[280px]
+              "
               style={{ 
-                width: "190px",
-                height: "46px",
                 fontFamily: "'Exo 2', sans-serif",
+                fontSize: "clamp(15px, 1.5vw, 18px)",
+                padding: "clamp(12px, 1.5vh, 16px) clamp(24px, 3vw, 40px)",
                 border: "2px solid transparent",
-                background: "linear-gradient(#171b30, #171b30) padding-box, linear-gradient(90deg, #5b72ff 0%, #b620e0 100%) border-box"
+                background: "linear-gradient(#171b30, #171b30) padding-box, linear-gradient(90deg, #5b72ff 0%, #b620e0 100%) border-box",
               }}
             >
               Syarat Pendaftaran

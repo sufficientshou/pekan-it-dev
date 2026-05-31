@@ -226,7 +226,7 @@ function CompetitionCard({
       }}
     >
       <div className="relative w-full px-6 pt-6 pb-0">
-        <div className="relative w-[297px] h-[170px] rounded-[16px] overflow-hidden" style={{left: "22px", top: "20px"}}>
+        <div className="relative w-[290px] h-[170px] rounded-[16px] overflow-hidden" style={{left: "22px", top: "20px"}}>
           <img 
             src={image} 
             alt={title} 
@@ -400,7 +400,7 @@ export default function Inside() {
         <div className="flex flex-col items-center gap-4 md:gap-6 text-center w-full" style={{ paddingTop: "clamp(15px, 4vh, 70px)" }}>
           <h2
             className="font-bold tracking-wide max-w-xl relative"
-            style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(22px, 5vw, 48px)" }}
+            style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(30px, 5vw, 50px)" }}
           >
             Inside{" "}
             <span style={{ color: "#47237B" }} className="relative inline-block">
@@ -479,7 +479,7 @@ export default function Inside() {
             className="flex flex-col justify-center items-center w-full font-bold tracking-wide text-center" 
             style={{ 
               fontFamily: "'Zen Dots', sans-serif", 
-              fontSize: "clamp(32px, 5vw, 64px)",
+              fontSize: "clamp(32px, 5vw, 54px)",
               marginTop: "clamp(2px, 4vh, 90px)",
               lineHeight: "1.2"
             }}
