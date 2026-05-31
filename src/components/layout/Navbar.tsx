@@ -90,7 +90,7 @@ export default function Navbar() {
                       key={subItem}
                       href={
                         subItem === "Pendaftaran"
-                          ? "/pendaftaran-ditutup"
+                          ? "/pendaftaran"
                           : subItem === "Detail SEMANTIK"
                           ? "/detail-semantik"
                           : subItem === "Detail NIC"
@@ -108,7 +108,7 @@ export default function Navbar() {
                     className="px-5 py-2 text-white/50 text-sm italic"
                     style={{ fontFamily: "'Exo 2', sans-serif" }}
                   >
-                    Dropdown items...
+                    Coming Soon...
                   </p>
                 )}
               </div>

@@ -10,17 +10,15 @@ export default function TerimakasihPage() {
   const [waLink, setWaLink] = useState("https://chat.whatsapp.com/semantikumum");
 
   useEffect(() => {
-    // Kamus link Grup WA per kategori lomba
+
     const lombaLinks: Record<string, string> = {
       "Competitive Programming": "https://chat.whatsapp.com/IXADaCLImpX6VopbygLhvQ?mode=gi_t",
       "Desain Grafis": "https://chat.whatsapp.com/DHEmpVd59VDKLY676eMr83?mode=gi_t",
       "Typing Competition": "https://chat.whatsapp.com/DPMZfGj2zp096GzZXKwBt2?mode=gi_t"
     };
 
-    // Baca catatan rahasia dari sessionStorage
     const selected = sessionStorage.getItem("selectedLomba");
-    
-    // Jika ada catatan dan sesuai dengan kunci kamus, set link WA-nya!
+
     if (selected && lombaLinks[selected]) {
       setWaLink(lombaLinks[selected]);
     }
@@ -40,6 +38,8 @@ export default function TerimakasihPage() {
           alt="Cityscape" 
           className="absolute bottom-0 left-0 w-full object-cover z-10"
         />
+
+        <div className="absolute inset-0 bg-black/40 z-[15] pointer-events-none" />
 
         <div className="relative z-20 flex flex-col items-center w-full max-w-[760px] text-center mt-20 px-4 max-md:!mt-0 max-md:gap-5 md:gap-7">
 

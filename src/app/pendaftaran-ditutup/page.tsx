@@ -37,10 +37,17 @@ export default function PendaftaranDitutupPage() {
           />
         </div>
 
-        <div className="relative z-10 flex flex-col items-center w-full px-4 max-md:!pt-[20vh]"
-          style={{ paddingTop: "calc(25vh - 50px)" }}
+        <div
+          className="
+            relative z-10 flex flex-col items-center w-full px-4
+            max-md:pt-[30vh] max-md:pb-10
+          "
+          style={{
+            paddingTop: "clamp(180px, 28vh, 360px)",
+            paddingBottom: "clamp(60px, 12vh, 160px)",
+          }}
         >
-          <div className="flex flex-col items-center gap-5 md:gap-6 w-full max-w-[760px] max-md:!gap-4">
+          <div className="flex flex-col items-center w-full max-w-[760px] max-md:gap-5 md:gap-7">
 
             <h1
               className="w-full text-center text-white leading-none font-normal tracking-wide max-md:!text-5xl max-md:!text-[38px]"

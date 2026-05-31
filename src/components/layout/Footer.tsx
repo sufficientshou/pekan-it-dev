@@ -178,7 +178,7 @@ export default function Footer() {
           <div className="flex flex-wrap justify-center lg:justify-end gap-12 lg:gap-24 pt-8 lg:pr-16 w-full lg:w-auto" style={{ marginTop: "20px", marginLeft: "40px" }}>
             <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
               <div 
-                className="text-white text-base font-bold"
+                className="text-white text-lg font-bold"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 Media
@@ -189,7 +189,7 @@ export default function Footer() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-base font-medium hover:text-[#00ffff] transition-colors"
+                  className="text-white text-lg font-medium hover:text-[#00ffff] transition-colors"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   {link.label}
@@ -199,7 +199,7 @@ export default function Footer() {
 
             <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
               <div 
-                className="text-white text-base font-bold"
+                className="text-white text-lg font-bold"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 Event
@@ -210,7 +210,7 @@ export default function Footer() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-base font-medium hover:text-[#00ffff] transition-colors"
+                  className="text-white text-lg font-medium hover:text-[#00ffff] transition-colors"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   {link.label}
@@ -220,7 +220,7 @@ export default function Footer() {
 
             <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
               <div 
-                className="text-white text-base font-bold"
+                className="text-white text-lg font-bold"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 Aplikasi Publik
@@ -231,7 +231,7 @@ export default function Footer() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-base font-medium hover:text-[#00ffff] transition-colors"
+                  className="text-white text-lg font-medium hover:text-[#00ffff] transition-colors"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   {link.label}
@@ -242,25 +242,27 @@ export default function Footer() {
         </div>
 
         <div className="w-full flex flex-col mt-24">
-          <div className="w-full border-t-2 border-white mb-6 opacity-80" />
-          <div className="flex flex-wrap items-center justify-center gap-2">
+          <div className="w-full border-t-2 border-white opacity-80" />
+          <div className="flex flex-col items-center justify-center gap-1" style={{ marginTop: "40px", paddingBottom: "40px" }}>
             <span 
-              className="text-white text-base font-semibold text-center"
+              className="text-white text-base font-semibold text-center w-full"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               Licensed, Registered, and authorized by
             </span>
-            <img loading="lazy"
-              className="w-8 h-8" 
-              src={`${BASE_PATH}/images/img-himtika.webp`} 
-              alt="HIMTIKA"
-            />
-            <span 
-              className="text-white text-sm font-semibold whitespace-nowrap"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-            >
-              HIMTIKA 2025
-            </span>
+            <div className="flex items-center justify-center gap-2">
+              <img loading="lazy"
+                className="w-8 h-8" 
+                src={`${BASE_PATH}/images/img-himtika.webp`} 
+                alt="HIMTIKA"
+              />
+              <span 
+                className="text-white text-sm font-semibold whitespace-nowrap"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                HIMTIKA 2025
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -369,8 +371,8 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="w-full border-t border-white/30" style={{marginBottom: "24px" }} />
-      <div className="flex flex-col items-center gap-3 pb-6">
+      <div className="w-full border-t border-white/30" />
+      <div className="flex flex-col items-center gap-1" style={{ marginTop: "40px", paddingBottom: "40px" }}>
         <div 
           className="text-center text-white/80 text-xs font-semibold"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}

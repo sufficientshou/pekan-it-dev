@@ -411,7 +411,7 @@ const router = useRouter();
           >
             <h4
               className="font-bold text-xl max-md:!text-lg max-md:!py-1"
-              style={{ paddingBottom: 10, paddingTop: 15, fontFamily: "'Zen Dots', cursive" }}
+              style={{ paddingBottom: 10, paddingTop: 25, fontFamily: "'Zen Dots', cursive" }}
             >
               <span className="text-white">Daftar </span>
               <span 
