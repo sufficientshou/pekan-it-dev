@@ -68,9 +68,9 @@ export default function Highlights() {
         </p>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[800px] px-4 md:px-12">
-        <div className="flex flex-col gap-4 md:gap-6 w-full">
-          <div className="flex gap-4 md:gap-6 w-full h-[160px] sm:h-[220px] md:h-[280px]">
+      <div className="relative z-10 flex flex-col items-center justify-center w-[90%] sm:w-[85%] max-w-[800px]">
+        <div className="flex flex-col gap-3 md:gap-6 w-full">
+          <div className="flex gap-3 md:gap-6 w-full h-[110px] sm:h-[160px] md:h-[280px]">
             <div 
               className="bg-gray-300 rounded-xl md:rounded-2xl flex-[3] relative overflow-hidden group cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => setIsModalOpen(true)}
@@ -88,7 +88,7 @@ export default function Highlights() {
               )}
             </div>
           </div>
-          <div className="flex gap-4 md:gap-6 w-full h-[160px] sm:h-[220px] md:h-[280px]">
+          <div className="flex gap-3 md:gap-6 w-full h-[110px] sm:h-[160px] md:h-[280px]">
             <div 
               className="bg-gray-300 rounded-xl md:rounded-2xl flex-[2] relative overflow-hidden group cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => setIsModalOpen(true)}

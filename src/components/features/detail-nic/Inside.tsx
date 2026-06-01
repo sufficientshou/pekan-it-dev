@@ -121,7 +121,6 @@ function StarryBackgroundBelowCurve() {
       <div className="absolute w-1 h-1 bg-white rounded-full opacity-60 top-[5%] left-[60%] shadow-[0_0_4px_white]" />
       <div className="absolute w-[5px] h-[5px] bg-white rounded-full opacity-80 top-[80%] left-[5%] shadow-[0_0_8px_white]" />
 
-      {/* Additional Dots */}
       <div className="absolute w-[2px] h-[2px] bg-white rounded-full opacity-50 top-[18%] left-[32%]" />
       <div className="absolute w-1 h-1 bg-white rounded-full opacity-70 top-[28%] left-[65%] shadow-[0_0_3px_white]" />
       <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 top-[48%] left-[15%]" />
@@ -133,7 +132,6 @@ function StarryBackgroundBelowCurve() {
       <div className="absolute w-1 h-1 bg-white rounded-full opacity-70 top-[72%] left-[55%] shadow-[0_0_3px_white]" />
       <div className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 top-[92%] left-[82%]" />
 
-      {/* Blurred Dots */}
       <div className="absolute w-2 h-2 bg-white rounded-full opacity-80 blur-[2px] top-[20%] left-[5%]" />
       <div className="absolute w-3 h-3 bg-white rounded-full opacity-60 blur-[2px] top-[40%] left-[95%]" />
       <div className="absolute w-2 h-2 bg-white rounded-full opacity-70 blur-[2px] top-[60%] left-[8%]" />
@@ -143,7 +141,6 @@ function StarryBackgroundBelowCurve() {
       <div className="absolute w-3 h-3 bg-white rounded-full opacity-75 blur-[2.5px] top-[55%] left-[75%]" />
       <div className="absolute w-2.5 h-2.5 bg-white rounded-full opacity-85 blur-[1px] top-[88%] left-[25%]" />
 
-      {/* 4-Pointed Stars - Original */}
       <div className="absolute w-[20px] h-[20px] top-[15%] right-[15%] animate-pulse text-white">
         <svg className="w-full h-full drop-shadow-[0_0_12px_rgba(255,255,255,0.85)]" viewBox="0 0 32 32" fill="none">
           <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
@@ -175,7 +172,6 @@ function StarryBackgroundBelowCurve() {
         </svg>
       </div>
       
-      {/* 4-Pointed Stars - Additional */}
       <div className="absolute w-[12px] h-[12px] top-[8%] left-[70%] animate-pulse text-white" style={{ animationDelay: '1.2s' }}>
         <svg className="w-full h-full drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]" viewBox="0 0 32 32" fill="none">
           <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
@@ -226,7 +222,9 @@ function CompetitionCard({
       }}
     >
       <div className="relative w-full px-6 pt-6 pb-0">
-        <div className="relative w-[290px] h-[170px] rounded-[16px] overflow-hidden" style={{left: "22px", top: "20px"}}>
+        <div 
+          className="relative rounded-[16px] overflow-hidden w-[92%] aspect-[290/170] left-[4%] sm:w-[290px] sm:h-[170px] sm:left-[22px] top-[20px]"
+        >
           <img 
             src={image} 
             alt={title} 
@@ -240,7 +238,7 @@ function CompetitionCard({
             <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-gray-300 relative z-10" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
             </svg>
-            <span className="text-gray-300 text-[11px] font-medium relative z-10" style={{paddingRight: "70px", paddingBottom: "3px"}}>{team}</span>
+            <span className="text-gray-300 text-[11px] font-medium relative z-10" style={{paddingRight: "clamp(30px, 12vw, 70px)", paddingBottom: "3px"}}>{team}</span>
           </div>
         </div>
       </div>

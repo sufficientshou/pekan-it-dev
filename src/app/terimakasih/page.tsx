@@ -14,7 +14,9 @@ export default function TerimakasihPage() {
     const lombaLinks: Record<string, string> = {
       "Competitive Programming": "https://chat.whatsapp.com/IXADaCLImpX6VopbygLhvQ?mode=gi_t",
       "Desain Grafis": "https://chat.whatsapp.com/DHEmpVd59VDKLY676eMr83?mode=gi_t",
-      "Typing Competition": "https://chat.whatsapp.com/DPMZfGj2zp096GzZXKwBt2?mode=gi_t"
+      "Typing Competition": "https://chat.whatsapp.com/DPMZfGj2zp096GzZXKwBt2?mode=gi_t",
+      "UI/UX Design": "https://chat.whatsapp.com/CFgEI8stfvyAM8vmQRmsK9",
+      "Software Development": "https://chat.whatsapp.com/LOZ6xs2U9YmLktG2Clalg5"
     };
 
     const selected = sessionStorage.getItem("selectedLomba");

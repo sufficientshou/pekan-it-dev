@@ -20,7 +20,7 @@ function TablerArrowUp({ className }: { className?: string }) {
 
 export default function Tema() {
   return (
-    <div className="w-full flex items-center justify-center bg-[#000923] py-10 max-md:!py-10 overflow-hidden" style={{ minHeight: "120vh", maxWidth: "100vw" }}>
+    <div className="w-full flex items-center justify-center bg-[#000923] overflow-hidden" style={{ maxWidth: "100vw", paddingTop: "80px", paddingBottom: "150px" }}>
       <div className="max-w-[1134px] w-full px-4 flex flex-col gap-[90px] max-md:!gap-[40px]" style={{ maxWidth: "min(1134px, 90vw)" }}>
         
         <div className="flex flex-col gap-[30px] max-md:!gap-[20px] max-md:!items-center">

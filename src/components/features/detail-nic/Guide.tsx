@@ -25,7 +25,7 @@ export default function Guide() {
           />
         </svg>
       </div>
-      <div className="absolute left-0 top-[60%] -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px] max-md:!-translate-y-[45%]">
+      <div className="absolute left-0 top-[70%] -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!left-[-50px] max-md:!-translate-y-[45%]">
         <Image
           src={`${BASE_PATH}/images/1.webp`}
           alt="bg1"
@@ -34,7 +34,7 @@ export default function Guide() {
         />
       </div>
 
-      <div className="absolute right-0 top-[60%] -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!right-[-50px] max-md:!-translate-y-[45%]">
+      <div className="absolute right-0 top-[70%] -translate-y-1/2 w-[400px] h-[400px] opacity-50 max-md:!w-[200px] max-md:!h-[200px] max-md:!right-[-50px] max-md:!-translate-y-[45%]">
         <Image
           src={`${BASE_PATH}/images/2.webp`}
           alt="bg2"
@@ -79,7 +79,7 @@ export default function Guide() {
         >
 
           <img loading="lazy"
-            src={`${BASE_PATH}/images/guidebook-cover.webp`}
+            src={`${BASE_PATH}/images/COVER.png`}
             alt="Guidebook NIC"
             className="block rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
             style={{

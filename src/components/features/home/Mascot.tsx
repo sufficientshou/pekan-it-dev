@@ -4,7 +4,7 @@ import { useState } from "react";
 import { BASE_PATH } from '@/config/constants';
 
 const POSITION_CONFIG = {
-  titleTop: 50,
+  titleTop: -50,
   mascotTop: 477,
   topCardsTop: 242,
   bottomCardsTop: 914,
@@ -45,7 +45,6 @@ function MascotCard({
     if (isTransitioning) return;
     setIsTransitioning(true);
 
-    // Swap the content exactly in the middle of the gear animation (350ms of 700ms)
     setTimeout(() => {
       setShowContent((prev) => (prev === 'image' ? 'text' : 'image'));
       setIsOpen((prev) => !prev);
@@ -78,7 +77,7 @@ function MascotCard({
             className="text-white font-bold mb-1 uppercase tracking-wider"
             style={{
               fontFamily: "'Zen Dots', sans-serif",
-              fontSize: isMobile ? "10px" : "12px",
+              fontSize: isMobile ? "10px" : "18px",
             }}
           >
             {title}
@@ -87,15 +86,15 @@ function MascotCard({
             className="text-gray-300 leading-relaxed overflow-y-auto px-1 font-normal"
             style={{
               fontFamily: "'Exo 2', sans-serif",
-              fontSize: isMobile ? "8px" : "10px",
-              maxHeight: isMobile ? "60px" : "80px",
+              fontSize: isMobile ? "8px" : "14px",
+              maxHeight: isMobile ? "60px" : "100px",
             }}
           >
             {description}
           </p>
           <div
             className="mt-1 text-pink-400 font-semibold uppercase tracking-widest animate-pulse"
-            style={{ fontSize: isMobile ? "7px" : "8px" }}
+            style={{ fontSize: isMobile ? "7px" : "10px" }}
           >
             {isMobile ? "Tap to Close" : "Click to Close"}
           </div>
@@ -124,19 +123,15 @@ function MascotCard({
           </linearGradient>
         </defs>
         <g fill="url(#gearGradient)">
-          {/* Main wheel body */}
           <circle cx="50" cy="50" r="30" />
           
-          {/* Rectangular teeth rotated around center */}
           <rect x="43" y="8" width="14" height="84" rx="3" transform="rotate(0 50 50)" />
           <rect x="43" y="8" width="14" height="84" rx="3" transform="rotate(45 50 50)" />
           <rect x="43" y="8" width="14" height="84" rx="3" transform="rotate(90 50 50)" />
           <rect x="43" y="8" width="14" height="84" rx="3" transform="rotate(135 50 50)" />
           
-          {/* Cutouts to give it a realistic mechanical look */}
           <circle cx="50" cy="50" r="15" fill="#000923" />
           
-          {/* Inner hub */}
           <circle cx="50" cy="50" r="7" fill="url(#gearGradient)" />
         </g>
       </svg>
@@ -185,12 +180,14 @@ function MascotCard({
           className="absolute text-center font-bold uppercase tracking-widest"
           style={{
             fontFamily: "'Zen Dots', sans-serif",
-            fontSize: "clamp(16px, 1.5vw, 52px)",
+            fontSize: "clamp(24px, 2.5vw, 64px)",
             top: labelPosition === 'bottom'
               ? `calc(${desktopStyle.top} + ${desktopStyle.height} + 80px)`
-              : `calc(${desktopStyle.top} - 52px)`,
-            left: desktopStyle.left as string,
-            width: desktopStyle.width as string,
+              : `calc(${desktopStyle.top} - 120px)`,
+            left: `calc(${desktopStyle.left} + (${desktopStyle.width} / 2))`,
+            transform: "translateX(-50%)",
+            width: "max-content",
+            whiteSpace: "nowrap",
             background: "linear-gradient(90deg, #ff00ff, #00ffff)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -221,14 +218,12 @@ export default function Avatar() {
     "absolute rounded-[15px] border-2 border-[#d000cb] backdrop-blur-[2px] backdrop-brightness-100 backdrop-saturate-100";
   const cardBoxShadow = "0px 0px 100px #d000cb, inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11)";
 
-  const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.";
 
   return (
     <section
       className="relative w-full overflow-hidden max-md:!h-auto max-md:!pb-0"
-      style={{ height: "1265px", background: "#000923", maxWidth: "100vw" }}
+      style={{ height: "1415px", background: "#000923", maxWidth: "100vw" }}
     >
-      {/* Dynamic inline styles for the gear transition animation */}
       <style>{`
         @keyframes gearSpinReveal {
           0% {
@@ -250,10 +245,10 @@ export default function Avatar() {
         }
       `}</style>
 
-      <div className="max-md:!hidden">
+      <div className="max-md:!hidden w-full h-full relative" style={{ top: "150px" }}>
       
       <div 
-        className="absolute top-0 left-0 w-full pointer-events-none"
+        className="absolute -top-[150px] left-0 w-full pointer-events-none"
         style={{ 
           height: "100px",
           background: "linear-gradient(180deg, rgba(0,9,35,0.6) 0%, rgba(0,9,35,0.2) 50%, transparent 100%)",
@@ -333,12 +328,11 @@ export default function Avatar() {
         style={{ top: `${POSITION_CONFIG.mascotTop}px`, left: "52%", transform: "translateX(-50%)", width: "332px", height: "328px", objectFit: "contain" }}
       />
 
-      {/* Desktop Cards */}
       <MascotCard
         imageSrc={`${BASE_PATH}/images/kalung.webp`}
-        title="Kalung"
+        title="Lonceng"
         label="Lonceng"
-        description={loremIpsum}
+        description="melambangkan kepekaan terhadap informasi"
         cardBase={cardBase}
         isMobile={false}
         desktopStyle={{
@@ -353,7 +347,7 @@ export default function Avatar() {
         imageSrc={`${BASE_PATH}/images/gear.webp`}
         title="Gear"
         label="Gear"
-        description={loremIpsum}
+        description="melambangkan proses yg terstruktur"
         cardBase={cardBase}
         isMobile={false}
         desktopStyle={{
@@ -369,7 +363,7 @@ export default function Avatar() {
         title="Mata"
         label="Mata LED"
         labelPosition="bottom"
-        description={loremIpsum}
+        description="melambangkan keterarahan (focus), dan berpikir terarah"
         cardBase={cardBase}
         isMobile={false}
         desktopStyle={{
@@ -385,7 +379,7 @@ export default function Avatar() {
         title="Kabel"
         label="Kabel"
         labelPosition="bottom"
-        description={loremIpsum}
+        description="melambangkan koneksi dan keterhubungan tanpa batas"
         cardBase={cardBase}
         isMobile={false}
         desktopStyle={{
@@ -397,7 +391,6 @@ export default function Avatar() {
       />
       </div>
 
-      {/* Mobile view */}
       <div className="hidden max-md:!flex flex-col w-full px-4 pt-[25vh] pb-4 gap-10 items-center z-20 relative">
 
         <h2
@@ -429,7 +422,7 @@ export default function Avatar() {
             imageSrc={`${BASE_PATH}/images/kalung.webp`}
             title="Kalung"
             label="Lonceng"
-            description={loremIpsum}
+            description="melambangkan kepekaan terhadap informasi"
             cardBase={cardBase}
             isMobile={true}
             mobileClassName="!relative !top-auto !left-auto !w-full !h-[120px]"
@@ -442,7 +435,7 @@ export default function Avatar() {
             imageSrc={`${BASE_PATH}/images/gear.webp`}
             title="Gear"
             label="Gear"
-            description={loremIpsum}
+            description="melambangkan proses yg terstruktur"
             cardBase={cardBase}
             isMobile={true}
             mobileClassName="!relative !top-auto !left-auto !w-full !h-[120px]"
@@ -456,7 +449,7 @@ export default function Avatar() {
             title="Kabel"
             label="Kabel"
             labelPosition="bottom"
-            description={loremIpsum}
+            description="melambangkan koneksi dan keterhubungan tanpa batas"
             cardBase={cardBase}
             isMobile={true}
             mobileClassName="!relative !top-auto !left-auto !w-full !h-[120px]"
@@ -470,7 +463,7 @@ export default function Avatar() {
             title="Mata"
             label="Mata LED"
             labelPosition="bottom"
-            description={loremIpsum}
+            description="melambangkan keterarahan (focus), dan berpikir terarah"
             cardBase={cardBase}
             isMobile={true}
             mobileClassName="!relative !top-auto !left-auto !w-full !h-[120px]"
