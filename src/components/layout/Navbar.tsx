@@ -90,7 +90,7 @@ export default function Navbar() {
                       key={subItem}
                       href={
                         subItem === "Pendaftaran"
-                          ? "/pendaftaran"
+                          ? item.label === "Semantik" ? "/pendaftaran-ditutup" : "/pendaftaran"
                           : subItem === "Detail SEMANTIK"
                           ? "/detail-semantik"
                           : subItem === "Detail NIC"

@@ -342,7 +342,7 @@ export default function Journey() {
 
       <div className="md:hidden relative z-10 flex flex-col items-center px-4 pb-8 w-full">
         <img
-          src={`${BASE_PATH}/images/planet.png`}
+          src={`${BASE_PATH}/images/planet (2).png`}
           alt="Decorative Planet Mobile"
           className="absolute pointer-events-none z-0 animate-planet-mobile"
           style={{

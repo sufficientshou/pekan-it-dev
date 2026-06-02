@@ -73,7 +73,7 @@ export default function Guide() {
       <div className="relative mt-12 md:mt-16 flex justify-center z-10 px-4 max-md:!mt-10">
 
         <a
-          href={`${BASE_PATH}/files/Guidebook.pdf`}
+          href={`${BASE_PATH}/files/Guidebook NIC.pdf`}
           download="Guidebook-NIC.pdf"
           className="relative group cursor-pointer inline-block"
         >
