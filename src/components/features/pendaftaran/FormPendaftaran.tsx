@@ -335,7 +335,7 @@ const router = useRouter();
           >
             <span 
               style={{ 
-                background: "linear-gradient(90deg, #ff00ff 0%, #00ffff 100%)", 
+                background: "linear-gradient(90deg, #c084fc 0%, #7c3aed 100%)", 
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -416,7 +416,7 @@ const router = useRouter();
               <span className="text-white">Daftar </span>
               <span 
                 style={{ 
-                  background: "linear-gradient(90deg, #ff00ff 0%, #00ffff 100%)", 
+                  background: "linear-gradient(90deg, #643564ff 0%, #506bb7ff 100%)", 
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -426,7 +426,7 @@ const router = useRouter();
               <br />
               <span 
                 style={{ 
-                  background: "linear-gradient(90deg, #ff00ff 0%, #00ffff 100%)", 
+                  background: "linear-gradient(90deg, #643564ff 0%, #506bb7ff 100%)", 
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -461,9 +461,37 @@ const router = useRouter();
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
                         Leader Team :
                       </label>
-                      <input type="text" name="leaderName" id="leaderName" placeholder="Akmal" required 
+                      <input type="text" name="leaderName" id="leaderName" placeholder="Gojo Satoru" required 
                         value={formDataState.leaderName} 
                         onChange={(e) => setFormDataState({ ...formDataState, leaderName: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
+                        style={{
+                          marginLeft: "6.5%",
+                          paddingLeft: 12,
+                          width: "87%",
+                          height: "40px",
+                          background: "rgba(255, 255, 255, 1)",
+                          border: "1px solid rgba(255,255,255,0.15)",
+                          fontFamily: "'Exo 2', sans-serif",
+                        }}
+                        onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
+                        onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="leaderPhone" className="text-white text-sm opacity-80 max-md:!ml-0"
+                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
+                        No. Telp Leader Team :
+                      </label>
+                      <input type="tel" name="leaderPhone" id="leaderPhone" placeholder="0821" required 
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        value={formDataState.leaderPhone} 
+                        onChange={(e) => {
+                          const numericValue = e.target.value.replace(/[^0-9]/g, '');
+                          setFormDataState({ ...formDataState, leaderPhone: numericValue });
+                        }}
                         className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
                         style={{
                           marginLeft: "6.5%",
@@ -484,7 +512,7 @@ const router = useRouter();
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
                         Anggota 2 :
                       </label>
-                      <input type="text" name="anggota2" id="anggota2" placeholder="Akmal" required 
+                      <input type="text" name="anggota2" id="anggota2" placeholder="Gojo Satoru" required 
                         value={formDataState.anggota2} 
                         onChange={(e) => setFormDataState({ ...formDataState, anggota2: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
@@ -507,7 +535,7 @@ const router = useRouter();
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
                         {activeTab === "UI/UX Design" ? "Anggota 3 (Opsional) :" : "Anggota 3 :"}
                       </label>
-                      <input type="text" name="anggota3" id="anggota3" placeholder="Akmal" required={activeTab !== "UI/UX Design"}
+                      <input type="text" name="anggota3" id="anggota3" placeholder="Gojo Satoru" required={activeTab !== "UI/UX Design"}
                         value={formDataState.anggota3} 
                         onChange={(e) => setFormDataState({ ...formDataState, anggota3: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
@@ -532,7 +560,7 @@ const router = useRouter();
                             style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
                             Anggota 4 (Opsional) :
                           </label>
-                          <input type="text" name="anggota4" id="anggota4" placeholder="Akmal"
+                          <input type="text" name="anggota4" id="anggota4" placeholder="Gojo Satoru"
                             value={formDataState.anggota4} 
                             onChange={(e) => setFormDataState({ ...formDataState, anggota4: e.target.value })}
                             className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
@@ -555,7 +583,7 @@ const router = useRouter();
                             style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
                             Anggota 5 (Opsional) :
                           </label>
-                          <input type="text" name="anggota5" id="anggota5" placeholder="Akmal"
+                          <input type="text" name="anggota5" id="anggota5" placeholder="Gojo Satoru"
                             value={formDataState.anggota5} 
                             onChange={(e) => setFormDataState({ ...formDataState, anggota5: e.target.value })}
                             className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
@@ -574,29 +602,7 @@ const router = useRouter();
                         </div>
                       </>
                     )}
-                    
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="leaderPhone" className="text-white text-sm opacity-80 max-md:!ml-0"
-                        style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
-                        No. Telp Leader Team :
-                      </label>
-                      <input type="text" name="leaderPhone" id="leaderPhone" placeholder="0821" required 
-                        value={formDataState.leaderPhone} 
-                        onChange={(e) => setFormDataState({ ...formDataState, leaderPhone: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
-                        style={{
-                          marginLeft: "6.5%",
-                          paddingLeft: 12,
-                          width: "87%",
-                          height: "40px",
-                          background: "rgba(255, 255, 255, 1)",
-                          border: "1px solid rgba(255,255,255,0.15)",
-                          fontFamily: "'Exo 2', sans-serif",
-                        }}
-                        onFocus={(e) => (e.target.style.borderColor = "rgba(16,230,241,0.6)")}
-                        onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.15)")}
-                      />
-                    </div>
+
                   </div>
 
                   <button
@@ -657,7 +663,7 @@ const router = useRouter();
                     <div className="flex flex-col gap-2">
                       <label htmlFor="institution" className="text-white text-sm opacity-80 max-md:!ml-0"
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
-                        Institusi :
+                        Institusi (Opsional) :
                       </label>
                       <span className="text-[#10e6f1] text-[10px] max-md:!ml-0 block mt-[-4px] mb-[2px] opacity-90"
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif", fontStyle: "italic" }}>
@@ -684,9 +690,9 @@ const router = useRouter();
                     <div className="flex flex-col gap-2">
                       <label htmlFor="angkatan" className="text-white text-sm opacity-80 max-md:!ml-0"
                         style={{ marginLeft: "6.5%", fontFamily: "'Exo 2', sans-serif" }}>
-                        Angkatan :
+                        Angkatan (Opsional):
                       </label>
-                      <input type="text" name="angkatan" id="angkatan" placeholder="Value" required 
+                      <input type="text" name="angkatan" id="angkatan" placeholder="2024" required 
                         value={formDataState.angkatan} 
                         onChange={(e) => setFormDataState({ ...formDataState, angkatan: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-black text-sm outline-none transition-all max-md:!w-full max-md:!ml-0 max-md:!h-12 max-md:!text-base max-md:!pl-3"
@@ -1135,15 +1141,15 @@ const router = useRouter();
                           <div className="flex items-center gap-3 flex-1 min-w-0">
                             <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
                               <img 
-                                src= {`${BASE_PATH}/images/dana.png`} 
+                                src= {`${BASE_PATH}/images/logo dana.png`} 
                                 alt="DANA Logo" 
-                                className="w-full h-full object-contain"
+                                className="w-9 h-9 object-contain"
                                 style={{ filter: "brightness(1.1)" }}
                               />
                             </div>
                             <div className="flex-1 min-w-0">
                               <p className={`font-bold text-sm leading-tight mb-1 ${selectedPayment === "dana" ? "text-white" : "text-gray-800"}`}>DANA</p>
-                              <p className={`text-xs leading-tight truncate ${selectedPayment === "dana" ? "text-white/80" : "text-gray-600"}`}>085664527826</p>
+                              <p className={`text-xs leading-tight truncate ${selectedPayment === "dana" ? "text-white/80" : "text-gray-600"}`}>085664527826 · a.n. Rafli Rizqi Fadillah</p>
                             </div>
                           </div>
                           <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>
@@ -1196,16 +1202,17 @@ const router = useRouter();
                         <div className="flex items-center justify-between px-4 py-4">
                           <div className="flex items-center gap-3 flex-1 min-w-0">
                             <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
-                              <img 
-                                src= {`${BASE_PATH}/images/btn.svg`} 
-                                alt="Bank BTN Logo" 
-                                className="w-full h-full object-contain"
-                                style={{ filter: "brightness(1.1)" }}
-                              />
+                              <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center">
+                                <img 
+                                  src= {`${BASE_PATH}/images/btn.svg`} 
+                                  alt="Bank BTN Logo" 
+                                  className="w-6 h-6 object-contain"
+                                />
+                              </div>
                             </div>
                             <div className="flex-1 min-w-0">
                               <p className={`font-bold text-sm leading-tight mb-1 ${selectedPayment === "btn" ? "text-white" : "text-gray-800"}`}>BANK BTN</p>
-                              <p className={`text-xs leading-tight truncate ${selectedPayment === "btn" ? "text-white/80" : "text-gray-600"}`}>18101610249143</p>
+                              <p className={`text-xs leading-tight truncate ${selectedPayment === "btn" ? "text-white/80" : "text-gray-600"}`}>18101610249143 · a.n. Rafli Rizqi Fadillah</p>
                             </div>
                           </div>
                           <div className="flex-shrink-0" style={{ marginRight: "24px", marginLeft: "10px" }}>

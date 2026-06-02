@@ -229,7 +229,7 @@ export default function Journey() {
                 className="flex items-start"
                 style={{
                   marginBottom: "clamp(20px, 3%, 50px)",
-                  gap: "clamp(20px, 5%, 80px)",
+                  gap: "clamp(10px, 2%, 40px)",
                 }}
               >
                 <div className="flex-1 flex justify-end" style={{ minWidth: 0 }}>
@@ -242,7 +242,7 @@ export default function Journey() {
                   )}
                 </div>
 
-                <div style={{ width: "clamp(200px, 35%, 440px)", flexShrink: 0 }} />
+                <div style={{ width: "clamp(150px, 25%, 320px)", flexShrink: 0 }} />
 
                 <div className="flex-1 flex justify-start" style={{ minWidth: 0 }}>
                   {!isLeft ? (

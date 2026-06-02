@@ -20,8 +20,8 @@ const timelineData: Record<string, TimelineItem[]> = {
   ],
   "Software Development": [
     { title: "Pendaftaran Lomba", date: "2 - 30 Juni 2026", side: "left" },
-    { title: "Pengumpulan Karya", date: "2 - 30 Juni 2026", side: "right" },
-    { title: "Penilaian Karya", date: "9 - 11 Juli 2026", side: "left" },
+    { title: "Pengumpulan Proposal", date: "2 - 30 Juni 2026", side: "right" },
+    { title: "Penilaian Proposal", date: "9 - 11 Juli 2026", side: "left" },
     { title: "Pengumuman Finalis", date: "12 Juli 2026", side: "right" },
     { title: "Technical Meeting", date: "15 Juli 2026", side: "left" },
     { title: "Presentasi Finalis", date: "18 Juli 2026", side: "right" },
@@ -223,15 +223,14 @@ export default function Journey() {
           className="text-center font-bold leading-tight"
           style={{ fontFamily: "'Zen Dots', cursive", fontSize: "clamp(30px, 4vw, 54px)" }}
         >
+          <span style={{ color: "#ffffff" }}>Your Competition</span>
+          <br />
           <span style={{
-            background: "linear-gradient(90deg, #ff00ff 0%, #00ffff 100%)",
+            background: "linear-gradient(90deg, #c084fc 0%, #7c3aed 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
           }}>
-            Start{" "}
+            Journey
           </span>
-          <span style={{ color: "#ffffff" }}>Your</span>
-          <br />
-          <span style={{ color: "#ffffff" }}>Journey Now</span>
         </h2>
       </div>
 
@@ -240,18 +239,7 @@ export default function Journey() {
       >
         {tabs.map((tab) => (
           <div key={tab} className="relative flex-1 min-w-0 max-w-[300px]">
-            <div
-              className="absolute inset-0 rounded-full pointer-events-none"
-              style={{
-                background: "linear-gradient(90deg, #00ffff 0%, #ff00ff 100%)",
-                padding: "2px",
-                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                WebkitMaskComposite: "xor",
-                maskComposite: "exclude",
-                zIndex: 10,
-                opacity: activeTab === tab ? 1 : 0.6,
-              }}
-            />
+
             <button
               onClick={() => setActiveTab(tab)}
               className="relative w-full text-white font-semibold transition-all duration-300 cursor-pointer text-center rounded-full"
@@ -261,6 +249,7 @@ export default function Journey() {
                 padding: "clamp(8px, 1.2vh, 12px) clamp(8px, 1.5vw, 24px)",
                 background: activeTab === tab ? "rgba(10,15,35,1)" : "rgba(0,9,35,0.5)",
                 backdropFilter: activeTab === tab ? "none" : "blur(8px)",
+                border: activeTab === tab ? "1.5px solid rgba(255,255,255,0.35)" : "1.5px solid rgba(255,255,255,0.15)",
                 boxShadow: activeTab === tab ? "0 0 60px 10px rgba(180,0,203,0.45)" : "none",
                 zIndex: 2,
               }}
@@ -319,7 +308,7 @@ export default function Journey() {
                 className="flex items-start"
                 style={{
                   marginBottom: "clamp(-30px, -4vw, -10px)",
-                  gap: "clamp(20px, 5%, 80px)",
+                  gap: "clamp(10px, 2%, 40px)",
                 }}
               >
                 <div className="flex-1 flex justify-end" style={{ minWidth: 0 }}>
@@ -332,7 +321,7 @@ export default function Journey() {
                   )}
                 </div>
 
-                <div style={{ width: "clamp(200px, 35%, 440px)", flexShrink: 0 }} />
+                <div style={{ width: "clamp(150px, 25%, 320px)", flexShrink: 0 }} />
 
                 <div className="flex-1 flex justify-start" style={{ minWidth: 0 }}>
                   {!isLeft ? (

@@ -401,7 +401,14 @@ export default function Inside() {
             style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(30px, 5vw, 50px)" }}
           >
             Inside{" "}
-            <span style={{ color: "#47237B" }} className="relative inline-block">
+            <span 
+              style={{ 
+                background: "linear-gradient(90deg, #c084fc 0%, #7c3aed 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }} 
+              className="relative inline-block"
+            >
               N{" "}
               <span className="relative inline-block">
                 <svg
@@ -411,7 +418,11 @@ export default function Inside() {
                 >
                   <path d="M16 0C16 0 17 13 32 16C17 19 16 32 16 32C16 32 15 19 0 16C15 13 16 0 16 0Z" fill="white"/>
                 </svg>
-                I
+                <span style={{ 
+                  background: "linear-gradient(90deg, #c084fc 0%, #7c3aed 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent"
+                }}>I</span>
               </span>
               {" "}C
             </span>
@@ -422,9 +433,7 @@ export default function Inside() {
               className="text-gray-200 leading-relaxed px-2 max-w-xl pb-8 md:pb-12"
               style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(13px, 2vw, 18px)", paddingTop: "clamp(20px, 2vh, 40px)" }}
             >
-              N I C adalah wadah bagi mahasiswa informatika unsika untuk
-              menunjukan bakat dan keahlian melalui ajang kompetisi hard skill dalam
-              bidang informatika.
+              N I C adalah wadah bagi pelajar, mahasiswa dan seluruh masyarakat indonesia untuk bersaing dan menunjukan bakat dan keahlian mereka melalui ajang kompetisi
             </p>
           </div>
         </div>
