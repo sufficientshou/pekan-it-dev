@@ -416,7 +416,7 @@ const router = useRouter();
               <span className="text-white">Daftar </span>
               <span 
                 style={{ 
-                  background: "linear-gradient(90deg, #643564ff 0%, #506bb7ff 100%)", 
+                  background: "linear-gradient(90deg, #e124e1ff 0%, #3e66c9ff 100%)", 
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -426,7 +426,7 @@ const router = useRouter();
               <br />
               <span 
                 style={{ 
-                  background: "linear-gradient(90deg, #643564ff 0%, #506bb7ff 100%)", 
+                  background: "linear-gradient(90deg, #e446e4ff 0%, #5980e2ff 100%)", 
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -1121,7 +1121,7 @@ const router = useRouter();
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col gap-5 text-left max-md:!ml-0 max-md:!w-full" style={{ marginLeft: "6.5%", width: "87%", fontFamily: "'Exo 2', sans-serif" }}>
                     <div className="flex flex-col gap-3">
-                      <p className="text-white font-semibold text-sm" style={{ fontFamily: "'Exo 2', sans-serif" }}>Pilih Metode Pembayaran</p>
+                      <p className="text-white font-semibold text-sm" style={{ fontFamily: "'Exo 2', sans-serif" }}>Pilih Salah Satu Metode Pembayaran</p>
                       <div
                         onClick={() => setSelectedPayment("dana")}
                         className="relative rounded-2xl cursor-pointer transition-all duration-200 overflow-hidden"
@@ -1139,7 +1139,14 @@ const router = useRouter();
                       >
                         <div className="flex items-center justify-between px-4 py-4">
                           <div className="flex items-center gap-3 flex-1 min-w-0">
-                            <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${selectedPayment === "dana" ? "border-white" : "border-gray-400"}`} style={{ marginLeft: "12px" }}>
+                              {selectedPayment === "dana" && (
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                                  <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                              )}
+                            </div>
+                            <div className="w-12 h-12 flex items-center justify-center flex-shrink-0" style={{ marginLeft: "-12px" }}>
                               <img 
                                 src= {`${BASE_PATH}/images/logo dana.png`} 
                                 alt="DANA Logo" 
@@ -1147,7 +1154,7 @@ const router = useRouter();
                                 style={{ filter: "brightness(1.1)" }}
                               />
                             </div>
-                            <div className="flex-1 min-w-0">
+                            <div className="flex-1 min-w-0" style={{ marginLeft: "-12px" }}>
                               <p className={`font-bold text-sm leading-tight mb-1 ${selectedPayment === "dana" ? "text-white" : "text-gray-800"}`}>DANA</p>
                               <p className={`text-xs leading-tight truncate ${selectedPayment === "dana" ? "text-white/80" : "text-gray-600"}`}>085664527826 · a.n. Rafli Rizqi Fadillah</p>
                             </div>
@@ -1201,7 +1208,14 @@ const router = useRouter();
                       >
                         <div className="flex items-center justify-between px-4 py-4">
                           <div className="flex items-center gap-3 flex-1 min-w-0">
-                            <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${selectedPayment === "btn" ? "border-white" : "border-gray-400"}`} style={{ marginLeft: "12px" }}>
+                              {selectedPayment === "btn" && (
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                                  <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                              )}
+                            </div>
+                            <div className="w-12 h-12 flex items-center justify-center flex-shrink-0" style={{ marginLeft: "-12px" }}>
                               <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center">
                                 <img 
                                   src= {`${BASE_PATH}/images/btn.svg`} 
@@ -1210,7 +1224,7 @@ const router = useRouter();
                                 />
                               </div>
                             </div>
-                            <div className="flex-1 min-w-0">
+                            <div className="flex-1 min-w-0" style={{ marginLeft: "-12px" }}>
                               <p className={`font-bold text-sm leading-tight mb-1 ${selectedPayment === "btn" ? "text-white" : "text-gray-800"}`}>BANK BTN</p>
                               <p className={`text-xs leading-tight truncate ${selectedPayment === "btn" ? "text-white/80" : "text-gray-600"}`}>18101610249143 · a.n. Rafli Rizqi Fadillah</p>
                             </div>

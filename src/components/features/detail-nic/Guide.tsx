@@ -70,7 +70,7 @@ export default function Guide() {
         dan detail perlombaan yang telah disusun.
       </p>
 
-      <div className="relative mt-12 md:mt-16 flex justify-center z-10 px-4 max-md:!mt-10">
+      <div className="relative mt-12 md:mt-16 flex flex-col items-center justify-center z-10 px-4 max-md:!mt-10 gap-8">
 
         <a
           href={`${BASE_PATH}/files/Guidebook NIC.pdf`}
@@ -125,6 +125,26 @@ export default function Guide() {
           >
             PDF
           </div>
+        </a>
+
+        <a
+          href={`${BASE_PATH}/files/Guidebook NIC.pdf`}
+          download="Guidebook-NIC.pdf"
+          className="
+            rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)]
+            text-white font-semibold transition-opacity hover:opacity-90 cursor-pointer opacity-80
+            w-full max-w-[280px] flex justify-center items-center z-20 mt-4 md:mt-6
+          "
+          style={{
+            fontFamily: "'Exo 2', sans-serif",
+            fontSize: "clamp(15px, 1.5vw, 18px)",
+            padding: "clamp(12px, 1.5vh, 16px) clamp(24px, 3vw, 40px)",
+            border: "2px solid transparent",
+            background:
+              "linear-gradient(#000923, #000923) padding-box, linear-gradient(90deg, #5b72ff 0%, #b620e0 100%) border-box",
+          }}
+        >
+          Download Guidebook
         </a>
       </div>
     </section>
