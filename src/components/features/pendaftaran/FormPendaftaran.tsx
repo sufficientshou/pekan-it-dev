@@ -381,11 +381,9 @@ const router = useRouter();
               Hubungi Sekarang
             </a>
 
-            <button
-              type="button"
-              onClick={() => {
-                router.push(`${BASE_PATH}/detail-nic#guide-section`);
-              }}
+            <a
+              href={`${BASE_PATH}/files/Guidebook NIC.pdf`}
+              download="Guidebook-NIC.pdf"
               className="px-6 py-3 rounded-full text-white font-semibold text-sm transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] max-md:!h-11 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center max-md:!text-[13px] max-md:!mt-0"
               style={{ 
                 width: "170px",
@@ -396,10 +394,11 @@ const router = useRouter();
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                textDecoration: "none",
               }}
             >
-              Guide
-            </button>
+              GuideBook
+            </a>
           </div>
         </div>
 
@@ -1402,7 +1401,7 @@ const router = useRouter();
 
                   {submitMessage && (
                     <div 
-                      className="mt-4 p-3 rounded-lg text-xs text-center max-md:!ml-0 max-md:!w-full"
+                      className="mt-4 mb-4 md:mb-6 p-3 rounded-lg text-xs text-center max-md:!ml-0 max-md:!w-full"
                       style={{
                         marginLeft: "6.5%",
                         width: "87%",
