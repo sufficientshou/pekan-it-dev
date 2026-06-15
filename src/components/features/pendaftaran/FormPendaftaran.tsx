@@ -359,26 +359,48 @@ const router = useRouter();
             <span className="text-white opacity-80">Whatsapp : {lomba.cp.wa}</span>
           </div>
 
-          <a 
-            href={`https://wa.me/${lomba.cp.wa.startsWith('0') ? '62' + lomba.cp.wa.substring(1) : lomba.cp.wa}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full text-white font-semibold text-sm transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] max-md:!h-11 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center max-md:!text-[13px] max-md:!mt-0"
-            style={{
-              width: "170px",
-              height: "45px",
-              fontFamily: "'Exo 2', sans-serif",
-              background:
-                "linear-gradient(90deg, #6e8efb 0%, rgba(208,0,203,0.7) 100%)",
-              boxShadow: "0 4px 20px rgba(110,142,251,0.4)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textDecoration: "none",
-            }}
-          >
-            Hubungi Sekarang
-          </a>
+          <div className="flex items-center gap-4 max-md:!flex-col max-md:!w-full max-md:!gap-3">
+            <a 
+              href={`https://wa.me/${lomba.cp.wa.startsWith('0') ? '62' + lomba.cp.wa.substring(1) : lomba.cp.wa}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-full text-white font-semibold text-sm transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] max-md:!h-11 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center max-md:!text-[13px] max-md:!mt-0"
+              style={{
+                width: "170px",
+                height: "45px",
+                fontFamily: "'Exo 2', sans-serif",
+                background:
+                  "linear-gradient(90deg, #6e8efb 0%, rgba(208,0,203,0.7) 100%)",
+                boxShadow: "0 4px 20px rgba(110,142,251,0.4)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textDecoration: "none",
+              }}
+            >
+              Hubungi Sekarang
+            </a>
+
+            <button
+              type="button"
+              onClick={() => {
+                router.push(`${BASE_PATH}/detail-nic#guide-section`);
+              }}
+              className="px-6 py-3 rounded-full text-white font-semibold text-sm transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] max-md:!h-11 max-md:!py-0 max-md:!flex max-md:!items-center max-md:!justify-center max-md:!text-[13px] max-md:!mt-0"
+              style={{ 
+                width: "170px",
+                height: "45px",
+                fontFamily: "'Exo 2', sans-serif",
+                border: "2px solid transparent",
+                background: "linear-gradient(#000923, #000923) padding-box, linear-gradient(90deg, #5b72ff 0%, #b620e0 100%) border-box",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              Guide
+            </button>
+          </div>
         </div>
 
         <div

@@ -3,7 +3,7 @@ import { BASE_PATH } from '@/config/constants';
 
 export default function Guide() {
   return (
-    <section className="relative pb-16 md:pb-32 text-center overflow-hidden max-md:!pb-0" style={{ marginTop: "0px" }}>
+    <section id="guide-section" className="relative pb-16 md:pb-32 text-center overflow-hidden max-md:!pb-0" style={{ marginTop: "0px" }}>
       <div className="relative w-full aspect-[1280/151] pointer-events-none z-[10]">
         <svg
           className="absolute inset-0 z-[2]"
