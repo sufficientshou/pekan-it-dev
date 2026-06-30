@@ -77,7 +77,7 @@ export default function PendaftaranDitutupPage() {
                 fontSize: "clamp(16px, 2.5vw, 22px)"
               }}
             >
-              Terima kasih atas antusiasme Anda terhadap SEMANTIK.
+              Terima kasih atas antusiasme Anda terhadap NIC.
             </p>
 
             <div className="flex items-center gap-3 md:gap-7 mt-6 flex-wrap justify-center max-md:!gap-4 max-md:!flex-col max-md:!w-full max-md:!mt-4">

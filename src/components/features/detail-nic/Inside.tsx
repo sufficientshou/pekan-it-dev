@@ -214,7 +214,7 @@ function CompetitionCard({
 }) {
   return (
     <Link
-      href="/pendaftaran"
+      href="/pendaftaran-ditutup"
       className="relative flex flex-col group w-full max-w-[340px] min-h-[440px] rounded-[24px] overflow-hidden transition-all duration-300 hover:-translate-y-2 cursor-pointer block"
       style={{
         background: "#1b233d",
