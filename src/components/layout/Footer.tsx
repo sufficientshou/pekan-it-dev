@@ -118,8 +118,8 @@ export default function Footer() {
     { label: "Kegiatan Mahasiswa", url: "https://www.instagram.com/himtika_unsika/" },
   ];
   const eventLinks = [
-    { label: "Semantik 9.0", url: "https://himtika.cs.unsika.ac.id/semantik_9/" },
-    { label: "PEKAN IT", url: "https://himtika.cs.unsika.ac.id/pekan-it/" },
+    { label: "Pekan IT: Semantik", url: "https://himtika.cs.unsika.ac.id/pekan-it/detail-semantik/" },
+    { label: "Pekan IT: NIC", url: "https://himtika.cs.unsika.ac.id/pekan-it/detail-nic/" },
     { label: "LKMM-PD", url: "https://himtika.cs.unsika.ac.id/lkmmpd/" },
     { label: "Diesnatalis", url: "https://himtika.cs.unsika.ac.id/diesnatalis/" }
   ];
@@ -260,7 +260,7 @@ export default function Footer() {
                 className="text-white text-sm font-semibold whitespace-nowrap"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                HIMTIKA 2025
+                HIMTIKA 2026
               </span>
             </div>
           </div>
@@ -389,7 +389,7 @@ export default function Footer() {
             className="text-center text-white text-sm font-bold tracking-wide"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            HIMTIKA 2025
+            HIMTIKA 2026
           </div>
         </div>
       </div>
