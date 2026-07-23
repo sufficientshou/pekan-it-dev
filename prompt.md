@@ -4,4 +4,4 @@
 
 
 tasks:
-ganti card kedua yg ada di daftar page seminar dengan tampilan yg sama persis dengan gambar tersebut. untuk maskot gunakan masem.png dan bg cardnya ganti dengan semcard.png
+buatkan section baru yaitu exhibition di page seminar yg isinya buatkan sama persis dengan gambar tersebut, untuk card nya ambil saja di card competition yang ada di inside yg ada di page detail nic. untuk gambarnya kasih segera hadir dan untuk teks penjelasan ganti juga dengan segera hadir. letakan setelah section speaker.
