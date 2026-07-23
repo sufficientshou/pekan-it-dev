@@ -10,7 +10,6 @@ export default function PendaftaranDitutupPage() {
     <main className="min-h-screen bg-[#000923] relative">
       <Navbar />
       
-      {/* Hero Section - Sama dengan Detail Semantik */}
       <section className="relative w-full h-screen min-h-[832px] bg-black overflow-hidden max-md:!min-h-[100vh] max-md:!h-auto pb-10">
 
         <img
@@ -19,7 +18,6 @@ export default function PendaftaranDitutupPage() {
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* Dark overlay blur untuk membuat background tidak terlalu terang - opacity dikurangi agar night bg tetap terlihat */}
         <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] z-[1] pointer-events-none" />
 
         <div className="absolute bottom-0 left-0 w-full max-md:!top-0 max-md:!h-full z-[2]">
@@ -93,22 +91,6 @@ export default function PendaftaranDitutupPage() {
                     boxShadow: "0px 8px 15px 0px rgba(0,0,0,0.10)",
                   }}
                 >
-                  {/* Icon Arrow Left (Panah Ke Kiri) */}
-                  {/* <span className="relative z-10">
-                    <svg 
-                      className="w-5 h-5 text-white transform group-hover:-translate-x-1 transition-transform" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2.5" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round"
-                    >
-                      <line x1="19" y1="12" x2="5" y2="12"></line>
-                      <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
-                  </span> */}
-
                   <span 
                     className="text-white font-semibold relative z-10 whitespace-nowrap"
                     style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "18px" }}
@@ -124,7 +106,6 @@ export default function PendaftaranDitutupPage() {
 
       </section>
 
-      {/* Footer Container */}
       <div className="relative w-full h-[458px] max-md:!h-auto">
         <Footer />
       </div>

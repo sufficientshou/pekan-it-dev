@@ -1,9 +1,9 @@
 import { BASE_PATH } from '@/config/constants';
 const FONT_CONFIG = {
-  your: 50,          // Font size "Your" dalam pixel
-  roadmap: 50,       // Font size "Roadmap" dalam pixel
-  forText: 50,       // Font size "For" dalam pixel
-  thisAmazing: 50,   // Font size "This Amazing Event" dalam pixel
+  your: 50,
+  roadmap: 50,
+  forText: 50,
+  thisAmazing: 50,
   mobile: 32,
 };
 

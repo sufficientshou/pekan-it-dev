@@ -55,7 +55,6 @@ export default function Inside() {
             className="font-bold tracking-wide max-w-2xl relative"
             style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(34px, 5.5vw, 58px)" }}
           >
-            {/* Top-Left Star (beside "Inside") */}
             <div 
               className="absolute text-white animate-star-pulse pointer-events-none select-none"
               style={{
@@ -83,7 +82,6 @@ export default function Inside() {
               Tech Talks
             </span>
 
-            {/* Top-Right Star (beside "Tech Talks") */}
             <div 
               className="absolute text-white animate-star-pulse pointer-events-none select-none"
               style={{
@@ -101,7 +99,6 @@ export default function Inside() {
           </h2>
 
           <div className="relative w-full max-w-xl flex justify-center">
-            {/* Bottom-Left Star (beside paragraph) */}
             <div 
               className="absolute text-white animate-star-pulse pointer-events-none select-none"
               style={{
@@ -124,7 +121,6 @@ export default function Inside() {
               Seminar &amp; Exhibition adalah wadah bagi pelajar, mahasiswa dan seluruh masyarakat indonesia untuk bersaing dan menunjukan bakat dan keahlian mereka.
             </p>
 
-            {/* Bottom-Right Star (beside paragraph) */}
             <div 
               className="absolute text-white animate-star-pulse pointer-events-none select-none"
               style={{
@@ -148,19 +144,19 @@ export default function Inside() {
         style={{ marginTop: "clamp(120px, 18vw, 300px)" }}
       >
         <div 
-          className="absolute left-[50%] bottom-[-45px] -translate-x-1/2 flex justify-center items-end" 
+          className="absolute left-[50%] bottom-0 -translate-x-1/2 flex justify-center items-end overflow-hidden" 
           style={{ 
             zIndex: 1, 
             width: "clamp(270px, 75vw, 850px)",
-            WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0) 88%)",
-            maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0) 88%)"
+            WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 45%, black 40%, transparent 88%)",
+            maskImage: "radial-gradient(ellipse 80% 80% at 50% 45%, black 40%, transparent 88%)"
           }}
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] bg-[#9333ea] blur-[80px] md:blur-[120px] opacity-50 pointer-events-none rounded-full z-0" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[35%] bg-[#9333ea] blur-[45px] md:blur-[65px] opacity-35 pointer-events-none rounded-full z-0" />
           <img 
             src={`${BASE_PATH}/images/ai.png`} 
             alt="AI Graphic" 
-            className="w-full h-auto object-contain object-bottom block relative z-10"
+            className="w-full h-auto object-contain object-bottom block relative z-10 translate-y-12 md:translate-y-20"
             style={{ maxHeight: "clamp(200px, 34vw, 440px)" }}
           />
         </div>

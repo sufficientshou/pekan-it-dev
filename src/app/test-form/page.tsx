@@ -20,7 +20,6 @@ export default function TestFormPage() {
         Test Form Card
       </h1>
 
-      {/* Lomba Selector */}
       <div className="flex gap-4 mb-8 flex-wrap justify-center">
         {lombas.map((lomba) => (
           <button
@@ -40,7 +39,6 @@ export default function TestFormPage() {
         ))}
       </div>
 
-      {/* Form Card */}
       <FormCard 
         lomba={selectedLomba}
         onSubmitSuccess={() => {

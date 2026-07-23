@@ -21,7 +21,7 @@ export default function Speaker({
   experience = "Manajer KOPDES, 2026 - Sekarang",
 }: SpeakerProps) {
   return (
-    <section id="speaker" className="relative w-full text-white bg-[#000923] min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden">
+    <section id="speaker" className="relative w-full text-white bg-[#000923] pb-28 md:pb-36 overflow-hidden" style={{ paddingTop: "clamp(70px, 9vh, 130px)" }}>
       <div 
         className="relative z-10 flex flex-col items-center w-full mx-auto"
         style={{ 
@@ -31,7 +31,7 @@ export default function Speaker({
       >
         <div className="flex flex-col items-center text-center w-full max-w-6xl">
           <h2
-            className="font-bold tracking-wide text-center mb-16 md:mb-24"
+            className="font-bold tracking-wide text-center"
             style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(34px, 5.5vw, 58px)" }}
           >
             Featured{" "}
@@ -46,8 +46,11 @@ export default function Speaker({
             </span>
           </h2>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 lg:gap-24 w-full">
-            <div className="relative flex justify-center items-end flex-shrink-0 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px]">
+          <div 
+            className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 lg:gap-24 w-full"
+            style={{ marginTop: "clamp(45px, 7vh, 90px)" }}
+          >
+            <div className="relative flex justify-center items-end flex-shrink-0 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] translate-x-3 md:translate-x-8">
               <img
                 src={image}
                 alt={name}
@@ -60,7 +63,7 @@ export default function Speaker({
               />
             </div>
 
-            <div className="flex flex-col text-left items-start w-full md:flex-1 max-w-2xl md:translate-x-6 md:translate-y-6">
+            <div className="flex flex-col text-left items-start w-full md:flex-1 max-w-2xl md:translate-x-6">
               <span
                 className="text-[#60a5fa] font-medium tracking-wide mb-3 text-left block"
                 style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(14px, 1.8vw, 20px)" }}

@@ -119,7 +119,6 @@ export default function Events() {
           {cards.map((card) => (
             <div key={card.id} className="relative max-md:!scale-[0.79] max-md:!origin-center max-md:!flex-shrink-0 max-md:!snap-center" style={{ width: `${CARD_CONFIG.width}px`, height: `${CARD_CONFIG.height}px` }}>
 
-              {/* Desktop Arrow Button */}
               <Link href={card.link}>
                 <button
                   className="absolute flex items-center justify-center z-10 cursor-pointer hover:scale-110 hover:brightness-110 transition-all duration-300 max-md:!hidden"

@@ -6,7 +6,6 @@ const competitions = [
   { id: "cp", title: "Competitive\nProgramming" },
 ];
 
-// Sparkle star SVG
 function Sparkle({ size = 20, opacity = 1 }: { size?: number; opacity?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" style={{ opacity }}>
@@ -18,7 +17,6 @@ function Sparkle({ size = 20, opacity = 1 }: { size?: number; opacity?: number }
   );
 }
 
-// Wing SVG (left side, mirror for right)
 function Wing({ flip = false }: { flip?: boolean }) {
   return (
     <svg
@@ -38,7 +36,6 @@ function Wing({ flip = false }: { flip?: boolean }) {
           <stop offset="100%" stopColor="#7b2ff7" />
         </linearGradient>
       </defs>
-      {/* Feathers — layered arcs */}
       {[
         "M 240 30 Q 180 80 100 160 Q 60 130 20 180 Q 80 100 160 50 Z",
         "M 220 50 Q 160 100 90 170 Q 55 145 15 200 Q 70 120 150 70 Z",
@@ -60,11 +57,9 @@ function Wing({ flip = false }: { flip?: boolean }) {
   );
 }
 
-// Crown SVG
 function Crown() {
   return (
     <div className="relative flex flex-col items-center">
-      {/* Glow circle behind crown */}
       <div
         className="absolute rounded-full"
         style={{
@@ -82,7 +77,6 @@ function Crown() {
             <stop offset="100%" stopColor="#d000cb" />
           </linearGradient>
         </defs>
-        {/* Crown shape */}
         <path
           d="M5 55 L10 20 L25 40 L40 5 L55 40 L70 20 L75 55 Z"
           stroke="url(#crownGrad)"
@@ -90,11 +84,9 @@ function Crown() {
           strokeLinejoin="round"
           fill="rgba(208,0,203,0.15)"
         />
-        {/* Gems on crown tips */}
         <circle cx="40" cy="5" r="4" fill="#10e6f1" />
         <circle cx="10" cy="20" r="3" fill="#d000cb" />
         <circle cx="70" cy="20" r="3" fill="#d000cb" />
-        {/* Base line */}
         <line x1="5" y1="55" x2="75" y2="55" stroke="url(#crownGrad)" strokeWidth="3" strokeLinecap="round" />
       </svg>
     </div>
@@ -111,7 +103,6 @@ export default function Pendaftaran() {
         paddingBottom: "80px",
       }}
     >
-      {/* Top cyan border */}
       <div
         className="absolute top-0 left-0 w-full h-[3px]"
         style={{
@@ -120,7 +111,6 @@ export default function Pendaftaran() {
         }}
       />
 
-      {/* Magenta radial glow center-top */}
       <div
         className="absolute"
         style={{
@@ -135,7 +125,6 @@ export default function Pendaftaran() {
         }}
       />
 
-      {/* Wings */}
       <div className="absolute" style={{ top: "30px", left: "-20px", opacity: 0.9 }}>
         <Wing flip={false} />
       </div>
@@ -143,17 +132,14 @@ export default function Pendaftaran() {
         <Wing flip={true} />
       </div>
 
-      {/* Crown + Sparkle top center */}
       <div className="flex flex-col items-center pt-6 relative z-10">
         <div className="relative">
-          {/* sparkle top of crown */}
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <Sparkle size={16} />
           </div>
           <Crown />
         </div>
 
-        {/* Headline */}
         <h2
           className="text-center font-bold leading-tight mt-4"
           style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "clamp(36px, 4.5vw, 56px)" }}
@@ -163,7 +149,6 @@ export default function Pendaftaran() {
           <span style={{ color: "#10e6f1" }}>Challenge</span>
         </h2>
 
-        {/* Subtitle */}
         <p
           className="text-white text-center mt-4 max-w-[480px]"
           style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "15px", opacity: 0.85, lineHeight: 1.6 }}
@@ -172,7 +157,6 @@ export default function Pendaftaran() {
           keterampilan dan minat kamu
         </p>
 
-        {/* Cards grid */}
         <div
           className="mt-10 flex gap-6 flex-wrap justify-center px-8"
           style={{ maxWidth: "1100px" }}
@@ -194,7 +178,6 @@ function CompetitionCard({ title }: { title: string }) {
       className="relative group cursor-pointer transition-transform duration-300 hover:-translate-y-1"
       style={{ width: "300px", height: "220px" }}
     >
-      {/* Gradient border glow */}
       <div
         className="absolute inset-0 rounded-2xl"
         style={{
@@ -207,7 +190,6 @@ function CompetitionCard({ title }: { title: string }) {
         }}
       />
 
-      {/* Card bg */}
       <div
         className="absolute inset-0 rounded-2xl"
         style={{
@@ -218,7 +200,6 @@ function CompetitionCard({ title }: { title: string }) {
         }}
       />
 
-      {/* Sparkles inside card */}
       <div className="absolute top-4 left-4 opacity-60">
         <Sparkle size={18} />
       </div>
@@ -229,7 +210,6 @@ function CompetitionCard({ title }: { title: string }) {
         <Sparkle size={16} />
       </div>
 
-      {/* Card title */}
       <div className="absolute inset-0 flex items-center justify-center px-6">
         <h3
           className="text-white text-center font-bold leading-snug"
@@ -247,12 +227,10 @@ function CompetitionCard({ title }: { title: string }) {
         </h3>
       </div>
 
-      {/* Bottom bar: Daftar button + gradient bar */}
       <div
         className="absolute bottom-0 left-0 w-full flex items-center gap-3 px-4 py-3 rounded-b-2xl"
         style={{ background: "rgba(0,0,0,0.3)" }}
       >
-        {/* Daftar button */}
         <button
           className="flex items-center gap-1 px-4 py-1.5 rounded-full text-white text-sm font-semibold shrink-0 cursor-pointer transition-opacity hover:opacity-80"
           style={{
@@ -265,7 +243,6 @@ function CompetitionCard({ title }: { title: string }) {
           Daftar <ArrowUpRight size={14} />
         </button>
 
-        {/* Gradient pill bar */}
         <div
           className="flex-1 rounded-full h-2"
           style={{

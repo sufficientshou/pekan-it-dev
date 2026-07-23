@@ -4,7 +4,6 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState, Suspense, useRef } from "react";
 import { BASE_PATH } from "@/config/constants";
 
-// Pre-defined star positions to avoid Math.random() hydration mismatch
 const STARS = [
   { w: 2, h: 2, l: 5, t: 12, o: 0.5, dur: 6, del: 0 },
   { w: 1.5, h: 1.5, l: 15, t: 45, o: 0.4, dur: 7, del: 1.2 },
@@ -55,10 +54,8 @@ function LoaderComponent() {
     if (timerRef.current) clearTimeout(timerRef.current);
     if (fadeRef.current) clearTimeout(fadeRef.current);
 
-    // Start fade out after 1.4s
     timerRef.current = setTimeout(() => {
       setIsFadingOut(true);
-      // Remove from DOM after fade-out animation completes
       fadeRef.current = setTimeout(() => {
         setIsLoading(false);
       }, 600);
@@ -68,7 +65,6 @@ function LoaderComponent() {
       if (timerRef.current) clearTimeout(timerRef.current);
       if (fadeRef.current) clearTimeout(fadeRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   if (!isLoading) return null;
@@ -233,7 +229,6 @@ function LoaderComponent() {
         }
       `}</style>
 
-      {/* Ambient gradient orbs */}
       <div style={{
         position: "absolute",
         width: "400px",
@@ -255,7 +250,6 @@ function LoaderComponent() {
         filter: "blur(60px)",
       }} />
 
-      {/* Star layers - using pre-defined positions to avoid hydration mismatch */}
       <div className="ldr-stars-layer">
         {STARS.map((s, i) => (
           <div
@@ -274,7 +268,6 @@ function LoaderComponent() {
         ))}
       </div>
 
-      {/* Center content */}
       <div className="ldr-center">
         <div className="ldr-logo-wrapper">
           <div className="ldr-glow" />

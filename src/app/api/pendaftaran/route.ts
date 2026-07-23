@@ -5,7 +5,6 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { nama, telepon, npm, angkatan, lomba } = body;
 
-    // Validasi data
     if (!nama || !telepon || !npm || !angkatan || !lomba) {
       return NextResponse.json(
         { error: 'Semua field harus diisi' },
@@ -13,11 +12,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Data yang akan dikirim ke Google Sheets
     const timestamp = new Date().toLocaleString('id-ID');
     const rowData = [timestamp, nama, telepon, npm, angkatan, lomba, 'Pending'];
 
-    // Kirim ke Google Sheets menggunakan Google Apps Script Web App
     const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL;
     
     if (!GOOGLE_SCRIPT_URL) {
