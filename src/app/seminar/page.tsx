@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/features/seminar/Hero";
 import Inside from "@/components/features/seminar/Inside";
+import Speaker from "@/components/features/seminar/Speaker";
 
 export default function SeminarPage() {
   return (
@@ -9,6 +10,7 @@ export default function SeminarPage() {
       <Navbar />
       <Hero />
       <Inside />
+      <Speaker />
       <Footer />
     </main>
   );
