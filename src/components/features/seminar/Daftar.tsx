@@ -121,7 +121,7 @@ export default function Daftar() {
             }}
           >
             <div
-              className="relative rounded-[23px] overflow-hidden flex flex-col md:flex-row items-center justify-center md:justify-between py-12 sm:py-10 px-6 sm:px-12 md:px-16 min-h-[420px] sm:min-h-[360px] gap-5 md:gap-8"
+              className="relative rounded-[23px] overflow-hidden flex flex-col md:flex-row items-center justify-center md:justify-between py-12 sm:py-10 px-8 sm:px-12 md:px-16 min-h-[420px] sm:min-h-[360px] gap-5 md:gap-8"
               style={{
                 backgroundColor: '#140222',
                 backgroundImage: `url('${BASE_PATH}/images/semcard.png')`,
@@ -137,7 +137,7 @@ export default function Daftar() {
                 />
               </div>
 
-              <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left gap-3 md:gap-4 max-w-lg">
+              <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left gap-3 md:gap-4 max-w-lg px-6 sm:px-8 md:px-0">
                 <h3
                   className="font-bold tracking-wider text-white drop-shadow-lg leading-tight"
                   style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(20px, 3.2vw, 38px)" }}
@@ -146,7 +146,7 @@ export default function Daftar() {
                 </h3>
 
                 <p
-                  className="text-gray-200 text-xs sm:text-base leading-relaxed px-2 sm:px-0"
+                  className="text-gray-200 text-xs sm:text-base leading-relaxed px-4 sm:px-6 md:px-0 max-w-xs sm:max-w-none"
                   style={{ fontFamily: "'Exo 2', sans-serif" }}
                 >
                   Bergabunglah bersama peserta lainnya untuk mengeksplorasi kolaborasi manusia dan AI melalui seminar serta pameran karya inovatif.

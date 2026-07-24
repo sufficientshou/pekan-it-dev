@@ -18,7 +18,7 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute inset-0 bg-black/30 pointer-events-none z-[1]" />
+      <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />
 
       <div
         className="absolute bottom-0 left-0 w-full pointer-events-none z-[2]"
@@ -73,7 +73,7 @@ export default function Hero() {
           </h6>
 
           <p
-            className="w-full max-w-[536px] text-center text-white font-normal leading-relaxed max-md:px-6 max-md:leading-snug"
+            className="w-full max-w-[300px] sm:max-w-[460px] md:max-w-[536px] text-center text-white font-normal leading-snug md:leading-relaxed px-6 sm:px-8 md:px-0"
             style={{
               fontFamily: "'Exo 2', sans-serif",
               fontSize: "clamp(14px, 1.6vw, 19px)",
