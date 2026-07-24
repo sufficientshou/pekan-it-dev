@@ -115,10 +115,10 @@ export default function Inside() {
             </div>
 
             <p
-              className="text-gray-200 leading-relaxed px-2 max-w-xl pb-8 md:pb-12"
-              style={{fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(12px, 1.5vw, 15px)", paddingTop: "clamp(20px, 2vh, 40px)" }}
+              className="text-gray-200 leading-relaxed px-2 max-w-2xl pb-8 md:pb-12"
+              style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "clamp(14px, 1.6vw, 18px)", paddingTop: "clamp(20px, 2vh, 40px)" }}
             >
-              Seminar &amp; Exhibition adalah wadah bagi pelajar, mahasiswa dan seluruh masyarakat indonesia untuk bersaing dan menunjukan bakat dan keahlian mereka.
+              Seminar Nasional Pekan IT 2026 mengangkat tema <span className="font-bold italic">&quot;Human and AI Collaboration: From Automation to Enhanced Capabilities&quot;</span> yang akan dibawakan oleh narasumber inspiratif. Dapatkan wawasan terbaru mengenai kolaborasi manusia dan AI serta penerapannya di era digital.
             </p>
 
             <div 

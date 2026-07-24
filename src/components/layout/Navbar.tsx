@@ -120,26 +120,44 @@ export default function Navbar() {
             {item.dropdown && openMenu === item.label && (
               <div className="absolute left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm border border-indigo-400/30 rounded-xl py-2 min-w-[180px] min-h-[70px] shadow-lg max-md:!static max-md:!translate-x-0 max-md:!mt-2 max-md:!bg-transparent max-md:!border-none max-md:!shadow-none max-md:!pl-4" style={{ top: "calc(100% + 11px)" }}>
                 {item.items && item.items.length > 0 ? (
-                  item.items.map((subItem) => (
-                    <Link
-                      key={subItem}
-                      href={
-                        subItem === "Pendaftaran"
-                          ? "/pendaftaran-ditutup"
-                          : subItem === "Detail SEMANTIK"
-                          ? "/detail-semantik"
-                          : subItem === "Detail NIC"
-                          ? "/detail-nic"
-                          : subItem === "Detail Seminar"
-                          ? "/seminar"
-                          : "#"
-                      }
-                      className="block px-4 py-2 text-white text-xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-lg max-md:!px-0 max-md:!py-1"
-                      style={{ fontFamily: "'Exo 2', sans-serif", paddingLeft: 16, marginTop: 5 }}
-                    >
-                      {subItem}
-                    </Link>
-                  ))
+                  item.items.map((subItem) => {
+                    const href =
+                      subItem === "Pendaftaran" && item.label === "Seminar"
+                        ? "https://forms.gle/STJ8qgfobSDZirBj6"
+                        : subItem === "Pendaftaran"
+                        ? "/pendaftaran-ditutup"
+                        : subItem === "Detail SEMANTIK"
+                        ? "/detail-semantik"
+                        : subItem === "Detail NIC"
+                        ? "/detail-nic"
+                        : subItem === "Detail Seminar"
+                        ? "/seminar"
+                        : "#";
+
+                    const isExternal = href.startsWith("http");
+
+                    return isExternal ? (
+                      <a
+                        key={subItem}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 text-white text-xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-lg max-md:!px-0 max-md:!py-1"
+                        style={{ fontFamily: "'Exo 2', sans-serif", paddingLeft: 16, marginTop: 5 }}
+                      >
+                        {subItem}
+                      </a>
+                    ) : (
+                      <Link
+                        key={subItem}
+                        href={href}
+                        className="block px-4 py-2 text-white text-xl font-normal hover:text-indigo-300 transition-colors whitespace-nowrap max-md:!text-lg max-md:!px-0 max-md:!py-1"
+                        style={{ fontFamily: "'Exo 2', sans-serif", paddingLeft: 16, marginTop: 5 }}
+                      >
+                        {subItem}
+                      </Link>
+                    );
+                  })
                 ) : (
                   <p
                     className="px-5 py-2 text-white/50 text-sm italic"

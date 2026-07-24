@@ -79,7 +79,7 @@ export default function Hero() {
               fontSize: "clamp(14px, 1.6vw, 19px)",
             }}
           >
-            Competitive Path to Digital Innovation in a Dynamic Technological Era
+            Human and AI Collaboration: From Automation to Enhanced Capabilities
           </p>
 
           <div className="
