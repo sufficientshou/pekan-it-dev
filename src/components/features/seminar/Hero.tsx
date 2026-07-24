@@ -1,7 +1,6 @@
 "use client";
 
 import { BASE_PATH } from '@/config/constants';
-import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -89,8 +88,10 @@ export default function Hero() {
             md:flex-row md:gap-7 md:mt-1
           ">
 
-            <Link
-              href="/pendaftaran-ditutup"
+            <a
+              href="https://forms.gle/STJ8qgfobSDZirBj6"
+              target="_blank"
+              rel="noopener noreferrer"
               className="max-md:w-full max-md:flex max-md:justify-center"
             >
               <button
@@ -108,7 +109,7 @@ export default function Hero() {
               >
                 Daftar Sekarang
               </button>
-            </Link>
+            </a>
 
             <button
               onClick={() =>

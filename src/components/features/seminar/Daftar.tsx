@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { BASE_PATH } from '@/config/constants';
 import { MapPin, Clock } from "lucide-react";
 
@@ -64,7 +63,7 @@ export default function Daftar() {
                     className="font-medium tracking-wide"
                     style={{ fontFamily: "'Zen Dots', sans-serif", fontSize: "clamp(12px, 1.4vw, 17px)" }}
                   >
-                    Aula Syeikh Kuro UNSIKA
+                    Aula Husni Hamid Karawang
                   </span>
                 </div>
 
@@ -94,7 +93,7 @@ export default function Daftar() {
                 </div>
 
                 <a
-                  href="https://maps.app.goo.gl/eXQt9kNJtshLMd6n9"
+                  href="https://maps.app.goo.gl/bEudB8UMYvg3aWMLA"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -153,7 +152,11 @@ export default function Daftar() {
                   Bergabunglah bersama peserta lainnya untuk mengeksplorasi kolaborasi manusia dan AI melalui seminar serta pameran karya inovatif.
                 </p>
 
-                <Link href="/pendaftaran-ditutup">
+                <a
+                  href="https://forms.gle/STJ8qgfobSDZirBj6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <button
                     className="mt-2 md:mt-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-xs sm:text-sm font-semibold transition-opacity hover:opacity-90 cursor-pointer opacity-90 flex items-center justify-center"
                     style={{
@@ -165,7 +168,7 @@ export default function Daftar() {
                   >
                     Daftar Sekarang
                   </button>
-                </Link>
+                </a>
               </div>
             </div>
           </div>

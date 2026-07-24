@@ -126,7 +126,7 @@ export default function Footer() {
   const appLinks = [
     { label: "Corporation", url: "https://himtika.cs.unsika.ac.id/corporation/" },
     { label: "HIMTIKA Award", url: "https://himtika.cs.unsika.ac.id/himtika-awards/" },
-    { label: "Study Club", url: "https://himtika.cs.unsika.ac.id/studyclub-2024/" },
+    { label: "Study Club", url: "https://himtika.cs.unsika.ac.id/studyclub/" },
     { label: "Kalender", url: "https://himtika.cs.unsika.ac.id/kalender/" },
     { label: "Studio IT", url: "https://himtika.cs.unsika.ac.id/corporation/" },
   ];

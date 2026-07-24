@@ -1,7 +1,6 @@
 "use client";
 
 import { BASE_PATH } from '@/config/constants';
-import Link from "next/link";
 export default function Hero() {
   return (
     <section className="relative w-full h-screen min-h-[832px] bg-black overflow-hidden max-md:!min-h-[100vh] max-md:!h-auto max-md:!pb-16" style={{ maxWidth: "100vw" }}>
@@ -50,7 +49,12 @@ export default function Hero() {
           </p>
 
           <div className="flex items-center gap-7 mt-1 flex-wrap justify-center max-md:!flex-col max-md:!gap-4 max-md:!w-full">
-            <Link href="/pendaftaran-ditutup" className="max-md:!w-full max-md:!flex max-md:!justify-center">
+            <a
+              href="https://forms.gle/STJ8qgfobSDZirBj6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="max-md:!w-full max-md:!flex max-md:!justify-center"
+            >
               <button
                 className="flex items-center justify-center px-10 py-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-lg font-semibold transition-opacity hover:opacity-90 cursor-pointer max-md:!w-full max-md:!max-w-[280px] opacity-80"
                 style={{
@@ -63,7 +67,7 @@ export default function Hero() {
               >
                 Daftar Sekarang
               </button>
-            </Link>
+            </a>
 
             <button
               onClick={() => document.getElementById("event")?.scrollIntoView({ behavior: "smooth" })}
