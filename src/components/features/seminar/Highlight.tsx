@@ -1,25 +1,33 @@
 import { BASE_PATH } from '@/config/constants';
 
-export default function Highlights() {
+export default function Highlight() {
   return (
     <section
+      id="highlight"
       className="relative text-white overflow-hidden flex flex-col items-center w-full"
       style={{
-        background: "#000923",
-        paddingTop: "clamp(130px, 12vw, 220px)",
-        paddingBottom: "clamp(80px, 10vh, 120px)",
+        background: "#140222",
+        paddingTop: "clamp(100px, 10vw, 160px)",
+        paddingBottom: "clamp(60px, 8vh, 100px)",
       }}
     >
-      <div className="hidden md:block absolute left-0 -translate-y-1/2 pointer-events-none"
-        style={{ top: "60%", width: "clamp(200px, 40vw, 600px)", height: "clamp(200px, 40vw, 600px)", opacity: 0.5 }}
-      >
-        <div className="w-full h-full bg-[#7c3aed] rounded-full blur-[120px] -translate-x-1/2"></div>
-      </div>
-      <div className="hidden md:block absolute right-0 -translate-y-1/2 pointer-events-none"
-        style={{ top: "60%", width: "clamp(200px, 40vw, 600px)", height: "clamp(200px, 40vw, 600px)", opacity: 0.5 }}
-      >
-        <div className="w-full h-full bg-[#7c3aed] rounded-full blur-[120px] translate-x-1/2"></div>
-      </div>
+      <div 
+        className="absolute top-1/2 left-0 w-[400px] sm:w-[550px] h-[400px] sm:h-[550px] rounded-full pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(circle, rgba(147, 51, 234, 0.28) 0%, rgba(88, 28, 135, 0.12) 55%, transparent 75%)",
+          filter: "blur(75px)",
+          transform: "translate(-35%, -50%)"
+        }}
+      />
+
+      <div 
+        className="absolute top-1/2 right-0 w-[400px] sm:w-[550px] h-[400px] sm:h-[550px] rounded-full pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(109, 40, 217, 0.1) 55%, transparent 75%)",
+          filter: "blur(75px)",
+          transform: "translate(35%, -50%)"
+        }}
+      />
 
       <div className="flex flex-col items-center text-center relative z-20 px-4 w-full"
         style={{ marginBottom: "clamp(30px, 6vh, 60px)" }}
@@ -28,21 +36,22 @@ export default function Highlights() {
           className="font-bold leading-tight"
           style={{ fontFamily: "'Zen Dots', cursive", fontSize: "clamp(30px, 4vw, 50px)", marginBottom: "clamp(12px, 2vh, 24px)" }}
         >
-          <span style={{ color: "#ffffff" }}>N I C </span>
+          <span style={{ color: "#ffffff" }}>Event </span>
           <span style={{
-            color: "#00ffff",
-            filter: "drop-shadow(0 0 15px rgba(0,255,255,0.6))"
+            background: "linear-gradient(90deg, #60a5fa 0%, #8b5cf6 50%, #b620e0 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
           }}>
             Highlights
           </span>
         </h2>
         <p
           className="text-gray-300 relative z-10 mx-auto px-6 text-center"
-          style={{ maxWidth: "700px", fontSize: "clamp(14px, 2vw, 22px)" }}
+          style={{ maxWidth: "700px", fontSize: "clamp(13px, 1.5vw, 17px)" }}
         >
-          Sekilas tentang momen-momen menarik yang menangkap
+          Sekilas momen inspiratif dari penyelenggaraan Tech Talks
           <br className="hidden md:block" />
-          energi dan kreativitas para peserta N-I-C
+          dan pameran inovasi mahasiswa.
         </p>
       </div>
 

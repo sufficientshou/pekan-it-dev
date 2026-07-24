@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { BASE_PATH } from "@/config/constants";
@@ -27,6 +27,33 @@ const navItems = [
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = (label: string) => {
     setOpenMenu((prev) => (prev === label ? null : label));
@@ -34,7 +61,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className="absolute top-0 left-0 w-full z-50 flex items-center justify-between h-[75px] max-md:!px-4 max-md:!bg-[#0a0f24] max-md:!fixed"
+      className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between h-[75px] max-md:!px-4 max-md:!bg-[#0a0f24] max-md:!fixed transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${
+        isScrolled ? "bg-[#0a0f24]/90 backdrop-blur-md shadow-lg border-b border-indigo-500/10" : "bg-transparent"
+      }`}
       style={{ paddingLeft: "75px", paddingRight: "75px" }}
     >
       <div className="flex items-center gap-2 shrink-0">

@@ -4,4 +4,4 @@
 
 
 tasks:
-buatkan section baru yaitu exhibition di page seminar yg isinya buatkan sama persis dengan gambar tersebut, untuk card nya ambil saja di card competition yang ada di inside yg ada di page detail nic. untuk gambarnya kasih segera hadir dan untuk teks penjelasan ganti juga dengan segera hadir. letakan setelah section speaker.
+responsive kan di mobile untuk section hero di page seminar, samakan saja dengan hero yg ada di nic. jangan merubah ui yg desktop

@@ -28,7 +28,7 @@ const cards = [
     subtitle: "National IT Competition",
     detail: "2 Competitions",
     img: `${BASE_PATH}/images/Subtract (2).webp`,
-    link: "#",
+    link: "/detail-nic",
   },
   {
     id: "techtalks",
@@ -36,7 +36,7 @@ const cards = [
     subtitle: "Seminar & Exhibition",
     detail: null,
     img: `${BASE_PATH}/images/Subtract.webp`,
-    link: "#",
+    link: "/seminar",
   },
 ];
 

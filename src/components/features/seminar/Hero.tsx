@@ -24,9 +24,20 @@ export default function Hero() {
       <div
         className="absolute bottom-0 left-0 w-full pointer-events-none z-[2]"
         style={{
-          height: "120px",
+          height: "280px",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 100%)",
+        }}
+      />
+
+      <div
+        className="absolute bottom-0 left-0 w-full pointer-events-none z-[3]"
+        style={{
+          height: "280px",
           background:
-            "linear-gradient(180deg, transparent 0%, rgba(0,9,35,0.4) 40%, rgba(0,9,35,0.85) 75%, #000923 100%)",
+            "linear-gradient(180deg, transparent 0%, rgba(20,2,34,0.3) 35%, rgba(20,2,34,0.85) 75%, #140222 100%)",
         }}
       />
 
@@ -46,7 +57,7 @@ export default function Hero() {
             className="w-full text-center text-white leading-none font-normal tracking-wide whitespace-nowrap"
             style={{
               fontFamily: "'Zen Dots', sans-serif",
-              fontSize: "clamp(24px, 5.5vw, 80px)",
+              fontSize: "clamp(38px, 5.5vw, 80px)",
             }}
           >
             TECH TALKS
@@ -56,7 +67,7 @@ export default function Hero() {
             className="w-full text-center text-white leading-none font-normal tracking-wide"
             style={{
               fontFamily: "'Zen Dots', sans-serif",
-              fontSize: "clamp(16px, 2.5vw, 32px)",
+              fontSize: "clamp(20px, 2.5vw, 32px)",
             }}
           >
             Seminar &amp; Exhibition
@@ -66,7 +77,7 @@ export default function Hero() {
             className="w-full max-w-[536px] text-center text-white font-normal leading-relaxed max-md:px-6 max-md:leading-snug"
             style={{
               fontFamily: "'Exo 2', sans-serif",
-              fontSize: "clamp(12px, 1.6vw, 19px)",
+              fontSize: "clamp(14px, 1.6vw, 19px)",
             }}
           >
             Competitive Path to Digital Innovation in a Dynamic Technological Era
@@ -90,8 +101,8 @@ export default function Hero() {
                 "
                 style={{
                   fontFamily: "'Exo 2', sans-serif",
-                  fontSize: "clamp(13px, 1.2vw, 16px)",
-                  padding: "clamp(10px, 1.2vh, 14px) clamp(20px, 2.5vw, 32px)",
+                  fontSize: "clamp(15px, 1.2vw, 16px)",
+                  padding: "clamp(12px, 1.2vh, 14px) clamp(24px, 2.5vw, 32px)",
                   background: "linear-gradient(90deg, #5b72ff 0%, #b620e0 100%)",
                 }}
               >
@@ -110,8 +121,8 @@ export default function Hero() {
               "
               style={{
                 fontFamily: "'Exo 2', sans-serif",
-                fontSize: "clamp(13px, 1.2vw, 16px)",
-                padding: "clamp(10px, 1.2vh, 14px) clamp(20px, 2.5vw, 32px)",
+                fontSize: "clamp(15px, 1.2vw, 16px)",
+                padding: "clamp(12px, 1.2vh, 14px) clamp(24px, 2.5vw, 32px)",
                 border: "2px solid transparent",
                 background:
                   "linear-gradient(#171b30, #171b30) padding-box, linear-gradient(90deg, #5b72ff 0%, #b620e0 100%) border-box",

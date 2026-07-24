@@ -175,7 +175,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-wrap justify-center lg:justify-end gap-12 lg:gap-24 pt-8 lg:pr-28 w-full lg:w-auto" style={{ marginTop: "20px", marginLeft: "40px" }}>
+          <div className="flex flex-wrap justify-start gap-8 lg:gap-16 pt-8 w-full lg:w-auto -translate-x-6 sm:-translate-x-12 lg:-translate-x-28" style={{ marginTop: "20px" }}>
             <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
               <div 
                 className="text-white text-lg font-bold"

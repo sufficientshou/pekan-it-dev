@@ -13,15 +13,31 @@ interface SpeakerProps {
 }
 
 export default function Speaker({
-  image = `${BASE_PATH}/images/pemateri.png`,
-  role = "Vibe Coding Specialist",
-  name = "Raika Maulana Dwi Putra, M.Bg.",
-  description = "NIC adalah wadah bagi pelajar, mahasiswa dan seluruh masyarakat indonesia untuk bersaing dan menunjukan bakat dan keahlian mereka melalui ajang kompetisi",
+  image = `${BASE_PATH}/images/anounce.png`,
+  role = "AI & Innovation Expert",
+  name = "To Be Announced",
+  description = "Pemateri spesial akan segera diumumkan. Nantikan wawasan inspiratif seputar kolaborasi manusia dan AI, inovasi, serta masa depan teknologi.",
   education = "S1 Informatika UNSIKA, 2020 - 2024",
   experience = "Manajer KOPDES, 2026 - Sekarang",
 }: SpeakerProps) {
   return (
-    <section id="speaker" className="relative w-full text-white bg-[#000923] pb-28 md:pb-36 overflow-hidden" style={{ paddingTop: "clamp(70px, 9vh, 130px)" }}>
+    <section id="speaker" className="relative w-full text-white bg-[#140222] pb-28 md:pb-36 overflow-hidden" style={{ paddingTop: "clamp(70px, 9vh, 130px)" }}>
+      <div 
+        className="absolute top-8 -left-28 sm:-left-36 w-[320px] sm:w-[450px] h-[320px] sm:h-[450px] rounded-full pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(circle, rgba(147, 51, 234, 0.45) 0%, rgba(88, 28, 135, 0.15) 50%, transparent 70%)",
+          filter: "blur(55px)",
+        }}
+      />
+
+      <div 
+        className="absolute bottom-8 -right-28 sm:-right-36 w-[320px] sm:w-[450px] h-[320px] sm:h-[450px] rounded-full pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(109, 40, 217, 0.12) 50%, transparent 70%)",
+          filter: "blur(55px)",
+        }}
+      />
+
       <div 
         className="relative z-10 flex flex-col items-center w-full mx-auto"
         style={{ 
@@ -76,7 +92,7 @@ export default function Speaker({
                 style={{ 
                   fontFamily: "'Zen Dots', sans-serif", 
                   fontSize: "clamp(24px, 3.5vw, 42px)",
-                  marginBottom: "clamp(30px, 4.5vw, 60px)"
+                  marginBottom: "clamp(20px, 3vw, 36px)"
                 }}
               >
                 {name}
@@ -85,27 +101,11 @@ export default function Speaker({
               <p 
                 className="text-gray-300 leading-relaxed text-left max-w-xl"
                 style={{ 
-                  fontSize: "clamp(13px, 1.5vw, 16px)",
-                  marginBottom: "clamp(28px, 4vw, 48px)" 
+                  fontSize: "clamp(13px, 1.5vw, 16px)"
                 }}
               >
                 {description}
               </p>
-
-              <div 
-                className="flex flex-col gap-4 text-gray-200 font-medium text-left w-full"
-                style={{ fontSize: "clamp(13px, 1.5vw, 16px)" }}
-              >
-                <div className="flex items-center gap-4">
-                  <GraduationCap size={22} className="text-[#8b5cf6] flex-shrink-0" />
-                  <span className="text-left leading-normal">{education}</span>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <Briefcase size={22} className="text-[#8b5cf6] flex-shrink-0" />
-                  <span className="text-left leading-normal">{experience}</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
