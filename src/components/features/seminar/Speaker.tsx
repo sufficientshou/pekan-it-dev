@@ -3,22 +3,53 @@
 import { BASE_PATH } from '@/config/constants';
 import { GraduationCap, Briefcase } from "lucide-react";
 
+export interface ListItem {
+  text: string;
+  logo?: string;
+}
+
 interface SpeakerProps {
   image?: string;
   role?: string;
   name?: string;
   description?: string;
-  education?: string;
-  experience?: string;
+  education?: string | ListItem[] | string[];
+  experience?: string | ListItem[] | string[];
 }
 
+const DEFAULT_EDUCATION: ListItem[] = [
+  {
+    text: "Doctor of Electrical Engineering and Informatics, ITB (2015 - 2021)",
+    logo: `${BASE_PATH}/images/itb copy.svg`,
+  },
+  {
+    text: "Master of Informatics, ITB (2008 - 2010)",
+    logo: `${BASE_PATH}/images/itb copy.svg`,
+  },
+  {
+    text: "Bachelor of Science in Physics, UNPAD (1999 - 2003)",
+    logo: `${BASE_PATH}/images/unpad.png`,
+  },
+];
+
+const DEFAULT_EXPERIENCE: ListItem[] = [
+  {
+    text: "Researcher at BRIN / LIPI (2006 - Now) – Human-Machine Interaction, ML, Big Data & IoT",
+    logo: `${BASE_PATH}/images/brin.png`,
+  },
+  {
+    text: "Professional Lecturer at Telkom University (2017 - Now) – IoT, Intelligent Systems & Data Analytics",
+    logo: `${BASE_PATH}/images/telkom.png`,
+  },
+];
+
 export default function Speaker({
-  image = `${BASE_PATH}/images/anounce.png`,
+  image = `${BASE_PATH}/images/pemateruy.png`,
   role = "AI & Innovation Expert",
-  name = "To Be Announced",
-  description = "Pemateri spesial akan segera diumumkan. Nantikan wawasan inspiratif seputar kolaborasi manusia dan AI, inovasi, serta masa depan teknologi.",
-  education = "S1 Informatika UNSIKA, 2020 - 2024",
-  experience = "Manajer KOPDES, 2026 - Sekarang",
+  name = "Dr. Hanif Fakhrurroja, S.Si., M.T",
+  description = "Dr. Hanif Fakhrurroja, S.Si., M.T. merupakan Profesor Riset bidang Instrumentasi Cerdas di BRIN serta Dosen Profesional di Telkom University. Berpengalaman luas dalam riset Sistem Informasi, Machine Learning, Big Data Analytics, dan Internet of Things (IoT), beliau telah menghasilkan 166 publikasi internasional, 8 hak paten, serta memegang berbagai sertifikasi internasional di bidang Artificial Intelligence & Generative AI.",
+  education = DEFAULT_EDUCATION,
+  experience = DEFAULT_EXPERIENCE,
 }: SpeakerProps) {
   return (
     <section id="speaker" className="relative w-full text-white bg-[#140222] pb-28 md:pb-36 overflow-hidden" style={{ paddingTop: "clamp(70px, 9vh, 130px)" }}>
@@ -101,11 +132,77 @@ export default function Speaker({
               <p 
                 className="text-gray-300 leading-relaxed text-left max-w-xl"
                 style={{ 
-                  fontSize: "clamp(13px, 1.5vw, 16px)"
+                  fontSize: "clamp(14px, 1.7vw, 18px)",
+                  marginBottom: "clamp(24px, 3vw, 36px)"
                 }}
               >
                 {description}
               </p>
+
+              <div 
+                className="flex flex-col gap-5 text-gray-200 font-medium text-left w-full"
+                style={{ fontSize: "clamp(14px, 1.7vw, 18px)" }}
+              >
+                <div className="flex items-start gap-4">
+                  <GraduationCap size={24} className="text-[#8b5cf6] flex-shrink-0 mt-0.5" />
+                  <div className="flex flex-col gap-2.5 text-left leading-normal">
+                    {Array.isArray(education) ? (
+                      education.map((item, idx) => {
+                        const isObj = typeof item === 'object';
+                        const text = isObj ? item.text : item;
+                        const logo = isObj ? item.logo : undefined;
+                        return (
+                          <div key={idx} className="flex items-start gap-2.5">
+                            {logo && (
+                              <img
+                                src={logo}
+                                alt="Logo"
+                                className="w-5 h-5 sm:w-6 sm:h-6 object-contain flex-shrink-0 mt-0.5"
+                                onError={(e) => {
+                                  (e.target as HTMLElement).style.display = 'none';
+                                }}
+                              />
+                            )}
+                            <span>{text}</span>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <span>{education}</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <Briefcase size={24} className="text-[#8b5cf6] flex-shrink-0 mt-0.5" />
+                  <div className="flex flex-col gap-2.5 text-left leading-normal">
+                    {Array.isArray(experience) ? (
+                      experience.map((item, idx) => {
+                        const isObj = typeof item === 'object';
+                        const text = isObj ? item.text : item;
+                        const logo = isObj ? item.logo : undefined;
+                        return (
+                          <div key={idx} className="flex items-start gap-2.5">
+                            {logo && (
+                              <img
+                                src={logo}
+                                alt="Logo"
+                                className="w-5 h-5 sm:w-6 sm:h-6 object-contain flex-shrink-0 mt-0.5"
+                                onError={(e) => {
+                                  (e.target as HTMLElement).style.display = 'none';
+                                }}
+                              />
+                            )}
+                            <span>{text}</span>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <span>{experience}</span>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -113,3 +210,13 @@ export default function Speaker({
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="48" fill="#0B2046" stroke="#1E40AF" stroke-width="3"/>
+  <circle cx="50" cy="50" r="41" fill="none" stroke="#60A5FA" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <circle cx="50" cy="50" r="36" fill="#172554"/>
+  <!-- ITB Ganesha Abstract Seal Symbol -->
+  <path d="M50 20C42 20 37 26 37 32C37 36 39 39 42 41V47C38 48 33 51 33 57C33 64 38 72 50 72C62 72 67 64 67 57C67 51 62 48 58 47V41C61 39 63 36 63 32C63 26 58 20 50 20Z" fill="none" stroke="#E0E7FF" stroke-width="2.5"/>
+  <path d="M50 24V32" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"/>
+  <path d="M44 32C44 29 46.6 27 50 27C53.4 27 56 29 56 32" fill="none" stroke="#93C5FD" stroke-width="2"/>
+  <circle cx="50" cy="37" r="3" fill="#60A5FA"/>
+  <path d="M41 57C41 53 45 51 50 51C55 51 59 53 59 57" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M45 63C47 65 53 65 55 63" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"/>
+  <text x="50" y="81" font-family="sans-serif" font-size="7" font-weight="bold" fill="#93C5FD" text-anchor="middle" letter-spacing="0.5">ITB</text>
+</svg>

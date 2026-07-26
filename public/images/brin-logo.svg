@@ -1,0 +1,7 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="48" fill="#DC2626"/>
+  <!-- BRIN Four Petal Red Star Flame Emblem -->
+  <path d="M50 18C50 18 52 35 68 35C68 35 52 38 50 54C50 54 48 38 32 35C32 35 48 35 50 18Z" fill="white"/>
+  <path d="M50 54C50 54 52 68 65 68C65 68 52 70 50 82C50 82 48 70 35 68C35 68 48 68 50 54Z" fill="white" opacity="0.8"/>
+  <circle cx="68" cy="30" r="4" fill="#FEF08A"/>
+</svg>
