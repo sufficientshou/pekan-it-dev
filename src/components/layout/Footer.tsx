@@ -1,400 +1,249 @@
+import Link from 'next/link';
 import { BASE_PATH } from '@/config/constants';
 
-const IconIg = ({ className }: { className?: string }) => {
-  return (
-    <svg
-      className={className}
-      width="42"
-      height="42"
-      viewBox="0 0 42 42"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="42" height="42" rx="21" fill="#3A3C5A" />
-      <path
-        d="M21 14.5C17.416 14.5 14.5 17.416 14.5 21C14.5 24.584 17.416 27.5 21 27.5C24.584 27.5 27.5 24.584 27.5 21C27.5 17.416 24.584 14.5 21 14.5ZM21 25.5C18.519 25.5 16.5 23.481 16.5 21C16.5 18.519 18.519 16.5 21 16.5C23.481 16.5 25.5 18.519 25.5 21C25.5 23.481 23.481 25.5 21 25.5Z"
-        fill="white"
-      />
-      <circle cx="27.625" cy="14.375" r="1.125" fill="white" />
-      <path
-        d="M25.5 11H16.5C13.467 11 11 13.467 11 16.5V25.5C11 28.533 13.467 31 16.5 31H25.5C28.533 31 31 28.533 31 25.5V16.5C31 13.467 28.533 11 25.5 11ZM29 25.5C29 27.43 27.43 29 25.5 29H16.5C14.57 29 13 27.43 13 25.5V16.5C13 14.57 14.57 13 16.5 13H25.5C27.43 13 29 14.57 29 16.5V25.5Z"
-        fill="white"
-      />
-    </svg>
-  );
-};
-
-const IconX = ({ className }: { className?: string }) => {
-  return (
-    <svg
-      className={className}
-      width="42"
-      height="42"
-      viewBox="0 0 42 42"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="42" height="42" rx="21" fill="#3A3C5A" />
-      <path
-        d="M23.1679 19.3092L30.4922 11H28.7543L22.3928 18.2256L17.2548 11H11.5L19.1775 22.1124L11.5 30.8182H13.238L19.9519 23.2194L25.3679 30.8182H31.0227L23.1675 19.3092H23.1679ZM20.8427 22.2101L20.0544 21.1046L13.8701 12.2988H16.4168L21.5435 19.2512L22.3318 20.3567L28.7551 29.5779H26.2084L20.8427 22.2105V22.2101Z"
-        fill="white"
-      />
-    </svg>
-  );
-};
-
-const Linkedin = ({ className }: { className?: string }) => {
-  return (
-    <svg
-      className={className}
-      width="42"
-      height="42"
-      viewBox="0 0 42 42"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="42" height="42" rx="21" fill="#3A3C5A" />
-      <path
-        d="M15.5 13C14.1193 13 13 14.1193 13 15.5C13 16.8807 14.1193 18 15.5 18C16.8807 18 18 16.8807 18 15.5C18 14.1193 16.8807 13 15.5 13Z"
-        fill="white"
-      />
-      <path d="M13.5 19.5H17.5V31H13.5V19.5Z" fill="white" />
-      <path
-        d="M22.5 19.5H18.5V31H22.5V25C22.5 23.067 24.067 21.5 26 21.5C27.933 21.5 29.5 23.067 29.5 25V31H33.5V25C33.5 20.858 30.142 17.5 26 17.5C24.3 17.5 22.75 18.1 21.55 19.1L22.5 19.5Z"
-        fill="white"
-      />
-      <path d="M13.5 19.5H17.5V31H13.5V19.5Z" fill="white" />
-      <path
-        d="M19 19.5H23V21.1C23.9 19.9 25.35 19 27 19C30.314 19 33 21.686 33 25V31H29V25C29 23.895 28.105 23 27 23C25.895 23 25 23.895 25 25V31H21V19.5H19Z"
-        fill="white"
-      />
-    </svg>
-  );
-};
-
-const Youtube = ({ className }: { className?: string }) => {
-  return (
-    <svg
-      className={className}
-      width="42"
-      height="42"
-      viewBox="0 0 42 42"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="42" height="42" rx="21" fill="#3A3C5A" />
-      <path
-        d="M31.54 15.9C31.2973 14.9625 30.5625 14.2277 29.625 13.985C27.9225 13.5 21 13.5 21 13.5C21 13.5 14.0775 13.5 12.375 13.985C11.4375 14.2277 10.7027 14.9625 10.46 15.9C9.975 17.6025 9.975 21.15 9.975 21.15C9.975 21.15 9.975 24.6975 10.46 26.4C10.7027 27.3375 11.4375 28.0723 12.375 28.315C14.0775 28.8 21 28.8 21 28.8C21 28.8 27.9225 28.8 29.625 28.315C30.5625 28.0723 31.2973 27.3375 31.54 26.4C32.025 24.6975 32.025 21.15 32.025 21.15C32.025 21.15 32.025 17.6025 31.54 15.9ZM18.75 24.375V17.925L24.375 21.15L18.75 24.375Z"
-        fill="white"
-      />
-    </svg>
-  );
-};
-
-const Tiktok = ({ className }: { className?: string }) => {
-  return (
-    <svg
-      className={className}
-      width="42"
-      height="42"
-      viewBox="0 0 42 42"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="42" height="42" rx="21" fill="#3A3C5A" />
-      <path
-        d="M28.5 16.5C27.1193 16.5 26 15.3807 26 14H23V24.5C23 25.6046 22.1046 26.5 21 26.5C19.8954 26.5 19 25.6046 19 24.5C19 23.3954 19.8954 22.5 21 22.5C21.2761 22.5 21.5 22.2761 21.5 22V19C21.5 18.7239 21.2761 18.5 21 18.5C18.2386 18.5 16 20.7386 16 23.5C16 26.2614 18.2386 28.5 21 28.5C23.7614 28.5 26 26.2614 26 23.5V19.5C27.0929 20.1386 28.3 20.5 29.5 20.5V17.5C28.9477 17.5 28.5 17.0523 28.5 16.5Z"
-        fill="white"
-      />
-    </svg>
-  );
-};
-
 export default function Footer() {
-  const mediaLinks = [
-    { label: "Berita", url: "https://www.instagram.com/himtika_unsika/" },
-    { label: "Artikel HIMTIKA", url: "https://www.instagram.com/himtika_unsika/" },
-    { label: "Info Lomba", url: "https://www.instagram.com/cnc_himtika/" },
-    { label: "Kegiatan Mahasiswa", url: "https://www.instagram.com/himtika_unsika/" },
-  ];
-  const eventLinks = [
-    { label: "Pekan IT: Semantik", url: "https://himtika.cs.unsika.ac.id/pekan-it/detail-semantik/" },
-    { label: "Pekan IT: NIC", url: "https://himtika.cs.unsika.ac.id/pekan-it/detail-nic/" },
-    { label: "LKMM-PD", url: "https://himtika.cs.unsika.ac.id/lkmmpd/" },
-    { label: "Diesnatalis", url: "https://himtika.cs.unsika.ac.id/diesnatalis/" }
-  ];
-  const appLinks = [
-    { label: "Corporation", url: "https://himtika.cs.unsika.ac.id/corporation/" },
-    { label: "HIMTIKA Award", url: "https://himtika.cs.unsika.ac.id/himtika-awards/" },
-    { label: "Study Club", url: "https://himtika.cs.unsika.ac.id/studyclub/" },
-    { label: "Kalender", url: "https://himtika.cs.unsika.ac.id/kalender/" },
-    { label: "Studio IT", url: "https://himtika.cs.unsika.ac.id/corporation/" },
-  ];
-
-  const socialIcons = [
-    { iconUrl: "https://cdn.simpleicons.org/instagram/white", label: "Instagram", url: "https://www.instagram.com/himtika_unsika/" },
-    { iconUrl: "https://cdn.simpleicons.org/x/white", label: "X (Twitter)", url: "https://x.com/himtika_unsika" },
-    { iconUrl: "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22white%22%3E%3Cpath%20d%3D%22M20.447%2020.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853%200-2.136%201.445-2.136%202.939v5.667H9.351V9h3.414v1.561h.046c.477-.9%201.637-1.85%203.37-1.85%203.601%200%204.267%202.37%204.267%205.455v6.286zM5.337%207.433c-1.144%200-2.063-.926-2.063-2.065%200-1.138.92-2.063%202.063-2.063%201.14%200%202.064.925%202.064%202.063%200%201.139-.925%202.065-2.064%202.065zm1.782%2013.019H3.555V9h3.564v11.452zM22.225%200H1.771C.792%200%200%20.774%200%201.729v20.542C0%2023.227.792%2024%201.771%2024h20.451C23.2%2024%2024%2023.227%2024%2022.271V1.729C24%20.774%2023.2%200%2022.222%200h.003z%22%2F%3E%3C%2Fsvg%3E", label: "LinkedIn", url: "https://www.linkedin.com/company/himtika-unsika/" },
-    { iconUrl: "https://cdn.simpleicons.org/youtube/white", label: "YouTube", url: "https://www.youtube.com/@HIMTIKAUNSIKA" },
-    { iconUrl: "https://cdn.simpleicons.org/tiktok/white", label: "TikTok", url: "https://www.tiktok.com/@himtika.unsika" },
-  ];
-
   return (
     <>
-    <footer className="relative w-full bg-[#252742] max-md:!hidden flex flex-col items-center">
-      <div className="w-full max-w-[1440px] px-8 lg:px-20 pt-20 pb-10 flex flex-col h-full justify-between">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full gap-16 lg:gap-10" style={{ marginTop: "25px" }}>
-          <div className="flex flex-col items-center lg:ml-12" style={{ minWidth: "400px" }}>
-            <img loading="lazy"
-              className="w-52 h-52" 
-              src={`${BASE_PATH}/images/img-himtika.webp`} 
-              alt="HIMTIKA Logo"
-            />
-            <div 
-              className="text-white text-3xl font-semibold mt-[-10px]"
-              style={{ 
-                fontFamily: "'Figtree', sans-serif",
-                textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
-              }}
-            >
-              HIMTIKA
+      <footer className="site-footer">
+        <div className="footer-container">
+          <div className="footer-main-row">
+            <div className="footer-brand-col">
+              <div className="brand-content flex flex-col items-center lg:items-start">
+                <div className="flex flex-col items-center">
+                  <Link href="/" className="footer-logo-link block mb-6">
+                    <img
+                      src={`${BASE_PATH}/images/LOGO.webp`}
+                      alt="Logo Pekan IT"
+                      className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain select-none"
+                      style={{ filter: "none", WebkitFilter: "none", boxShadow: "none" }}
+                    />
+                  </Link>
+                  <div className="footer-social-wrapper flex items-center justify-center gap-3.5">
+                    <a
+                      href="https://www.instagram.com/himtika_unsika/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                      className="footer-social-link"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/himtika-unsika/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      className="footer-social-link"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.222 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://www.youtube.com/@HIMTIKAUNSIKA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="YouTube"
+                      className="footer-social-link"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://www.tiktok.com/@himtika.unsika"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="TikTok"
+                      className="footer-social-link"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex gap-[18px]" style={{ marginTop: "30px", marginBottom: "20px" }}>
-              {socialIcons.map(({ iconUrl, label, url }) => (
-                <a
-                  key={label}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-[42px] h-[42px] bg-[#3A3C5A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
-                >
-                  <img src={iconUrl} alt={label} className="w-[20px] h-[20px]" />
-                </a>
-              ))}
+
+            <div className="footer-grid-col">
+              <div className="footer-links-grid">
+                <div className="link-group tentang-kami">
+                  <div>
+                    <h3 className="group-title">Tentang Kami</h3>
+                    <ul className="group-list">
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/struktur-organisasi" target="_blank" rel="noopener noreferrer">
+                          Struktur Organisasi
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/sejarah-himtika" target="_blank" rel="noopener noreferrer">
+                          Sejarah
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/logo-himtika" target="_blank" rel="noopener noreferrer">
+                          Logo
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/galeri-himtika" target="_blank" rel="noopener noreferrer">
+                          Galeri
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/grand-design-himtika" target="_blank" rel="noopener noreferrer">
+                          Grand Design
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/visi-misi" target="_blank" rel="noopener noreferrer">
+                          Visi Misi
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/kontak-kami" target="_blank" rel="noopener noreferrer">
+                          Kontak Kami
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="link-group align-right-lg media-hp-footer">
+                  <div>
+                    <h3 className="group-title">Media</h3>
+                    <ul className="group-list">
+                      <li>
+                        <a href="https://www.instagram.com/himtika_unsika/" target="_blank" rel="noopener noreferrer">
+                          Berita
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/hikode/" target="_blank" rel="noopener noreferrer">
+                          Artikel HIMTIKA
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/cnc_himtika/" target="_blank" rel="noopener noreferrer">
+                          Info Lomba
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="link-group align-center-lg">
+                  <div>
+                    <h3 className="group-title">Event</h3>
+                    <ul className="group-list">
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/open-project/" target="_blank" rel="noopener noreferrer">
+                          Create and Compete
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/himtika-exchange/" target="_blank" rel="noopener noreferrer">
+                          Himtika Exchange
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/hgtc/" target="_blank" rel="noopener noreferrer">
+                          HGTC
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/studyclub/" target="_blank" rel="noopener noreferrer">
+                          Study Club
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/pekan-it/" target="_blank" rel="noopener noreferrer">
+                          Pekan IT: NIC
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/pekan-it/detail-semantik/" target="_blank" rel="noopener noreferrer">
+                          Pekan IT: Semantik IC
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/lkmmpd/" target="_blank" rel="noopener noreferrer">
+                          LKMM-PD
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/diesnatalis/" target="_blank" rel="noopener noreferrer">
+                          Diesnatalis
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/it-bootcamp/" target="_blank" rel="noopener noreferrer">
+                          IT Bootcamp
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="link-group align-right-lg aplikasi-publik">
+                  <div>
+                    <h3 className="group-title aplikasi-publik">Aplikasi Publik</h3>
+                    <ul className="group-list">
+                      <li>
+                        <a href="https://himtalks.vercel.app/himtalks" target="_blank" rel="noopener noreferrer">
+                          Himtalks
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/himtika-awards/" target="_blank" rel="noopener noreferrer">
+                          Himtika Award
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/media-partner/" target="_blank" rel="noopener noreferrer">
+                          Media Partner
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/corporation/" target="_blank" rel="noopener noreferrer">
+                          Corporation
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/kalender/" target="_blank" rel="noopener noreferrer">
+                          Kalender
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/dosen/" target="_blank" rel="noopener noreferrer">
+                          Profil Tenaga Pendidik
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap justify-start gap-8 lg:gap-16 pt-8 w-full lg:w-auto -translate-x-6 sm:-translate-x-12 lg:-translate-x-28" style={{ marginTop: "20px" }}>
-            <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
-              <div 
-                className="text-white text-lg font-bold"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                Media
-              </div>
-              {mediaLinks.map((link) => (
-                <a 
-                  key={link.label}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-lg font-medium hover:text-[#00ffff] transition-colors"
-                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-
-            <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
-              <div 
-                className="text-white text-lg font-bold"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                Event
-              </div>
-              {eventLinks.map((link) => (
-                <a 
-                  key={link.label}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-lg font-medium hover:text-[#00ffff] transition-colors"
-                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-
-            <div className="flex flex-col gap-5" style={{ minWidth: "140px" }}>
-              <div 
-                className="text-white text-lg font-bold"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                Aplikasi Publik
-              </div>
-              {appLinks.map((link) => (
-                <a 
-                  key={link.label}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-lg font-medium hover:text-[#00ffff] transition-colors"
-                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="w-full flex flex-col mt-24">
-          <div className="w-full border-t-2 border-white opacity-80" />
-          <div className="flex flex-col items-center justify-center gap-1" style={{ marginTop: "40px", paddingBottom: "40px" }}>
-            <span 
-              className="text-white text-base font-semibold text-center w-full"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-            >
-              Licensed, Registered, and authorized by
-            </span>
-            <div className="flex items-center justify-center gap-2">
-              <img loading="lazy"
-                className="w-8 h-8" 
-                src={`${BASE_PATH}/images/img-himtika.webp`} 
+          <div className="footer-bottom">
+            <p className="copyright-text">Licensed, Registered, and Authorized by</p>
+            <div className="authorized-brand">
+              <img
+                src={`${BASE_PATH}/images/img-himtika.webp`}
                 alt="HIMTIKA"
+                className="mini-logo"
               />
-              <span 
-                className="text-white text-sm font-semibold whitespace-nowrap"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                HIMTIKA 2026
-              </span>
+              <span>HIMTIKA 2026</span>
             </div>
           </div>
         </div>
-      </div>
-    </footer>
-
-    <footer className="hidden max-md:!flex flex-col w-full bg-[#252742] max-md:!px-8 py-10 items-center justify-center pt-16">
-      <div className="flex flex-col items-center gap-4 mb-10 text-center">
-        <img loading="lazy"
-          className="w-28 h-28" 
-          src={`${BASE_PATH}/images/img-himtika.webp`} 
-          alt="HIMTIKA Logo"
-        />
-        <div 
-          className="text-white text-3xl font-semibold"
-          style={{ 
-            fontFamily: "'Figtree', sans-serif",
-            textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
-          }}
-        >
-          HIMTIKA
-        </div>
-      </div>
-      <div className="w-full max-w-[400px] flex flex-col gap-6 mb-8 border-t border-white/20 pt-8 mt-2 px-2">
-        <div className="flex justify-between w-full gap-4">
-          <div className="flex flex-col gap-3 flex-1">
-            <div 
-              className="text-white text-base font-bold"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-            >
-              Media
-            </div>
-            {mediaLinks.map((link) => (
-              <a 
-                key={link.label}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-          <div className="flex flex-col gap-3 flex-1 items-end text-right">
-            <div 
-              className="text-white text-base font-bold"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-            >
-              Event
-            </div>
-            {eventLinks.map((link) => (
-              <a 
-                key={link.label}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 w-full mt-4">
-          <div 
-            className="text-white text-base font-bold"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            Aplikasi Publik
-          </div>
-          <div className="flex flex-wrap gap-x-6 gap-y-4">
-            {appLinks.map((link) => (
-              <a 
-                key={link.label}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-sm font-medium opacity-90 hover:text-[#00ffff] transition-colors"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div 
-        className="flex gap-5 justify-center w-full"
-        style={{ marginTop: "45px", marginBottom: "45px" }}
-      >
-        {socialIcons.map(({ iconUrl, label, url }) => (
-          <a
-            key={label}
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            className="w-[44px] h-[44px] bg-[#3A3C5A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
-          >
-            <img src={iconUrl} alt={label} className="w-[22px] h-[22px]" />
-          </a>
-        ))}
-      </div>
-
-      <div className="w-full border-t border-white/30" />
-      <div className="flex flex-col items-center gap-1" style={{ marginTop: "40px", paddingBottom: "40px" }}>
-        <div 
-          className="text-center text-white/80 text-xs font-semibold"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
-          Licensed, Registered, and authorized by
-        </div>
-        <div className="flex items-center gap-2">
-          <img loading="lazy"
-            className="w-7 h-7" 
-            src={`${BASE_PATH}/images/img-himtika.webp`} 
-            alt="HIMTIKA"
-          />
-          <div 
-            className="text-center text-white text-sm font-bold tracking-wide"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            HIMTIKA 2026
-          </div>
-        </div>
-      </div>
-
-    </footer>
+      </footer>
     </>
   );
 }
+
