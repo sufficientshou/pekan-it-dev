@@ -1,6 +1,24 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
 import { BASE_PATH } from '@/config/constants';
+import { X } from "lucide-react";
+
+const highlightImages = [
+  "nc1.webp",
+  "nc2.webp",
+  "nc3.webp",
+  "nc4.webp",
+  "nc5.webp",
+  "nc6.webp",
+];
 
 export default function Highlights() {
+  const displayedImages = highlightImages.slice(0, 4);
+  const remainingCount = highlightImages.length - 4;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section
       className="relative text-white overflow-hidden flex flex-col items-center w-full"
@@ -49,15 +67,78 @@ export default function Highlights() {
       <div className="relative z-10 flex flex-col items-center justify-center w-[90%] sm:w-[85%] max-w-[800px]">
         <div className="flex flex-col gap-3 md:gap-6 w-full">
           <div className="flex gap-3 md:gap-6 w-full h-[110px] sm:h-[160px] md:h-[280px]">
-            <div className="bg-gray-300 rounded-xl md:rounded-2xl flex-[3] relative overflow-hidden"></div>
-            <div className="bg-gray-300 rounded-xl md:rounded-2xl flex-[2] relative overflow-hidden"></div>
+            <div 
+              className="bg-gray-300 rounded-xl md:rounded-2xl flex-[3] relative overflow-hidden group cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => setIsModalOpen(true)}
+            >
+              {displayedImages[0] && (
+                <Image src={`${BASE_PATH}/images/${displayedImages[0]}`} alt="Highlight 1" fill className="object-cover" />
+              )}
+            </div>
+            <div 
+              className="bg-gray-300 rounded-xl md:rounded-2xl flex-[2] relative overflow-hidden group cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => setIsModalOpen(true)}
+            >
+              {displayedImages[1] && (
+                <Image src={`${BASE_PATH}/images/${displayedImages[1]}`} alt="Highlight 2" fill className="object-cover" />
+              )}
+            </div>
           </div>
           <div className="flex gap-3 md:gap-6 w-full h-[110px] sm:h-[160px] md:h-[280px]">
-            <div className="bg-gray-300 rounded-xl md:rounded-2xl flex-[2] relative overflow-hidden"></div>
-            <div className="bg-gray-300 rounded-xl md:rounded-2xl flex-[3] relative overflow-hidden"></div>
+            <div 
+              className="bg-gray-300 rounded-xl md:rounded-2xl flex-[2] relative overflow-hidden group cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => setIsModalOpen(true)}
+            >
+              {displayedImages[2] && (
+                <Image src={`${BASE_PATH}/images/${displayedImages[2]}`} alt="Highlight 3" fill className="object-cover" />
+              )}
+            </div>
+            <div 
+              className="bg-gray-300 rounded-xl md:rounded-2xl flex-[3] relative overflow-hidden group cursor-pointer"
+              onClick={() => setIsModalOpen(true)}
+            >
+              {displayedImages[3] && (
+                <Image src={`${BASE_PATH}/images/${displayedImages[3]}`} alt="Highlight 4" fill className="object-cover" />
+              )}
+              {remainingCount > 0 && (
+                <div className="absolute inset-0 bg-black/60 flex items-center justify-center hover:bg-black/50 transition-colors">
+                  <span className="text-white text-3xl md:text-5xl font-semibold">
+                    +{remainingCount}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/90 flex flex-col justify-center items-center backdrop-blur-sm">
+          <button 
+            onClick={() => setIsModalOpen(false)}
+            className="absolute top-6 right-6 md:top-10 md:right-10 text-white hover:text-gray-300 z-50 p-2 bg-white/10 rounded-full transition-colors hover:bg-white/20"
+          >
+            <X size={28} />
+          </button>
+          
+          <div 
+            className="w-full overflow-x-auto px-6 py-8 flex gap-4 md:gap-8 items-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+          >
+            <div className="w-[10vw] flex-shrink-0" /> 
+            {highlightImages.map((img, idx) => (
+              <div 
+                key={idx} 
+                className="flex-shrink-0 w-[75vw] md:w-[600px] aspect-[4/3] relative rounded-xl overflow-hidden shadow-2xl"
+                style={{ scrollSnapAlign: "center" }}
+              >
+                <Image src={`${BASE_PATH}/images/${img}`} alt={`Gallery ${idx + 1}`} fill className="object-cover" />
+              </div>
+            ))}
+            <div className="w-[10vw] flex-shrink-0" /> 
+          </div>
+        </div>
+      )}
     </section>
   );
 }
