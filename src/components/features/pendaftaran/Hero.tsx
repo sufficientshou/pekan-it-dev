@@ -20,8 +20,9 @@ export default function Hero() {
       ">
         
         <img
-          src={`${BASE_PATH}/images/bg daftar.png`}
+          src={`${BASE_PATH}/images/bg daftar.webp`}
           alt="Hero City"
+          fetchPriority="high"
           className="
             w-full h-auto block
             max-md:absolute max-md:inset-0 max-md:w-full max-md:h-full max-md:object-cover max-md:object-bottom

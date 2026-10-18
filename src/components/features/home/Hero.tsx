@@ -9,12 +9,14 @@ export default function Hero() {
         src={`${BASE_PATH}/images/night_bg.webp`}
         alt="Night Sky Background"
         className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
       />
 
       <div className="absolute bottom-0 left-0 w-full max-md:!top-0 max-md:!h-full">
         <img
           src={`${BASE_PATH}/images/hero city.webp`}
           alt="Hero City"
+          fetchPriority="high"
           className="w-full h-auto block transform -translate-y-5 max-md:!translate-y-0 max-md:!h-full max-md:!object-cover max-md:!object-[center_bottom]"
         />
         <div 

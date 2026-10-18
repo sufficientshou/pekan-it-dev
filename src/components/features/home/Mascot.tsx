@@ -67,6 +67,7 @@ function MascotCard({
       {showContent === 'image' ? (
         <img
           loading="lazy"
+          decoding="async"
           src={imageSrc}
           alt={title}
           className={`${contentSizeClass} object-contain transition-transform duration-300 group-hover:scale-105`}
@@ -256,7 +257,7 @@ export default function Avatar() {
         }}
       />
 
-      <div className="absolute top-0 left-[calc(51%+70px)] -translate-x-1/2 w-[1440px] h-full pointer-events-none">
+      <div className="absolute top-0 left-[calc(51%+70px)] -translate-x-1/2 w-[1440px] h-full pointer-events-none" style={{ contain: "paint", transform: "translateZ(0)" }}>
         <div
           className="absolute"
           style={{
@@ -321,7 +322,9 @@ export default function Avatar() {
         </h2>
       </div>
 
-      <img loading="lazy"
+      <img
+        loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/mascot.webp`}
         alt="Mascot"
         className="absolute"
@@ -410,7 +413,9 @@ export default function Avatar() {
           </span>
         </h2>
 
-        <img loading="lazy"
+        <img
+          loading="lazy"
+          decoding="async"
           src={`${BASE_PATH}/images/mascot.webp`}
           alt="Mascot"
           className="w-[280px] h-[280px] object-contain relative z-10 drop-shadow-[0_0_20px_rgba(208,0,203,0.5)]"

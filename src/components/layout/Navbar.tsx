@@ -32,27 +32,36 @@ export default function Navbar() {
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let ticking = false;
+    let currentScrolled = window.scrollY > 50;
+    let currentVisible = true;
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
 
-      if (currentScrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+          const shouldBeScrolled = scrollY > 50;
+          if (shouldBeScrolled !== currentScrolled) {
+            currentScrolled = shouldBeScrolled;
+            setIsScrolled(shouldBeScrolled);
+          }
+
+          const shouldBeVisible = !(scrollY > lastScrollY && scrollY > 80);
+          if (shouldBeVisible !== currentVisible) {
+            currentVisible = shouldBeVisible;
+            setIsVisible(shouldBeVisible);
+          }
+
+          lastScrollY = scrollY;
+          ticking = false;
+        });
+        ticking = true;
       }
-
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-
-      lastScrollY = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const toggleMenu = (label: string) => {

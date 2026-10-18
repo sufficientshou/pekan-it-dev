@@ -28,7 +28,7 @@ const DEFAULT_EDUCATION: ListItem[] = [
   },
   {
     text: "Bachelor of Science in Physics, UNPAD (1999 - 2003)",
-    logo: `${BASE_PATH}/images/unpad.png`,
+    logo: `${BASE_PATH}/images/unpad.webp`,
   },
 ];
 

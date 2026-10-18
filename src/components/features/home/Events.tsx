@@ -65,11 +65,15 @@ export default function Events() {
           height: "250px",
           background: "rgba(208,0,203,0.8)",
           filter: "blur(150px)",
+          transform: "translateZ(0)",
+          willChange: "transform",
           zIndex: 0,
         }}
       />
 
-      <img loading="lazy"
+      <img
+        loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/image 7.webp`}
         alt="Rocket"
         className="absolute object-cover max-md:!hidden"
@@ -169,7 +173,9 @@ export default function Events() {
                   }}
                 >
 
-                  <img loading="lazy"
+                  <img
+                    loading="lazy"
+                    decoding="async"
                     src={card.img}
                     alt={card.title}
                     className="absolute top-0 left-0 object-cover"

@@ -202,11 +202,15 @@ export default function Journey() {
       `}</style>
 
       <img
+        loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/garis.png`}
         alt="Decorative Line"
         className="absolute top-0 left-0 w-full h-full object-cover object-center pointer-events-none z-0 animate-line"
       />
       <img
+        loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/planet.png`}
         alt="Decorative Planet"
         className="hidden md:block absolute bottom-0 right-0 pointer-events-none z-0 animate-planet"
@@ -286,6 +290,7 @@ export default function Journey() {
 
           <img
             loading="lazy"
+            decoding="async"
             src={`${BASE_PATH}/images/timeline-rocket.webp`}
             alt="Rocket Timeline"
             className="block mx-auto"
@@ -342,9 +347,10 @@ export default function Journey() {
 
       <div className="md:hidden relative z-10 flex flex-col items-center px-4 pb-8 w-full">
         <img
+          loading="lazy"
+          decoding="async"
           src={`${BASE_PATH}/images/planet (2).png`}
           alt="Decorative Planet Mobile"
-          className="absolute pointer-events-none z-0 animate-planet-mobile"
           style={{
             width: "clamp(300px, 85vw, 420px)",
             height: "auto",

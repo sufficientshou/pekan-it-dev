@@ -429,9 +429,6 @@ body {
   animation: star-pulse 4s ease-in-out infinite;
 }
 
-/* ==========================================================================
-   Site Footer Styles (Header-Footer-Himtika-09)
-   ========================================================================== */
 
 .site-footer {
   background-color: #252742;
@@ -454,7 +451,6 @@ body {
   margin-top: 16px;
 }
 
-/* --- BRAND COLUMN --- */
 .footer-brand-col {
   width: 100%;
   margin-bottom: 32px;
@@ -521,7 +517,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* --- LINKS GRID COLUMN --- */
 .footer-grid-col {
   width: 100%;
 }
@@ -585,7 +580,6 @@ body {
   color: #00ffff;
 }
 
-/* --- FOOTER BOTTOM --- */
 .footer-bottom {
   display: flex;
   flex-direction: column;
@@ -619,7 +613,6 @@ body {
   object-fit: contain;
 }
 
-/* SM (640px) */
 @media (min-width: 640px) {
   .aplikasi-publik {
     display: flex;
@@ -648,7 +641,6 @@ body {
   }
 }
 
-/* MD (768px) */
 @media (min-width: 768px) {
   .align-center-lg {
     display: flex;
@@ -669,7 +661,6 @@ body {
   }
 }
 
-/* LG (1024px) */
 @media (min-width: 1024px) {
   .site-footer {
     padding-top: 48px;
@@ -726,10 +717,9 @@ body {
   }
 }
 
-/* XL (1280px) */
 @media (min-width: 1280px) {
   .site-footer {
     padding-left: 88px;
     padding-right: 88px;
   }
-}
+}

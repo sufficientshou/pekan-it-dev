@@ -1,8 +1,36 @@
 import type { Metadata } from "next";
+import { Zen_Dots, Exo_2, Plus_Jakarta_Sans, Orbitron } from "next/font/google";
 import "./globals.css";
 import { GlobalLoader } from "@/components/ui";
 import { BASE_PATH } from "@/config/constants";
 
+const zenDots = Zen_Dots({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-zen-dots",
+});
+
+const exo2 = Exo_2({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-exo",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jakarta",
+});
+
+const orbitron = Orbitron({
+  weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-orbitron",
+});
 export const metadata: Metadata = {
   title: "PEKAN IT — Pekan Informatika",
   description:
@@ -25,10 +53,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
+    <html lang="id" className={`${zenDots.variable} ${exo2.variable} ${plusJakartaSans.variable} ${orbitron.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Exo+2:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Exo+2:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"

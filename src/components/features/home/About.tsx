@@ -22,7 +22,9 @@ export default function About() {
         }}
       />
 
-      <img loading="lazy"
+      <img
+        loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/night_bg2.webp`}
         alt="Night Background"
         className="absolute inset-0 w-full h-full object-cover"
@@ -37,7 +39,9 @@ export default function About() {
         }}
       />
 
-      <img loading="lazy"
+      <img
+        loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/Vector 21.webp`}
         alt="Vector"
         className="absolute w-[550px] h-[42px] max-md:!hidden"
@@ -113,7 +117,9 @@ export default function About() {
             height: "500px",
           }}
         >
-          <img loading="lazy"
+          <img
+            loading="lazy"
+            decoding="async"
             src={`${BASE_PATH}/images/LOGO.webp`}
             alt="Logo"
             style={{

@@ -226,6 +226,8 @@ function CompetitionCard({
           className="relative rounded-[16px] overflow-hidden w-[92%] aspect-[290/170] left-[4%] sm:w-[290px] sm:h-[170px] sm:left-[22px] top-[20px]"
         >
           <img 
+            loading="lazy"
+            decoding="async"
             src={image} 
             alt={title} 
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -446,6 +448,8 @@ export default function Inside() {
         <div className="absolute left-[50%] bottom-[0%] -translate-x-1/2" style={{ zIndex: 1, width: "clamp(300px, 90vw, 1000px)" }}>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] bg-[#9333ea] blur-[80px] md:blur-[120px] opacity-50 pointer-events-none rounded-full z-0" />
           <img 
+            loading="lazy"
+            decoding="async"
             src={`${BASE_PATH}/images/gdg.png`} 
             alt="GDG Logo" 
             className="w-full h-auto object-contain block relative z-10"

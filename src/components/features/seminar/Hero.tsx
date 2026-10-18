@@ -13,9 +13,10 @@ export default function Hero() {
       />
 
       <img
-        src={`${BASE_PATH}/images/bg seminar.png`}
+        src={`${BASE_PATH}/images/bg seminar.webp`}
         alt="Seminar Background"
         className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
       />
 
       <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />
@@ -28,6 +29,7 @@ export default function Hero() {
           WebkitBackdropFilter: "blur(10px)",
           maskImage: "linear-gradient(to bottom, transparent 0%, black 100%)",
           WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 100%)",
+          transform: "translateZ(0)",
         }}
       />
 

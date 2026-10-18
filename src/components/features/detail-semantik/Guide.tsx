@@ -56,7 +56,9 @@ export default function Guide() {
           download="Guidebook-SEMANTIK.pdf"
           className="relative group cursor-pointer inline-block"
         >
-          <img loading="lazy"
+          <img
+            loading="lazy"
+            decoding="async"
             src={`${BASE_PATH}/images/guidebook-cover.webp`}
             alt="Guidebook SEMANTIK"
             className="block rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"

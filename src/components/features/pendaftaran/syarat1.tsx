@@ -91,6 +91,7 @@ export default function Syarat1() {
         }}
       />
       
+      <div className="max-md:!hidden pointer-events-none" style={{ contain: "paint", transform: "translateZ(0)" }}>
       <div
         className="absolute max-md:!hidden"
         style={{
@@ -196,6 +197,7 @@ export default function Syarat1() {
           boxShadow: "0 0 10px rgba(16,230,241,0.8)",
         }}
       />
+      </div>
 
       <div className="relative z-10 flex flex-col items-center w-full pt-10 pb-20">
         

@@ -143,7 +143,9 @@ export default function Timeline() {
         </h2>
       </div>
 
-      <img loading="lazy"
+      <img
+        loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/timeline-rocket.webp`}
         alt="Rocket Timeline"
         className="absolute"

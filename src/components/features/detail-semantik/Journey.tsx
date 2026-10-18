@@ -207,6 +207,7 @@ export default function Journey() {
         >
           <img
             loading="lazy"
+            decoding="async"
             src={`${BASE_PATH}/images/timeline-rocket.webp`}
             alt="Rocket Timeline"
             className="block mx-auto"

@@ -54,13 +54,22 @@ function LoaderComponent() {
     if (timerRef.current) clearTimeout(timerRef.current);
     if (fadeRef.current) clearTimeout(fadeRef.current);
 
-    timerRef.current = setTimeout(() => {
+    const startFadeOut = () => {
       setIsFadingOut(true);
       fadeRef.current = setTimeout(() => {
         setIsLoading(false);
-      }, 600);
-    }, 1400);
+      }, 400);
+    };
 
+    if (typeof document !== "undefined" && document.readyState === "complete") {
+      timerRef.current = setTimeout(startFadeOut, 250);
+    } else {
+      const onLoad = () => {
+        timerRef.current = setTimeout(startFadeOut, 250);
+      };
+      window.addEventListener("load", onLoad, { once: true });
+      timerRef.current = setTimeout(startFadeOut, 800);
+    }
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
       if (fadeRef.current) clearTimeout(fadeRef.current);

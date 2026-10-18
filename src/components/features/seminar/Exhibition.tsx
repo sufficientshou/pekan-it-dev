@@ -78,6 +78,8 @@ function ExhibitionCard({ item }: { item: ExhibitionItem }) {
       <div className="relative w-full px-6 pt-6 pb-0">
         <div className="relative rounded-[16px] overflow-hidden w-[92%] aspect-[290/170] left-[4%] sm:w-[290px] sm:h-[170px] sm:left-[22px] top-[20px]">
           <img
+            loading="lazy"
+            decoding="async"
             src={cardImage}
             alt={item.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

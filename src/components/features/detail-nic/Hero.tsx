@@ -15,9 +15,10 @@ export default function Hero() {
       />
 
       <img
-        src={`${BASE_PATH}/images/nic city.svg`}
+        src={`${BASE_PATH}/images/nic city.webp`}
         alt="Night Sky Background"
         className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
       />
 
       <div className="

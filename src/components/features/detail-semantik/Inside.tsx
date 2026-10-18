@@ -176,6 +176,7 @@ export default function Inside() {
     >
       <img
         loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/segitiga.webp`}
         alt="bg"
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[1500px] max-w-none opacity-95 max-md:w-[200%] pointer-events-none"
@@ -185,6 +186,7 @@ export default function Inside() {
 
       <img
         loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/left.webp`}
         alt="wing"
         className="hidden xl:block absolute pointer-events-none"
@@ -197,6 +199,7 @@ export default function Inside() {
       />
       <img
         loading="lazy"
+        decoding="async"
         src={`${BASE_PATH}/images/left.webp`}
         alt="wing"
         className="hidden xl:block absolute pointer-events-none scale-x-[-1]"
@@ -215,6 +218,7 @@ export default function Inside() {
         <div className="flex flex-col items-center gap-4 md:gap-6 text-center max-w-xl" style={{ paddingTop: "clamp(5px, 10vw, 220px)" }}>
           <img
             loading="lazy"
+            decoding="async"
             src={`${BASE_PATH}/images/LOGO.webp`}
             alt="Logo"
             className="w-12 md:w-16 lg:w-24"
@@ -241,6 +245,7 @@ export default function Inside() {
         >
           <img
             loading="lazy"
+            decoding="async"
             src={`${BASE_PATH}/images/Crown.webp`}
             alt="crown"
             className="w-[180px] md:w-[280px] lg:w-[360px]"

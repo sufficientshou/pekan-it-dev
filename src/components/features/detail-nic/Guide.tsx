@@ -78,8 +78,10 @@ export default function Guide() {
           className="relative group cursor-pointer inline-block"
         >
 
-          <img loading="lazy"
-            src={`${BASE_PATH}/images/COVER.png`}
+          <img
+            loading="lazy"
+            decoding="async"
+            src={`${BASE_PATH}/images/COVER.webp`}
             alt="Guidebook NIC"
             className="block rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
             style={{

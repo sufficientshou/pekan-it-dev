@@ -124,13 +124,15 @@ export default function Daftar() {
               className="relative rounded-[23px] overflow-hidden flex flex-col md:flex-row items-center justify-center md:justify-between py-12 sm:py-10 px-8 sm:px-12 md:px-16 min-h-[420px] sm:min-h-[360px] gap-5 md:gap-8"
               style={{
                 backgroundColor: '#140222',
-                backgroundImage: `url('${BASE_PATH}/images/semcard.png')`,
+                backgroundImage: `url('${BASE_PATH}/images/semcard.webp')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
             >
               <div className="flex-shrink-0 flex items-center justify-center z-10 md:ml-16 lg:ml-24 relative top-2 md:top-0 md:translate-x-8 lg:translate-x-12">
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src={`${BASE_PATH}/images/masem.png`}
                   alt="Mascot"
                   className="w-[140px] sm:w-[190px] md:w-[260px] lg:w-[290px] h-auto object-contain"

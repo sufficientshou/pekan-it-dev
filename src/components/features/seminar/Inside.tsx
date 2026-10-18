@@ -154,7 +154,9 @@ export default function Inside() {
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[35%] bg-[#9333ea] blur-[45px] md:blur-[65px] opacity-35 pointer-events-none rounded-full z-0" />
           <img 
-            src={`${BASE_PATH}/images/ai.png`} 
+            loading="lazy"
+            decoding="async"
+            src={`${BASE_PATH}/images/ai.webp`} 
             alt="AI Graphic" 
             className="w-full h-auto object-contain object-bottom block relative z-10 translate-y-12 md:translate-y-20"
             style={{ maxHeight: "clamp(200px, 34vw, 440px)" }}
