@@ -16,60 +16,67 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
   {
     id: "sawit-1",
     author: "Future Innovators",
-    title: "Next Innovation",
-    description: "Proyek terbaik akan segera hadir dan menampilkan solusi inovatif dari mahasiswa Informatika UNSIKA.",
-    image: `${BASE_PATH}/images/cs.png`,
+    title: "Nutriplan",
+    description:
+      "Platform berbasis AI yang membantu menentukan dan memilih menu makanan sehat harian secara terukur berdasarkan perhitungan TDEE serta kebutuhan kalori harian penggunanya.",
+    image: `${BASE_PATH}/images/ps.JPG`,
   },
   {
     id: "sawit-2",
     author: "Future Innovators",
-    title: "Next Innovation",
-    description: "Proyek terbaik akan segera hadir dan menampilkan solusi inovatif dari mahasiswa Informatika UNSIKA.",
-    image: `${BASE_PATH}/images/cs.png`,
+    title: "Mindustry Waste",
+    description:
+      "Sistem penyortir limbah medis otomatis berbasis Machine Learning, AI, dan IoT yang dilengkapi dengan fitur keamanan ganda untuk meningkatkan efisiensi dan keamanan pengelolaan sampah medis.",
+    image: `${BASE_PATH}/images/ps1.JPG`,
   },
   {
     id: "sawit-3",
     author: "Future Innovators",
-    title: "Next Innovation",
-    description: "Proyek terbaik akan segera hadir dan menampilkan solusi inovatif dari mahasiswa Informatika UNSIKA.",
-    image: `${BASE_PATH}/images/cs.png`,
+    title: "RnD HIMTIKA",
+    description:
+      "Platform web resmi sebagai pusat informasi terpadu Mahasiswa Informatika UNSIKA, wadah dokumentasi, serta penunjang operasional berbagai kegiatan dan event organisasi HIMTIKA.",
+    image: `${BASE_PATH}/images/ps2.JPG`,
   },
   {
     id: "sawit-4",
     author: "Future Innovators",
-    title: "Next Innovation",
-    description: "Proyek terbaik akan segera hadir dan menampilkan solusi inovatif dari mahasiswa Informatika UNSIKA.",
-    image: `${BASE_PATH}/images/cs.png`,
+    title: "Winjol",
+    description:
+      "Web app transportasi dan pengantaran online berbasis komunitas dengan sistem open trip dan negosiasi tarif transparan untuk mengatasi keterbatasan harga algoritmik konvensional.",
+    image: `${BASE_PATH}/images/ps3.JPG`,
   },
   {
     id: "sawit-5",
     author: "Future Innovators",
-    title: "Next Innovation",
-    description: "Proyek terbaik akan segera hadir dan menampilkan solusi inovatif dari mahasiswa Informatika UNSIKA.",
-    image: `${BASE_PATH}/images/cs.png`,
+    title: "Cube Madness Team",
+    description:
+      "Game aksi top-down shooter interaktif yang memadukan kombinasi strategi berbagai senjata, kustomisasi karakter, dan gameplay bertahan hidup untuk memberikan pengalaman bermain yang unik.",
+    image: `${BASE_PATH}/images/ps.JPG`,
   },
   {
     id: "sawit-6",
     author: "Future Innovators",
-    title: "Next Innovation",
-    description: "Proyek terbaik akan segera hadir dan menampilkan solusi inovatif dari mahasiswa Informatika UNSIKA.",
-    image: `${BASE_PATH}/images/cs.png`,
+    title: "Sersam Project",
+    description:
+      "Prototipe sistem pengangkut sampah sungai otomatis berbasis IoT yang terintegrasi dengan database logging, notifikasi Telegram, serta pemantauan real-time via dashboard untuk solusi masalah lingkungan.",
+    image: `${BASE_PATH}/images/ps1.JPG`,
   },
   {
     id: "sawit-7",
     author: "Future Innovators",
-    title: "Next Innovation",
-    description: "Proyek terbaik akan segera hadir dan menampilkan solusi inovatif dari mahasiswa Informatika UNSIKA.",
-    image: `${BASE_PATH}/images/cs.png`,
+    title: "TYPAZZ Robotics",
+    description:
+      "Pengembangan prototipe robot animatronik humanoid berbasis AIoRT yang dirancang multi-fungsi untuk kebutuhan interaksi, pendampingan, hingga otomatisasi tugas serbaguna.",
+    image: `${BASE_PATH}/images/ps2.JPG`,
   },
 ];
 
 function ExhibitionCard({ item }: { item: ExhibitionItem }) {
-  const cardImage = item.image || `${BASE_PATH}/images/cs.png`;
+  const cardImage = item.image || `${BASE_PATH}/images/ps.JPG`;
 
   return (
     <div
-      className="relative flex flex-col group w-full max-w-[340px] min-h-[440px] rounded-[24px] overflow-hidden transition-all duration-300 hover:-translate-y-2 select-none"
+      className="relative flex flex-col group w-full max-w-[340px] min-h-[440px] h-full rounded-[24px] overflow-hidden transition-all duration-300 hover:-translate-y-2 select-none"
       style={{
         background: "#1b233d",
         boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
