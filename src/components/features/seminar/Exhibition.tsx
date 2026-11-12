@@ -10,6 +10,7 @@ interface ExhibitionItem {
   title: string;
   description?: string;
   image?: string;
+  imagePosition?: string;
 }
 
 const EXHIBITION_DATA: ExhibitionItem[] = [
@@ -19,7 +20,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
     title: "Nutriplan",
     description:
       "Platform berbasis AI yang membantu menentukan dan memilih menu makanan sehat harian secara terukur berdasarkan perhitungan TDEE serta kebutuhan kalori harian penggunanya.",
-    image: `${BASE_PATH}/images/ps.JPG`,
+    image: `${BASE_PATH}/images/ps1.webp`,
   },
   {
     id: "sawit-2",
@@ -27,7 +28,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
     title: "Mindustry Waste",
     description:
       "Sistem penyortir limbah medis otomatis berbasis Machine Learning, AI, dan IoT yang dilengkapi dengan fitur keamanan ganda untuk meningkatkan efisiensi dan keamanan pengelolaan sampah medis.",
-    image: `${BASE_PATH}/images/ps1.JPG`,
+    image: `${BASE_PATH}/images/mindus.webp`,
   },
   {
     id: "sawit-3",
@@ -35,7 +36,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
     title: "RnD HIMTIKA",
     description:
       "Platform web resmi sebagai pusat informasi terpadu Mahasiswa Informatika UNSIKA, wadah dokumentasi, serta penunjang operasional berbagai kegiatan dan event organisasi HIMTIKA.",
-    image: `${BASE_PATH}/images/ps2.JPG`,
+    image: `${BASE_PATH}/images/image.webp`,
   },
   {
     id: "sawit-4",
@@ -43,7 +44,8 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
     title: "Winjol",
     description:
       "Web app transportasi dan pengantaran online berbasis komunitas dengan sistem open trip dan negosiasi tarif transparan untuk mengatasi keterbatasan harga algoritmik konvensional.",
-    image: `${BASE_PATH}/images/ps3.JPG`,
+    image: `${BASE_PATH}/images/jol.webp`,
+    imagePosition: "center 20%",
   },
   {
     id: "sawit-5",
@@ -51,7 +53,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
     title: "Cube Madness Team",
     description:
       "Game aksi top-down shooter interaktif yang memadukan kombinasi strategi berbagai senjata, kustomisasi karakter, dan gameplay bertahan hidup untuk memberikan pengalaman bermain yang unik.",
-    image: `${BASE_PATH}/images/ps.JPG`,
+    image: `${BASE_PATH}/images/ps.webp`,
   },
   {
     id: "sawit-6",
@@ -59,7 +61,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
     title: "Sersam Project",
     description:
       "Prototipe sistem pengangkut sampah sungai otomatis berbasis IoT yang terintegrasi dengan database logging, notifikasi Telegram, serta pemantauan real-time via dashboard untuk solusi masalah lingkungan.",
-    image: `${BASE_PATH}/images/ps1.JPG`,
+    image: `${BASE_PATH}/images/sersam.webp`,
   },
   {
     id: "sawit-7",
@@ -67,12 +69,21 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
     title: "TYPAZZ Robotics",
     description:
       "Pengembangan prototipe robot animatronik humanoid berbasis AIoRT yang dirancang multi-fungsi untuk kebutuhan interaksi, pendampingan, hingga otomatisasi tugas serbaguna.",
-    image: `${BASE_PATH}/images/ps2.JPG`,
+    image: `${BASE_PATH}/images/human.webp`,
+    imagePosition: "top",
+  },
+  {
+    id: "sawit-8",
+    author: "Future Innovators",
+    title: "Minecraft Build Showcase",
+    description:
+      "Koleksi hasil karya terbaik dan mahakarya tingkat lanjut dari pengalaman lebih dari 6 tahun sebagai builder dan level designer profesional di Minecraft.",
+    image: `${BASE_PATH}/images/mc.webp`,
   },
 ];
 
 function ExhibitionCard({ item }: { item: ExhibitionItem }) {
-  const cardImage = item.image || `${BASE_PATH}/images/ps.JPG`;
+  const cardImage = item.image || `${BASE_PATH}/images/ps.webp`;
 
   return (
     <div
@@ -90,6 +101,7 @@ function ExhibitionCard({ item }: { item: ExhibitionItem }) {
             src={cardImage}
             alt={item.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            style={item.imagePosition ? { objectPosition: item.imagePosition } : undefined}
           />
 
           <div className="absolute top-0 left-0 bg-[#1b233d] px-3.5 py-1.5 rounded-br-[16px] flex items-center gap-1.5 z-20">
