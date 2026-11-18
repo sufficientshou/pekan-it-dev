@@ -51,7 +51,7 @@ export default function Daftar() {
               className="relative rounded-[23px] overflow-hidden flex flex-col items-center justify-center text-center py-10 sm:py-12 px-6 sm:px-12 min-h-[320px] sm:min-h-[360px]"
               style={{
                 backgroundColor: '#140222',
-                backgroundImage: `url('${BASE_PATH}/images/bg%20card.png')`,
+                backgroundImage: `url('${BASE_PATH}/images/bg%20card.webp')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
