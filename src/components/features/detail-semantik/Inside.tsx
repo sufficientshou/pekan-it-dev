@@ -93,7 +93,7 @@ function CompetitionCard({ title }: { title: string }) {
 
   return (
     <Link
-      href="/pendaftaran-ditutup"
+      href="/pendaftaran-ditutup-semantik"
       className="relative group cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] w-full max-w-[280px] block"
       style={{ height: "250px" }}
     >

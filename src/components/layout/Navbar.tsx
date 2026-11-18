@@ -132,7 +132,9 @@ export default function Navbar() {
                   item.items.map((subItem) => {
                     const href =
                       subItem === "Pendaftaran" && item.label === "Seminar"
-                        ? "https://forms.gle/STJ8qgfobSDZirBj6"
+                        ? "/pendaftaran-ditutup-seminar"
+                        : subItem === "Pendaftaran" && item.label.toLowerCase() === "semantik"
+                        ? "/pendaftaran-ditutup-semantik"
                         : subItem === "Pendaftaran"
                         ? "/pendaftaran-ditutup"
                         : subItem === "Detail SEMANTIK"

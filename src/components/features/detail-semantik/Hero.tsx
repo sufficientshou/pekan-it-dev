@@ -86,7 +86,7 @@ export default function Hero() {
             md:flex-row md:gap-7 md:mt-1
           ">
             <Link
-              href="/pendaftaran-ditutup"
+              href="/pendaftaran-ditutup-semantik"
               className="max-md:w-full max-md:flex max-md:justify-center"
             >
               <button
