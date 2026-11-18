@@ -2,6 +2,7 @@
 
 import { BASE_PATH } from '@/config/constants';
 import { MapPin, Clock } from "lucide-react";
+import Link from "next/link";
 
 export default function Daftar() {
   return (
@@ -154,11 +155,7 @@ export default function Daftar() {
                   Bergabunglah bersama peserta lainnya untuk mengeksplorasi kolaborasi manusia dan AI melalui seminar serta pameran karya inovatif.
                 </p>
 
-                <a
-                  href="https://forms.gle/STJ8qgfobSDZirBj6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="/pendaftaran-ditutup-seminar">
                   <button
                     className="mt-2 md:mt-4 rounded-[50px] shadow-[0px_8px_15px_0px_rgba(0,0,0,0.10)] text-white text-xs sm:text-sm font-semibold transition-opacity hover:opacity-90 cursor-pointer opacity-90 flex items-center justify-center"
                     style={{
@@ -170,7 +167,7 @@ export default function Daftar() {
                   >
                     Daftar Sekarang
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
