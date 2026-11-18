@@ -16,7 +16,7 @@ interface ExhibitionItem {
 const EXHIBITION_DATA: ExhibitionItem[] = [
   {
     id: "sawit-1",
-    author: "Future Innovators",
+    author: "Cakra, Nafhan",
     title: "Nutriplan",
     description:
       "Platform berbasis AI yang membantu menentukan dan memilih menu makanan sehat harian secara terukur berdasarkan perhitungan TDEE serta kebutuhan kalori harian penggunanya.",
@@ -24,7 +24,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
   },
   {
     id: "sawit-2",
-    author: "Future Innovators",
+    author: "Zidane, Halim, Dede",
     title: "Mindustry Waste",
     description:
       "Sistem penyortir limbah medis otomatis berbasis Machine Learning, AI, dan IoT yang dilengkapi dengan fitur keamanan ganda untuk meningkatkan efisiensi dan keamanan pengelolaan sampah medis.",
@@ -32,7 +32,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
   },
   {
     id: "sawit-3",
-    author: "Future Innovators",
+    author: "Raika, Arsya",
     title: "RnD HIMTIKA",
     description:
       "Platform web resmi sebagai pusat informasi terpadu Mahasiswa Informatika UNSIKA, wadah dokumentasi, serta penunjang operasional berbagai kegiatan dan event organisasi HIMTIKA.",
@@ -40,7 +40,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
   },
   {
     id: "sawit-4",
-    author: "Future Innovators",
+    author: "Isa, Rakha, Nazwa",
     title: "Winjol",
     description:
       "Web app transportasi dan pengantaran online berbasis komunitas dengan sistem open trip dan negosiasi tarif transparan untuk mengatasi keterbatasan harga algoritmik konvensional.",
@@ -49,7 +49,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
   },
   {
     id: "sawit-5",
-    author: "Future Innovators",
+    author: "Azka",
     title: "Cube Madness Team",
     description:
       "Game aksi top-down shooter interaktif yang memadukan kombinasi strategi berbagai senjata, kustomisasi karakter, dan gameplay bertahan hidup untuk memberikan pengalaman bermain yang unik.",
@@ -57,7 +57,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
   },
   {
     id: "sawit-6",
-    author: "Future Innovators",
+    author: "Abdurrokhman",
     title: "Sersam Project",
     description:
       "Prototipe sistem pengangkut sampah sungai otomatis berbasis IoT yang terintegrasi dengan database logging, notifikasi Telegram, serta pemantauan real-time via dashboard untuk solusi masalah lingkungan.",
@@ -65,7 +65,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
   },
   {
     id: "sawit-7",
-    author: "Future Innovators",
+    author: "Zidane",
     title: "TYPAZZ Robotics",
     description:
       "Pengembangan prototipe robot animatronik humanoid berbasis AIoRT yang dirancang multi-fungsi untuk kebutuhan interaksi, pendampingan, hingga otomatisasi tugas serbaguna.",
@@ -74,7 +74,7 @@ const EXHIBITION_DATA: ExhibitionItem[] = [
   },
   {
     id: "sawit-8",
-    author: "Future Innovators",
+    author: "Fikri",
     title: "Minecraft Build Showcase",
     description:
       "Koleksi hasil karya terbaik dan mahakarya tingkat lanjut dari pengalaman lebih dari 6 tahun sebagai builder dan level designer profesional di Minecraft.",
