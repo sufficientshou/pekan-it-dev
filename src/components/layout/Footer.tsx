@@ -123,13 +123,23 @@ export default function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a href="https://himtika.cs.unsika.ac.id/hikode/" target="_blank" rel="noopener noreferrer">
-                          Artikel HIMTIKA
+                        <a href="https://www.instagram.com/cnc_himtika/" target="_blank" rel="noopener noreferrer">
+                          Info Lomba
                         </a>
                       </li>
                       <li>
-                        <a href="https://www.instagram.com/cnc_himtika/" target="_blank" rel="noopener noreferrer">
-                          Info Lomba
+                        <a href="https://himtika.cs.unsika.ac.id/kalender/" target="_blank" rel="noopener noreferrer">
+                          Kalender
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/dosen/" target="_blank" rel="noopener noreferrer">
+                          Tenaga Pendidik
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://himtika.cs.unsika.ac.id/himtika-awards/" target="_blank" rel="noopener noreferrer">
+                          HIMTIKA Awards
                         </a>
                       </li>
                     </ul>
@@ -143,11 +153,6 @@ export default function Footer() {
                       <li>
                         <a href="https://himtika.cs.unsika.ac.id/open-project/" target="_blank" rel="noopener noreferrer">
                           Create and Compete
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://himtika.cs.unsika.ac.id/himtika-exchange/" target="_blank" rel="noopener noreferrer">
-                          Himtika Exchange
                         </a>
                       </li>
                       <li>
@@ -177,7 +182,7 @@ export default function Footer() {
                       </li>
                       <li>
                         <a href="https://himtika.cs.unsika.ac.id/diesnatalis/" target="_blank" rel="noopener noreferrer">
-                          Diesnatalis
+                          Dies Natalis
                         </a>
                       </li>
                       <li>
@@ -195,12 +200,7 @@ export default function Footer() {
                     <ul className="group-list">
                       <li>
                         <a href="https://himtalks.vercel.app/himtalks" target="_blank" rel="noopener noreferrer">
-                          Himtalks
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://himtika.cs.unsika.ac.id/himtika-awards/" target="_blank" rel="noopener noreferrer">
-                          Himtika Award
+                          HimTalks
                         </a>
                       </li>
                       <li>
@@ -211,16 +211,6 @@ export default function Footer() {
                       <li>
                         <a href="https://himtika.cs.unsika.ac.id/corporation/" target="_blank" rel="noopener noreferrer">
                           Corporation
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://himtika.cs.unsika.ac.id/kalender/" target="_blank" rel="noopener noreferrer">
-                          Kalender
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://himtika.cs.unsika.ac.id/dosen/" target="_blank" rel="noopener noreferrer">
-                          Profil Tenaga Pendidik
                         </a>
                       </li>
                     </ul>
